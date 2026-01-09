@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "pricing-1",
+    "tierName": "Drop-In",
+    "price": 35,
+    "billingCycle": "Per Class",
+    "keyBenefits": "Single group class\nNo commitment required\nPerfect for trying us out",
+    "isFoundingOffer": false,
+    "callToActionText": "Book a Class",
+    "callToActionLink": "/contact"
+  },
+  {
+    "_id": "pricing-2",
+    "tierName": "8-Class Pack",
+    "price": 240,
+    "billingCycle": "One-Time",
+    "keyBenefits": "8 group classes\nValid for 3 months\n$30 per class\nFlexible scheduling",
+    "isFoundingOffer": false,
+    "callToActionText": "Purchase Pack",
+    "callToActionLink": "/contact"
+  },
+  {
+    "_id": "pricing-3",
+    "tierName": "Founding Member",
+    "price": 159,
+    "billingCycle": "Monthly",
+    "keyBenefits": "Unlimited group classes\nPriority booking\n10% off private sessions\n1 guest pass per month\nLocked-in rate for life",
+    "isFoundingOffer": true,
+    "foundingOfferDescription": "Lock in this exclusive founding member rate before our grand opening. This price will never increase as long as you maintain your membership.",
+    "callToActionText": "Claim Founding Rate",
+    "callToActionLink": "/contact"
+  },
+  {
+    "_id": "pricing-4",
+    "tierName": "Private Session",
+    "price": 95,
+    "billingCycle": "Per Session",
+    "keyBenefits": "55-minute one-on-one session\nPersonalized programming\nFlexible scheduling\nIdeal for specific goals",
+    "isFoundingOffer": false,
+    "callToActionText": "Book Private",
+    "callToActionLink": "/contact"
+  }
+]
+

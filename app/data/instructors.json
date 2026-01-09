@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "instructor-1",
+    "fullName": "Sarah Mitchell",
+    "profilePicture": "https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80",
+    "shortBio": "Studio founder with 15+ years of experience in classical and contemporary Pilates methods.",
+    "fullBio": "Sarah discovered Pilates during her career as a professional dancer and has never looked back. After training with master instructors in New York and Los Angeles, she founded Alva Pilates with a vision to create a space where movement meets mindfulness.\n\nHer teaching philosophy emphasizes proper alignment, breath work, and the mind-body connection. Sarah holds certifications from BASI Pilates and Polestar, and continues her education annually to bring the latest techniques to her clients.\n\nWhen she's not at the studio, Sarah enjoys hiking in the Santa Clarita mountains and spending time with her two rescue dogs.",
+    "specialties": "Classical Pilates, Rehabilitation, Pre/Post Natal",
+    "instagramUrl": "https://instagram.com"
+  },
+  {
+    "_id": "instructor-2",
+    "fullName": "Michael Chen",
+    "profilePicture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    "shortBio": "Former physical therapist bringing a rehabilitative approach to every session.",
+    "fullBio": "Michael's journey to Pilates began in the physical therapy clinic, where he witnessed the transformative power of movement-based rehabilitation. After 8 years as a licensed PT, he transitioned to full-time Pilates instruction to help clients prevent injuries before they happen.\n\nHis classes focus on functional movement patterns and postural correction, making them ideal for clients with desk jobs, athletes, and anyone looking to move better in daily life.\n\nMichael is certified through Balanced Body and holds additional certifications in sports conditioning and corrective exercise.",
+    "specialties": "Injury Prevention, Sports Conditioning, Postural Correction",
+    "instagramUrl": "https://instagram.com"
+  },
+  {
+    "_id": "instructor-3",
+    "fullName": "Elena Rodriguez",
+    "profilePicture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80",
+    "shortBio": "Dynamic instructor known for creative sequences and infectious energy.",
+    "fullBio": "Elena brings joy and creativity to every class she teaches. With a background in dance and yoga, she creates flowing sequences that challenge the body while calming the mind.\n\nHer students appreciate her attention to detail and ability to offer modifications that make every exercise accessible. Elena believes that Pilates should be enjoyable, and her classes often feature carefully curated playlists and unexpected movement combinations.\n\nShe completed her comprehensive Pilates training through Club Pilates and continues to study with master teachers around the world.",
+    "specialties": "Flow-Based Classes, Flexibility, Mind-Body Connection",
+    "instagramUrl": "https://instagram.com"
+  }
+]
+

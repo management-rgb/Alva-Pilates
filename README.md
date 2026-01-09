@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alva Pilates - Movement & Wellness Studio
+
+A modern, responsive website for Alva Pilates studio in Valencia, Santa Clarita. Built with Next.js 16, React 19, and Tailwind CSS.
+
+## Features
+
+- 🎨 Modern, responsive design with smooth animations
+- 📱 Mobile-first approach with optimized layouts
+- 🧘 Class listings and detailed class information
+- 👥 Instructor profiles with bios and specialties
+- 💰 Pricing and membership information
+- 📅 Mindbody integration for class booking
+- ❓ FAQ section with categorized questions
+- 📧 Contact form integration
+- ♿ Accessibility-focused design
+
+## Tech Stack
+
+- **Framework**: Next.js 16.0.10 (App Router)
+- **React**: 19.2.1
+- **Styling**: Tailwind CSS 4
+- **UI Components**: Radix UI primitives
+- **Icons**: Lucide React
+- **TypeScript**: 5.x
+- **Fonts**: Cormorant Garamond, Quicksand (Google Fonts)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd alva-pilates
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+alva-pilates/
+├── app/
+│   ├── about/          # About page
+│   ├── book/           # Class booking page
+│   ├── classes/         # Classes listing and detail pages
+│   ├── components/      # Reusable React components
+│   ├── contact/         # Contact page
+│   ├── data/            # JSON data files
+│   ├── faq/             # FAQ page
+│   ├── instructors/     # Instructors listing and detail pages
+│   ├── pricing/          # Pricing page
+│   ├── register/         # Registration page
+│   └── types/            # TypeScript type definitions
+├── lib/                  # Utility functions
+├── public/               # Static assets
+└── global.d.ts           # Global TypeScript declarations
+```
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Features Implementation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Image Optimization
+External images from Unsplash are optimized through Next.js Image component with proper remote patterns configured in `next.config.ts`.
 
-## Deploy on Vercel
+### Error Handling
+Custom error suppression component handles third-party script errors (Mindbody widgets, Mixpanel, etc.) gracefully.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 404 Pages
+Custom not-found pages for dynamic routes (instructors and classes) provide better user experience.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Data Management
+Static JSON data files for classes, instructors, pricing, and FAQs. Easy to update without code changes.
+
+## Deployment
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Vercel will automatically detect Next.js and configure the build
+
+For other deployment options, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## Environment Variables
+
+No environment variables are currently required. All configuration is handled through:
+- `next.config.ts` - Next.js configuration
+- `app/data/*.json` - Static data files
+- Component props and configuration
+
+## Contributing
+
+This is a private project for Alva Pilates. For questions or issues, please contact the development team.
+
+## License
+
+Proprietary - All rights reserved © Alva Pilates

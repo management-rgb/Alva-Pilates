@@ -1,0 +1,61 @@
+[
+  {
+    "_id": "faq-1",
+    "question": "What should I wear to class?",
+    "answer": "Wear comfortable, form-fitting clothing that allows you to move freely. Avoid loose or baggy clothes as they can interfere with the equipment and make it harder for instructors to see your alignment. Grip socks are required for all classes and are available for purchase at the studio.",
+    "category": "Getting Started",
+    "isFeatured": true,
+    "displayOrder": 1
+  },
+  {
+    "_id": "faq-2",
+    "question": "Do I need prior Pilates experience?",
+    "answer": "Not at all! We welcome students of all levels, from complete beginners to advanced practitioners. Our Reformer Foundations class is specifically designed for those new to Pilates. We recommend starting there if you're new to the practice.",
+    "category": "Getting Started",
+    "isFeatured": true,
+    "displayOrder": 2
+  },
+  {
+    "_id": "faq-3",
+    "question": "How early should I arrive for class?",
+    "answer": "Please arrive 10-15 minutes before your first class to complete paperwork and get oriented to the studio. For subsequent visits, arriving 5-10 minutes early is sufficient to set up your reformer and settle in.",
+    "category": "Getting Started",
+    "displayOrder": 3
+  },
+  {
+    "_id": "faq-4",
+    "question": "What is your cancellation policy?",
+    "answer": "We require 12 hours notice for class cancellations. Late cancellations or no-shows will result in the class being deducted from your package or charged at the drop-in rate for unlimited members. We understand emergencies happen—please contact us if you have special circumstances.",
+    "category": "Policies",
+    "displayOrder": 4
+  },
+  {
+    "_id": "faq-5",
+    "question": "Can I freeze my membership?",
+    "answer": "Yes! We offer membership freezes for extended travel, injury, or other circumstances. Please contact us at least 7 days before your next billing date to arrange a freeze. Founding member rates are preserved during freezes.",
+    "category": "Policies",
+    "displayOrder": 5
+  },
+  {
+    "_id": "faq-6",
+    "question": "Is Pilates safe during pregnancy?",
+    "answer": "Pilates can be excellent during pregnancy when practiced with proper modifications. We recommend private sessions for pregnant clients so we can tailor the exercises to your specific needs and trimester. Always consult with your healthcare provider before starting any new exercise program during pregnancy.",
+    "category": "Health & Safety",
+    "displayOrder": 6
+  },
+  {
+    "_id": "faq-7",
+    "question": "I have a back injury. Can I still do Pilates?",
+    "answer": "Pilates is often recommended for back pain and rehabilitation, but it's essential to work with an instructor who understands your specific condition. We recommend starting with private sessions so we can design a program that supports your recovery. Please bring any relevant medical information to your first session.",
+    "category": "Health & Safety",
+    "displayOrder": 7
+  },
+  {
+    "_id": "faq-8",
+    "question": "Do you offer corporate or group rates?",
+    "answer": "Yes! We offer special rates for corporate wellness programs, bridal parties, and private group events. Contact us for more information about bringing Pilates to your team or celebrating a special occasion at our studio.",
+    "category": "Pricing",
+    "displayOrder": 8
+  }
+]
+

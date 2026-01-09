@@ -1,0 +1,63 @@
+[
+  {
+    "_id": "class-1",
+    "className": "Reformer Foundations",
+    "description": "Perfect for beginners, this class introduces the fundamental principles of Pilates on the reformer. Learn proper form, breathing techniques, and core engagement in a supportive environment.",
+    "classType": "Group Class",
+    "durationMinutes": 55,
+    "difficultyLevel": "Beginner",
+    "classImage": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80",
+    "bookingUrl": "/pricing"
+  },
+  {
+    "_id": "class-2",
+    "className": "Core & More",
+    "description": "An intermediate class focusing on deep core strengthening and full-body integration. Build upon your foundation with more challenging exercises and sequences.",
+    "classType": "Group Class",
+    "durationMinutes": 55,
+    "difficultyLevel": "Intermediate",
+    "classImage": "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=80",
+    "bookingUrl": "/pricing"
+  },
+  {
+    "_id": "class-3",
+    "className": "Power Flow",
+    "description": "Our most dynamic class combines traditional Pilates with athletic conditioning. Expect a challenging workout that builds strength, endurance, and flexibility.",
+    "classType": "Group Class",
+    "durationMinutes": 55,
+    "difficultyLevel": "Advanced",
+    "classImage": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80",
+    "bookingUrl": "/pricing"
+  },
+  {
+    "_id": "class-4",
+    "className": "Private Session",
+    "description": "One-on-one instruction tailored to your specific goals and needs. Ideal for those seeking personalized attention, injury rehabilitation, or accelerated progress.",
+    "classType": "Private",
+    "durationMinutes": 55,
+    "difficultyLevel": "Beginner",
+    "classImage": "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=80",
+    "bookingUrl": "/pricing"
+  },
+  {
+    "_id": "class-5",
+    "className": "Stretch & Restore",
+    "description": "A gentle class focused on flexibility, mobility, and relaxation. Perfect for recovery days or those seeking a mindful, restorative practice.",
+    "classType": "Group Class",
+    "durationMinutes": 45,
+    "difficultyLevel": "Beginner",
+    "classImage": "https://images.unsplash.com/photo-1552196563-55cd4e45efb3?w=800&q=80",
+    "bookingUrl": "/pricing"
+  },
+  {
+    "_id": "class-6",
+    "className": "Duet Session",
+    "description": "Semi-private instruction for two. Share the experience with a friend or partner while receiving personalized guidance and corrections.",
+    "classType": "Semi-Private",
+    "durationMinutes": 55,
+    "difficultyLevel": "Intermediate",
+    "classImage": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80",
+    "bookingUrl": "/pricing"
+  }
+]
+
