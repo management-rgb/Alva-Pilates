@@ -119,13 +119,13 @@ export default function InstructorDetailPage({
                 your class today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
+                <a
                   href="/book"
                   className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center justify-center gap-2"
                 >
                   Book a Class
                   <ArrowRight size={18} />
-                </Link>
+                </a>
                 <Link
                   href="/instructors"
                   className="font-paragraph text-base bg-transparent text-white border border-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all inline-flex items-center justify-center"

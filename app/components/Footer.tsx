@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-secondary text-charcoal">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
             <h3 className="font-heading text-2xl font-bold text-charcoal mb-4">
@@ -87,6 +87,39 @@ export default function Footer() {
                 FAQ
               </Link>
             </nav>
+          </div>
+
+          {/* Apps */}
+          <div>
+            <h4 className="font-heading text-xl font-semibold text-charcoal mb-4">
+              Download Our App
+            </h4>
+            <div className="flex flex-row flex-wrap gap-3 items-center">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.fitnessmobileapps.formaluxecollective43021&hl=en_US"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                  alt="Get it on Google Play"
+                  className="h-18 w-auto object-contain"
+                />
+              </a>
+              <a
+                href="https://apps.apple.com/us/app/alva-pilates/id6755688496"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center hover:opacity-90 transition-opacity"
+              >
+                <img
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  alt="Download on the App Store"
+                  className="h-13 w-auto object-contain"
+                />
+              </a>
+            </div>
           </div>
         </div>
 

@@ -47,7 +47,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8 mx-auto">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -61,12 +61,12 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link
+            <a
               href="/book"
               className="font-paragraph text-sm bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
             >
               Book a Class
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -96,13 +96,13 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link
+            <a
               href="/book"
               onClick={() => setIsMenuOpen(false)}
               className="font-paragraph text-sm bg-primary text-primary-foreground px-6 py-3 rounded-lg text-center hover:bg-primary/90 transition-colors"
             >
               Book a Class
-            </Link>
+            </a>
           </nav>
         )}
       </div>

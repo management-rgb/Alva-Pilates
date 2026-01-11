@@ -150,13 +150,13 @@ export default function InstructorsPage() {
                 Book a class today and discover the difference that quality
                 coaching makes.
               </p>
-              <Link
+              <a
                 href="/book"
                 className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2"
               >
                 Book a Class
                 <ArrowRight size={18} />
-              </Link>
+              </a>
             </div>
           </Reveal>
         </div>

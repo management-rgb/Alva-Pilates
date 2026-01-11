@@ -79,7 +79,7 @@ export default function HomePage() {
 
             <Reveal delay={0.4}>
               <div className="flex flex-wrap gap-4 sm:gap-6">
-                <Link
+                <a
                   href="/book"
                   className="group relative px-8 py-4 bg-white text-charcoal overflow-hidden rounded-full transition-all hover:shadow-lg hover:shadow-white/20 font-medium inline-flex items-center gap-2"
                 >
@@ -88,7 +88,7 @@ export default function HomePage() {
                     size={16}
                     className="group-hover:translate-x-1 transition-transform"
                   />
-                </Link>
+                </a>
                 <Link
                   href="/pricing"
                   className="group px-8 py-4 border border-white/30 rounded-full hover:border-white transition-colors flex items-center gap-2 text-white"

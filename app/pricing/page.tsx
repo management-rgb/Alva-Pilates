@@ -399,12 +399,12 @@ export default function PricingPage() {
                 Book your spot or reach out for a custom plan. We’re here to help you move with intention.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
+                <a
                   href="/book"
                   className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2 justify-center"
                 >
                   Book a Class
-                </Link>
+                </a>
                 <Link
                   href="/contact"
                   className="font-paragraph text-base bg-white text-charcoal px-8 py-4 rounded-lg hover:bg-white/90 transition-all inline-flex items-center gap-2 justify-center"
