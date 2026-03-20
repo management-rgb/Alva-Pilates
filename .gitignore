@@ -20,6 +20,9 @@
 # production
 /build
 
+# Accidental nested clone (same repo inside itself); never commit as submodule
+/Alva-Pilates/
+
 # misc
 .DS_Store
 *.pem

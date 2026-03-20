@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="pt-32 pb-16 px-8 text-center">
+      <div className="pt-40 pb-16 px-8 text-center">
         <h1 className="font-heading text-4xl lg:text-6xl font-bold text-charcoal mb-4">
           Instructor Not Found
         </h1>

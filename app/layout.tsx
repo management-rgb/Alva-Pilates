@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Quicksand } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import ErrorSuppressor from "./components/ErrorSuppressor";
 
@@ -44,6 +45,11 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="antialiased bg-background text-foreground">
+        <Script
+          id="alva-error-suppress-bootstrap"
+          src="/error-suppress-bootstrap.js"
+          strategy="beforeInteractive"
+        />
         <ErrorSuppressor />
         {children}
       </body>

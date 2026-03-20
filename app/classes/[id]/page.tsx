@@ -40,7 +40,7 @@ export default function ClassDetailPage({
       <Header />
 
       {/* Back Button */}
-      <section className="pt-32 pb-8 px-6 lg:px-8">
+      <section className="pt-40 pb-8 px-6 lg:px-8">
         <div className="max-w-[100rem] mx-auto">
           <Link
             href="/classes"

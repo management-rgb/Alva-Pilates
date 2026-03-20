@@ -5,7 +5,9 @@ import Image from "next/image";
 import { ArrowRight, Check, MapPin, Clock, Instagram } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FoundingMemberSection from "./components/FoundingMemberSection";
 import { Reveal } from "./components/sections/Reveal";
+import { foundingMemberCopy } from "./lib/foundingMemberCopy";
 
 export default function HomePage() {
   const benefits = [
@@ -32,11 +34,11 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-charcoal font-paragraph overflow-clip selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-charcoal font-paragraph overflow-x-hidden selection:bg-primary/30">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-40">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -59,6 +61,16 @@ export default function HomePage() {
                   Valencia, CA
                 </span>
               </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-primary font-semibold hover:text-primary/90 transition-colors"
+              >
+                <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                {foundingMemberCopy.eyebrow}
+              </Link>
             </Reveal>
 
             <Reveal delay={0.2}>
@@ -93,13 +105,15 @@ export default function HomePage() {
                   href="/pricing"
                   className="group px-8 py-4 border border-white/30 rounded-full hover:border-white transition-colors flex items-center gap-2 text-white"
                 >
-                  View Memberships
+                  {foundingMemberCopy.viewAllMemberships}
                 </Link>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
+
+      <FoundingMemberSection />
 
       {/* Intro / Philosophy Section */}
       <section className="py-24 lg:py-32 px-6 relative">
@@ -227,75 +241,6 @@ export default function HomePage() {
                 </div>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Founding Member Feature */}
-      <section className="py-24 lg:py-32 px-6 bg-charcoal text-white relative overflow-hidden">
-        {/* Decorative Background */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-          <div className="absolute right-0 top-0 w-[600px] h-[600px] border-[100px] border-white rounded-full translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute left-0 bottom-0 w-[400px] h-[400px] border-[60px] border-white rounded-full -translate-x-1/2 translate-y-1/2" />
-        </div>
-
-        <div className="max-w-[100rem] mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-7 space-y-8 lg:space-y-10">
-              <Reveal>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary mb-4">
-                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-widest">
-                    Limited Time Offer
-                  </span>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                <h2 className="font-heading text-4xl lg:text-5xl xl:text-7xl text-white leading-none">
-                  Become a <br />
-                  <span className="text-primary italic">Founding Member</span>
-                </h2>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <p className="text-lg lg:text-xl text-white/70 max-w-xl leading-relaxed">
-                  Join us as a founding member and secure exclusive pricing for
-                  life. Experience premium Pilates instruction at an exceptional
-                  value before our grand opening rates expire.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.3}>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4">
-                  <Link
-                    href="/pricing"
-                    className="bg-primary text-white px-8 lg:px-10 py-4 lg:py-5 rounded-lg hover:bg-white hover:text-charcoal transition-all duration-300 font-medium text-base lg:text-lg inline-flex items-center justify-center gap-3"
-                  >
-                    Claim Founding Rate <ArrowRight size={18} />
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-5 relative">
-              <Reveal direction="left" delay={0.2}>
-                <div className="relative aspect-[3/4] rounded-t-full overflow-hidden border-4 border-white/5">
-                  <Image
-                    src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=80"
-                    alt="Peaceful studio"
-                    fill
-                    className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
-                  />
-                  <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 bg-gradient-to-t from-charcoal to-transparent">
-                    <p className="font-heading text-2xl lg:text-3xl text-white">
-                      &quot;The best investment you can make is in
-                      yourself.&quot;
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
           </div>
         </div>
       </section>

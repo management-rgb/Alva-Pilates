@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import FoundingMemberAnnouncementBar from "./FoundingMemberAnnouncementBar";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,9 +29,9 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/10">
-      <div className="max-w-[120rem] mx-auto px-6 lg:px-8 py-4 lg:py-6">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/10 shadow-sm">
+      <div className="max-w-[120rem] mx-auto px-6 lg:px-8 pt-4 lg:pt-6">
+        <div className="flex items-center justify-between pb-4 lg:pb-2">
           {/* Logo */}
           <Link
             href="/"
@@ -78,10 +79,13 @@ export default function Header() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
+      <FoundingMemberAnnouncementBar />
+
+      <div className="max-w-[120rem] mx-auto px-6 lg:px-8 pb-3">
         {isMenuOpen && (
-          <nav className="lg:hidden mt-6 pb-4 flex flex-col gap-4 animate-fade-in">
+          <nav className="lg:hidden flex flex-col gap-4 animate-fade-in border-t border-primary/10 pt-4 mt-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}

@@ -1,35 +1,18 @@
 "use client";
 
-import type React from "react";
-import Script from "next/script";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import MindbodyProspectsWidget from "../components/MindbodyProspectsWidget";
 import { Reveal } from "../components/sections/Reveal";
-
-// Type declaration for healcode-widget (also in global.d.ts but needed here for TypeScript)
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "healcode-widget": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-  }
-}
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Script
-        src="https://widgets.mindbodyonline.com/javascripts/healcode.js"
-        strategy="afterInteractive"
-      />
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-8">
+      <section className="pt-40 pb-16 px-6 lg:px-8">
         <div className="max-w-[100rem] mx-auto">
           <Reveal>
             <div className="text-center space-y-6">
@@ -136,14 +119,7 @@ export default function ContactPage() {
                   Contact Us
                 </h2>
                 <div className="bg-white">
-                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore - healcode-widget is a custom element loaded via script */}
-                  <healcode-widget
-                    data-type="prospects"
-                    data-widget-partner="object"
-                    data-widget-id="7061777e71a"
-                    data-widget-version="0"
-                  />
+                  <MindbodyProspectsWidget />
                 </div>
               </div>
             </Reveal>

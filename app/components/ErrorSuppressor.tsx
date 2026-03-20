@@ -1,44 +1,95 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
-// Helper functions to check if errors should be suppressed
+function stringifyConsoleArgs(args: unknown[]): string {
+  return args
+    .map((a) => {
+      if (typeof a === "string") return a;
+      if (a instanceof Error) return `${a.name} ${a.message}`;
+      if (a && typeof a === "object") {
+        try {
+          return JSON.stringify(a);
+        } catch {
+          return String(a);
+        }
+      }
+      return String(a);
+    })
+    .join(" ");
+}
+
 const isMixpanelError = (message: string): boolean => {
+  if (!message.includes("Mixpanel")) return false;
   return (
-    message.includes("Mixpanel") &&
-    message.includes("You must name your new library")
+    message.includes("You must name your new library") ||
+    message.includes("init(token, config, name)") ||
+    message.includes("Mixpanel error")
   );
 };
 
-const isPendoRetryTrackerError = (message: string): boolean => {
-  return (
-    message.includes("pendoRetryTracker") &&
-    message.includes("has already been declared")
-  );
+/** Pendo / Mindbody double-inject — match case-insensitively (browser/Next vary). */
+const isPendoOrDuplicateDeclareError = (message: string): boolean => {
+  const m = message.toLowerCase();
+  if (m.includes("pendoretrytracker")) return true;
+  if (
+    m.includes("appendchild") &&
+    m.includes("node") &&
+    m.includes("already been declared")
+  ) {
+    return true;
+  }
+  if (
+    m.includes("identifier") &&
+    m.includes("already been declared") &&
+    (m.includes("pendo") || m.includes("retrytracker"))
+  ) {
+    return true;
+  }
+  return false;
 };
 
-const isHealcodeError = (
+const isThirdPartyInvalidJsonUndefined = (
   message: string,
   source?: string,
   stack?: string
 ): boolean => {
-  const isHealcodeSource =
-    (source?.includes("healcode.js") ?? false) ||
-    message.includes("healcode") ||
-    message.includes("healcode.js") ||
-    (stack?.includes("healcode.js") ?? false);
-  const isNullMatchError =
-    message.includes("Cannot read properties of null") ||
-    message.includes("reading 'match'") ||
-    message.includes("match") ||
-    message.includes("null");
-  return isHealcodeSource && isNullMatchError;
+  if (!message.includes("is not valid JSON")) return false;
+  if (!message.includes("undefined")) return false;
+
+  const hay = `${source ?? ""}\n${stack ?? ""}`.toLowerCase();
+  if (
+    hay.includes("jquery") ||
+    hay.includes("healcode") ||
+    hay.includes("mindbody") ||
+    hay.includes("brandedweb")
+  ) {
+    return true;
+  }
+  if (hay.includes("htmldocument") || hay.includes("html document")) {
+    return true;
+  }
+  if (hay.includes("<anonymous>") || hay.includes("anonymous")) {
+    return true;
+  }
+  if (!source || source === "") {
+    return true;
+  }
+  return false;
 };
 
-const isGenericNullMatchError = (message: string): boolean => {
+const isHealcodeNullMatch = (
+  message: string,
+  source?: string,
+  stack?: string
+): boolean => {
+  if (!/Cannot read properties of null.*\bmatch\b/i.test(message)) return false;
+  const hay = `${source ?? ""}\n${message}\n${stack ?? ""}`.toLowerCase();
   return (
-    message.includes("Cannot read properties of null") &&
-    message.includes("match")
+    hay.includes("healcode") ||
+    hay.includes("mindbody") ||
+    hay.includes("jquery") ||
+    hay.includes("<anonymous>")
   );
 };
 
@@ -47,68 +98,166 @@ const shouldSuppressError = (
   source?: string,
   stack?: string
 ): boolean => {
-  return (
+  if (
     isMixpanelError(message) ||
-    isPendoRetryTrackerError(message) ||
-    isHealcodeError(message, source, stack) ||
-    isGenericNullMatchError(message)
-  );
+    isPendoOrDuplicateDeclareError(message) ||
+    isThirdPartyInvalidJsonUndefined(message, source, stack) ||
+    isHealcodeNullMatch(message, source, stack)
+  ) {
+    return true;
+  }
+  const m = message.toLowerCase();
+  const hay = `${message}\n${source ?? ""}\n${stack ?? ""}`.toLowerCase();
+  if (
+    m.includes("already been declared") &&
+    (hay.includes("healcode") ||
+      hay.includes("mindbody") ||
+      hay.includes("brandedweb") ||
+      hay.includes("pendo") ||
+      m.includes("pendo"))
+  ) {
+    return true;
+  }
+  return false;
 };
 
+function normalizeErrorEventMessage(event: ErrorEvent): {
+  message: string;
+  source: string;
+  stack: string;
+} {
+  const err = event.error;
+  let message = event.message || "";
+  let stack = "";
+
+  if (err instanceof Error) {
+    message = message || err.message;
+    stack = err.stack ?? "";
+  } else if (err != null && typeof err === "object" && "message" in err) {
+    message = message || String((err as { message: unknown }).message);
+  } else if (!message && err != null) {
+    message = String(err);
+  }
+
+  return {
+    message,
+    source: event.filename || "",
+    stack,
+  };
+}
+
 export default function ErrorSuppressor() {
-  useEffect(() => {
-    // Suppress errors from third-party scripts (like Mindbody widgets)
+  useLayoutEffect(() => {
     const originalError = console.error;
     console.error = (...args: unknown[]) => {
-      const errorMessage = args[0];
-      if (typeof errorMessage === "string" && shouldSuppressError(errorMessage)) {
+      const combined = stringifyConsoleArgs(args);
+      if (shouldSuppressError(combined)) {
         return;
       }
-      // Log all other errors normally
       originalError.apply(console, args);
     };
 
-    // Handle runtime errors (like SyntaxError for pendoRetryTracker and healcode.js errors)
-    const handleError = (event: ErrorEvent) => {
-      const errorMessage = event.message || String(event.error);
-      const errorSource = event.filename || "";
-      const stackTrace = event.error?.stack || "";
+    if (typeof window !== "undefined" && window.__ALVA_ERR_SUPPRESS__) {
+      return () => {
+        console.error = originalError;
+      };
+    }
 
-      if (shouldSuppressError(errorMessage, errorSource, stackTrace)) {
-        event.preventDefault();
-        return false;
-      }
-
+    const suppressIfNeeded = (event: ErrorEvent): boolean => {
+      const { message, source, stack } = normalizeErrorEventMessage(event);
+      if (!shouldSuppressError(message, source, stack)) return false;
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
       return true;
     };
 
-    window.addEventListener("error", handleError);
+    const handleError = (event: ErrorEvent) => {
+      suppressIfNeeded(event);
+    };
 
-    // Also handle unhandled promise rejections that might contain errors
+    window.addEventListener("error", handleError, true);
+
+    const previousOnError = window.onerror;
+    window.onerror = (
+      message,
+      source,
+      _lineno,
+      _colno,
+      error
+    ): boolean => {
+      const msg =
+        typeof message === "string" ? message : String(message ?? "");
+      const stack = error instanceof Error ? error.stack ?? "" : "";
+      if (shouldSuppressError(msg, source ?? "", stack)) {
+        return true;
+      }
+      if (typeof previousOnError === "function") {
+        return (
+          previousOnError.call(
+            window,
+            message,
+            source,
+            _lineno,
+            _colno,
+            error
+          ) ?? false
+        );
+      }
+      return false;
+    };
+
+    const reportError = window.reportError?.bind(window);
+    if (typeof reportError === "function") {
+      window.reportError = (e: unknown) => {
+        if (e instanceof Error && shouldSuppressError(e.message, "", e.stack ?? "")) {
+          return;
+        }
+        reportError(e);
+      };
+    }
+
     const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
       const reason = event.reason;
-      const reasonString =
-        typeof reason === "string"
-          ? reason
-          : reason && typeof reason === "object" && "message" in reason
-            ? String(reason.message)
-            : String(reason);
+      let reasonString: string;
+      let stack = "";
+      if (typeof reason === "string") {
+        reasonString = reason;
+      } else if (reason instanceof Error) {
+        reasonString = reason.message;
+        stack = reason.stack ?? "";
+      } else if (reason && typeof reason === "object" && "message" in reason) {
+        reasonString = String(reason.message);
+        stack =
+          "stack" in reason && typeof (reason as Error).stack === "string"
+            ? (reason as Error).stack!
+            : "";
+      } else {
+        reasonString = String(reason);
+      }
 
-      if (reasonString && shouldSuppressError(reasonString)) {
+      if (reasonString && shouldSuppressError(reasonString, "", stack)) {
         event.preventDefault();
-        return;
+        event.stopPropagation();
       }
     };
 
-    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+    window.addEventListener("unhandledrejection", handleUnhandledRejection, true);
 
     return () => {
       console.error = originalError;
-      window.removeEventListener("error", handleError);
-      window.removeEventListener("unhandledrejection", handleUnhandledRejection);
+      window.removeEventListener("error", handleError, true);
+      window.removeEventListener(
+        "unhandledrejection",
+        handleUnhandledRejection,
+        true
+      );
+      window.onerror = previousOnError;
+      if (typeof reportError === "function") {
+        window.reportError = reportError;
+      }
     };
   }, []);
 
   return null;
 }
-
