@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import FoundingMemberAnnouncementBar from "./FoundingMemberAnnouncementBar";
+import MindbodyAccountLink from "./MindbodyAccountLink";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,12 +72,15 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="/book"
-              className="font-paragraph text-sm bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
-            >
-              Book a Class
-            </a>
+            <div className="flex items-center gap-3 shrink-0">
+              <MindbodyAccountLink className="inline-flex items-center" />
+              <a
+                href="/book"
+                className="font-paragraph text-sm bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Book a Class
+              </a>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -94,7 +98,7 @@ export default function Header() {
 
       <div className="max-w-[120rem] mx-auto px-6 lg:px-8 pb-3">
         {isMenuOpen && (
-          <nav className="lg:hidden flex flex-col gap-4 animate-fade-in border-t border-primary/10 pt-4 mt-2">
+          <nav className="header-mobile-nav lg:hidden flex flex-col gap-4 animate-fade-in border-t border-primary/10 pt-4 mt-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -112,6 +116,7 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
+            <MindbodyAccountLink className="flex w-full justify-center" />
             <a
               href="/book"
               onClick={() => setIsMenuOpen(false)}
