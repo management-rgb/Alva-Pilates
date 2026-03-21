@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Reveal } from "../../components/sections/Reveal";
 import { getClassById } from "../../lib/data";
+import { getDifficultyBadgeClassName } from "../../lib/classDifficultyStyles";
 import NotFound from "./not-found";
 
 export default function ClassDetailPage({
@@ -21,19 +22,6 @@ export default function ClassDetailPage({
   if (!classItem) {
     return <NotFound />;
   }
-
-  const getDifficultyColor = (level?: string) => {
-    switch (level?.toLowerCase()) {
-      case "beginner":
-        return "bg-green-100 text-green-800";
-      case "intermediate":
-        return "bg-yellow-100 text-yellow-800";
-      case "advanced":
-        return "bg-red-100 text-red-800";
-      default:
-        return "bg-primary/10 text-primary";
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,7 +51,7 @@ export default function ClassDetailPage({
                     {classItem.className}
                   </h1>
                   <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${getDifficultyColor(
+                    className={`px-4 py-2 rounded-full text-sm font-medium ${getDifficultyBadgeClassName(
                       classItem.difficultyLevel
                     )}`}
                   >

@@ -288,13 +288,7 @@ export default function HomePage() {
                   </h3>
                   <ul className="space-y-2 text-white/70 text-base lg:text-lg">
                     <li className="flex justify-between">
-                      <span>Mon - Fri</span> <span>6am - 8pm</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Saturday</span> <span>7am - 2pm</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Sunday</span> <span>8am - 1pm</span>
+                      <span>Mon - Sun</span> <span>7am - 7pm</span>
                     </li>
                   </ul>
                 </div>

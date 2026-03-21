@@ -37,8 +37,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <Clock size={18} className="text-primary mt-1 flex-shrink-0" />
                 <div className="font-paragraph text-sm text-charcoal/80">
-                  <p>Mon - Fri: 6:00 AM - 8:00 PM</p>
-                  <p>Sat - Sun: 8:00 AM - 6:00 PM</p>
+                  <p>Mon - Sun: 7:00 AM - 7:00 PM</p>
                 </div>
               </div>
             </div>
@@ -67,12 +66,6 @@ export default function Footer() {
                 className="font-paragraph text-sm text-charcoal/80 hover:text-charcoal transition-colors"
               >
                 Pricing & Memberships
-              </Link>
-              <Link
-                href="/instructors"
-                className="font-paragraph text-sm text-charcoal/80 hover:text-charcoal transition-colors"
-              >
-                Instructors
               </Link>
               <Link
                 href="/contact"
