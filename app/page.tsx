@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import FoundingMemberSection from "./components/FoundingMemberSection";
 import { Reveal } from "./components/sections/Reveal";
 import { foundingMemberCopy } from "./lib/foundingMemberCopy";
+import { studioImagery } from "./lib/studioImagery";
+import { STUDIO_INSTAGRAM_URL } from "./lib/socialLinks";
 
 export default function HomePage() {
   const benefits = [
@@ -38,12 +40,12 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-40">
+      <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-40 pb-10 sm:pb-12 lg:pb-14">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1554306294-0e54b58a6f51?w=1920&q=80"
-            alt="Bright pilates studio with reformers and natural light"
+            src={studioImagery.hero}
+            alt="Alva Pilates studio with lit arch mirrors, reformers, and warm boutique lighting"
             fill
             className="object-cover"
             priority
@@ -66,7 +68,7 @@ export default function HomePage() {
             <Reveal delay={0.15}>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-primary font-semibold hover:text-primary/90 transition-colors"
+                className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-white font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)] hover:text-white/85 transition-colors"
               >
                 <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                 {foundingMemberCopy.eyebrow}
@@ -124,8 +126,8 @@ export default function HomePage() {
                 <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0">
                   <div className="absolute inset-0 border border-charcoal/10 translate-x-4 translate-y-4 rounded-2xl" />
                   <Image
-                    src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=80"
-                    alt="Pilates reformer"
+                    src={studioImagery.cardDetail}
+                    alt="Pilates reformer detail in a serene studio"
                     fill
                     className="object-cover rounded-2xl relative z-10"
                   />
@@ -135,18 +137,25 @@ export default function HomePage() {
 
             <div className="order-1 lg:order-2 space-y-8">
               <Reveal>
-                <h2 className="font-heading text-4xl lg:text-5xl xl:text-6xl text-charcoal">
-                  Welcome to <span className="text-primary italic">Alva</span>
+                <h2 className="font-heading text-4xl lg:text-5xl xl:text-6xl text-charcoal leading-[1.1]">
+                  Welcome to{" "}
+                  <span className="text-primary font-semibold not-italic tracking-tight text-[1.12em] sm:text-[1.1em] inline-block align-baseline">
+                    Alva
+                  </span>
                 </h2>
               </Reveal>
 
               <Reveal delay={0.1}>
                 <div className="space-y-6 text-base lg:text-lg text-charcoal/80 leading-relaxed">
                   <p>
-                    Located in Valencia, Santa Clarita, Alva Pilates is a
-                    boutique studio dedicated to providing a premium Pilates
-                    experience. We focus on quality coaching, precise form, and
-                    measurable results in a calm, elevated environment.
+                    Located in Valencia, Santa Clarita,
+                    
+                      Alva
+                    
+                    Pilates is a boutique studio dedicated to providing a
+                    premium Pilates experience. We focus on quality coaching,
+                    precise form, and measurable results in a calm, elevated
+                    environment.
                   </p>
                   <p>
                     Whether you&apos;re new to Pilates or a seasoned
@@ -161,7 +170,7 @@ export default function HomePage() {
                 <div className="pt-4 flex items-center gap-8">
                   <div className="flex flex-col">
                     <span className="font-heading text-4xl text-charcoal">
-                      15+
+                      40+
                     </span>
                     <span className="text-sm uppercase tracking-wider text-charcoal/60">
                       Weekly Classes
@@ -183,33 +192,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Visual Breather */}
-      <section className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1920&q=80"
-            alt="Woman performing pilates"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-charcoal/30" />
-        </div>
-
-        <div className="relative z-10 text-center text-white px-6">
-          <Reveal direction="up">
-            <h2 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-light tracking-wide mb-6">
-              Intentional <br /> Movement
-            </h2>
-            <p className="text-lg lg:text-xl font-light tracking-widest uppercase opacity-90">
-              Strength • Posture • Balance
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Benefits Grid */}
+      {/* 4th section: Benefits — opens with boutique studio still + “Intentional Movement” */}
       <section className="py-24 lg:py-32 px-6 bg-secondary/30">
         <div className="max-w-[100rem] mx-auto">
+          <div className="flex justify-center mb-16 lg:mb-24">
+            <div className="relative w-full max-w-5xl h-[min(58vh,560px)] min-h-[280px] sm:min-h-[340px] rounded-t-full overflow-hidden border-4 border-charcoal/10 shadow-xl bg-charcoal/20">
+              <Image
+                src="/intentional-movement.jpg"
+                alt="Bright pilates studio with reformers, natural light, and intentional movement"
+                fill
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-charcoal/30 z-[1]" />
+              <div className="absolute inset-0 z-[2] flex items-center justify-center px-6">
+                <Reveal direction="up">
+                  <div className="text-center text-white">
+                    <h2 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-light tracking-wide mb-6">
+                      Intentional <br /> Movement
+                    </h2>
+                    <p className="text-lg lg:text-xl font-light tracking-widest uppercase opacity-90">
+                      Strength • Posture • Balance
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-20 gap-8">
             <Reveal>
               <h2 className="font-heading text-4xl lg:text-5xl xl:text-6xl text-charcoal max-w-xl">
@@ -303,26 +313,32 @@ export default function HomePage() {
 
             {/* Social / Community */}
             <Reveal className="lg:col-span-1" delay={0.2}>
-              <div className="relative group overflow-hidden rounded-3xl h-full min-h-[300px]">
+              <a
+                href={STUDIO_INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group overflow-hidden rounded-3xl h-full min-h-[300px] block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                aria-label="Follow Alva Pilates on Instagram"
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80"
-                  alt="Community class"
+                  src={studioImagery.stretchCalm}
+                  alt="Mindful movement and recovery at Alva Pilates"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-charcoal/40 group-hover:bg-charcoal/50 transition-colors" />
                 <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-between text-white">
                   <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
-                    <Instagram size={24} />
+                    <Instagram size={24} aria-hidden />
                   </div>
                   <div>
                     <h3 className="font-heading text-2xl lg:text-3xl mb-2">
                       Join the Community
                     </h3>
-                    <p className="text-white/80">Follow us @AlvaPilates</p>
+                    <p className="text-white/80">Follow us @alvapilates</p>
                   </div>
                 </div>
-              </div>
+              </a>
             </Reveal>
           </div>
         </div>

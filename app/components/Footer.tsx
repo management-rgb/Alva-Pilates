@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapPin, Clock, Instagram } from "lucide-react";
+import { STUDIO_INSTAGRAM_URL } from "../lib/socialLinks";
 
 export default function Footer() {
   return (
@@ -123,11 +124,11 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="https://instagram.com"
+              href={STUDIO_INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-charcoal/70 hover:text-charcoal transition-colors"
-              aria-label="Instagram"
+              aria-label="Alva Pilates on Instagram"
             >
               <Instagram size={20} />
             </a>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
+import { studioImagery } from "../lib/studioImagery";
 
 export default function AboutPage() {
   const values = [
@@ -37,22 +38,36 @@ export default function AboutPage() {
       <section className="pt-40 pb-16 px-6 lg:px-8">
         <div className="max-w-[100rem] mx-auto">
           <Reveal>
-            <div className="text-center space-y-6 mb-16">
-              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal">
+            <div className="space-y-6 mb-16">
+              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal text-center">
                 Our Story
               </h1>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
-                Alva Pilates was born from a vision to create a space where
-                movement meets mindfulness, and quality instruction meets serene
-                design.
-              </p>
+              <div className="max-w-3xl mx-auto space-y-5 font-paragraph text-lg text-charcoal/70 leading-relaxed">
+                <p>
+                  Alva Pilates began with our desire to create more than just a
+                  studio.
+                </p>
+                <p>
+                  We envisioned a space where movement becomes an experience —
+                  defined by refined design, expert instruction, and meaningful
+                  connection.
+                </p>
+                <p>
+                  Every element reflects our commitment to quality, intention,
+                  and elevated living.
+                </p>
+                <p>
+                  At its core, Alva is our way of bringing people together
+                  through movement, strength, and a shared sense of belonging.
+                </p>
+              </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.2}>
             <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] mb-16 relative">
               <Image
-                src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80"
+                src={studioImagery.cardReformer}
                 alt="Alva Pilates studio interior"
                 fill
                 className="object-cover"
@@ -95,7 +110,7 @@ export default function AboutPage() {
             <Reveal direction="left">
               <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] relative">
                 <Image
-                  src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=80"
+                  src={studioImagery.cardDetail}
                   alt="Pilates equipment detail"
                   fill
                   className="object-cover"

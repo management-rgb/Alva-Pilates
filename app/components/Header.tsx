@@ -27,6 +27,14 @@ export default function Header() {
     return pathname.startsWith(path);
   };
 
+  /** Next.js does not remount `/` when already on home — scroll to top on logo / Home. */
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/10 shadow-sm">
       <div className="max-w-[120rem] mx-auto px-6 lg:px-8 pt-4 lg:pt-6">
@@ -34,6 +42,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
+            onClick={handleHomeClick}
             aria-label="Alva Pilates home"
             className="flex items-center hover:opacity-80 transition-opacity"
           >
@@ -52,6 +61,7 @@ export default function Header() {
               <Link
                 key={link.path}
                 href={link.path}
+                onClick={link.path === "/" ? handleHomeClick : undefined}
                 className={`font-paragraph text-sm transition-colors ${
                   isActive(link.path)
                     ? "text-charcoal font-medium"
@@ -89,7 +99,10 @@ export default function Header() {
               <Link
                 key={link.path}
                 href={link.path}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  if (link.path === "/") handleHomeClick(e);
+                  setIsMenuOpen(false);
+                }}
                 className={`font-paragraph text-base transition-colors ${
                   isActive(link.path)
                     ? "text-charcoal font-medium"

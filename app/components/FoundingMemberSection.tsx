@@ -61,9 +61,10 @@ export default function FoundingMemberSection() {
             <Reveal direction="left" delay={0.2}>
               <div className="relative aspect-[3/4] rounded-t-full overflow-hidden border-4 border-white/5">
                 <Image
-                  src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&q=80"
-                  alt="Peaceful studio"
+                  src="/founding-member-o.jpg"
+                  alt="Athlete in a triceps stretch — strength and recovery"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   className="object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
                 />
                 <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 bg-gradient-to-t from-charcoal to-transparent">

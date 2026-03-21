@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Reveal } from "../../components/sections/Reveal";
 import { getInstructorById } from "../../lib/data";
+import { STUDIO_INSTAGRAM_URL } from "../../lib/socialLinks";
 import NotFound from "./not-found";
 
 export default function InstructorDetailPage({
@@ -67,14 +68,14 @@ export default function InstructorDetailPage({
 
                 {instructor.instagramUrl && (
                   <a
-                    href={instructor.instagramUrl}
+                    href={STUDIO_INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-charcoal/70 hover:text-charcoal transition-colors"
                   >
-                    <Instagram size={20} />
+                    <Instagram size={20} aria-hidden />
                     <span className="font-paragraph text-sm">
-                      Follow on Instagram
+                      Follow @alvapilates on Instagram
                     </span>
                   </a>
                 )}

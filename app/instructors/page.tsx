@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
 import { getAllInstructors } from "../lib/data";
+import { STUDIO_INSTAGRAM_URL } from "../lib/socialLinks";
 
 export default function InstructorsPage() {
   const instructors = getAllInstructors();
@@ -38,20 +39,20 @@ export default function InstructorsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {instructors.map((instructor, index) => (
               <Reveal key={instructor._id} delay={index * 0.1}>
-                <Link
-                  href={`/instructors/${instructor._id}`}
-                  className="block bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group"
-                >
-                  <div className="h-80 overflow-hidden relative">
-                    <Image
-                      src={instructor.profilePicture}
-                      alt={instructor.fullName}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-start justify-between">
+                <div className="relative bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group">
+                  <Link
+                    href={`/instructors/${instructor._id}`}
+                    className="block"
+                  >
+                    <div className="h-80 overflow-hidden relative">
+                      <Image
+                        src={instructor.profilePicture}
+                        alt={instructor.fullName}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-6 space-y-4 pr-14">
                       <div>
                         <h3 className="font-heading text-2xl font-semibold text-charcoal mb-1">
                           {instructor.fullName}
@@ -60,23 +61,29 @@ export default function InstructorsPage() {
                           {instructor.specialties}
                         </p>
                       </div>
-                      {instructor.instagramUrl && (
-                        <span className="text-charcoal/70 hover:text-charcoal transition-colors">
-                          <Instagram size={20} />
-                        </span>
-                      )}
-                    </div>
 
-                    <p className="font-paragraph text-base text-charcoal/70 leading-relaxed line-clamp-3">
-                      {instructor.shortBio}
-                    </p>
+                      <p className="font-paragraph text-base text-charcoal/70 leading-relaxed line-clamp-3">
+                        {instructor.shortBio}
+                      </p>
 
-                    <div className="pt-4 flex items-center gap-2 text-primary font-paragraph text-sm font-medium">
-                      Read Full Bio
-                      <ArrowRight size={16} />
+                      <div className="pt-4 flex items-center gap-2 text-primary font-paragraph text-sm font-medium">
+                        Read Full Bio
+                        <ArrowRight size={16} />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                  {instructor.instagramUrl && (
+                    <a
+                      href={STUDIO_INSTAGRAM_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute right-6 top-[calc(20rem+1.25rem)] z-10 inline-flex text-charcoal/70 hover:text-charcoal transition-colors p-1"
+                      aria-label="Alva Pilates on Instagram"
+                    >
+                      <Instagram size={20} />
+                    </a>
+                  )}
+                </div>
               </Reveal>
             ))}
           </div>
