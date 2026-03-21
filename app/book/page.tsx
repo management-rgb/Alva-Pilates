@@ -1,52 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-const WIDGET_SRC = "https://brandedweb.mindbodyonline.com/embed/widget.js";
+import MindbodyBrandedWidget from "../components/MindbodyBrandedWidget";
 
 export default function BookPage() {
-  const pathname = usePathname();
-  const [widgetKey, setWidgetKey] = useState(() => Date.now());
-
-  const resetWidget = () => {
-    // Remove existing widget script instances
-    document
-      .querySelectorAll(`script[src^="${WIDGET_SRC}"]`)
-      .forEach((node) => node.parentNode?.removeChild(node));
-
-    // Clear existing widget content
-    document
-      .querySelectorAll(".mindbody-widget")
-      .forEach((node) => {
-        try {
-          node.innerHTML = "";
-        } catch {
-          /* ignore */
-        }
-      });
-
-    // Inject fresh script if not already present
-    const existingScript = document.querySelector(
-      `script[src^="${WIDGET_SRC}"]`
-    );
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.src = `${WIDGET_SRC}?t=${Date.now()}`;
-      script.async = true;
-      document.body.appendChild(script);
-    }
-
-    // Force widget container remount
-    setWidgetKey(Date.now());
-  };
-
-  useEffect(() => {
-    resetWidget();
-  }, [pathname]);
-
   return (
     <div className="min-h-screen bg-background text-charcoal">
       <Header />
@@ -63,11 +21,9 @@ export default function BookPage() {
           </p>
         </div>
 
-        <div
-          key={widgetKey}
-          className="mindbody-widget min-h-[700px]"
-          data-widget-type="Schedules"
-          data-widget-id="7041376e71a"
+        <MindbodyBrandedWidget
+          widgetType="Schedules"
+          widgetId="7041376e71a"
         />
 
         <div className="mt-12 text-center">
