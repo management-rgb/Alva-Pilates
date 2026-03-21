@@ -82,10 +82,10 @@ export default function ContactPage() {
                           Email
                         </h3>
                         <a
-                          href="mailto:info@alvapilates.com"
+                          href="mailto:info@formaluxecollective.com"
                           className="font-paragraph text-base text-charcoal/80 hover:text-primary transition-colors"
                         >
-                          info@alvapilates.com
+                          info@formaluxecollective.com
                         </a>
                       </div>
                     </div>
@@ -99,10 +99,10 @@ export default function ContactPage() {
                           Phone
                         </h3>
                         <a
-                          href="tel:+16615551234"
+                          href="tel:+16619777898"
                           className="font-paragraph text-base text-charcoal/80 hover:text-primary transition-colors"
                         >
-                          (661) 555-1234
+                          (661) 977-7898
                         </a>
                       </div>
                     </div>
