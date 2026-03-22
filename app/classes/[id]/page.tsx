@@ -94,6 +94,8 @@ export default function ClassDetailPage({
                   src={classItem.classImage}
                   alt={classItem.className}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
                   className="object-cover"
                 />
               </div>

@@ -67,10 +67,12 @@ export default function AboutPage() {
           <Reveal delay={0.2}>
             <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] mb-16 relative">
               <Image
-                src={studioImagery.cardReformer}
-                alt="Alva Pilates studio interior"
+                src={studioImagery.ourStory}
+                alt="Alva Pilates — warm lit arches and serene studio architecture"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, min(100rem, 100vw)"
+                priority
               />
             </div>
           </Reveal>

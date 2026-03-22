@@ -42,13 +42,15 @@ export default function ClassesPage() {
               <Reveal key={classItem._id} delay={index * 0.1}>
                 <Link
                   href={`/classes/${classItem._id}`}
-                  className="block bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group"
+                  className="block min-w-0 bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group"
                 >
-                  <div className="h-64 overflow-hidden relative">
+                  <div className="h-64 overflow-hidden relative w-full">
                     <Image
                       src={classItem.classImage}
                       alt={classItem.className}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={index === 0}
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

@@ -20,6 +20,8 @@ export const studioImagery = {
   communityInstagram: "/instagram-community-card.jpg",
   /** About — Our Philosophy (`public/about-philosophy.jpg`) */
   philosophy: "/about-philosophy.jpg",
+  /** About — Our Story (`public/our-story-arches.jpg`) */
+  ourStory: "/our-story-arches.jpg",
   /** Card / sidebar crops */
   cardSession: u("photo-1574680096145-d05b474e2155", 1200),
   cardReformer: u("photo-1518611012118-696072aa579a", 1200),
