@@ -126,10 +126,11 @@ export default function HomePage() {
                 <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0">
                   <div className="absolute inset-0 border border-charcoal/10 translate-x-4 translate-y-4 rounded-2xl" />
                   <Image
-                    src={studioImagery.cardDetail}
-                    alt="Pilates reformer detail in a serene studio"
+                    src={studioImagery.welcomeAlva}
+                    alt="Alva Pilates branded water bottles — cream and terracotta on a warm neutral backdrop"
                     fill
                     className="object-cover rounded-2xl relative z-10"
+                    sizes="(max-width: 1024px) 100vw, 28rem"
                   />
                 </div>
               </Reveal>
@@ -297,8 +298,13 @@ export default function HomePage() {
                     Studio Hours
                   </h3>
                   <ul className="space-y-2 text-white/70 text-base lg:text-lg">
-                    <li className="flex justify-between">
-                      <span>Mon - Sun</span> <span>7am - 7pm</span>
+                    <li className="flex justify-between gap-4">
+                      <span>Mon - Sat</span>{" "}
+                      <span className="text-right">7am - 7pm</span>
+                    </li>
+                    <li className="flex justify-between gap-4">
+                      <span>Sun</span>{" "}
+                      <span className="text-right">9am - 12pm</span>
                     </li>
                   </ul>
                 </div>
@@ -321,22 +327,28 @@ export default function HomePage() {
                 aria-label="Follow Alva Pilates on Instagram"
               >
                 <Image
-                  src={studioImagery.stretchCalm}
-                  alt="Mindful movement and recovery at Alva Pilates"
+                  src={studioImagery.communityInstagram}
+                  alt="Pilates ring on linen in warm natural light — Alva Pilates studio aesthetic"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-charcoal/40 group-hover:bg-charcoal/50 transition-colors" />
-                <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-between text-white">
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
-                    <Instagram size={24} aria-hidden />
-                  </div>
+                <div className="absolute inset-0 bg-charcoal/35 group-hover:bg-charcoal/45 transition-colors" />
+                <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-between min-h-[300px] text-white">
                   <div>
-                    <h3 className="font-heading text-2xl lg:text-3xl mb-2">
-                      Join the Community
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
+                      <Instagram size={24} aria-hidden />
+                    </div>
+                    <h3 className="font-heading text-2xl lg:text-3xl mb-4">
+                      Join the community
                     </h3>
-                    <p className="text-white/80">Follow us @alvapilates</p>
+                    <p className="text-white/70 text-base lg:text-lg">
+                      Follow us @alvapilates
+                    </p>
                   </div>
+                  <span className="text-primary font-medium group-hover:text-white transition-colors inline-flex items-center gap-2 mt-8">
+                    Open Instagram <ArrowRight size={16} aria-hidden />
+                  </span>
                 </div>
               </a>
             </Reveal>

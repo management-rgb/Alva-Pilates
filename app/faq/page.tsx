@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,6 +15,20 @@ import { getFAQsByCategory } from "../lib/data";
 
 export default function FAQPage() {
   const groupedFAQs = getFAQsByCategory();
+
+  useEffect(() => {
+    function scrollToPolicies() {
+      if (window.location.hash !== "#policies") return;
+      const el = document.getElementById("policies");
+      if (!el) return;
+      window.setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+    scrollToPolicies();
+    window.addEventListener("hashchange", scrollToPolicies);
+    return () => window.removeEventListener("hashchange", scrollToPolicies);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,7 +58,10 @@ export default function FAQPage() {
             {Object.entries(groupedFAQs).map(
               ([category, categoryFAQs], categoryIndex) => (
                 <Reveal key={category} delay={categoryIndex * 0.1}>
-                  <div className="space-y-6">
+                  <div
+                    id={category === "Policies" ? "policies" : undefined}
+                    className="space-y-6 scroll-mt-36"
+                  >
                     <h2 className="font-heading text-2xl lg:text-3xl font-bold text-charcoal">
                       {category}
                     </h2>

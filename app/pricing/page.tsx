@@ -29,6 +29,12 @@ function renderHealcodeWidget(
 
 const groupClassOptions = [
   {
+    title: "Chapter One",
+    price: "$19",
+    validity: "30 minutes",
+    note: "New to Pilates? Learn how the reformer works so you can move confidently from day one.",
+  },
+  {
     title: "Single Class",
     price: "$39",
     validity: "—",
@@ -62,6 +68,7 @@ const groupClassOptions = [
 
 /** Mindbody pricing-link service IDs for Group Reformer class options */
 const groupClassWidgetServiceIds: Record<string, string> = {
+  "Chapter One": "100023",
   "Single Class": "100002",
   "New Client Intro Offer": "100003",
   "5-Class Pack": "100004",
@@ -163,7 +170,11 @@ const privateEvents = [
 export default function PricingPage() {
   useMindbodyHealcodeScript();
 
-  const introOfferTitles = new Set(["Single Class", "New Client Intro Offer"]);
+  const introOfferTitles = new Set([
+    "Chapter One",
+    "Single Class",
+    "New Client Intro Offer",
+  ]);
   const introTopOffers = groupClassOptions.filter((item) =>
     introOfferTitles.has(item.title)
   );
@@ -202,12 +213,12 @@ export default function PricingPage() {
                 Get Started
               </p>
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
-                Single Class & Intro Offer
+                Chapter One, Single Class & Intro Offer
               </h2>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {introTopOffers.map((item, idx) => {
               const serviceId = groupClassWidgetServiceIds[item.title];
               return (

@@ -110,10 +110,11 @@ export default function AboutPage() {
             <Reveal direction="left">
               <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] relative">
                 <Image
-                  src={studioImagery.cardDetail}
-                  alt="Pilates equipment detail"
+                  src={studioImagery.philosophy}
+                  alt="Instructor guiding a client on the reformer in the Alva Pilates studio"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </Reveal>

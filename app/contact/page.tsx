@@ -68,7 +68,8 @@ export default function ContactPage() {
                           Studio Hours
                         </h3>
                         <div className="font-paragraph text-base text-charcoal/80 space-y-1">
-                          <p>Monday - Sunday: 7:00 AM - 7:00 PM</p>
+                          <p>Monday - Saturday: 7:00 AM - 7:00 PM</p>
+                          <p>Sunday: 9:00 AM - 12:00 PM</p>
                         </div>
                       </div>
                     </div>

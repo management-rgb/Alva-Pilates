@@ -37,8 +37,9 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <Clock size={18} className="text-primary mt-1 flex-shrink-0" />
-                <div className="font-paragraph text-sm text-charcoal/80">
-                  <p>Mon - Sun: 7:00 AM - 7:00 PM</p>
+                <div className="font-paragraph text-sm text-charcoal/80 space-y-0.5">
+                  <p>Mon - Sat: 7:00 AM - 7:00 PM</p>
+                  <p>Sun: 9:00 AM - 12:00 PM</p>
                 </div>
               </div>
             </div>
@@ -80,6 +81,18 @@ export default function Footer() {
               >
                 FAQ
               </Link>
+              <Link
+                href="/faq#policies"
+                className="font-paragraph text-sm text-charcoal/80 hover:text-charcoal transition-colors"
+              >
+                Policies
+              </Link>
+              <Link
+                href="/terms"
+                className="font-paragraph text-sm text-charcoal/80 hover:text-charcoal transition-colors"
+              >
+                Terms &amp; Conditions
+              </Link>
             </nav>
           </div>
 
@@ -119,9 +132,23 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-charcoal/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-paragraph text-sm text-charcoal/70">
-            © {new Date().getFullYear()} Alva Pilates. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-center md:text-left">
+            <p className="font-paragraph text-sm text-charcoal/70">
+              © {new Date().getFullYear()} Alva Pilates. All rights reserved.
+            </p>
+            <Link
+              href="/faq#policies"
+              className="font-paragraph text-sm text-charcoal/70 hover:text-charcoal transition-colors"
+            >
+              Policies
+            </Link>
+            <Link
+              href="/terms"
+              className="font-paragraph text-sm text-charcoal/70 hover:text-charcoal transition-colors"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
           <div className="flex items-center gap-4">
             <a
               href={STUDIO_INSTAGRAM_URL}

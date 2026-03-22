@@ -25,37 +25,65 @@
   {
     "_id": "faq-4",
     "question": "What is your cancellation policy?",
-    "answer": "We require 12 hours notice for class cancellations. Late cancellations or no-shows will result in the class being deducted from your package or charged at the drop-in rate for unlimited members. We understand emergencies happen—please contact us if you have special circumstances.",
+    "answer": "Our classes are intentionally small to maintain a premium, personalized experience. To ensure fairness for all clients, we ask that you follow these guidelines:\n\n• Cancel at least 8 hours before class\n• Late Cancel: Inside the 8-hour window\n• No-Show: Missed class without cancellation\n\nFees:\n• Late Cancel — $15\n• No-Show — $25\n\nClass Packages:\n• Late Cancel → Fee applies; class is returned\n• No-Show → Class is forfeited\n\nUnlimited Members:\nLate Cancel and No-Show fees apply to ensure equal access to high-demand times.\n\nWaitlist:\nIf moved into a class from the waitlist, standard cancellation rules apply.\n\nLate Arrival:\nFor safety and class flow, clients arriving 10+ minutes late may not be admitted and may be marked as a No-Show.\n\nBooking a class confirms agreement with this policy.",
     "category": "Policies",
     "displayOrder": 4
   },
   {
-    "_id": "faq-5",
-    "question": "Can I freeze my membership?",
-    "answer": "Yes! We offer membership freezes for extended travel, injury, or other circumstances. Please contact us at least 7 days before your next billing date to arrange a freeze. Founding member rates are preserved during freezes.",
+    "_id": "faq-privacy",
+    "question": "Privacy Policy",
+    "answer": "At Alva Pilates, your privacy is important to us. This policy explains how we collect, use, protect, and share your information when you visit our website, create an account, purchase services, or book classes through our scheduling platform (Mindbody).\n\n1. Information We Collect\nWe may collect the following:\n\n• Full name, email, phone number, optional address\n• Emergency contact information\n• Login and account details\n• Booking and attendance history\n• Membership details and purchase history\n• Payment method and billing information (processed securely)\n• Health/injury notes voluntarily shared\n• IP address, browser type, device information\n• Cookies and analytics data\n\n2. How We Use Your Information\nWe use your information to:\n\n• Manage reservations and membership activity\n• Process secure payments\n• Send confirmations, updates, and reminders\n• Improve website performance and class scheduling\n• Enhance client experience\n• Maintain health and safety records\n• Comply with legal obligations\n\nWe do not use your information for any undisclosed purpose.\n\n3. Data Storage & Security\nWe use industry-standard security practices including:\n\n• Encrypted payment processing\n• SSL/HTTPS protection\n• Limited internal data access\n• Secure third-party hosting partners\n\nData is retained only as long as necessary for operational, legal, and safety requirements.\n\n4. Third-Party Service Providers\nWe may share limited information with trusted partners who support studio operations:\n\n• Mindbody (scheduling & client management)\n• Secure payment processors\n• Email/SMS communication tools\n• Website analytics services\n\nThese partners do not have permission to sell or misuse your data.\n\n5. Sharing of Information\nWe share information only when necessary for:\n\n• Service operations\n• Legal compliance\n• Fraud prevention\n• Safety and incident reporting\n\nWe do not sell personal information.\n\n6. Cookies & Tracking Technologies\nWe use cookies to improve the booking and browsing experience. You may disable cookies through your browser settings.\n\n7. Your Rights (CCPA & General Privacy Rights)\nCalifornia residents may request:\n\n• Access to personal data\n• Corrections to inaccurate information\n• Deletion of data (when applicable)\n• Restriction of certain data uses\n• Information about data collection practices\n\nRequests will be answered within 30 days.\n\n8. Children’s Privacy\nAlva Pilates does not knowingly collect personal data from children under 13. Any such data will be promptly removed if discovered.\n\n9. External Links\nOur website may contain links to external sites. We are not responsible for their privacy practices.\n\n10. Policy Updates\nThis Privacy Policy may be updated periodically.\nChanges take effect immediately upon posting.\nClients will be notified of significant updates.\n\n11. Contact Us\nClients may contact us directly regarding privacy questions or data requests.",
     "category": "Policies",
     "displayOrder": 5
+  },
+  {
+    "_id": "faq-purchase",
+    "question": "Purchase Policy",
+    "answer": "All purchases at Alva Pilates are final. Class packages, memberships, private sessions, and specialty programs are non-transferable and assigned solely to the purchasing client.\n\nClass packages activate on first use and expire according to the terms shown at checkout. Memberships renew automatically unless canceled under the stated membership agreement.\n\nA valid payment method must be kept on file for bookings, renewals, and applicable fees.\n\nCompleting a purchase acknowledges acceptance of this policy.",
+    "category": "Policies",
+    "displayOrder": 6
+  },
+  {
+    "_id": "faq-liability",
+    "question": "Liability Waiver",
+    "answer": "By booking or attending a class at Alva Pilates, operated by Formaluxe Collective LLC, I acknowledge that Pilates, fitness training, and the use of exercise equipment involve physical activity and carry inherent risks of injury.\n\nI voluntarily choose to participate in classes, instruction, and related activities at Alva Pilates and assume all risks associated with participation, including but not limited to muscle strain, falls, physical injury, or other health complications.\n\nI confirm that I am physically able to participate in Pilates classes and will inform the instructor of any injuries, medical conditions, limitations, or pregnancy prior to participating. I understand that it is my responsibility to obtain medical clearance if necessary.\n\nIn consideration of being permitted to participate in classes and use the studio facilities, I release, waive, and hold harmless Alva Pilates, Formaluxe Collective LLC, its owners, instructors, employees, contractors, and representatives from any claims, liabilities, damages, or injuries that may occur as a result of my participation, except in cases of gross negligence or willful misconduct.\n\nI agree to follow all studio instructions and to use equipment safely and as directed by instructors.\n\nI understand that Alva Pilates is not responsible for lost, stolen, or damaged personal belongings brought to the studio.\n\nBy signing this waiver or checking the required box electronically, I acknowledge that I have read, understood, and voluntarily agree to this Liability Waiver & Release.",
+    "category": "Policies",
+    "displayOrder": 7
+  },
+  {
+    "_id": "faq-membership",
+    "question": "Membership Policy",
+    "answer": "Commitment Period: This membership requires a minimum commitment of 6 months from the start date.\n\nBilling: Memberships are billed automatically on a recurring monthly basis.\n\nCancellation Policy:\n\nA minimum 14-day written notice is required for cancellation.\n\nCancellation requests submitted before the completion of the 6-month commitment will result in a charge for the remaining balance of the contract period.\n\nPause Policy:\n\nMemberships may be paused for up to 30 days total during the 6-month commitment period.\n\nA 14-day notice is required to request a pause.\n\nFor practical steps on requesting a pause, see \"Can I freeze my membership?\" in the Memberships section.\n\nEarly Termination: Early termination of the membership before fulfilling the 6-month commitment will require payment of the full remaining membership amount.\n\nBy completing your purchase, you acknowledge and agree to these terms.",
+    "category": "Policies",
+    "displayOrder": 8
+  },
+  {
+    "_id": "faq-5",
+    "question": "Can I freeze my membership?",
+    "answer": "Yes. Pauses (freezes) are available for extended travel, injury, or other circumstances we can approve in writing. This follows our Membership Policy:\n\n• Submit a minimum 14-day written notice to request a pause\n• You may pause for up to 30 days total during each 6-month commitment period\n• Billing, cancellation, early termination, and commitment rules in the Membership Policy (under Policies) also apply\n\nWhen a pause is approved under these terms, your founding member rate stays protected for the remainder of your agreement. Contact us to start a written pause request.",
+    "category": "Memberships",
+    "displayOrder": 9
   },
   {
     "_id": "faq-6",
     "question": "Is Pilates safe during pregnancy?",
     "answer": "Pilates can be excellent during pregnancy when practiced with proper modifications. We recommend private sessions for pregnant clients so we can tailor the exercises to your specific needs and trimester. Always consult with your healthcare provider before starting any new exercise program during pregnancy.",
     "category": "Health & Safety",
-    "displayOrder": 6
+    "displayOrder": 10
   },
   {
     "_id": "faq-7",
     "question": "I have a back injury. Can I still do Pilates?",
     "answer": "Pilates is often recommended for back pain and rehabilitation, but it's essential to work with an instructor who understands your specific condition. We recommend starting with private sessions so we can design a program that supports your recovery. Please bring any relevant medical information to your first session.",
     "category": "Health & Safety",
-    "displayOrder": 7
+    "displayOrder": 11
   },
   {
     "_id": "faq-8",
     "question": "Do you offer corporate or group rates?",
     "answer": "Yes! We offer special rates for corporate wellness programs, bridal parties, and private group events. Contact us for more information about bringing Pilates to your team or celebrating a special occasion at our studio.",
     "category": "Pricing",
-    "displayOrder": 8
+    "displayOrder": 12
   }
 ]
 
