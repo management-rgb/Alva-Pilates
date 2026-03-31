@@ -1,15 +1,5 @@
 [
   {
-    "_id": "class-3",
-    "className": "Chapter One",
-    "description": "New to Pilates? This 30-minute session teaches you how the reformer works, so you can move confidently from day one.",
-    "classType": "Group Class",
-    "durationMinutes": 30,
-    "difficultyLevel": "Intro · New to Pilates",
-    "classImage": "/class-chapter-one.jpg",
-    "bookingUrl": "/book"
-  },
-  {
     "_id": "class-2",
     "className": "Alva Foundations",
     "description": "A full-body reformer workout designed to tone, strengthen, and improve posture. Focus on core, glutes, and control through elegant, precise movement. Challenging yet mindful — suitable for all levels with modifications.",

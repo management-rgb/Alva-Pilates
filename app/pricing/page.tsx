@@ -29,12 +29,6 @@ function renderHealcodeWidget(
 
 const groupClassOptions = [
   {
-    title: "Chapter One",
-    price: "$19",
-    validity: "30 minutes",
-    note: "New to Pilates? Learn how the reformer works so you can move confidently from day one.",
-  },
-  {
     title: "Single Class",
     price: "$39",
     validity: "—",
@@ -68,7 +62,6 @@ const groupClassOptions = [
 
 /** Mindbody pricing-link service IDs for Group Reformer class options */
 const groupClassWidgetServiceIds: Record<string, string> = {
-  "Chapter One": "100023",
   "Single Class": "100002",
   "New Client Intro Offer": "100003",
   "5-Class Pack": "100004",
@@ -108,7 +101,7 @@ const memberships = [
     price: "$399/mo",
     classes: "Unlimited (1/day)",
     benefits:
-      "20% off privates + 1 guest pass / month + early booking access.",
+      "20% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
     featured: true,
   },
 ];
@@ -171,7 +164,6 @@ export default function PricingPage() {
   useMindbodyHealcodeScript();
 
   const introOfferTitles = new Set([
-    "Chapter One",
     "Single Class",
     "New Client Intro Offer",
   ]);
@@ -213,7 +205,7 @@ export default function PricingPage() {
                 Get Started
               </p>
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
-                Chapter One, Single Class & Intro Offer
+                Single Class & Intro Offer
               </h2>
             </div>
           </Reveal>
