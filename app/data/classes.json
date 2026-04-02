@@ -1,22 +1,22 @@
 [
   {
     "_id": "class-2",
-    "className": "Alva Foundations",
-    "description": "A full-body reformer workout designed to tone, strengthen, and improve posture. Focus on core, glutes, and control through elegant, precise movement. Challenging yet mindful — suitable for all levels with modifications.",
+    "className": "Alva Foundation",
+    "description": "Start your Pilates journey with Alva Foundation, a full-body reformer class designed to teach the fundamentals of movement, alignment, and core control. Focus on building strength, improving posture, and activating your glutes and core through slow, precise, and mindful exercises. Suitable for true beginners, this class provides clear guidance and modifications to ensure a safe and effective practice while establishing a solid foundation for all future Pilates classes.",
     "classType": "Group Class",
     "durationMinutes": 50,
-    "difficultyLevel": "Beginner-Friendly",
-    "classImage": "/class-alva-foundations.jpg",
+    "difficultyLevel": "Beginner • Level 1",
+    "classImage": "/class-alva-foundation.jpg",
     "bookingUrl": "/book"
   },
   {
     "_id": "class-1",
-    "className": "Alva Restore",
-    "description": "A restorative reformer class focused on stretching, mobility, and deep core stability. Gentle pace, intentional breath work, and alignment for full-body recovery and balance.",
+    "className": "Alva Progress",
+    "description": "Step beyond the basics with this all-levels reformer class designed to challenge, strengthen, and mobilize your body. Alva Progress builds on foundational Pilates skills, offering controlled, low-impact sequences that enhance core stability, alignment, and overall strength. With modifications and progressions provided, this class is suitable for everyone—from those ready to move beyond beginner work to experienced clients seeking mindful, full-body conditioning.",
     "classType": "Group Class",
     "durationMinutes": 50,
-    "difficultyLevel": "All Levels",
-    "classImage": "/class-alva-restore.jpg",
+    "difficultyLevel": "All Levels • Level 1.5 & up",
+    "classImage": "/class-alva-progress.jpg",
     "bookingUrl": "/book"
   }
 ]
