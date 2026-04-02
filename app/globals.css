@@ -210,30 +210,32 @@ body {
 }
 
 /* ========================================
-   PRICING — full-card Mindbody buy (Single Class)
+   PRICING — full-card Mindbody buy (hit layer + hidden anchor)
    ======================================== */
 
-.pricing-card-full-buy-overlay {
-  pointer-events: auto;
-}
-
-/* Stretch Healcode’s generated link across the whole card */
-.pricing-card-full-buy-overlay a.healcode-pricing-option-text-link,
-.pricing-card-full-buy-overlay a.healcode-contract-text-link {
+/* Healcode injects <a> here; kept off-screen so hover doesn’t show Mindbody URLs in the status bar */
+.pricing-card-healcode-sink {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  text-indent: -9999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  background: transparent;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.pricing-card-full-buy:has(
-    .pricing-card-full-buy-overlay
-      :is(a.healcode-pricing-option-text-link, a.healcode-contract-text-link):focus-visible
-  ) {
+.pricing-card-mindbody-hit-area {
+  cursor: pointer;
+}
+
+.pricing-card-full-buy:has(.pricing-card-mindbody-hit-area:focus-visible) {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
