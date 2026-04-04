@@ -5,9 +5,27 @@ import { Check } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import FoundingMemberPricingStrip from "../components/FoundingMemberPricingStrip";
-import { PricingCardMindbodyOverlay } from "../components/PricingCardMindbodyOverlay";
 import { Reveal } from "../components/sections/Reveal";
 import { useMindbodyHealcodeScript } from "../hooks/useMindbodyHealcodeScript";
+
+function renderHealcodeWidget(
+  type: "contract-link" | "pricing-link",
+  serviceId: string
+) {
+  const linkClass =
+    type === "contract-link"
+      ? "healcode-contract-text-link"
+      : "healcode-pricing-option-text-link";
+
+  const widgetHtml = `<healcode-widget data-version="0.2" data-link-class="${linkClass}" data-site-id="129106" data-mb-site-id="5747916" data-service-id="${serviceId}" data-bw-identity-site="true" data-type="${type}" data-inner-html="Buy Now"></healcode-widget>`;
+
+  return (
+    <span
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: widgetHtml }}
+    />
+  );
+}
 
 const groupClassOptions = [
   {
@@ -232,11 +250,9 @@ export default function PricingPage() {
                       )}
                     </div>
                     {serviceId && (
-                      <PricingCardMindbodyOverlay
-                        type="pricing-link"
-                        serviceId={serviceId}
-                        ariaLabel={`Buy ${item.title}, ${item.price}`}
-                      />
+                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                        {renderHealcodeWidget("pricing-link", serviceId)}
+                      </div>
                     )}
                   </div>
                 </Reveal>
@@ -321,11 +337,9 @@ export default function PricingPage() {
                       )}
                     </div>
                     {contractId && (
-                      <PricingCardMindbodyOverlay
-                        type="contract-link"
-                        serviceId={contractId}
-                        ariaLabel={`Buy ${m.title} membership, ${m.price}`}
-                      />
+                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                        {renderHealcodeWidget("contract-link", contractId)}
+                      </div>
                     )}
                   </div>
                 </Reveal>
@@ -389,11 +403,9 @@ export default function PricingPage() {
                       )}
                     </div>
                     {serviceId && (
-                      <PricingCardMindbodyOverlay
-                        type="pricing-link"
-                        serviceId={serviceId}
-                        ariaLabel={`Buy ${item.title}, ${item.price}`}
-                      />
+                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                        {renderHealcodeWidget("pricing-link", serviceId)}
+                      </div>
                     )}
                   </div>
                 </Reveal>
@@ -461,11 +473,9 @@ export default function PricingPage() {
                       )}
                     </div>
                     {serviceId && (
-                      <PricingCardMindbodyOverlay
-                        type="pricing-link"
-                        serviceId={serviceId}
-                        ariaLabel={`Buy ${item.title}, ${item.price}`}
-                      />
+                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                        {renderHealcodeWidget("pricing-link", serviceId)}
+                      </div>
                     )}
                   </div>
                 </Reveal>
@@ -528,11 +538,9 @@ export default function PricingPage() {
                       )}
                     </div>
                     {serviceId && (
-                      <PricingCardMindbodyOverlay
-                        type="pricing-link"
-                        serviceId={serviceId}
-                        ariaLabel={`Buy ${item.title}, ${item.price}`}
-                      />
+                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                        {renderHealcodeWidget("pricing-link", serviceId)}
+                      </div>
                     )}
                   </div>
                 </Reveal>

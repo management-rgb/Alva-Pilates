@@ -2,11 +2,21 @@
 
 import { Check } from "lucide-react";
 import { Reveal } from "./sections/Reveal";
-import { PricingCardMindbodyOverlay } from "./PricingCardMindbodyOverlay";
 import {
   foundingMemberCopy,
   foundingMemberOfferCards,
 } from "../lib/foundingMemberCopy";
+
+function renderHealcodeContractLink(serviceId: string) {
+  const widgetHtml = `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="129106" data-mb-site-id="5747916" data-service-id="${serviceId}" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Now"></healcode-widget>`;
+
+  return (
+    <span
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: widgetHtml }}
+    />
+  );
+}
 
 export default function FoundingMemberPricingStrip() {
   return (
@@ -84,11 +94,9 @@ export default function FoundingMemberPricingStrip() {
                       Buy Now
                     </p>
                   </div>
-                  <PricingCardMindbodyOverlay
-                    type="contract-link"
-                    serviceId={offer.serviceId}
-                    ariaLabel={`${offer.title} — founding rate ${offer.price}`}
-                  />
+                  <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
+                    {renderHealcodeContractLink(offer.serviceId)}
+                  </div>
                 </div>
               ))}
             </div>
