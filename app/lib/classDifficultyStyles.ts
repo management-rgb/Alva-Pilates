@@ -10,8 +10,14 @@ export function getDifficultyBadgeClassName(level?: string): string {
   ) {
     return "bg-green-100 text-green-800";
   }
-  if (l.includes("all levels")) {
+  if (l.includes("fundamentals recommended")) {
     return "bg-sky-100 text-sky-800";
+  }
+  if (l.includes("level 1.5")) {
+    return "bg-red-100 text-red-800";
+  }
+  if (l.includes("all levels")) {
+    return "bg-primary/10 text-primary";
   }
   return "bg-primary/10 text-primary";
 }
