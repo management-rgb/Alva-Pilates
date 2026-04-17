@@ -28,5 +28,15 @@
     "difficultyLevel": "All Levels • Fundamentals recommended",
     "classImage": "/class-alva-sculpt.jpg",
     "bookingUrl": "/book"
+  },
+  {
+    "_id": "class-5",
+    "className": "Cardio Jump. ALVA",
+    "description": "An upbeat, low-impact class ideal for those who love a strong cardio workout, without the strain on the joints. Using the Jump board, you'll move through plyometric-inspired sequences powered by adjustable spring resistance rather than gravity, creating an effective and joint-friendly aerobic experience. Expect a fast-paced, continuous flow with evolving sequences and seamless transitions that keep the body challenged and the mind engaged. Each class is designed to build endurance, coordination, and full-body strength while keeping your practice fresh and dynamic. A fun, energizing way to elevate your heart rate, sculpt the body, and leave feeling strong, light, and recharged.",
+    "classType": "Group Class",
+    "durationMinutes": 50,
+    "difficultyLevel": "Advanced • Level 2",
+    "classImage": "/class-cardio-jump-alva.png",
+    "bookingUrl": "/book"
   }
 ]
