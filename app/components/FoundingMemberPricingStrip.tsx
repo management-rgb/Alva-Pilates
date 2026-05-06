@@ -67,6 +67,9 @@ export default function FoundingMemberPricingStrip() {
                         <p className="font-paragraph text-sm text-charcoal/70">
                           {offer.classes}
                         </p>
+                        <p className="font-paragraph text-xs text-charcoal/55 mt-0.5">
+                          {offer.contract}
+                        </p>
                       </div>
                       <div
                         className="flex flex-col items-end gap-1 shrink-0 text-right"

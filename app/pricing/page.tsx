@@ -82,24 +82,28 @@ const memberships = [
     title: "Essential",
     price: "$119/mo",
     classes: "4 classes / month",
+    contract: "3-month contract",
     benefits: "5% off additional packs & retail.",
   },
   {
     title: "Core",
     price: "$219/mo",
     classes: "8 classes / month",
+    contract: "3-month contract",
     benefits: "10% off privates & priority booking.",
   },
   {
     title: "Elite",
     price: "$289/mo",
     classes: "12 classes / month",
+    contract: "6-month contract",
     benefits: "15% off privates + 1 guest pass / month.",
   },
   {
     title: "Unlimited",
     price: "$399/mo",
-    classes: "Unlimited (1/day)",
+    classes: "Unlimited — as many classes per day as you like",
+    contract: "6-month contract",
     benefits:
       "20% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
     featured: true,
@@ -313,6 +317,9 @@ export default function PricingPage() {
                           </h3>
                           <p className="font-paragraph text-sm text-charcoal/70">
                             {m.classes}
+                          </p>
+                          <p className="font-paragraph text-xs text-charcoal/55 mt-0.5">
+                            {m.contract}
                           </p>
                         </div>
                         <span className="font-heading text-base text-primary whitespace-nowrap px-3 py-1 rounded-full bg-primary/10">

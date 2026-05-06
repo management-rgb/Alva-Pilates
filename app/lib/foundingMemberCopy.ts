@@ -26,6 +26,7 @@ export const foundingMemberOfferCards = [
     /** Founding member rate */
     price: "$269/mo",
     classes: "12 classes / month",
+    contract: "6-month contract",
     benefits:
       "15% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
     serviceId: "108",
@@ -35,7 +36,8 @@ export const foundingMemberOfferCards = [
     title: "Founding Member — Unlimited",
     listPrice: "$399/mo",
     price: "$349/mo",
-    classes: "Unlimited (1/day)",
+    classes: "Unlimited — as many classes per day as you like",
+    contract: "6-month contract",
     benefits:
       "20% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
     serviceId: "106",
