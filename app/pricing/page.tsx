@@ -7,6 +7,12 @@ import Footer from "../components/Footer";
 import FoundingMemberPricingStrip from "../components/FoundingMemberPricingStrip";
 import { Reveal } from "../components/sections/Reveal";
 import { useMindbodyHealcodeScript } from "../hooks/useMindbodyHealcodeScript";
+import {
+  getGroupClassOptions,
+  mothersDaySaleEnabled,
+  mothersDaySaleExpiresLine,
+  type GroupClassOption,
+} from "../lib/mothersDaySale";
 
 function renderHealcodeWidget(
   type: "contract-link" | "pricing-link",
@@ -27,38 +33,27 @@ function renderHealcodeWidget(
   );
 }
 
-const groupClassOptions = [
-  {
-    title: "Single Class",
-    price: "$39",
-    validity: "—",
-    note: "Join any reformer class · All Levels welcome.",
-  },
-  {
-    title: "New Client Intro Offer",
-    price: "$89 (3 Classes)",
-    validity: "30 days",
-    note: "One-time offer for first-time clients.",
-  },
-  {
-    title: "5-Class Pack",
-    price: "$179",
-    validity: "2 months",
-    note: "$35.80 per class · non-member rate.",
-  },
-  {
-    title: "10-Class Pack",
-    price: "$339",
-    validity: "3 months",
-    note: "$33.90 per class · non-member rate.",
-  },
-  {
-    title: "20-Class Pack",
-    price: "$629",
-    validity: "4 months",
-    note: "$31.45 per class · non-member rate.",
-  },
-];
+const groupClassOptions = getGroupClassOptions();
+
+function GroupClassOptionPrice({ item }: { item: GroupClassOption }) {
+  if (item.listPrice) {
+    return (
+      <div className="flex flex-col items-end gap-1 shrink-0 text-right">
+        <span className="font-paragraph text-base text-charcoal/50 line-through decoration-charcoal/35">
+          {item.listPrice}
+        </span>
+        <span className="font-heading text-lg sm:text-xl font-semibold text-[#5c5349] tabular-nums">
+          {item.price}
+        </span>
+      </div>
+    );
+  }
+  return (
+    <span className="font-heading text-lg sm:text-xl text-primary whitespace-nowrap px-3 py-1.5 rounded-full bg-primary/10">
+      {item.price}
+    </span>
+  );
+}
 
 /** Mindbody pricing-link service IDs for Group Reformer class options */
 const groupClassWidgetServiceIds: Record<string, string> = {
@@ -193,6 +188,14 @@ export default function PricingPage() {
               <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
                 Choose the option that fits your practice—packs, memberships, privates, and events.
               </p>
+              {mothersDaySaleEnabled && (
+                <p className="font-paragraph text-sm sm:text-base text-rose-800/90 max-w-2xl mx-auto leading-relaxed rounded-2xl border border-rose-200/80 bg-rose-50/90 px-4 py-3">
+                  <span className="font-semibold text-charcoal">
+                    Mother&apos;s Day Sale ·{" "}
+                  </span>
+                  {mothersDaySaleExpiresLine}
+                </p>
+              )}
             </div>
           </Reveal>
         </div>
@@ -201,7 +204,7 @@ export default function PricingPage() {
       <FoundingMemberPricingStrip />
 
       {/* Top Intro Offers */}
-      <section className="py-16 px-6 lg:px-8">
+      <section id="get-started" className="py-16 px-6 lg:px-8 scroll-mt-40">
         <div className="max-w-[100rem] mx-auto space-y-6">
           <Reveal>
             <div className="flex flex-col gap-2">
@@ -211,6 +214,11 @@ export default function PricingPage() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
                 Single Class & Intro Offer
               </h2>
+              {mothersDaySaleEnabled && (
+                <p className="font-paragraph text-sm text-charcoal/70 max-w-2xl">
+                  Mother&apos;s Day sale pricing below. {mothersDaySaleExpiresLine}
+                </p>
+              )}
             </div>
           </Reveal>
 
@@ -239,9 +247,7 @@ export default function PricingPage() {
                             {item.validity}
                           </p>
                         </div>
-                        <span className="font-heading text-base text-primary whitespace-nowrap px-3 py-1 rounded-full bg-primary/10">
-                          {item.price}
-                        </span>
+                        <GroupClassOptionPrice item={item} />
                       </div>
                       <div className="h-px bg-foreground/5" />
                       <p className="font-paragraph text-sm text-charcoal/80 leading-relaxed">
@@ -367,6 +373,11 @@ export default function PricingPage() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
                 Non-Member Packages
               </h2>
+              {mothersDaySaleEnabled && (
+                <p className="font-paragraph text-sm text-charcoal/70 max-w-2xl">
+                  15% off pack sale prices shown. {mothersDaySaleExpiresLine}
+                </p>
+              )}
             </div>
           </Reveal>
 
@@ -395,9 +406,7 @@ export default function PricingPage() {
                             {item.validity}
                           </p>
                         </div>
-                        <span className="font-heading text-base text-primary whitespace-nowrap px-3 py-1 rounded-full bg-primary/10">
-                          {item.price}
-                        </span>
+                        <GroupClassOptionPrice item={item} />
                       </div>
                       <div className="h-px bg-foreground/5" />
                       <p className="font-paragraph text-sm text-charcoal/80 leading-relaxed">
