@@ -8,11 +8,9 @@ import FoundingMemberPricingStrip from "../components/FoundingMemberPricingStrip
 import { Reveal } from "../components/sections/Reveal";
 import { useMindbodyHealcodeScript } from "../hooks/useMindbodyHealcodeScript";
 import {
-  getGroupClassOptions,
-  mothersDaySaleEnabled,
-  mothersDaySaleExpiresLine,
+  groupClassOptions,
   type GroupClassOption,
-} from "../lib/mothersDaySale";
+} from "../lib/groupClassPricing";
 
 function renderHealcodeWidget(
   type: "contract-link" | "pricing-link",
@@ -32,8 +30,6 @@ function renderHealcodeWidget(
     />
   );
 }
-
-const groupClassOptions = getGroupClassOptions();
 
 function GroupClassOptionPrice({ item }: { item: GroupClassOption }) {
   if (item.listPrice) {
@@ -188,14 +184,6 @@ export default function PricingPage() {
               <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
                 Choose the option that fits your practice—packs, memberships, privates, and events.
               </p>
-              {mothersDaySaleEnabled && (
-                <p className="font-paragraph text-sm sm:text-base text-rose-800/90 max-w-2xl mx-auto leading-relaxed rounded-2xl border border-rose-200/80 bg-rose-50/90 px-4 py-3">
-                  <span className="font-semibold text-charcoal">
-                    Mother&apos;s Day Sale ·{" "}
-                  </span>
-                  {mothersDaySaleExpiresLine}
-                </p>
-              )}
             </div>
           </Reveal>
         </div>
@@ -214,11 +202,6 @@ export default function PricingPage() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
                 Single Class & Intro Offer
               </h2>
-              {mothersDaySaleEnabled && (
-                <p className="font-paragraph text-sm text-charcoal/70 max-w-2xl">
-                  Mother&apos;s Day sale pricing below. {mothersDaySaleExpiresLine}
-                </p>
-              )}
             </div>
           </Reveal>
 
@@ -373,11 +356,6 @@ export default function PricingPage() {
               <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
                 Non-Member Packages
               </h2>
-              {mothersDaySaleEnabled && (
-                <p className="font-paragraph text-sm text-charcoal/70 max-w-2xl">
-                  15% off pack sale prices shown. {mothersDaySaleExpiresLine}
-                </p>
-              )}
             </div>
           </Reveal>
 

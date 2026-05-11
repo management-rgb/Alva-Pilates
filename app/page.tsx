@@ -6,7 +6,6 @@ import { ArrowRight, Check, MapPin, Clock, Instagram } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FoundingMemberSection from "./components/FoundingMemberSection";
-import MothersDaySaleSection from "./components/MothersDaySaleSection";
 import { Reveal } from "./components/sections/Reveal";
 import { foundingMemberCopy } from "./lib/foundingMemberCopy";
 import { studioImagery } from "./lib/studioImagery";
@@ -39,8 +38,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background text-charcoal font-paragraph overflow-x-hidden selection:bg-primary/30">
       <Header />
-
-      <MothersDaySaleSection />
 
       {/* Hero Section */}
       <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-40 pb-10 sm:pb-12 lg:pb-14">
