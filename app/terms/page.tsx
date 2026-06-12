@@ -95,32 +95,41 @@ export default function TermsPage() {
               <div className="space-y-3 text-base">
                 <p>
                   <span className="font-semibold text-charcoal">3.1</span>{" "}
-                  Memberships auto-renew on the selected billing cycle.
+                  Membership tiers require a minimum commitment from your start
+                  date: Essential and Core memberships require 3 months; Elite and
+                  Unlimited memberships require 6 months.
                 </p>
                 <p>
                   <span className="font-semibold text-charcoal">3.2</span>{" "}
-                  Clients must submit a written cancellation request at least 30
-                  days before the next billing date.
+                  Memberships auto-renew on a recurring monthly billing cycle
+                  until canceled in accordance with these terms.
                 </p>
                 <p>
                   <span className="font-semibold text-charcoal">3.3</span>{" "}
-                  Cancellation requests submitted after payment has been processed
-                  will apply to the next billing cycle; refunds are not provided
-                  for unused time.
+                  Clients must submit a written cancellation request at least 14
+                  days before the requested cancellation date.
                 </p>
                 <p>
                   <span className="font-semibold text-charcoal">3.4</span>{" "}
+                  Cancellation before the end of the commitment period requires
+                  payment of the remaining balance of the contract.
+                </p>
+                <p>
+                  <span className="font-semibold text-charcoal">3.5</span>{" "}
                   Memberships may not be shared or transferred.
                 </p>
                 <p>
-                  <span className="font-semibold text-charcoal">3.5</span> Any
+                  <span className="font-semibold text-charcoal">3.6</span> Any
                   outstanding balances or fees must be resolved prior to
                   cancellation taking effect.
                 </p>
                 <p>
-                  <span className="font-semibold text-charcoal">3.6</span>{" "}
-                  Membership freezes or holds must be requested in writing and
-                  may be approved at the studio&apos;s discretion.
+                  <span className="font-semibold text-charcoal">3.7</span>{" "}
+                  Membership freezes or holds must be requested in writing with
+                  at least 14 days&apos; notice and may be approved at the
+                  studio&apos;s discretion. Approved pause time is added to the
+                  end of the membership term; monthly payments are not prorated
+                  during a pause.
                 </p>
               </div>
             </section>
