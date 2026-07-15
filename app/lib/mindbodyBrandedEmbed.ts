@@ -28,7 +28,7 @@ function removeMindbodyBrandedEmbedScript(): void {
     .forEach((node) => node.parentNode?.removeChild(node));
 }
 
-/**
+/**q
  * Clears Mindbody's guard, removes any prior embed script, and loads widget.js.
  * Call after `.mindbody-widget` elements are in the DOM (e.g. in useEffect).
  */

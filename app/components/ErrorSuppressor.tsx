@@ -130,7 +130,7 @@ function normalizeErrorEventMessage(event: ErrorEvent): {
   let message = event.message || "";
   let stack = "";
 
-  if (err instanceof Error) {
+  if (err instanceof Error) {3
     message = message || err.message;
     stack = err.stack ?? "";
   } else if (err != null && typeof err === "object" && "message" in err) {
@@ -165,7 +165,9 @@ export default function ErrorSuppressor() {
 
     const suppressIfNeeded = (event: ErrorEvent): boolean => {
       const { message, source, stack } = normalizeErrorEventMessage(event);
+      console.log('shouldSuppressError1', message, source, stack);
       if (!shouldSuppressError(message, source, stack)) return false;
+      console.log('shouldSuppressError2', message, source, stack);
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();

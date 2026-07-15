@@ -5,7 +5,9 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import FoundingMemberAnnouncementBar from "./FoundingMemberAnnouncementBar";
+import { summerResetEnabled } from "../lib/summerResetCopy";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
 export default function Header() {
@@ -94,7 +96,11 @@ export default function Header() {
         </div>
       </div>
 
-      <FoundingMemberAnnouncementBar />
+      {summerResetEnabled ? (
+        <SummerResetAnnouncementBar />
+      ) : (
+        <FoundingMemberAnnouncementBar />
+      )}
 
       <div className="max-w-[120rem] mx-auto px-6 lg:px-8 pb-3">
         {isMenuOpen && (

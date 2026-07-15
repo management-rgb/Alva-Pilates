@@ -6,6 +6,7 @@ import {
   foundingMemberCopy,
   foundingMemberOfferCards,
 } from "../lib/foundingMemberCopy";
+import { summerResetEnabled } from "../lib/summerResetCopy";
 
 function renderHealcodeContractLink(serviceId: string) {
   const widgetHtml = `<healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="129106" data-mb-site-id="5747916" data-service-id="${serviceId}" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Buy Now"></healcode-widget>`;
@@ -90,7 +91,9 @@ export default function FoundingMemberPricingStrip() {
                     <div className="flex items-start gap-2">
                       <Check size={18} className="text-primary mt-1 shrink-0" />
                       <p className="font-paragraph text-sm text-charcoal/80 leading-relaxed">
-                        {offer.benefits}
+                        {summerResetEnabled && "summerBenefits" in offer
+                          ? offer.summerBenefits
+                          : offer.benefits}
                       </p>
                     </div>
                     <p className="font-paragraph text-xs uppercase tracking-[0.14em] text-primary font-semibold mt-auto pt-1">

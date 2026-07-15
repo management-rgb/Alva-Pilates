@@ -219,7 +219,8 @@ body {
 
 /* Stretch Healcode’s generated link across the whole card */
 .pricing-card-full-buy-overlay a.healcode-pricing-option-text-link,
-.pricing-card-full-buy-overlay a.healcode-contract-text-link {
+.pricing-card-full-buy-overlay a.healcode-contract-text-link,
+.pricing-card-full-buy-overlay a.summer-purchase-fallback-link {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -232,7 +233,11 @@ body {
 
 .pricing-card-full-buy:has(
     .pricing-card-full-buy-overlay
-      :is(a.healcode-pricing-option-text-link, a.healcode-contract-text-link):focus-visible
+      :is(
+        a.healcode-pricing-option-text-link,
+        a.healcode-contract-text-link,
+        a.summer-purchase-fallback-link
+      ):focus-visible
   ) {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
