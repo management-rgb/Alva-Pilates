@@ -1,370 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Check, MapPin, Clock, Instagram } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FoundingMemberSection from "./components/FoundingMemberSection";
 import SummerResetHero from "./components/SummerResetHero";
-import SummerResetOffersSection from "./components/SummerResetOffersSection";
-import SummerResetIntroCreditSection from "./components/SummerResetIntroCreditSection";
-import SummerResetMemberPerksSection from "./components/SummerResetMemberPerksSection";
 import SummerResetFinalCtaSection from "./components/SummerResetFinalCtaSection";
 import SummerResetTermsSection from "./components/SummerResetTermsSection";
+import HomeBrandHero from "./components/home/HomeBrandHero";
+import HomeClassesPreview from "./components/home/HomeClassesPreview";
+import HomeMembershipBridge from "./components/home/HomeMembershipBridge";
+import HomeStudioStory from "./components/home/HomeStudioStory";
+import HomeVisitCommunity from "./components/home/HomeVisitCommunity";
 import { Reveal } from "./components/sections/Reveal";
-import { foundingMemberCopy } from "./lib/foundingMemberCopy";
 import { summerResetEnabled } from "./lib/summerResetCopy";
-import { studioImagery } from "./lib/studioImagery";
-import { STUDIO_INSTAGRAM_URL } from "./lib/socialLinks";
 
 export default function HomePageClient() {
-  const benefits = [
-    {
-      title: "Build Strength",
-      description:
-        "Develop lean muscle and core stability through controlled, intentional movement.",
-    },
-    {
-      title: "Improve Posture",
-      description:
-        "Align your body and strengthen the muscles that support proper posture.",
-    },
-    {
-      title: "Enhance Flexibility",
-      description:
-        "Increase range of motion and mobility through dynamic stretching and lengthening.",
-    },
-    {
-      title: "Reduce Stress",
-      description:
-        "Find calm and focus through mindful movement in a serene environment.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-background text-charcoal font-paragraph overflow-x-hidden selection:bg-primary/30">
+    <div className="min-h-screen overflow-x-hidden bg-background font-paragraph text-foreground selection:bg-primary/30">
       <Header />
 
-      {summerResetEnabled ? (
-        <>
-          <SummerResetHero />
-          <SummerResetOffersSection />
-          <SummerResetIntroCreditSection />
-          <SummerResetMemberPerksSection />
-        </>
-      ) : (
-        <section className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden pt-40 pb-10 sm:pb-12 lg:pb-14">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={studioImagery.hero}
-              alt="Alva Pilates studio with lit arch mirrors, reformers, and warm boutique lighting"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-charcoal/55" />
-          </div>
+      {summerResetEnabled ? <SummerResetHero /> : <HomeBrandHero />}
 
-          <div className="container max-w-[120rem] mx-auto px-6 relative z-10 w-full">
-            <div className="flex flex-col justify-center space-y-10 pt-12 lg:pt-0 max-w-3xl lg:max-w-none lg:w-7/12">
-              <Reveal delay={0.1}>
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="h-px w-12 bg-white/40" />
-                  <span className="text-sm uppercase tracking-[0.2em] text-white/70 font-medium">
-                    Valencia, CA
-                  </span>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.15}>
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.18em] text-white font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.65)] hover:text-white/85 transition-colors"
-                >
-                  <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                  {foundingMemberCopy.eyebrow}
-                </Link>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <h1 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-bold leading-[0.9] text-white tracking-tight">
-                  Elevate <br />
-                  <span className="italic font-normal text-primary">Your</span>{" "}
-                  <br />
-                  Movement
-                </h1>
-              </Reveal>
-
-              <Reveal delay={0.3}>
-                <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-md border-l-2 border-primary/50 pl-6">
-                  Experience intentional movement, expert instruction, and a
-                  serene studio environment designed to transform your practice.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.4}>
-                <div className="flex flex-wrap gap-4 sm:gap-6">
-                  <a
-                    href="/book"
-                    className="group relative px-8 py-4 bg-white text-charcoal overflow-hidden rounded-full transition-all hover:shadow-lg hover:shadow-white/20 font-medium inline-flex items-center gap-2"
-                  >
-                    Book a Class{" "}
-                    <ArrowRight
-                      size={16}
-                      className="group-hover:translate-x-1 transition-transform"
-                    />
-                  </a>
-                  <Link
-                    href="/pricing"
-                    className="group px-8 py-4 border border-white/30 rounded-full hover:border-white transition-colors flex items-center gap-2 text-white"
-                  >
-                    {foundingMemberCopy.viewAllMemberships}
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <FoundingMemberSection />
-
-      {/* Intro / Philosophy Section */}
-      <section className="py-24 lg:py-32 px-6 relative">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            <div className="order-2 lg:order-1 relative">
-              <Reveal direction="right">
-                <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0">
-                  <div className="absolute inset-0 border border-charcoal/10 translate-x-4 translate-y-4 rounded-2xl" />
-                  <Image
-                    src={studioImagery.welcomeAlva}
-                    alt="Alva Pilates branded water bottles — cream and terracotta on a warm neutral backdrop"
-                    fill
-                    className="object-cover rounded-2xl relative z-10"
-                    sizes="(max-width: 1024px) 100vw, 28rem"
-                  />
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="order-1 lg:order-2 space-y-8">
-              <Reveal>
-                <h2 className="font-heading text-4xl lg:text-5xl xl:text-6xl text-charcoal leading-[1.1]">
-                  Welcome to{" "}
-                  <span className="text-primary font-semibold not-italic tracking-tight text-[1.12em] sm:text-[1.1em] inline-block align-baseline">
-                    Alva
-                  </span>
-                </h2>
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                <div className="space-y-6 text-base lg:text-lg text-charcoal/80 leading-relaxed">
-                  <p>
-                    Located in Valencia, Santa Clarita, Alva Pilates is a boutique
-                    studio dedicated to providing a premium Pilates experience.
-                    We focus on quality coaching, precise form, and measurable
-                    results in a calm, elevated environment.
-                  </p>
-                  <p>
-                    Whether you&apos;re new to Pilates or a seasoned
-                    practitioner, our expert instructors will guide you through
-                    intentional movement that strengthens, lengthens, and
-                    restores.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <div className="pt-4 flex items-center gap-8">
-                  <div className="flex flex-col">
-                    <span className="font-heading text-4xl text-charcoal">
-                      40+
-                    </span>
-                    <span className="text-sm uppercase tracking-wider text-charcoal/60">
-                      Weekly Classes
-                    </span>
-                  </div>
-                  <div className="w-px h-12 bg-charcoal/20" />
-                  <div className="flex flex-col">
-                    <span className="font-heading text-4xl text-charcoal">
-                      Expert
-                    </span>
-                    <span className="text-sm uppercase tracking-wider text-charcoal/60">
-                      Instruction
-                    </span>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-24 lg:py-32 px-6 bg-secondary/30">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="flex justify-center mb-16 lg:mb-24">
-            <div className="relative w-full max-w-5xl h-[min(58vh,560px)] min-h-[280px] sm:min-h-[340px] rounded-t-full overflow-hidden border-4 border-charcoal/10 shadow-xl bg-charcoal/20">
-              <Image
-                src="/intentional-movement.jpg"
-                alt="Bright pilates studio with reformers, natural light, and intentional movement"
-                fill
-                sizes="(max-width: 1024px) 100vw, 1024px"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-charcoal/30 z-[1]" />
-              <div className="absolute inset-0 z-[2] flex items-center justify-center px-6">
-                <Reveal direction="up">
-                  <div className="text-center text-white">
-                    <h2 className="font-heading text-5xl sm:text-6xl lg:text-8xl font-light tracking-wide mb-6">
-                      Intentional <br /> Movement
-                    </h2>
-                    <p className="text-lg lg:text-xl font-light tracking-widest uppercase opacity-90">
-                      Strength • Posture • Balance
-                    </p>
-                  </div>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 lg:mb-20 gap-8">
-            <Reveal>
-              <h2 className="font-heading text-4xl lg:text-5xl xl:text-6xl text-charcoal max-w-xl">
-                The Benefits of <br />
-                <span className="italic text-primary">Mindful Practice</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="text-charcoal/70 max-w-md text-base lg:text-lg pb-2">
-                Transform your body and mind through mindful, controlled
-                movement designed for longevity.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <Reveal
-                key={`benefit-${benefit.title.toLowerCase().replace(/\s+/g, "-")}`}
-                delay={index * 0.1}
-                className="h-full"
-              >
-                <div className="group bg-white p-8 rounded-2xl h-full border border-transparent hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 flex flex-col">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <Check size={20} />
-                  </div>
-                  <h3 className="font-heading text-xl lg:text-2xl text-charcoal mb-4 group-hover:text-primary transition-colors">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-charcoal/70 leading-relaxed text-sm lg:text-base">
-                    {benefit.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Location & Info Grid */}
-      <section className="py-20 lg:py-24 px-6 bg-background">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-            <Reveal className="lg:col-span-1">
-              <div className="bg-secondary/30 p-8 lg:p-10 rounded-3xl h-full flex flex-col justify-between min-h-[300px]">
-                <div>
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-6 text-charcoal shadow-sm">
-                    <MapPin size={24} />
-                  </div>
-                  <h3 className="font-heading text-2xl lg:text-3xl text-charcoal mb-4">
-                    Visit Us
-                  </h3>
-                  <p className="text-charcoal/70 text-base lg:text-lg">
-                    23840 Copper Hill Drive
-                    <br />
-                    Valencia, CA 91354
-                  </p>
-                </div>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=23840+Copper+Hill+Drive,+Valencia,+CA+91354"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary font-medium hover:text-charcoal transition-colors inline-flex items-center gap-2 mt-8"
-                >
-                  Get Directions <ArrowRight size={16} />
-                </a>
-              </div>
-            </Reveal>
-
-            <Reveal className="lg:col-span-1" delay={0.1}>
-              <div className="bg-charcoal p-8 lg:p-10 rounded-3xl h-full flex flex-col justify-between min-h-[300px] text-white">
-                <div>
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 text-white shadow-sm">
-                    <Clock size={24} />
-                  </div>
-                  <h3 className="font-heading text-2xl lg:text-3xl mb-4">
-                    Studio Hours
-                  </h3>
-                  <ul className="space-y-2 text-white/70 text-base lg:text-lg">
-                    <li className="flex justify-between gap-4">
-                      <span>Mon - Sat</span>{" "}
-                      <span className="text-right">7am - 7pm</span>
-                    </li>
-                    <li className="flex justify-between gap-4">
-                      <span>Sun</span>{" "}
-                      <span className="text-right">9am - 12pm</span>
-                    </li>
-                  </ul>
-                </div>
-                <Link
-                  href="/classes"
-                  className="text-primary font-medium hover:text-white transition-colors inline-flex items-center gap-2 mt-8"
-                >
-                  View Schedule <ArrowRight size={16} />
-                </Link>
-              </div>
-            </Reveal>
-
-            <Reveal className="lg:col-span-1" delay={0.2}>
-              <a
-                href={STUDIO_INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative group overflow-hidden rounded-3xl h-full min-h-[300px] block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                aria-label="Follow Alva Pilates on Instagram"
-              >
-                <Image
-                  src={studioImagery.communityInstagram}
-                  alt="Pilates ring on linen in warm natural light — Alva Pilates studio aesthetic"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-charcoal/35 group-hover:bg-charcoal/45 transition-colors" />
-                <div className="absolute inset-0 p-8 lg:p-10 flex flex-col justify-between min-h-[300px] text-white">
-                  <div>
-                    <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
-                      <Instagram size={24} aria-hidden />
-                    </div>
-                    <h3 className="font-heading text-2xl lg:text-3xl mb-4">
-                      Join the community
-                    </h3>
-                    <p className="text-white/70 text-base lg:text-lg">
-                      Follow us @alvapilates
-                    </p>
-                  </div>
-                  <span className="text-primary font-medium group-hover:text-white transition-colors inline-flex items-center gap-2 mt-8">
-                    Open Instagram <ArrowRight size={16} aria-hidden />
-                  </span>
-                </div>
-              </a>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <HomeStudioStory />
+      {summerResetEnabled ? <HomeMembershipBridge /> : null}
+      <HomeClassesPreview />
+      <HomeVisitCommunity />
 
       {summerResetEnabled ? (
         <>
@@ -372,25 +34,35 @@ export default function HomePageClient() {
           <SummerResetTermsSection />
         </>
       ) : (
-        <section className="py-24 lg:py-32 px-6 text-center">
-          <div className="max-w-4xl mx-auto">
-            <Reveal direction="up">
-              <h2 className="font-heading text-5xl sm:text-6xl lg:text-8xl text-charcoal mb-8">
-                Ready to Begin?
-              </h2>
-              <p className="text-lg lg:text-xl text-charcoal/60 mb-12 max-w-2xl mx-auto">
-                Experience the Alva Pilates difference. Book your first class
-                today and discover what intentional movement can do for you.
-              </p>
-              <Link
-                href="/pricing"
-                className="bg-primary text-white px-10 lg:px-12 py-4 lg:py-5 rounded-full text-base lg:text-lg hover:bg-charcoal transition-colors duration-300 shadow-xl shadow-primary/20 inline-block"
-              >
-                Book Your First Class
-              </Link>
-            </Reveal>
-          </div>
-        </section>
+        <>
+          <FoundingMemberSection />
+          <section className="surface-ivory px-6 py-36 text-center lg:px-12 lg:py-52">
+            <div className="mx-auto max-w-[100rem]">
+              <Reveal direction="up">
+                <div className="mx-auto max-w-3xl">
+                  <h2 className="font-heading text-5xl font-medium leading-none tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+                    Ready to begin?
+                  </h2>
+                  <p className="mx-auto mt-8 max-w-xl text-base leading-[1.85] text-muted lg:text-lg">
+                    Experience intentional movement, expert instruction, and a
+                    studio designed to help you progress.
+                  </p>
+                  <Link
+                    href="/pricing"
+                    className="group mt-12 inline-flex h-14 min-h-14 items-center gap-2 rounded-full bg-charcoal px-10 text-sm font-medium tracking-wide text-on-dark shadow-button transition-all duration-500 hover:bg-primary hover:text-primary-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    View pricing
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-0.5"
+                      aria-hidden
+                    />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        </>
       )}
 
       <Footer />

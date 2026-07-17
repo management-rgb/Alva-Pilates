@@ -3,12 +3,11 @@
 import { use } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Users, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Reveal } from "../../components/sections/Reveal";
 import { getClassById } from "../../lib/data";
-import { getDifficultyBadgeClassName } from "../../lib/classDifficultyStyles";
 import NotFound from "./not-found";
 
 export default function ClassDetailPage({
@@ -23,165 +22,124 @@ export default function ClassDetailPage({
     return <NotFound />;
   }
 
+  const expectItems = [
+    {
+      title: "Before class",
+      body: "Arrive 10 minutes early to check in and get settled. Wear comfortable, form-fitting clothing. Grip socks are recommended.",
+    },
+    {
+      title: "During class",
+      body: "Your instructor will guide you through each exercise with modifications and corrections. Focus on breath, form, and quality of movement.",
+    },
+    {
+      title: "After class",
+      body: "Take a moment to stretch and hydrate. Feel free to ask your instructor any questions about the exercises or your practice.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      {/* Back Button */}
-      <section className="pt-40 pb-8 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="relative min-h-[min(70svh,760px)] overflow-hidden bg-charcoal">
+        <Image
+          src={classItem.classImage}
+          alt={classItem.className}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,38,34,0.35)_0%,rgba(43,38,34,0.7)_100%)]" />
+        <div className="relative z-10 mx-auto flex min-h-[min(70svh,760px)] max-w-[100rem] flex-col justify-between px-6 pb-16 pt-36 lg:px-14 lg:pb-24 lg:pt-40">
           <Link
             href="/classes"
-            className="font-paragraph text-sm text-charcoal/70 hover:text-charcoal inline-flex items-center gap-2 transition-colors"
+            className="inline-flex items-center gap-2 self-start text-sm text-on-dark/75 transition-colors hover:text-on-dark"
           >
-            <ArrowLeft size={16} />
-            Back to Classes
+            <ArrowLeft size={16} aria-hidden />
+            Back to classes
           </Link>
+          <Reveal>
+            <div className="max-w-3xl">
+              <p className="text-[0.6875rem] font-medium tracking-[0.1em] text-on-dark/70">
+                {classItem.difficultyLevel}
+                <span className="mx-2" aria-hidden>
+                  ·
+                </span>
+                {classItem.classType}
+                <span className="mx-2" aria-hidden>
+                  ·
+                </span>
+                {classItem.durationMinutes} min
+              </p>
+              <h1 className="mt-5 font-heading text-5xl font-medium tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+                {classItem.className.trim()}
+              </h1>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Class Hero */}
-      <section className="pb-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <Reveal>
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-3">
-                  <h1 className="font-heading text-4xl lg:text-6xl font-bold text-charcoal">
-                    {classItem.className}
-                  </h1>
-                  <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${getDifficultyBadgeClassName(
-                      classItem.difficultyLevel
-                    )}`}
-                  >
-                    {classItem.difficultyLevel}
-                  </span>
-                </div>
-
-                <div className="flex flex-wrap gap-6">
-                  <div className="flex items-center gap-2 text-charcoal/70">
-                    <Users size={20} />
-                    <span className="font-paragraph text-base">
-                      {classItem.classType}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-charcoal/70">
-                    <Clock size={20} />
-                    <span className="font-paragraph text-base">
-                      {classItem.durationMinutes} minutes
-                    </span>
-                  </div>
-                </div>
-
-                <p className="font-paragraph text-lg text-charcoal/80 leading-relaxed">
-                  {classItem.description}
-                </p>
-
-                <Link
-                  href="/book"
-                  className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2"
-                >
-                  Book This Class
-                  <ArrowRight size={18} />
-                </Link>
-              </div>
-            </Reveal>
-
-            <Reveal direction="left">
-              <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] relative">
-                <Image
-                  src={classItem.classImage}
-                  alt={classItem.className}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  className="object-cover"
+      <section className="surface-ivory px-6 py-20 lg:px-14 lg:py-28">
+        <div className="mx-auto max-w-[100rem]">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
+            <Reveal className="lg:col-span-7">
+              <p className="whitespace-pre-line text-lg leading-[1.85] text-muted">
+                {classItem.description}
+              </p>
+              <a href="/book" className="btn-primary group mt-10">
+                Book this class
+                <ArrowRight
+                  size={16}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
+                  aria-hidden
                 />
-              </div>
+              </a>
+            </Reveal>
+            <Reveal delay={0.08} className="lg:col-span-5">
+              <h2 className="font-heading text-3xl font-medium tracking-tight text-foreground">
+                What to expect
+              </h2>
+              <ol className="mt-8 space-y-8">
+                {expectItems.map((item, i) => (
+                  <li key={item.title} className="border-t border-border pt-6">
+                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-muted">
+                      0{i + 1}
+                    </p>
+                    <h3 className="mt-2 font-heading text-xl font-medium text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">
+                      {item.body}
+                    </p>
+                  </li>
+                ))}
+              </ol>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* What to Expect */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8 bg-secondary">
-        <div className="max-w-[100rem] mx-auto">
-          <Reveal>
-            <div className="max-w-3xl mx-auto space-y-8">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal text-center">
-                What to Expect
-              </h2>
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-2xl">
-                  <h3 className="font-heading text-xl font-semibold text-charcoal mb-3">
-                    Before Class
-                  </h3>
-                  <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                    Arrive 10 minutes early to check in and get settled. Wear
-                    comfortable, form-fitting clothing that allows you to move
-                    freely. Grip socks are recommended.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl">
-                  <h3 className="font-heading text-xl font-semibold text-charcoal mb-3">
-                    During Class
-                  </h3>
-                  <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                    Your instructor will guide you through each exercise,
-                    providing modifications and corrections as needed. Focus on
-                    your breath, form, and the quality of each movement.
-                  </p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl">
-                  <h3 className="font-heading text-xl font-semibold text-charcoal mb-3">
-                    After Class
-                  </h3>
-                  <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                    Take a moment to stretch and hydrate. Feel free to ask your
-                    instructor any questions about the exercises or your
-                    practice.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <Reveal>
-            <div className="bg-charcoal text-white rounded-2xl p-8 lg:p-16 text-center">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Join Us?
-              </h2>
-              <p className="font-paragraph text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
-                Explore our membership options and secure your spot in class.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/pricing"
-                  className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center justify-center gap-2"
-                >
-                  View Memberships
-                  <ArrowRight size={18} />
-                </Link>
-                <Link
-                  href="/classes"
-                  className="font-paragraph text-base bg-transparent text-white border border-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all inline-flex items-center justify-center"
-                >
-                  View All Classes
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+      <section className="surface-espresso px-6 py-24 text-center lg:px-14 lg:py-32">
+        <Reveal>
+          <h2 className="font-heading text-4xl font-medium tracking-tight text-on-dark lg:text-5xl">
+            Ready to join us?
+          </h2>
+          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-muted-dark">
+            Explore memberships or book your spot in class.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/book" className="btn-primary">
+              Book a class
+            </Link>
+            <Link href="/pricing" className="btn-ghost-on-dark">
+              View memberships
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       <Footer />
     </div>
   );
 }
-

@@ -3,101 +3,74 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./sections/Reveal";
-import SummerDeadlineBadge from "./summer-reset/SummerDeadlineBadge";
-import SummerResetHeroPricing from "./SummerResetHeroPricing";
 import SummerOffersLink from "./SummerOffersLink";
-import { studioImagery } from "../lib/studioImagery";
 import {
   summerResetCopy,
+  summerResetDeadlineLabel,
   summerResetEnabled,
 } from "../lib/summerResetCopy";
+import { studioImagery } from "../lib/studioImagery";
 
 export default function SummerResetHero() {
   if (!summerResetEnabled) return null;
 
   return (
     <section
-      className="relative min-h-[min(100svh,920px)] w-full flex flex-col justify-center overflow-hidden pt-36 sm:pt-40 pb-16 sm:pb-20"
+      className="relative flex min-h-[min(100svh,1080px)] w-full flex-col justify-end overflow-hidden bg-charcoal pb-20 pt-44 sm:pb-24 sm:pt-48 lg:pb-28 lg:pt-52"
       aria-labelledby="summer-reset-hero-heading"
     >
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={studioImagery.hero}
-          alt="Alva Pilates studio with lit arch mirrors, reformers, and warm boutique lighting"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-charcoal/55" />
-      </div>
+      <Image
+        src={studioImagery.hero}
+        alt="Alva Pilates studio with warm illuminated arches and reformers"
+        fill
+        priority
+        quality={95}
+        sizes="100vw"
+        className="object-cover object-[center_40%]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,38,34,0.35)_0%,rgba(43,38,34,0.2)_40%,rgba(43,38,34,0.72)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(43,38,34,0.55)_0%,rgba(43,38,34,0.2)_55%,transparent_100%)]" />
 
-      <div className="container max-w-[120rem] mx-auto px-6 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
-          <div className="lg:col-span-7 lg:row-start-1 flex flex-col justify-center space-y-6 sm:space-y-8 order-1">
-            <Reveal delay={0.1}>
-              <div className="flex items-center gap-4">
-                <span className="h-px w-12 bg-white/40" />
-                <span className="text-sm uppercase tracking-[0.2em] text-white/70 font-medium">
-                  Valencia, CA · Alva Pilates
-                </span>
-              </div>
-            </Reveal>
+      <div className="relative z-10 mx-auto w-full max-w-[112rem] px-6 lg:px-14">
+        <div className="max-w-3xl">
+          <Reveal delay={0.05}>
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-primary">
+              {summerResetCopy.hero.eyebrow}
+              <span className="mx-2.5 font-normal normal-case tracking-[0.04em] text-on-dark/45">
+                ·
+              </span>
+              <span className="font-normal normal-case tracking-[0.04em] text-on-dark/55">
+                {summerResetDeadlineLabel}
+              </span>
+            </p>
+          </Reveal>
 
-            <Reveal delay={0.15}>
-              <div className="flex flex-wrap items-center gap-3">
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-primary">
-                  {summerResetCopy.hero.eyebrow}
-                </p>
-                <SummerDeadlineBadge className="border-white/25 bg-white/10 text-white" />
-              </div>
-            </Reveal>
+          <Reveal delay={0.1}>
+            <h1
+              id="summer-reset-hero-heading"
+              className="mt-7 max-w-3xl font-heading text-5xl font-medium leading-[0.9] tracking-[-0.04em] text-on-dark sm:text-6xl lg:text-7xl xl:text-[5.75rem]"
+            >
+              {summerResetCopy.hero.headline}
+            </h1>
+          </Reveal>
 
-            <Reveal delay={0.2}>
-              <h1
-                id="summer-reset-hero-heading"
-                className="font-heading text-5xl sm:text-6xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] text-white tracking-tight"
-              >
-                {summerResetCopy.hero.headline}
-              </h1>
-            </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-8 max-w-md text-base leading-[1.85] text-on-dark/80 sm:text-lg">
+              Expert-led reformer Pilates in a calm, elevated Valencia studio.
+            </p>
+          </Reveal>
 
-            <Reveal delay={0.3}>
-              <p className="text-lg lg:text-xl text-white/80 leading-relaxed max-w-xl border-l-2 border-primary/50 pl-6">
-                {summerResetCopy.offers.subheading}
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-2 self-center order-2">
-            <Reveal delay={0.25} direction="left">
-              <SummerResetHeroPricing />
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-7 lg:row-start-2 order-3">
-            <Reveal delay={0.4}>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-5 pt-1">
-                <SummerOffersLink
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-charcoal rounded-full font-medium hover:shadow-lg hover:shadow-white/20 transition-all"
-                  aria-label={`${summerResetCopy.hero.primaryCta} — view summer offers on pricing`}
-                >
-                  {summerResetCopy.hero.primaryCta}
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-0.5 transition-transform"
-                    aria-hidden
-                  />
-                </SummerOffersLink>
-                <a
-                  href="/book"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/30 text-white font-medium hover:border-white transition-colors"
-                  aria-label={`${summerResetCopy.hero.secondaryCta} — open class schedule`}
-                >
-                  {summerResetCopy.hero.secondaryCta}
-                </a>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={0.2}>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a href="/book" className="btn-primary">
+                Book a class
+                <ArrowRight size={16} aria-hidden />
+              </a>
+              <SummerOffersLink className="btn-ghost-on-dark">
+                {summerResetCopy.hero.primaryCta}
+              </SummerOffersLink>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

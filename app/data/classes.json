@@ -1,8 +1,18 @@
 [
   {
+    "_id": "class-4",
+    "className": "Alva Sculpt",
+    "description": "Experience the signature Alva workout. This dynamic, full body reformer class blends athletic movement with the precision of Pilates. Expect continuous, flowing sequences, seamless transitions, and controlled resistance that elevate your heart rate while building lean muscle, endurance, balance, and deep core strength — all while remaining gentle on your joints.\n\nThis invigorating workout will leave you feeling stronger, energized, and beautifully sculpted.",
+    "classType": "Group Class",
+    "durationMinutes": 50,
+    "difficultyLevel": "Signature Class • All Levels",
+    "classImage": "/class-alva-sculpt.jpg",
+    "bookingUrl": "/book"
+  },
+  {
     "_id": "class-2",
     "className": "Alva Foundation",
-    "description": "Start your Pilates journey with Alva Foundation, a full-body reformer class designed to teach the fundamentals of movement, alignment, and core control. Focus on building strength, improving posture, and activating your glutes and core through slow, precise, and mindful exercises. Suitable for true beginners, this class provides clear guidance and modifications to ensure a safe and effective practice while establishing a solid foundation for all future Pilates classes.",
+    "description": "Begin your Pilates journey with confidence. Alva Foundation introduces the essential principles of movement, alignment, breath, and core control through expert guidance and mindful movement. Learn the fundamentals of reformer Pilates while building strength, improving posture, enhancing body awareness, and developing the confidence to move with precision and control. Whether you are new to Pilates or returning after time away, this welcoming class provides the foundation for a safe, effective, and lasting practice.",
     "classType": "Group Class",
     "durationMinutes": 50,
     "difficultyLevel": "Beginner • Level 1",
@@ -12,31 +22,41 @@
   {
     "_id": "class-1",
     "className": "Alva Progress",
-    "description": "Step beyond the basics with this all-levels reformer class designed to challenge, strengthen, and mobilize your body. Alva Progress builds on foundational Pilates skills, offering controlled, low-impact sequences that enhance core stability, alignment, and overall strength. With modifications and progressions provided, this class is suitable for everyone—from those ready to move beyond beginner work to experienced clients seeking mindful, full-body conditioning.",
+    "description": "Refine your movement and elevate your practice. Alva Progress builds upon the foundations of Pilates through thoughtfully layered sequences that develop strength, precision, and control. This full-body reformer class deepens your connection to movement while enhancing core stability, balance, mobility, and coordination, all while reinforcing exceptional technique.\n\nWith expert guidance, progressions, and modifications throughout, this class is the perfect next step for those ready to build upon the fundamentals and continue progressing with confidence.",
     "classType": "Group Class",
     "durationMinutes": 50,
-    "difficultyLevel": "All Levels • Level 1.5 & up",
-    "classImage": "/class-alva-progress.jpg",
-    "bookingUrl": "/book"
-  },
-  {
-    "_id": "class-4",
-    "className": "Alva Sculpt",
-    "description": "All levels are welcome, though we recommend some familiarity with Pilates fundamentals. A high-energy, low-impact class designed to elevate your heart rate while continuously challenging your body. Through dynamic, fast-paced transitions and controlled movements, Alva Sculpt builds strength, coordination, mobility, and balance, leaving you feeling stronger, more energized, and sculpted.",
-    "classType": "Group Class",
-    "durationMinutes": 50,
-    "difficultyLevel": "All Levels • Fundamentals recommended",
-    "classImage": "/class-alva-sculpt.jpg",
+    "difficultyLevel": "Intermediate • Level 1.5+",
+    "classImage": "/about-philosophy.jpg",
     "bookingUrl": "/book"
   },
   {
     "_id": "class-5",
-    "className": "Cardio Jump. ALVA",
-    "description": "An upbeat, low-impact class ideal for those who love a strong cardio workout, without the strain on the joints. Using the Jump board, you'll move through plyometric-inspired sequences powered by adjustable spring resistance rather than gravity, creating an effective and joint-friendly aerobic experience. Expect a fast-paced, continuous flow with evolving sequences and seamless transitions that keep the body challenged and the mind engaged. Each class is designed to build endurance, coordination, and full-body strength while keeping your practice fresh and dynamic. A fun, energizing way to elevate your heart rate, sculpt the body, and leave feeling strong, light, and recharged.",
+    "className": "Alva Cardio Jump  ",
+    "description": "Take your Pilates practice to new heights with Cardio Jump, Alva's most athletic reformer experience. Using the jumpboard, this dynamic, low-impact class combines explosive movement with Pilates precision to deliver an exhilarating full-body workout that challenges both your strength and cardiovascular endurance. Improve lower-body power, core stability, coordination, agility, and balance through athletic intervals designed to keep your heart rate elevated while remaining gentle on your joints. Perfect for members looking to increase intensity, build endurance, and experience a fun, energizing twist on traditional reformer Pilates.",
     "classType": "Group Class",
     "durationMinutes": 50,
     "difficultyLevel": "Advanced • Level 2",
-    "classImage": "/class-cardio-jump-alva.png",
+    "classImage": "/class-cardio-jump.jpg",
+    "bookingUrl": "/book"
+  },
+  {
+    "_id": "class-6",
+    "className": "Alva Stretch & Flow",
+    "description": "Slow down, restore, and reconnect with your body. Alva Stretch & Flow is a restorative reformer class designed to improve flexibility, mobility, posture, and overall movement quality through mindful movement, intentional breathwork, and gentle flowing sequences. Release built up tension, increase your range of motion, and support recovery while enhancing balance, body awareness, and joint mobility.\n\nWhether you are recovering after an intense workout, looking to reduce everyday stress, or simply seeking a slower paced Pilates experience, this class will leave you feeling refreshed, lengthened, centered, and renewed.",
+    "classType": "Group Class",
+    "durationMinutes": 50,
+    "difficultyLevel": "All Levels",
+    "classImage": "/intentional-movement.jpg",
+    "bookingUrl": "/book"
+  },
+  {
+    "_id": "class-7",
+    "className": "Alva Lower Body",
+    "description": "Strengthen, sculpt, and elevate your lower body in this dynamic reformer class. Alva Lower Body targets the glutes, hamstrings, quads, hips, and core through controlled resistance, stability work, and precise movement sequences. You will build strength, improve balance, enhance posture, and develop functional power while maintaining the grace and mindfulness of traditional Pilates.\n\nLow impact yet highly effective, this class delivers lean muscle definition, better movement quality, and a renewed sense of confidence and stability. Perfect for all levels seeking a focused, energizing lower body workout.",
+    "classType": "Group Class",
+    "durationMinutes": 50,
+    "difficultyLevel": "All Levels • Glutes & Lower Body",
+    "classImage": "/our-story-studio.jpg",
     "bookingUrl": "/book"
   }
 ]

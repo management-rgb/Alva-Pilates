@@ -21,16 +21,28 @@ export const Reveal = ({
     const element = ref.current;
     if (!element) return;
 
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReduced) {
+      element.classList.add("is-visible");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            element.classList.add("is-visible");
-          }, delay * 1000);
+          const show = () => element.classList.add("is-visible");
+          if (delay > 0) {
+            setTimeout(show, delay * 1000);
+          } else {
+            show();
+          }
           observer.unobserve(element);
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
     observer.observe(element);
@@ -40,13 +52,13 @@ export const Reveal = ({
   const getTransform = () => {
     switch (direction) {
       case "up":
-        return "translateY(40px)";
+        return "translateY(18px)";
       case "down":
-        return "translateY(-40px)";
+        return "translateY(-18px)";
       case "left":
-        return "translateX(40px)";
+        return "translateX(18px)";
       case "right":
-        return "translateX(-40px)";
+        return "translateX(-18px)";
       default:
         return "none";
     }
@@ -66,4 +78,3 @@ export const Reveal = ({
     </div>
   );
 };
-

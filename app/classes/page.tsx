@@ -2,94 +2,104 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Users, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
 import { getAllClasses } from "../lib/data";
-import { getDifficultyBadgeClassName } from "../lib/classDifficultyStyles";
+import { studioImagery } from "../lib/studioImagery";
 
 export default function ClassesPage() {
   const classes = getAllClasses();
 
+  const pillars = [
+    {
+      title: "Small class sizes",
+      description:
+        "Limited capacity ensures personalized attention and proper form corrections.",
+    },
+    {
+      title: "Flexible scheduling",
+      description:
+        "Multiple class times throughout the week to fit your lifestyle.",
+    },
+    {
+      title: "Progressive programming",
+      description:
+        "Classes build on each other so you advance safely and confidently.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="relative min-h-[min(70svh,720px)] overflow-hidden bg-charcoal">
+        <Image
+          src={studioImagery.heroStudio}
+          alt="Reformer class at Alva Pilates"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,38,34,0.35)_0%,rgba(43,38,34,0.62)_100%)]" />
+        <div className="relative z-10 mx-auto flex min-h-[min(70svh,720px)] max-w-[100rem] flex-col justify-end px-6 pb-16 pt-44 lg:px-14 lg:pb-24">
           <Reveal>
-            <div className="text-center space-y-6">
-              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal">
-                Our Classes
-              </h1>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
-                From reformer Pilates to private sessions, we offer a range of
-                classes designed to meet you where you are and help you reach
-                your goals.
-              </p>
-            </div>
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-primary">
+              Practice
+            </p>
+            <h1 className="mt-6 max-w-3xl font-heading text-5xl font-medium leading-[0.92] tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+              Our classes
+            </h1>
+            <p className="mt-7 max-w-lg text-base leading-[1.85] text-on-dark/80 lg:text-lg">
+              From foundations to advanced reformer — classes designed to meet
+              you where you are and help you progress.
+            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Classes Grid */}
-      <section className="py-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <section className="surface-ivory border-b border-border px-6 py-24 lg:px-14 lg:py-32">
+        <div className="mx-auto max-w-[100rem]">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-16 border-t border-border pt-12 md:grid-cols-2 lg:grid-cols-3 lg:pt-16">
             {classes.map((classItem, index) => (
-              <Reveal key={classItem._id} delay={index * 0.1}>
+              <Reveal key={classItem._id} delay={index * 0.05}>
                 <Link
                   href={`/classes/${classItem._id}`}
-                  className="block min-w-0 bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group"
+                  className="group flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
-                  <div className="h-64 overflow-hidden relative w-full">
+                  <div className="relative aspect-[3/4] max-h-[440px] w-full overflow-hidden bg-secondary">
                     <Image
                       src={classItem.classImage}
                       alt={classItem.className}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       priority={index === 0}
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                     />
                   </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-heading text-2xl font-semibold text-charcoal">
-                        {classItem.className}
-                      </h3>
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${getDifficultyBadgeClassName(
-                          classItem.difficultyLevel
-                        )}`}
-                      >
-                        {classItem.difficultyLevel}
+                  <div className="flex flex-1 flex-col border-t border-border pt-6">
+                    <div className="mb-4 flex items-center justify-between gap-4">
+                      <span className="text-[0.625rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+                    <p className="text-[0.6875rem] font-medium tracking-[0.06em] text-muted">
+                      {classItem.difficultyLevel}
+                      <span className="mx-2 text-border" aria-hidden>
+                        ·
                       </span>
+                      {classItem.durationMinutes} min
+                    </p>
                     </div>
-
-                    <div className="flex items-center gap-2 text-charcoal/70">
-                      <Users size={16} />
-                      <span className="font-paragraph text-sm">
-                        {classItem.classType}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-charcoal/70">
-                      <Clock size={16} />
-                      <span className="font-paragraph text-sm">
-                        {classItem.durationMinutes} minutes
-                      </span>
-                    </div>
-
-                    <p className="font-paragraph text-base text-charcoal/70 leading-relaxed line-clamp-3">
+                    <h3 className="mt-3 font-heading text-[1.75rem] font-medium tracking-tight text-foreground">
+                      {classItem.className.trim()}
+                    </h3>
+                    <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
                       {classItem.description}
                     </p>
-
-                    <div className="pt-4 flex items-center gap-2 text-primary font-paragraph text-sm font-medium">
-                      Learn More
-                      <ArrowRight size={16} />
-                    </div>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-foreground transition-colors group-hover:text-primary">
+                      Learn more
+                      <ArrowUpRight size={14} aria-hidden />
+                    </span>
                   </div>
                 </Link>
               </Reveal>
@@ -98,90 +108,51 @@ export default function ClassesPage() {
         </div>
       </section>
 
-      {/* Why Choose Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8 bg-secondary">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="surface-secondary border-b border-border px-6 py-28 lg:px-14 lg:py-36">
+        <div className="mx-auto max-w-[100rem]">
           <Reveal>
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal mb-4">
-                Why Choose Alva Pilates
+            <div className="mb-14 max-w-2xl space-y-5 lg:mb-18">
+              <div className="flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                <span className="text-muted">02</span>
+                <span className="h-px w-10 bg-border" aria-hidden />
+                <p className="text-primary">Why Alva</p>
+              </div>
+              <h2 className="font-heading text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
+                Built for real progress.
               </h2>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-2xl mx-auto">
-                Every class is designed to deliver results in a supportive,
-                premium environment.
-              </p>
             </div>
           </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            <Reveal>
-              <div className="text-center space-y-4">
-                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                  <Users size={28} className="text-primary" />
+          <div className="grid grid-cols-1 border-t border-border md:grid-cols-3">
+            {pillars.map((pillar, index) => (
+              <Reveal key={pillar.title} delay={index * 0.08}>
+                <div className={`h-full py-8 md:px-10 ${index > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}>
+                  <span className="mb-8 block text-[0.625rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-muted">
+                    {pillar.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-2xl font-semibold text-charcoal">
-                  Small Class Sizes
-                </h3>
-                <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                  Limited capacity ensures personalized attention and proper
-                  form corrections.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="text-center space-y-4">
-                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                  <Clock size={28} className="text-primary" />
-                </div>
-                <h3 className="font-heading text-2xl font-semibold text-charcoal">
-                  Flexible Scheduling
-                </h3>
-                <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                  Multiple class times throughout the week to fit your busy
-                  lifestyle.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <div className="text-center space-y-4">
-                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                  <ArrowRight size={28} className="text-primary" />
-                </div>
-                <h3 className="font-heading text-2xl font-semibold text-charcoal">
-                  Progressive Programming
-                </h3>
-                <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
-                  Classes are designed to build on each other, helping you
-                  advance safely.
-                </p>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="surface-espresso border-y border-on-dark/15 px-6 py-28 text-center lg:px-14 lg:py-36">
+        <div className="mx-auto max-w-2xl">
           <Reveal>
-            <div className="bg-charcoal text-white rounded-2xl p-8 lg:p-16 text-center">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6">
-                Ready to Get Started?
-              </h2>
-              <p className="font-paragraph text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
-                Book your first class today and experience the Alva Pilates
-                difference.
-              </p>
-              <a
-                href="/book"
-                className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2"
-              >
-                Book a Class
-                <ArrowRight size={18} />
-              </a>
-            </div>
+            <h2 className="font-heading text-4xl font-medium tracking-tight text-on-dark lg:text-5xl">
+              Ready to begin?
+            </h2>
+            <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-muted-dark lg:text-lg">
+              Book your first class and experience intentional movement in a
+              calm, elevated studio.
+            </p>
+            <a href="/book" className="btn-primary mx-auto mt-10">
+              Book a class
+            </a>
           </Reveal>
         </div>
       </section>
@@ -190,4 +161,3 @@ export default function ClassesPage() {
     </div>
   );
 }
-

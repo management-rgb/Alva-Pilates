@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
@@ -9,108 +10,86 @@ import { studioImagery } from "../lib/studioImagery";
 export default function AboutPage() {
   const values = [
     {
-      title: "Expert Instruction",
+      title: "Expert instruction",
       description:
-        "Our certified instructors bring years of experience and a deep understanding of movement, anatomy, and form.",
+        "Certified instructors with deep understanding of movement, anatomy, and form.",
     },
     {
-      title: "Intentional Movement",
+      title: "Intentional practice",
       description:
-        "Every exercise is purposeful, focusing on quality over quantity to deliver real, lasting results.",
+        "Every exercise is purposeful — quality over quantity for lasting results.",
     },
     {
-      title: "Premium Experience",
+      title: "Personal attention",
       description:
-        "From our state-of-the-art equipment to our serene studio environment, every detail is designed for your comfort.",
-    },
-    {
-      title: "Personalized Attention",
-      description:
-        "Small class sizes ensure you receive the individual guidance and corrections you need to progress safely.",
+        "Small class sizes so you get the guidance and corrections you need.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      {/* Editorial hero — photography first */}
+      <section className="relative min-h-[min(85svh,900px)] overflow-hidden bg-charcoal">
+        <Image
+          src={studioImagery.ourStory}
+          alt="Alva Pilates — warm lit arches and serene studio architecture"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,38,34,0.3)_0%,rgba(43,38,34,0.55)_100%)]" />
+        <div className="relative z-10 mx-auto flex min-h-[min(85svh,900px)] max-w-[100rem] flex-col justify-end px-6 pb-20 pt-44 lg:px-14 lg:pb-28">
           <Reveal>
-            <div className="space-y-6 mb-16">
-              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal text-center">
-                Our Story
-              </h1>
-              <div className="max-w-3xl mx-auto space-y-5 font-paragraph text-lg text-charcoal/70 leading-relaxed">
-                <p>
-                  Alva Pilates began with our desire to create more than just a
-                  studio.
-                </p>
-                <p>
-                  We envisioned a space where movement becomes an experience —
-                  defined by refined design, expert instruction, and meaningful
-                  connection.
-                </p>
-                <p>
-                  Every element reflects our commitment to quality, intention,
-                  and elevated living.
-                </p>
-                <p>
-                  At its core, Alva is our way of bringing people together
-                  through movement, strength, and a shared sense of belonging.
-                </p>
-              </div>
-            </div>
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-primary">
+              About Alva
+            </p>
+            <h1 className="mt-6 max-w-3xl font-heading text-5xl font-medium leading-[0.92] tracking-tight text-on-dark sm:text-6xl lg:text-7xl xl:text-8xl">
+              Our story
+            </h1>
+            <p className="mt-8 max-w-xl text-base leading-[1.85] text-on-dark/80 lg:text-lg">
+              A boutique reformer studio in Valencia — built for intentional
+              movement, expert guidance, and a shared sense of belonging.
+            </p>
           </Reveal>
+        </div>
+      </section>
 
-          <Reveal delay={0.2}>
-            <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] mb-16 relative">
-              <Image
-                src={studioImagery.ourStory}
-                alt="Alva Pilates — warm lit arches and serene studio architecture"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, min(100rem, 100vw)"
-                priority
-              />
+      {/* Story */}
+      <section className="surface-ivory border-b border-border px-6 py-28 lg:px-14 lg:py-40">
+        <div className="mx-auto max-w-[100rem]">
+          <Reveal>
+            <div className="mx-auto grid max-w-4xl gap-8 border-t border-border pt-10 text-lg leading-[1.85] text-muted sm:grid-cols-[3rem_1fr] sm:gap-10">
+              <span className="text-[0.625rem] tracking-[0.1em] text-muted">01</span>
+              <div className="space-y-7">
+              <p>
+                Alva Pilates began with our desire to create more than just a
+                studio.
+              </p>
+              <p>
+                We envisioned a space where movement becomes an experience —
+                defined by refined design, expert instruction, and meaningful
+                connection.
+              </p>
+              <p>
+                Every element reflects our commitment to quality, intention, and
+                elevated living. At its core, Alva is our way of bringing people
+                together through movement, strength, and belonging.
+              </p>
+              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8 bg-secondary">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <Reveal direction="right">
-              <div className="space-y-6">
-                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
-                  Our Philosophy
-                </h2>
-                <p className="font-paragraph text-lg text-charcoal/80 leading-relaxed">
-                  At Alva Pilates, we believe that true transformation comes
-                  from intentional practice. Every movement is an opportunity to
-                  connect with your body, build strength, and cultivate
-                  awareness.
-                </p>
-                <p className="font-paragraph text-lg text-charcoal/80 leading-relaxed">
-                  We&apos;re not about quick fixes or trendy workouts. We&apos;re
-                  about sustainable, long-term results achieved through expert
-                  guidance, proper form, and a commitment to excellence.
-                </p>
-                <p className="font-paragraph text-lg text-charcoal/80 leading-relaxed">
-                  Our studio is designed to be a sanctuary—a place where you can
-                  escape the noise of daily life and focus entirely on your
-                  practice. From the moment you step through our doors,
-                  you&apos;ll experience the difference that attention to detail
-                  makes.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal direction="left">
-              <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] relative">
+      {/* Philosophy — photo + text */}
+      <section className="surface-secondary border-b border-border px-6 py-28 lg:px-14 lg:py-40">
+        <div className="mx-auto max-w-[100rem]">
+          <div className="grid grid-cols-1 items-stretch gap-14 border-t border-border pt-12 lg:grid-cols-2 lg:gap-0 lg:pt-16">
+            <Reveal direction="right" className="lg:pr-16 xl:pr-24">
+              <div className="relative h-[420px] overflow-hidden lg:h-[560px]">
                 <Image
                   src={studioImagery.philosophy}
                   alt="Instructor guiding a client on the reformer in the Alva Pilates studio"
@@ -120,33 +99,60 @@ export default function AboutPage() {
                 />
               </div>
             </Reveal>
+            <Reveal direction="left" className="lg:border-l lg:border-border lg:pl-16 xl:pl-24">
+              <div className="space-y-7">
+                <div className="flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                  <span className="text-muted">02</span>
+                  <span className="h-px w-10 bg-border" aria-hidden />
+                  <p className="text-primary">Philosophy</p>
+                </div>
+                <h2 className="font-heading text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
+                  Practice with intention.
+                </h2>
+                <p className="text-base leading-[1.85] text-muted lg:text-lg">
+                  True transformation comes from intentional practice. Every
+                  movement is an opportunity to connect with your body, build
+                  strength, and cultivate awareness.
+                </p>
+                <p className="text-base leading-[1.85] text-muted lg:text-lg">
+                  We&apos;re not about quick fixes or trendy workouts. We&apos;re
+                  about sustainable results through expert guidance, proper form,
+                  and a commitment to excellence.
+                </p>
+                <p className="text-base leading-[1.85] text-muted lg:text-lg">
+                  Our studio is a sanctuary — a place to escape the noise and
+                  focus entirely on your practice.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      {/* Values — typography, not cards */}
+      <section className="surface-ivory border-b border-border px-6 py-28 lg:px-14 lg:py-40">
+        <div className="mx-auto max-w-[100rem]">
           <Reveal>
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal mb-4">
-                What Sets Us Apart
+            <div className="mb-16 max-w-2xl space-y-5 lg:mb-20">
+              <div className="flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                <span className="text-muted">03</span>
+                <span className="h-px w-10 bg-border" aria-hidden />
+                <p className="text-primary">What sets us apart</p>
+              </div>
+              <h2 className="font-heading text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
+                An elevated approach to practice.
               </h2>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-2xl mx-auto">
-                We&apos;re committed to providing an unparalleled Pilates
-                experience.
-              </p>
             </div>
           </Reveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 border-t border-border md:grid-cols-3">
             {values.map((value, index) => (
-              <Reveal key={value.title} delay={index * 0.1}>
-                <div className="bg-white p-8 rounded-2xl">
-                  <h3 className="font-heading text-2xl font-semibold text-charcoal mb-4">
+              <Reveal key={value.title} delay={index * 0.08}>
+                <div className={`h-full py-8 md:px-10 ${index > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}>
+                  <p className="mb-8 text-[0.625rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</p>
+                  <h3 className="font-heading text-2xl font-medium text-foreground">
                     {value.title}
                   </h3>
-                  <p className="font-paragraph text-base text-charcoal/70 leading-relaxed">
+                  <p className="mt-4 text-base leading-relaxed text-muted">
                     {value.description}
                   </p>
                 </div>
@@ -156,24 +162,27 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Commitment Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8 bg-charcoal text-white">
-        <div className="max-w-[100rem] mx-auto text-center">
+      {/* Commitment CTA */}
+      <section className="surface-espresso border-y border-on-dark/15 px-6 py-28 text-on-dark lg:px-14 lg:py-36">
+        <div className="mx-auto max-w-[100rem] text-center">
           <Reveal>
-            <div className="max-w-3xl mx-auto space-y-6">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold">
-                Our Commitment to You
+            <div className="mx-auto max-w-2xl space-y-7">
+              <div className="flex items-center justify-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                <span className="text-on-dark/45">04</span>
+                <span className="h-px w-10 bg-on-dark/20" aria-hidden />
+                <span className="text-primary">Begin</span>
+              </div>
+              <h2 className="font-heading text-4xl font-medium tracking-tight text-on-dark lg:text-5xl">
+                Our commitment to you
               </h2>
-              <p className="font-paragraph text-lg text-white/80 leading-relaxed">
-                We&apos;re dedicated to helping you achieve your goals, whether
-                that&apos;s building strength, improving posture, recovering
-                from injury, or simply finding a mindful movement practice that
-                fits your lifestyle.
+              <p className="text-base leading-[1.85] text-muted-dark lg:text-lg">
+                Whether you&apos;re building strength, improving posture,
+                recovering from injury, or finding a mindful practice — we&apos;re
+                here to support you every step of the way.
               </p>
-              <p className="font-paragraph text-lg text-white/80 leading-relaxed">
-                Every class at Alva Pilates is an investment in your well-being.
-                We&apos;re here to support you every step of the way.
-              </p>
+              <Link href="/book" className="btn-primary mx-auto mt-4">
+                Book a class
+              </Link>
             </div>
           </Reveal>
         </div>
@@ -183,4 +192,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

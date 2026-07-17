@@ -33,7 +33,7 @@ export default function SummerResetStructuredData() {
       },
       {
         "@type": "Offer",
-        name: "Summer Reset — 3-Class Intro",
+        name: `Summer Reset — ${threeClassIntro.title}`,
         description: threeClassIntro.description,
         price: "69",
         priceCurrency: "USD",
@@ -41,7 +41,7 @@ export default function SummerResetStructuredData() {
         priceValidUntil: summerResetEndDate,
         availability: "https://schema.org/InStock",
         seller: { "@id": "https://www.alvapilates.com/#localbusiness" },
-        url: "https://www.alvapilates.com/#summer-offers",
+        url: "https://www.alvapilates.com/pricing#get-started",
       },
       {
         "@type": "Offer",
@@ -53,7 +53,7 @@ export default function SummerResetStructuredData() {
         priceValidUntil: summerResetEndDate,
         availability: "https://schema.org/InStock",
         seller: { "@id": "https://www.alvapilates.com/#localbusiness" },
-        url: "https://www.alvapilates.com/#summer-offers",
+        url: "https://www.alvapilates.com/pricing#get-started",
       },
       {
         "@type": "Offer",
@@ -63,7 +63,7 @@ export default function SummerResetStructuredData() {
         priceValidUntil: summerResetEndDate,
         availability: "https://schema.org/InStock",
         seller: { "@id": "https://www.alvapilates.com/#localbusiness" },
-        url: "https://www.alvapilates.com/#summer-offers",
+        url: "https://www.alvapilates.com/pricing#group-packages",
       },
     ],
   };

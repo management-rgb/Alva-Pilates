@@ -1,6 +1,5 @@
 "use client";
 
-import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MindbodyProspectsWidget from "../components/MindbodyProspectsWidget";
@@ -8,168 +7,128 @@ import { Reveal } from "../components/sections/Reveal";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <Reveal>
-            <div className="text-center space-y-6">
-              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal">
-                Contact & Location
-              </h1>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
-                We&apos;d love to hear from you. Visit us in Valencia or send us
-                a message.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Contact Info & Form */}
-      <section className="py-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Contact Information */}
-            <Reveal direction="right">
-              <div className="space-y-8">
-                <div>
-                  <h2 className="font-heading text-3xl lg:text-4xl font-bold text-charcoal mb-8">
-                    Visit Us
-                  </h2>
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                        <MapPin size={24} className="text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl font-semibold text-charcoal mb-2">
-                          Location
-                        </h3>
-                        <p className="font-paragraph text-base text-charcoal/80 leading-relaxed">
-                          23840 Copper Hill Drive
-                          <br />
-                          Valencia, CA 91354
-                        </p>
-                        <p className="font-paragraph text-sm text-charcoal/60 mt-2">
-                          Ample parking available
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                        <Clock size={24} className="text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl font-semibold text-charcoal mb-2">
-                          Studio Hours
-                        </h3>
-                        <div className="font-paragraph text-base text-charcoal/80 space-y-1">
-                          <p>Monday - Saturday: 7:00 AM - 7:00 PM</p>
-                          <p>Sunday: 9:00 AM - 12:00 PM</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                        <Mail size={24} className="text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl font-semibold text-charcoal mb-2">
-                          Email
-                        </h3>
-                        <a
-                          href="mailto:info@formaluxecollective.com"
-                          className="font-paragraph text-base text-charcoal/80 hover:text-primary transition-colors"
-                        >
-                          info@formaluxecollective.com
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-3 rounded-full flex-shrink-0">
-                        <Phone size={24} className="text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading text-xl font-semibold text-charcoal mb-2">
-                          Phone
-                        </h3>
-                        <a
-                          href="tel:+16619777898"
-                          className="font-paragraph text-base text-charcoal/80 hover:text-primary transition-colors"
-                        >
-                          (661) 977-7898
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+      <section className="surface-secondary border-b border-border px-6 pb-20 pt-36 lg:px-14 lg:pb-28 lg:pt-44">
+        <div className="mx-auto max-w-[100rem]">
+          <div className="grid grid-cols-1 items-start gap-12 border-t border-border pt-10 lg:grid-cols-12 lg:gap-0 lg:pt-14">
+            {/* Form first — primary action */}
+            <Reveal className="order-1 lg:order-2 lg:col-span-7 lg:border-l lg:border-border lg:pl-16 xl:pl-20">
+              <div className="border border-border bg-card px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
+                <div className="mb-8 flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                  <span className="text-muted">01</span>
+                  <span className="h-px w-10 bg-border" aria-hidden />
+                  <p className="text-primary">Contact</p>
+                </div>
+                <h1 className="font-heading text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+                  Send a message
+                </h1>
+                <p className="mt-4 max-w-md text-sm leading-[1.8] text-muted sm:text-base">
+                  Reach out with questions about classes, memberships, or
+                  visiting the studio.
+                </p>
+                <div className="mt-8 border-t border-border pt-8">
+                  <MindbodyProspectsWidget />
                 </div>
               </div>
             </Reveal>
 
-            {/* Contact Widget */}
-            <Reveal direction="left">
-              <div className="bg-white p-6 lg:p-8 rounded-2xl border border-foreground/10 shadow-md max-w-xl mx-auto w-full">
-                <h2 className="font-heading text-2xl lg:text-3xl font-bold text-charcoal mb-6">
-                  Contact Us
-                </h2>
-                <div className="bg-white">
-                  <MindbodyProspectsWidget />
+            {/* Studio details — secondary column */}
+            <Reveal
+              delay={0.06}
+              className="order-2 lg:order-1 lg:col-span-5 lg:pr-16 xl:pr-20"
+            >
+              <div className="space-y-10">
+                <div>
+                  <div className="flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
+                    <span className="text-muted">02</span>
+                    <span className="h-px w-10 bg-border" aria-hidden />
+                    <p className="text-primary">Visit</p>
+                  </div>
+                  <h2 className="mt-5 font-heading text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+                    Studio details
+                  </h2>
                 </div>
+
+                <div className="border-t border-border">
+                  <div className="border-b border-border py-5">
+                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted">
+                      Location
+                    </p>
+                    <p className="mt-3 text-base leading-relaxed text-foreground">
+                      23840 Copper Hill Drive
+                      <br />
+                      Valencia, CA 91354
+                    </p>
+                    <p className="mt-2 text-sm text-muted">
+                      Ample parking available
+                    </p>
+                  </div>
+                  <div className="border-b border-border py-5">
+                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted">
+                      Hours
+                    </p>
+                    <div className="mt-3 space-y-1 text-base text-foreground">
+                      <p>Monday – Saturday · 7:00 AM – 7:00 PM</p>
+                      <p>Sunday · 9:00 AM – 12:00 PM</p>
+                    </div>
+                  </div>
+                  <div className="border-b border-border py-5">
+                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted">
+                      Email
+                    </p>
+                    <a
+                      href="mailto:info@formaluxecollective.com"
+                      className="mt-3 inline-block text-base text-foreground transition-colors hover:text-primary"
+                    >
+                      info@formaluxecollective.com
+                    </a>
+                  </div>
+                  <div className="border-b border-border py-5">
+                    <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted">
+                      Phone
+                    </p>
+                    <a
+                      href="tel:+16619777898"
+                      className="mt-3 inline-block text-base text-foreground transition-colors hover:text-primary"
+                    >
+                      (661) 977-7898
+                    </a>
+                  </div>
+                </div>
+
+                <a href="/book" className="btn-primary">
+                  Book a class
+                </a>
               </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-16 px-6 lg:px-8 bg-secondary">
-        <div className="max-w-[100rem] mx-auto">
-          <Reveal>
-            <div className="rounded-2xl overflow-hidden h-[400px] lg:h-[500px] bg-charcoal/10">
-              <iframe
-                src="https://www.google.com/maps?q=23840+Copper+Hill+Drive,+Valencia,+CA+91354&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Alva Pilates Location"
-              />
-            </div>
-          </Reveal>
+      <section className="surface-ivory border-b border-border px-0 pb-0 pt-0">
+        <div className="h-[420px] w-full overflow-hidden lg:h-[560px]">
+          <iframe
+            src="https://www.google.com/maps?q=23840+Copper+Hill+Drive,+Valencia,+CA+91354&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Alva Pilates Location"
+          />
         </div>
-      </section>
-
-      {/* Directions CTA */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
-          <Reveal>
-            <div className="bg-charcoal text-white rounded-2xl p-8 lg:p-16 text-center">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6">
-                Get Directions
-              </h2>
-              <p className="font-paragraph text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
-                We&apos;re conveniently located at 23840 Copper Hill Drive in Valencia, 
-                Santa Clarita with easy access and ample parking.
-              </p>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=23840+Copper+Hill+Drive,+Valencia,+CA+91354"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2"
-              >
-                Open in Google Maps
-                <MapPin size={18} />
-              </a>
-            </div>
-          </Reveal>
+        <div className="px-6 py-10 text-center lg:px-14">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=23840+Copper+Hill+Drive,+Valencia,+CA+91354"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium tracking-wide text-foreground transition-colors hover:text-primary"
+          >
+            Open in Google Maps
+          </a>
         </div>
       </section>
 
@@ -177,4 +136,3 @@ export default function ContactPage() {
     </div>
   );
 }
-

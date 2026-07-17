@@ -6,27 +6,30 @@ import MindbodyRegistrationWidget from "../components/MindbodyRegistrationWidget
 
 export default function RegisterPage() {
   return (
-    <div className="min-h-screen bg-background text-charcoal">
+    <div className="min-h-screen bg-charcoal text-charcoal">
       <Header />
-      <main className="pt-40 pb-24 px-6 lg:px-10 max-w-5xl mx-auto">
+      <main className="surface-espresso luxury-dark-scope border-b border-on-dark/15 pt-40 pb-24 px-6 lg:px-10">
+        <div className="max-w-5xl mx-auto">
         <div className="space-y-3 mb-8 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold">
-            Sign Up
-          </p>
-          <h1 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
+          <div className="flex items-center justify-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em]">
+            <span className="text-muted">01</span>
+            <span className="h-px w-10 bg-border" aria-hidden />
+            <p className="text-primary">Sign Up</p>
+          </div>
+          <h1 className="font-heading text-4xl lg:text-5xl font-semibold tracking-tight text-charcoal">
             Register for Classes
           </h1>
-          <p className="font-paragraph text-base lg:text-lg text-charcoal/70 max-w-3xl mx-auto">
+          <p className="font-paragraph text-base lg:text-lg text-muted max-w-3xl mx-auto">
             Create your account and complete your registration.
           </p>
         </div>
 
-        <div className="bg-white border border-[#E5E0DA] rounded-2xl shadow-lg p-4 lg:p-6">
+        <div className="surface-glass-light border-y border-border p-4 text-charcoal lg:p-6">
           <MindbodyRegistrationWidget />
+        </div>
         </div>
       </main>
       <Footer />
     </div>
   );
 }
-

@@ -31,51 +31,58 @@ export default function FAQPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      {/* Hero Section */}
-      <section className="pt-40 pb-16 px-6 lg:px-8">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="surface-ivory px-6 pb-12 pt-40 lg:px-14 lg:pb-16 lg:pt-48">
+        <div className="mx-auto max-w-3xl">
           <Reveal>
-            <div className="text-center space-y-6">
-              <h1 className="font-heading text-5xl lg:text-7xl font-bold text-charcoal">
-                Frequently Asked Questions
+            <div className="space-y-6 text-center">
+              <div className="flex items-center justify-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em]">
+                <span className="text-muted">01</span>
+                <span className="h-px w-10 bg-border" aria-hidden />
+                <p className="text-primary">Support</p>
+              </div>
+              <h1 className="font-heading text-5xl font-medium tracking-tight text-foreground lg:text-6xl">
+                Frequently asked questions
               </h1>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-3xl mx-auto leading-relaxed">
-                Find answers to common questions about our classes, memberships,
-                and policies.
+              <p className="mx-auto max-w-xl text-base leading-[1.85] text-muted lg:text-lg">
+                Answers about classes, memberships, and studio policies.
               </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* FAQ Content */}
-      <section className="py-16 px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-12">
+      <section className="surface-ivory border-b border-border px-6 pb-24 lg:px-14 lg:pb-32">
+        <div className="mx-auto max-w-3xl">
+          <div className="space-y-16">
             {Object.entries(groupedFAQs).map(
               ([category, categoryFAQs], categoryIndex) => (
-                <Reveal key={category} delay={categoryIndex * 0.1}>
+                <Reveal key={category} delay={categoryIndex * 0.06}>
                   <div
                     id={category === "Policies" ? "policies" : undefined}
-                    className="space-y-6 scroll-mt-36"
+                    className="scroll-mt-36"
                   >
-                    <h2 className="font-heading text-2xl lg:text-3xl font-bold text-charcoal">
-                      {category}
-                    </h2>
-                    <Accordion type="single" collapsible className="space-y-4">
+                    <div className="mb-6 grid grid-cols-[2.5rem_1fr] items-baseline gap-4">
+                      <span className="text-[0.625rem] tracking-[0.1em] text-muted">{String(categoryIndex + 1).padStart(2, "0")}</span>
+                      <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground lg:text-3xl">
+                        {category}
+                      </h2>
+                    </div>
+                    <Accordion type="single" collapsible className="border-t border-border">
                       {categoryFAQs.map((faq) => (
                         <AccordionItem
                           key={faq._id}
                           value={faq._id}
-                          className="bg-white rounded-2xl px-6 border-none"
+                          className="border-b border-border px-0"
                         >
-                          <AccordionTrigger className="hover:no-underline">
+                          <AccordionTrigger className="py-5 text-left text-foreground hover:no-underline hover:text-primary">
                             {faq.question}
                           </AccordionTrigger>
-                          <AccordionContent>{faq.answer}</AccordionContent>
+                          <AccordionContent className="pb-5 text-muted">
+                            {faq.answer}
+                          </AccordionContent>
                         </AccordionItem>
                       ))}
                     </Accordion>
@@ -87,25 +94,18 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Still Have Questions */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8 bg-secondary">
-        <div className="max-w-[100rem] mx-auto">
+      <section className="surface-secondary border-b border-border px-6 py-24 lg:px-14 lg:py-32">
+        <div className="mx-auto max-w-2xl space-y-6 text-center">
           <Reveal>
-            <div className="text-center space-y-6">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
-                Still Have Questions?
-              </h2>
-              <p className="font-paragraph text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
-                We&apos;re here to help. Reach out to us and we&apos;ll get back
-                to you as soon as possible.
-              </p>
-              <Link
-                href="/contact"
-                className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center gap-2"
-              >
-                Contact Us
-              </Link>
-            </div>
+            <h2 className="font-heading text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
+              Still have questions?
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted lg:text-lg">
+              Reach out — we&apos;ll get back to you as soon as we can.
+            </p>
+            <Link href="/contact" className="btn-primary mx-auto mt-10">
+              Contact us
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -114,4 +114,3 @@ export default function FAQPage() {
     </div>
   );
 }
-

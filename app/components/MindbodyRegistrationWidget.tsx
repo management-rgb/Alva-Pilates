@@ -22,7 +22,7 @@ export default function MindbodyRegistrationWidget() {
   if (!ready) {
     return (
       <div
-        className="min-h-[400px] rounded-lg bg-secondary/50 border border-foreground/5"
+        className="min-h-[400px] rounded-2xl border border-border bg-secondary/40"
         aria-busy="true"
         aria-label="Loading registration form"
       />

@@ -16,21 +16,21 @@ export default function SummerResetTermsSection() {
 
   return (
     <section
-      className="py-12 lg:py-16 px-6 bg-background border-t border-charcoal/8"
+      className="surface-secondary border-t border-taupe/25 px-6 py-16 lg:px-12 lg:py-20"
       aria-labelledby="summer-terms-heading"
     >
-      <div className="max-w-3xl mx-auto">
+      <div className="mx-auto max-w-3xl">
         <Reveal>
           <Accordion type="single" collapsible>
             <AccordionItem value="summer-terms" className="border-none">
               <AccordionTrigger
                 id="summer-terms-heading"
-                className="text-xl sm:text-2xl py-4"
+                className="py-4 text-xl text-foreground hover:text-primary sm:text-2xl hover:no-underline [&[data-state=open]]:text-primary"
               >
                 {copy.heading}
               </AccordionTrigger>
-              <AccordionContent>
-                <ul className="list-disc pl-5 space-y-2 text-sm sm:text-base">
+              <AccordionContent className="text-muted">
+                <ul className="list-disc space-y-2 pl-5 text-sm sm:text-base">
                   {copy.items.map((item) => (
                     <li key={item}>{item}</li>
                   ))}

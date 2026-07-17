@@ -13,11 +13,11 @@ export function Toaster() {
         <div
           key={toast.id}
           className={cn(
-            "relative flex items-start gap-3 rounded-lg border bg-white p-4 shadow-lg transition-all",
+            "relative flex items-start gap-3 rounded-2xl border border-taupe/25 bg-card-dark p-4 text-on-dark shadow-glass transition-all",
             "animate-fade-up",
             toast.variant === "destructive"
               ? "border-destructive bg-destructive text-destructive-foreground"
-              : "border-charcoal/10"
+              : "border-border"
           )}
         >
           <div className="flex-1">
@@ -27,14 +27,14 @@ export function Toaster() {
               </p>
             )}
             {toast.description && (
-              <p className="font-paragraph text-sm text-charcoal/70 mt-1">
+              <p className="mt-1 font-paragraph text-sm text-charcoal/65">
                 {toast.description}
               </p>
             )}
           </div>
           <button
             onClick={() => dismiss(toast.id)}
-            className="text-charcoal/50 hover:text-charcoal transition-colors"
+            className="text-charcoal/50 transition-colors hover:text-charcoal"
           >
             <X size={16} />
           </button>
@@ -43,4 +43,3 @@ export function Toaster() {
     </div>
   );
 }
-

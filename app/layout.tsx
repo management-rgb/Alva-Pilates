@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Quicksand } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ErrorSuppressor from "./components/ErrorSuppressor";
@@ -11,10 +11,10 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -39,12 +39,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html 
-      lang="en" 
-      className={`${cormorant.variable} ${quicksand.variable}`}
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${inter.variable}`}
       data-scroll-behavior="smooth"
     >
-      <body className="antialiased bg-background text-foreground">
+      <body className="antialiased bg-background font-paragraph text-foreground">
         <Script
           id="alva-error-suppress-bootstrap"
           src="/error-suppress-bootstrap.js"

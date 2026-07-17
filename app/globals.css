@@ -2,50 +2,87 @@
 
 /* ========================================
    ALVA PILATES DESIGN SYSTEM
+   Boutique reformer studio — California
+   Warm · editorial · restrained · premium
    ======================================== */
 
 :root {
-  /* Primary Colors */
-  --color-primary: #8B7355;
-  --color-primary-foreground: #FFFFFF;
-  
-  /* Background Colors */
-  --color-background: #FAF8F5;
-  --color-secondary: #F5F0EA;
-  
-  /* Text Colors */
-  --color-foreground: #1A1A1A;
-  --color-charcoal: #2D2926;
-  
-  /* Accent Colors */
-  --color-destructive: #DC2626;
-  --color-destructive-foreground: #FFFFFF;
-  
-  /* Border & Ring */
-  --color-border: #E5E0DA;
-  --color-ring: #8B7355;
+  /* Accent — champagne gold (labels & rare highlights only) */
+  --color-primary: #c4a26a;
+  --color-primary-foreground: #24211f;
+  --color-taupe: #c4a26a;
+  --color-ring: #c4a26a;
+
+  /* Surfaces — limited set only */
+  --color-background: #f5f2ec;
+  --color-secondary: #ece5db;
+  --color-card: #fbf8f4;
+
+  /* Dark — single espresso */
+  --color-charcoal: #2b2622;
+  --color-espresso: #2b2622;
+  --color-card-dark: #35302b;
+
+  /* Text */
+  --color-foreground: #24211f;
+  --color-on-dark: #f5f2ec;
+  --color-muted: #706962;
+  --color-muted-dark: #b5aea4;
+
+  --color-card-glass: rgba(251, 248, 244, 0.06);
+
+  --color-destructive: #a33b32;
+  --color-destructive-foreground: #f5f2ec;
+
+  --color-border: #ddd5cb;
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --header-height: 6rem;
+  --header-cta-height: 3.125rem;
+
+  /* Soft, warm shadows — never cool gray */
+  --shadow-soft: 0 12px 36px -20px rgba(36, 33, 31, 0.14);
+  --shadow-card: 0 18px 48px -28px rgba(36, 33, 31, 0.16);
+  --shadow-card-hover: 0 28px 64px -32px rgba(36, 33, 31, 0.2);
+  --shadow-button: 0 14px 36px -18px rgba(36, 33, 31, 0.28);
+  --shadow-glass: 0 20px 48px -28px rgba(36, 33, 31, 0.22);
 }
 
 @theme inline {
-  /* Colors */
   --color-primary: var(--color-primary);
   --color-primary-foreground: var(--color-primary-foreground);
+  --color-taupe: var(--color-taupe);
   --color-background: var(--color-background);
   --color-secondary: var(--color-secondary);
   --color-foreground: var(--color-foreground);
   --color-charcoal: var(--color-charcoal);
+  --color-espresso: var(--color-espresso);
+  --color-card-dark: var(--color-card-dark);
+  --color-on-dark: var(--color-on-dark);
+  --color-muted: var(--color-muted);
+  --color-muted-dark: var(--color-muted-dark);
+  --color-card: var(--color-card);
+  --color-card-glass: var(--color-card-glass);
   --color-destructive: var(--color-destructive);
   --color-destructive-foreground: var(--color-destructive-foreground);
   --color-border: var(--color-border);
   --color-ring: var(--color-ring);
-  
-  /* Fonts */
+
   --font-heading: var(--font-cormorant);
-  --font-paragraph: var(--font-quicksand);
+  --font-paragraph: var(--font-inter);
+
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-button: var(--shadow-button);
 }
 
 /* ========================================
-   BASE STYLES
+   BASE
    ======================================== */
 
 html {
@@ -57,34 +94,284 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-paragraph), system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Selection */
 ::selection {
+  background-color: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  color: var(--color-foreground);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+.font-heading {
+  font-family: var(--font-heading), "Cormorant Garamond", Georgia, serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.font-paragraph {
+  font-family: var(--font-paragraph), Inter, system-ui, sans-serif;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* ========================================
+   BUTTONS — design system
+   Primary: espresso · Hover: gold
+   ======================================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-charcoal);
+  color: var(--color-on-dark);
+  font-family: var(--font-paragraph), Inter, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow-button);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.btn-primary:hover {
   background-color: var(--color-primary);
   color: var(--color-primary-foreground);
 }
 
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
+  background-color: transparent;
+  color: var(--color-foreground);
+  font-family: var(--font-paragraph), Inter, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-foreground);
+  background-color: color-mix(in srgb, var(--color-foreground) 4%, transparent);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+.btn-ghost-on-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--color-on-dark) 40%, transparent);
+  background-color: transparent;
+  color: var(--color-on-dark);
+  font-family: var(--font-paragraph), Inter, system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.btn-ghost-on-dark:hover {
+  border-color: color-mix(in srgb, var(--color-on-dark) 70%, transparent);
+  background-color: color-mix(in srgb, var(--color-on-dark) 10%, transparent);
+}
+
+.btn-ghost-on-dark:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
 /* ========================================
-   TYPOGRAPHY UTILITIES
+   SURFACES — flat, no glass excess
    ======================================== */
 
-.font-heading {
-  font-family: var(--font-heading), Georgia, serif;
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
 }
 
-.font-paragraph {
-  font-family: var(--font-paragraph), system-ui, sans-serif;
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-card-hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.shadow-button {
+  box-shadow: var(--shadow-button);
+}
+
+.surface-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.surface-card-dark {
+  background-color: var(--color-card-dark);
+  border: 1px solid color-mix(in srgb, var(--color-border) 28%, transparent);
+  border-radius: var(--radius-xl);
+  color: var(--color-on-dark);
+}
+
+.surface-dark,
+.surface-espresso {
+  background-color: var(--color-espresso);
+  color: var(--color-on-dark);
+}
+
+.surface-dark .text-muted,
+.surface-espresso .text-muted,
+.surface-card-dark .text-muted {
+  color: var(--color-muted-dark);
+}
+
+.surface-ivory {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.surface-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-foreground);
+}
+
+/* Legacy aliases — kept for existing components; prefer flat surfaces */
+.surface-glass {
+  background-color: var(--color-card-dark);
+  border: 1px solid color-mix(in srgb, var(--color-border) 28%, transparent);
+  color: var(--color-on-dark);
+}
+
+.surface-glass-light {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.text-on-dark-muted {
+  color: var(--color-muted-dark);
+}
+
+.luxury-dark-scope .text-charcoal {
+  color: var(--color-on-dark);
+}
+
+.luxury-dark-scope .text-muted {
+  color: var(--color-muted-dark);
+}
+
+.luxury-dark-scope .bg-card,
+.luxury-dark-scope .bg-white {
+  background-color: var(--color-card);
+  color: var(--color-foreground);
+}
+
+.luxury-dark-scope .bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-foreground);
+}
+
+.luxury-dark-scope .border-border {
+  border-color: var(--color-border);
+}
+
+.luxury-dark-scope .shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.luxury-dark-scope .surface-glass-light,
+.luxury-dark-scope .surface-glass-light .text-charcoal {
+  color: var(--color-foreground);
+}
+
+.luxury-dark-scope .surface-glass-light .text-muted {
+  color: var(--color-muted);
+}
+
+.luxury-dark-scope .surface-glass-light .bg-card {
+  background-color: var(--color-card);
+}
+
+.luxury-dark-scope .surface-glass-light .border-border {
+  border-color: var(--color-border);
+}
+
+/* Pricing offer — quiet, consistent boutique card */
+.pricing-offer {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  padding: 2.25rem 2rem;
+  box-shadow: none;
+  transition:
+    border-color 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.pricing-offer:hover {
+  border-color: color-mix(in srgb, var(--color-foreground) 12%, var(--color-border));
+  background-color: color-mix(in srgb, var(--color-secondary) 35%, var(--color-card));
+}
+
+.pricing-offer-featured {
+  border-color: color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+  background-color: color-mix(in srgb, var(--color-secondary) 40%, var(--color-card));
+}
+
+.pricing-offer-featured:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 38%, var(--color-border));
 }
 
 /* ========================================
-   ANIMATIONS
+   ANIMATIONS — subtle only
    ======================================== */
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -104,7 +391,7 @@ body {
 @keyframes slide-in-left {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-12px);
   }
   to {
     opacity: 1;
@@ -131,76 +418,47 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.8s ease-out forwards;
+  animation: fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
+  animation: fade-in 0.65s ease-out forwards;
 }
 
 .animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out forwards;
+  animation: slide-in-left 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .animate-accordion-down {
-  animation: accordion-down 0.2s ease-out;
+  animation: accordion-down 0.25s ease-out;
 }
 
 .animate-accordion-up {
-  animation: accordion-up 0.2s ease-out;
+  animation: accordion-up 0.25s ease-out;
 }
 
-/* Header announcement — infinite horizontal marquee (3 identical copies, -⅓ shift = seamless loop) */
-@keyframes announcement-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-100% / 3));
-  }
+.delay-100 {
+  animation-delay: 100ms;
 }
-
-.announcement-marquee-track {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  animation: announcement-marquee 26s linear infinite;
+.delay-200 {
+  animation-delay: 200ms;
 }
-
-.announcement-marquee-track:hover {
-  animation-play-state: paused;
+.delay-300 {
+  animation-delay: 300ms;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .announcement-marquee-track {
-    animation: none;
-    transform: none;
-    width: 100%;
-    max-width: 100%;
-    justify-content: center;
-  }
-
-  .announcement-marquee-track > [aria-hidden="true"] {
-    display: none;
-  }
+.delay-400 {
+  animation-delay: 400ms;
 }
-
-/* Animation delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-
-/* ========================================
-   REVEAL ANIMATION (for scroll effects)
-   ======================================== */
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 .reveal-wrapper {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), 
-              transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: var(--reveal-transform, translateY(14px));
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
@@ -209,15 +467,31 @@ body {
   transform: translate(0, 0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .reveal-wrapper,
+  .reveal-wrapper.is-visible {
+    opacity: 1;
+    transform: none !important;
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-slide-in-left {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* ========================================
-   PRICING — full-card Mindbody buy (Single Class)
+   PRICING — full-card Mindbody buy
    ======================================== */
 
 .pricing-card-full-buy-overlay {
   pointer-events: auto;
 }
 
-/* Stretch Healcode’s generated link across the whole card */
 .pricing-card-full-buy-overlay a.healcode-pricing-option-text-link,
 .pricing-card-full-buy-overlay a.healcode-contract-text-link,
 .pricing-card-full-buy-overlay a.summer-purchase-fallback-link {
@@ -244,47 +518,84 @@ body {
 }
 
 /* ========================================
-   HEADER — Mindbody Login | Register (account-link)
+   HEADER — Mindbody Login | Register
    ======================================== */
 
 header a.healcode-login-register-text-link {
-  font-family: var(--font-paragraph), system-ui, sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  background-color: var(--color-primary);
-  color: var(--color-primary-foreground);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: background-color 0.15s ease, filter 0.15s ease;
-  white-space: nowrap;
+  box-sizing: border-box;
+  font-family: var(--font-paragraph), Inter, system-ui, sans-serif !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.25rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  height: var(--header-cta-height) !important;
+  min-height: var(--header-cta-height) !important;
+  padding: 0 1.5rem !important;
+  border-radius: 9999px !important;
+  border: 1px solid color-mix(in srgb, var(--color-on-dark) 35%, transparent) !important;
+  background-color: transparent !important;
+  color: var(--color-on-dark) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease !important;
 }
 
 header a.healcode-login-register-text-link:hover {
-  filter: brightness(0.92);
+  background-color: color-mix(in srgb, var(--color-on-dark) 10%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-on-dark) 60%, transparent) !important;
+  color: var(--color-on-dark) !important;
+  filter: none !important;
+}
+
+header.header-scrolled a.healcode-login-register-text-link {
+  border-color: var(--color-border) !important;
+  background-color: transparent !important;
+  color: var(--color-foreground) !important;
+  box-shadow: none !important;
+}
+
+header.header-scrolled a.healcode-login-register-text-link:hover {
+  border-color: var(--color-foreground) !important;
+  background-color: var(--color-secondary) !important;
+  color: var(--color-foreground) !important;
 }
 
 header a.healcode-login-register-text-link:focus-visible {
-  outline: 2px solid var(--color-ring);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-ring) !important;
+  outline-offset: 2px !important;
 }
 
 @media (max-width: 1023px) {
   header nav.header-mobile-nav a.healcode-login-register-text-link {
-    width: 100%;
-    max-width: 100%;
-    white-space: normal;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 3rem !important;
+    min-height: 3rem !important;
+    white-space: normal !important;
   }
 }
 
 /* ========================================
-   LINE CLAMP UTILITIES
+   LINE CLAMP
    ======================================== */
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 .line-clamp-3 {
   display: -webkit-box;

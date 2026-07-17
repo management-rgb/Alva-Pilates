@@ -6,8 +6,10 @@ const u = (id: string, w: number) =>
   `https://images.unsplash.com/${id}?w=${w}&q=80&auto=format&fit=crop`;
 
 export const studioImagery = {
-  /** Home hero — Alva studio interior (`public/hero-home.jpg`) */
+  /** Home hero — Alva studio with lit arches (`public/hero-home.jpg`) */
   hero: "/hero-home.jpg",
+  /** Bright reformer movement (`public/intentional-movement.jpg`) */
+  heroStudio: "/intentional-movement.jpg",
   /** Home — Welcome to Alva (`public/welcome-alva-bottles.jpg`) */
   welcomeAlva: "/welcome-alva-bottles.jpg",
   /** Instruction / session — studio guidance */

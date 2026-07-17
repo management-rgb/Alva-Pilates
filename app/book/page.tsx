@@ -6,36 +6,42 @@ import MindbodyBrandedWidget from "../components/MindbodyBrandedWidget";
 
 export default function BookPage() {
   return (
-    <div className="min-h-screen bg-background text-charcoal">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <main className="pt-40 pb-24 px-6 lg:px-10 max-w-6xl mx-auto">
-        <div className="space-y-3 mb-8 text-center">
-          <p className="text-sm uppercase tracking-[0.2em] text-primary font-semibold">
-            Book a Class
-          </p>
-          <h1 className="font-heading text-4xl lg:text-5xl font-bold text-charcoal">
-            Schedule Your Next Session
-          </h1>
-          <p className="font-paragraph text-base lg:text-lg text-charcoal/70 max-w-3xl mx-auto">
-            Browse availability and reserve your spot instantly through Mindbody.
-          </p>
-        </div>
+      <main className="surface-ivory border-b border-border px-6 pb-24 pt-40 lg:px-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 space-y-4 text-center">
+            <div className="flex items-center justify-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em]">
+              <span className="text-muted">01</span>
+              <span className="h-px w-10 bg-border" aria-hidden />
+              <p className="text-primary">Book a class</p>
+            </div>
+            <h1 className="font-heading text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
+              Schedule your next session
+            </h1>
+            <p className="mx-auto max-w-2xl text-base text-muted lg:text-lg">
+              Browse availability and reserve your spot through Mindbody.
+            </p>
+          </div>
 
-        <MindbodyBrandedWidget
-          widgetType="Schedules"
-          widgetId="7041376e71a"
-        />
+          <div className="border-y border-border bg-card p-4 lg:p-6">
+            <MindbodyBrandedWidget
+              widgetType="Schedules"
+              widgetId="7041376e71a"
+            />
+          </div>
 
-        <div className="mt-12 text-center">
-          <p className="font-paragraph text-sm text-charcoal/60 mb-4">
-            Looking for a private session?
-          </p>
-          <a
-            href="/appointments"
-            className="font-paragraph text-base text-primary hover:underline inline-flex items-center gap-2"
-          >
-            Book a Private Session
-          </a>
+          <div className="mt-12 text-center">
+            <p className="mb-4 text-sm text-muted">
+              Looking for a private session?
+            </p>
+            <a
+              href="/appointments"
+              className="inline-flex items-center gap-2 text-base text-foreground transition-colors hover:text-primary"
+            >
+              Book a private session
+            </a>
+          </div>
         </div>
       </main>
       <Footer />

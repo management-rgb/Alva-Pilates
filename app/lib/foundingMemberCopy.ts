@@ -4,7 +4,7 @@ export const foundingMemberCopy = {
   barLine: "Founding member rates — limited spots.",
   barCta: "Learn more",
   eyebrow: "Founding member pricing — limited time",
-  badge: "Limited Time Offer",
+  badge: "Exclusive",
   headlineLead: "Become a",
   headlineAccent: "Founding Member",
   description:
@@ -12,9 +12,9 @@ export const foundingMemberCopy = {
   ctaClaim: "Claim Founding Rate",
   /** Home hero secondary CTA (pricing page) */
   viewAllMemberships: "View All memberships",
-  pricingStripTitle: "Founding member offer",
+  pricingStripTitle: "Exclusive Founding Membership",
   pricingStripBody:
-    "Lock in exclusive founding rates on our top tiers while spots last. Standard memberships and packs are below.",
+    "Lock in our best pricing and become one of Alva's founding members while limited memberships remain available.",
 } as const;
 
 /** Mindbody contract-link service IDs — same products as standard Elite / Unlimited; update if you add separate founding contracts. */

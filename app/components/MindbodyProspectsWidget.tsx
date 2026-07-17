@@ -23,7 +23,7 @@ export default function MindbodyProspectsWidget() {
   if (!ready) {
     return (
       <div
-        className="min-h-[280px] rounded-lg bg-secondary/50 border border-foreground/5"
+        className="min-h-[280px] rounded-2xl border border-border bg-secondary/40"
         aria-busy="true"
         aria-label="Loading contact form"
       />

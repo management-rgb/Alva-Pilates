@@ -24,15 +24,15 @@ export default function InstructorDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       {/* Back Button */}
-      <section className="pt-40 pb-8 px-6 lg:px-8">
+      <section className="surface-ivory pt-40 pb-8 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <Link
             href="/instructors"
-            className="font-paragraph text-sm text-charcoal/70 hover:text-charcoal inline-flex items-center gap-2 transition-colors"
+            className="font-paragraph text-sm text-muted hover:text-foreground inline-flex items-center gap-2 transition-colors"
           >
             <ArrowLeft size={16} />
             Back to Instructors
@@ -41,11 +41,11 @@ export default function InstructorDetailPage({
       </section>
 
       {/* Instructor Hero */}
-      <section className="pb-16 px-6 lg:px-8">
+      <section className="surface-ivory pb-20 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             <Reveal direction="right">
-              <div className="rounded-2xl overflow-hidden h-[500px] lg:h-[600px] lg:sticky lg:top-32 relative">
+              <div className="overflow-hidden h-[500px] lg:h-[600px] lg:sticky lg:top-32 relative">
                 <Image
                   src={instructor.profilePicture}
                   alt={instructor.fullName}
@@ -58,7 +58,7 @@ export default function InstructorDetailPage({
             <Reveal>
               <div className="space-y-6">
                 <div>
-                  <h1 className="font-heading text-4xl lg:text-6xl font-bold text-charcoal mb-2">
+                  <h1 className="font-heading text-4xl lg:text-6xl font-semibold tracking-tight text-foreground mb-2">
                     {instructor.fullName}
                   </h1>
                   <p className="font-paragraph text-lg text-primary font-medium">
@@ -71,7 +71,7 @@ export default function InstructorDetailPage({
                     href={STUDIO_INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-charcoal/70 hover:text-charcoal transition-colors"
+                    className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors"
                   >
                     <Instagram size={20} aria-hidden />
                     <span className="font-paragraph text-sm">
@@ -80,21 +80,21 @@ export default function InstructorDetailPage({
                   </a>
                 )}
 
-                <div className="bg-secondary p-6 rounded-2xl">
-                  <p className="font-paragraph text-lg text-charcoal/80 leading-relaxed">
+                <div className="surface-glass p-6 rounded-2xl">
+                  <p className="font-paragraph text-lg text-muted leading-relaxed">
                     {instructor.shortBio}
                   </p>
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="font-heading text-3xl font-bold text-charcoal">
+                  <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground">
                     About {instructor.fullName.split(" ")[0]}
                   </h2>
                   <div className="prose prose-lg max-w-none">
                     {instructor.fullBio.split("\n\n").map((paragraph, idx) => (
                       <p
                         key={`bio-${id}-${idx}-${paragraph.slice(0, 20).replace(/\s/g, '-')}`}
-                        className="font-paragraph text-base text-charcoal/80 leading-relaxed mb-4"
+                        className="font-paragraph text-base text-muted leading-relaxed mb-4"
                       >
                         {paragraph}
                       </p>
@@ -108,28 +108,28 @@ export default function InstructorDetailPage({
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24 px-6 lg:px-8">
+      <section className="surface-dark py-20 lg:py-24 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <Reveal>
-            <div className="bg-charcoal text-white rounded-2xl p-8 lg:p-16 text-center">
-              <h2 className="font-heading text-4xl lg:text-5xl font-bold mb-6">
+            <div className="surface-glass rounded-2xl p-8 lg:p-16 text-center">
+              <h2 className="font-heading text-4xl lg:text-5xl font-semibold tracking-tight mb-6 text-on-dark">
                 Take a Class with {instructor.fullName.split(" ")[0]}
               </h2>
-              <p className="font-paragraph text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+              <p className="font-paragraph text-lg text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
                 Experience expert instruction and personalized attention. Book
                 your class today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/book"
-                  className="font-paragraph text-base bg-primary text-primary-foreground px-8 py-4 rounded-lg hover:bg-primary/90 transition-all inline-flex items-center justify-center gap-2"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl btn-primary"
                 >
                   Book a Class
                   <ArrowRight size={18} />
                 </a>
                 <Link
                   href="/instructors"
-                  className="font-paragraph text-base bg-transparent text-white border border-white px-8 py-4 rounded-lg hover:bg-white/10 transition-all inline-flex items-center justify-center"
+                  className="inline-flex items-center justify-center rounded-2xl border border-taupe/35 bg-transparent px-8 py-4 font-paragraph text-base font-semibold text-on-dark transition-all hover:border-primary hover:bg-card-dark/60"
                 >
                   View All Instructors
                 </Link>
@@ -143,4 +143,3 @@ export default function InstructorDetailPage({
     </div>
   );
 }
-
