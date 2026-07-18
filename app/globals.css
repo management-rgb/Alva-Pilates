@@ -2203,6 +2203,30 @@ header a.healcode-login-register-text-link:focus-visible {
     color: var(--text-primary) !important;
     border-color: var(--border-strong) !important;
   }
+
+  /* Espresso mobile drawer — outlined ivory "Login / Register" button */
+  header .mobile-menu-actions a.healcode-login-register-text-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 3.25rem !important;
+    min-height: 3.25rem !important;
+    white-space: normal !important;
+    letter-spacing: 0.1em !important;
+    color: #f2ece4 !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(242, 236, 228, 0.45) !important;
+    border-radius: var(--radius-sm) !important;
+    transition:
+      border-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 240ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  header .mobile-menu-actions a.healcode-login-register-text-link:hover {
+    color: #f2ece4 !important;
+    border-color: rgba(242, 236, 228, 0.6) !important;
+    background-color: rgba(245, 241, 236, 0.08) !important;
+  }
 }
 
 .line-clamp-2 {
