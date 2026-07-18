@@ -7,62 +7,79 @@ import Footer from "./components/Footer";
 import FoundingMemberSection from "./components/FoundingMemberSection";
 import SummerResetHero from "./components/SummerResetHero";
 import SummerResetFinalCtaSection from "./components/SummerResetFinalCtaSection";
-import SummerResetTermsSection from "./components/SummerResetTermsSection";
 import HomeBrandHero from "./components/home/HomeBrandHero";
 import HomeClassesPreview from "./components/home/HomeClassesPreview";
-import HomeMembershipBridge from "./components/home/HomeMembershipBridge";
 import HomeStudioStory from "./components/home/HomeStudioStory";
+import HomeStudioEnvironment from "./components/home/HomeStudioEnvironment";
+import HomeEditorialQuote from "./components/home/HomeEditorialQuote";
+import HomeOfferBridge from "./components/home/HomeOfferBridge";
+import HomePrivateTeaser from "./components/home/HomePrivateTeaser";
 import HomeVisitCommunity from "./components/home/HomeVisitCommunity";
 import { Reveal } from "./components/sections/Reveal";
+import { RevealText } from "./components/sections/RevealText";
 import { summerResetEnabled } from "./lib/summerResetCopy";
 
 export default function HomePageClient() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background font-paragraph text-foreground selection:bg-primary/30">
+    <div className="min-h-screen overflow-x-hidden bg-background font-paragraph text-foreground selection:bg-secondary">
       <Header />
 
       {summerResetEnabled ? <SummerResetHero /> : <HomeBrandHero />}
 
+      <FoundingMemberSection />
+      {/* Charcoal → light gradient bridge */}
+      <div className="flow-out-of-dark" aria-hidden />
+
       <HomeStudioStory />
-      {summerResetEnabled ? <HomeMembershipBridge /> : null}
+
+      {/* Why Alva → How you'll experience Alva */}
       <HomeClassesPreview />
+
+      <HomeEditorialQuote />
+      <HomeStudioEnvironment />
+      <HomeOfferBridge />
+
+      {/* Light → charcoal gradient bridge */}
+      <div className="flow-into-dark" aria-hidden />
+      <HomePrivateTeaser />
+      {/* Charcoal → light gradient bridge */}
+      <div className="flow-out-of-dark" aria-hidden />
+
       <HomeVisitCommunity />
 
       {summerResetEnabled ? (
-        <>
-          <SummerResetFinalCtaSection />
-          <SummerResetTermsSection />
-        </>
+        <SummerResetFinalCtaSection />
       ) : (
-        <>
-          <FoundingMemberSection />
-          <section className="surface-ivory px-6 py-36 text-center lg:px-12 lg:py-52">
-            <div className="mx-auto max-w-[100rem]">
-              <Reveal direction="up">
-                <div className="mx-auto max-w-3xl">
-                  <h2 className="font-heading text-5xl font-medium leading-none tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                    Ready to begin?
-                  </h2>
-                  <p className="mx-auto mt-8 max-w-xl text-base leading-[1.85] text-muted lg:text-lg">
-                    Experience intentional movement, expert instruction, and a
-                    studio designed to help you progress.
-                  </p>
-                  <Link
-                    href="/pricing"
-                    className="group mt-12 inline-flex h-14 min-h-14 items-center gap-2 rounded-full bg-charcoal px-10 text-sm font-medium tracking-wide text-on-dark shadow-button transition-all duration-500 hover:bg-primary hover:text-primary-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  >
-                    View pricing
-                    <ArrowRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </Link>
-                </div>
+        <section className="surface-stone lighting-top px-5 py-28 text-center text-foreground lg:px-10 lg:py-40">
+          <div className="mx-auto max-w-[100rem]">
+            <div className="mx-auto max-w-2xl">
+              <RevealText
+                as="h2"
+                className="editorial-h1 text-balance text-foreground"
+                text="Ready to begin?"
+              />
+              <Reveal>
+                <p className="mx-auto mt-6 max-w-lg text-base leading-[1.75] text-muted">
+                  Experience intentional movement, expert instruction, and a
+                  studio designed to help you progress.
+                </p>
+              </Reveal>
+              <Reveal>
+                <Link
+                  href="/pricing"
+                  className="btn-primary group mt-10 inline-flex"
+                >
+                  View pricing
+                  <ArrowRight
+                    size={14}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
               </Reveal>
             </div>
-          </section>
-        </>
+          </div>
+        </section>
       )}
 
       <Footer />

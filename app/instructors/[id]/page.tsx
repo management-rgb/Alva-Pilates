@@ -28,7 +28,7 @@ export default function InstructorDetailPage({
       <Header />
 
       {/* Back Button */}
-      <section className="surface-ivory pt-40 pb-8 px-6 lg:px-10">
+      <section className="surface-paper pt-40 pb-8 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <Link
             href="/instructors"
@@ -41,11 +41,11 @@ export default function InstructorDetailPage({
       </section>
 
       {/* Instructor Hero */}
-      <section className="surface-ivory pb-20 px-6 lg:px-10">
+      <section className="surface-paper pb-20 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             <Reveal direction="right">
-              <div className="overflow-hidden h-[500px] lg:h-[600px] lg:sticky lg:top-32 relative">
+              <div className="img-editorial overflow-hidden h-[500px] lg:h-[600px] lg:sticky lg:top-32 relative">
                 <Image
                   src={instructor.profilePicture}
                   alt={instructor.fullName}
@@ -61,7 +61,7 @@ export default function InstructorDetailPage({
                   <h1 className="font-heading text-4xl lg:text-6xl font-semibold tracking-tight text-foreground mb-2">
                     {instructor.fullName}
                   </h1>
-                  <p className="font-paragraph text-lg text-primary font-medium">
+                  <p className="font-paragraph text-lg font-medium text-taupe">
                     {instructor.specialties}
                   </p>
                 </div>
@@ -80,7 +80,7 @@ export default function InstructorDetailPage({
                   </a>
                 )}
 
-                <div className="surface-glass p-6 rounded-2xl">
+                <div className="border border-border bg-card p-6 rounded-2xl">
                   <p className="font-paragraph text-lg text-muted leading-relaxed">
                     {instructor.shortBio}
                   </p>
@@ -108,29 +108,23 @@ export default function InstructorDetailPage({
       </section>
 
       {/* CTA Section */}
-      <section className="surface-dark py-20 lg:py-24 px-6 lg:px-10">
+      <section className="surface-stone lighting-top py-20 text-charcoal lg:py-24 px-6 lg:px-10">
         <div className="max-w-[100rem] mx-auto">
           <Reveal>
-            <div className="surface-glass rounded-2xl p-8 lg:p-16 text-center">
-              <h2 className="font-heading text-4xl lg:text-5xl font-semibold tracking-tight mb-6 text-on-dark">
+            <div className="border border-[var(--border)] bg-card-dark p-8 text-center lg:p-16">
+              <h2 className="font-heading text-4xl lg:text-5xl font-semibold tracking-tight mb-6 text-charcoal">
                 Take a Class with {instructor.fullName.split(" ")[0]}
               </h2>
-              <p className="font-paragraph text-lg text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+              <p className="font-paragraph text-lg text-taupe max-w-2xl mx-auto mb-8 leading-relaxed">
                 Experience expert instruction and personalized attention. Book
                 your class today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/book"
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl btn-primary"
-                >
+                <a href="/book" className="btn-primary">
                   Book a Class
                   <ArrowRight size={18} />
                 </a>
-                <Link
-                  href="/instructors"
-                  className="inline-flex items-center justify-center rounded-2xl border border-taupe/35 bg-transparent px-8 py-4 font-paragraph text-base font-semibold text-on-dark transition-all hover:border-primary hover:bg-card-dark/60"
-                >
+                <Link href="/instructors" className="btn-ghost-on-dark">
                   View All Instructors
                 </Link>
               </div>

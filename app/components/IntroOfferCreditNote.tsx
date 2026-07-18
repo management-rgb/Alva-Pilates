@@ -1,8 +1,12 @@
 import { summerResetCopy } from "../lib/summerResetCopy";
 
-export default function IntroOfferCreditNote() {
+export default function IntroOfferCreditNote({
+  className = "text-muted/80",
+}: {
+  className?: string;
+}) {
   return (
-    <p className="text-xs leading-relaxed text-muted/80">
+    <p className={`text-xs leading-relaxed ${className}`}>
       {summerResetCopy.introCredit.heading}
     </p>
   );

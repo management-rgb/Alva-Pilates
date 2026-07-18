@@ -26,7 +26,7 @@ export default function FoundingMemberAnnouncementBar() {
         </p>
         <Link
           href={href}
-          className="text-[0.6875rem] font-medium tracking-[0.06em] text-foreground/80 transition-colors duration-300 hover:text-primary sm:text-[0.8125rem]"
+          className="text-[0.6875rem] font-medium tracking-[0.06em] text-foreground/80 transition-colors duration-300 hover:text-charcoal sm:text-[0.8125rem]"
         >
           {foundingMemberCopy.barCta}
         </Link>

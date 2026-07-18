@@ -50,18 +50,18 @@ export default function ClassDetailPage({
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(43,38,34,0.35)_0%,rgba(43,38,34,0.7)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(42,40,35,0.35)_0%,rgba(42,40,35,0.7)_100%)]" />
         <div className="relative z-10 mx-auto flex min-h-[min(70svh,760px)] max-w-[100rem] flex-col justify-between px-6 pb-16 pt-36 lg:px-14 lg:pb-24 lg:pt-40">
           <Link
             href="/classes"
-            className="inline-flex items-center gap-2 self-start text-sm text-on-dark/75 transition-colors hover:text-on-dark"
+            className="inline-flex items-center gap-2 self-start text-sm text-paper/75 transition-opacity hover:opacity-100"
           >
             <ArrowLeft size={16} aria-hidden />
             Back to classes
           </Link>
           <Reveal>
             <div className="max-w-3xl">
-              <p className="text-[0.6875rem] font-medium tracking-[0.1em] text-on-dark/70">
+              <p className="text-[0.6875rem] font-medium tracking-[0.1em] text-taupe">
                 {classItem.difficultyLevel}
                 <span className="mx-2" aria-hidden>
                   ·
@@ -72,7 +72,7 @@ export default function ClassDetailPage({
                 </span>
                 {classItem.durationMinutes} min
               </p>
-              <h1 className="mt-5 font-heading text-5xl font-medium tracking-tight text-on-dark sm:text-6xl lg:text-7xl">
+              <h1 className="mt-5 font-display text-5xl font-normal tracking-[-0.02em] text-balance text-paper sm:text-6xl lg:text-7xl">
                 {classItem.className.trim()}
               </h1>
             </div>
@@ -80,7 +80,7 @@ export default function ClassDetailPage({
         </div>
       </section>
 
-      <section className="surface-ivory px-6 py-20 lg:px-14 lg:py-28">
+      <section className="surface-paper px-6 py-20 lg:px-14 lg:py-28">
         <div className="mx-auto max-w-[100rem]">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-7">
@@ -120,12 +120,12 @@ export default function ClassDetailPage({
         </div>
       </section>
 
-      <section className="surface-espresso px-6 py-24 text-center lg:px-14 lg:py-32">
+      <section className="surface-stone lighting-top px-6 py-24 text-center text-charcoal lg:px-14 lg:py-32">
         <Reveal>
-          <h2 className="font-heading text-4xl font-medium tracking-tight text-on-dark lg:text-5xl">
+          <h2 className="font-heading text-4xl font-medium tracking-tight text-charcoal lg:text-5xl">
             Ready to join us?
           </h2>
-          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-muted-dark">
+          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-taupe">
             Explore memberships or book your spot in class.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

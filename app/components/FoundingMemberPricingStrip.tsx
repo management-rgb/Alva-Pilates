@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "./sections/Reveal";
+import { RevealText } from "./sections/RevealText";
 import {
   foundingMemberCopy,
   foundingMemberOfferCards,
@@ -18,20 +19,74 @@ function renderHealcodeContractLink(serviceId: string) {
   );
 }
 
-function benefitBullets(text: string): string[] {
-  return text
-    .split(/\s*\+\s*/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .slice(0, 3);
+type Offer = (typeof foundingMemberOfferCards)[number];
+
+function benefitSource(offer: Offer): string {
+  return summerResetEnabled && offer.summerBenefits
+    ? offer.summerBenefits
+    : offer.benefits;
 }
 
-const cardTitle =
-  "font-heading text-[1.375rem] font-medium leading-snug tracking-tight text-foreground";
-const cardPrice =
-  "font-heading text-[1.75rem] font-medium leading-none tabular-nums tracking-tight text-foreground";
-const cardMeta = "text-[0.8125rem] leading-relaxed text-muted";
-const cardCopy = "text-[0.8125rem] leading-[1.7] text-muted";
+function privateDiscount(offer: Offer): string {
+  const match = benefitSource(offer).match(/(\d+%\s+off\s+privates)/i);
+  return match?.[1] ?? "Member private rate";
+}
+
+function guestPasses(offer: Offer): string {
+  const match = benefitSource(offer).match(/(\d+\s+guest\s+pass(?:es)?[^.+]*)/i);
+  return match?.[1]?.trim() ?? "Guest passes";
+}
+
+function earlyAccess(offer: Offer): string {
+  const source = benefitSource(offer);
+  const parts: string[] = [];
+  if (/early booking/i.test(source)) parts.push("Early booking access");
+  if (/waitlist/i.test(source)) parts.push("Waitlist priority");
+  return parts.length ? parts.join(" · ") : "Priority booking";
+}
+
+function FoundingCard({ offer }: { offer: Offer }) {
+  const featured = offer.featured;
+  const features = [
+    offer.classes,
+    offer.contract,
+    privateDiscount(offer),
+    guestPasses(offer),
+    earlyAccess(offer),
+  ];
+
+  return (
+    <div
+      className={`pcard pricing-card-full-buy ${
+        featured ? "pcard--tint pcard--feature" : ""
+      }`}
+    >
+      <div className="pcard__head">
+        <p className="pcard__eyebrow">Founding membership</p>
+        {featured ? (
+          <span className="pcard__badge">Unlimited access</span>
+        ) : null}
+      </div>
+      <h3 className="pcard__name">{offer.title}</h3>
+      <div className="pcard__price-row">
+        <span className="pcard__price pcard__price-sm">{offer.price}</span>
+        <span className="pcard__was">{offer.listPrice}</span>
+      </div>
+      <div className="pcard__divider" />
+      <ul className="pcard__list pcard__list--check">
+        {features.map((feature) => (
+          <li key={feature}>{feature}</li>
+        ))}
+      </ul>
+      <div className="pcard__cta-wrap">
+        <span className="pcard__cta">Join Membership</span>
+      </div>
+      <div className="pricing-card-full-buy-overlay">
+        {renderHealcodeContractLink(offer.serviceId)}
+      </div>
+    </div>
+  );
+}
 
 export default function FoundingMemberPricingStrip({
   className = "",
@@ -41,78 +96,32 @@ export default function FoundingMemberPricingStrip({
   return (
     <section
       id="founding-pricing"
-      className={`scroll-mt-40 px-6 py-32 lg:px-14 lg:py-44 ${className}`}
+      className={`scroll-mt-40 px-5 py-24 lg:px-10 lg:py-36 ${className}`}
       aria-labelledby="founding-pricing-heading"
     >
-      <div className="mx-auto max-w-[72rem] xl:max-w-[80rem]">
-        <Reveal>
-          <div className="flex flex-col gap-12">
-            <div className="mx-auto max-w-xl space-y-4 text-center">
-              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-primary">
-                {foundingMemberCopy.badge}
-              </p>
-              <h2
-                id="founding-pricing-heading"
-                className="font-heading text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl"
-              >
-                {foundingMemberCopy.pricingStripTitle}
-              </h2>
-              <p className="text-[0.9375rem] leading-[1.8] text-muted sm:text-base">
-                {foundingMemberCopy.pricingStripBody}
-              </p>
-            </div>
+      <div className="mx-auto max-w-[64rem]">
+        <div className="max-w-xl space-y-4">
+          <Reveal>
+            <p className="eyebrow">{foundingMemberCopy.badge}</p>
+          </Reveal>
+          <RevealText
+            as="h2"
+            id="founding-pricing-heading"
+            className="editorial-h2 text-balance text-foreground"
+            text="Founding Memberships"
+          />
+          <Reveal>
+            <p className="text-[0.9375rem] leading-[1.75] text-muted sm:text-base">
+              {foundingMemberCopy.pricingStripBody}
+            </p>
+          </Reveal>
+        </div>
 
-            <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
-              {foundingMemberOfferCards.map((offer) => {
-                const bullets = benefitBullets(
-                  summerResetEnabled && offer.summerBenefits
-                    ? offer.summerBenefits
-                    : offer.benefits
-                );
-                return (
-                  <div
-                    key={offer.title}
-                    className={`pricing-offer pricing-card-full-buy group cursor-pointer ${
-                      offer.featured ? "pricing-offer-featured" : ""
-                    }`}
-                  >
-                    <div className="relative z-0 flex h-full min-h-0 flex-col pointer-events-none select-none">
-                      <h3 className={cardTitle}>{offer.title}</h3>
-                      <div className="mt-6 flex items-baseline gap-2.5">
-                        <p className={cardPrice}>{offer.price}</p>
-                        <p className="text-sm text-muted line-through">
-                          {offer.listPrice}
-                        </p>
-                      </div>
-                      <p className={`mt-3 ${cardMeta}`}>
-                        {offer.classes}
-                        <span className="text-border"> · </span>
-                        {offer.contract}
-                      </p>
-                      <ul className="mt-6 space-y-2">
-                        {bullets.map((bullet) => (
-                          <li key={bullet} className={cardCopy}>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="mt-auto pt-10 text-[0.8125rem] font-medium tracking-[0.02em] text-muted transition-colors duration-300 group-hover:text-foreground">
-                        Join Membership
-                        <span
-                          aria-hidden
-                          className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
-                        >
-                          →
-                        </span>
-                      </p>
-                    </div>
-                    <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-                      {renderHealcodeContractLink(offer.serviceId)}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+        <Reveal stagger className="mt-12">
+          <div className="pcard-grid pcard-grid--2">
+            {foundingMemberOfferCards.map((offer) => (
+              <FoundingCard key={offer.title} offer={offer} />
+            ))}
           </div>
         </Reveal>
       </div>

@@ -4,10 +4,10 @@ import Footer from "../../components/Footer";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-charcoal text-charcoal">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
-      <div className="surface-espresso luxury-dark-scope pt-40 pb-16 px-8 text-center">
-        <h1 className="font-heading text-4xl lg:text-6xl font-semibold tracking-tight text-charcoal mb-4">
+      <div className="surface-paper pt-40 pb-16 px-8 text-center">
+        <h1 className="font-heading text-4xl lg:text-6xl font-semibold tracking-tight text-foreground mb-4">
           Class Not Found
         </h1>
         <p className="font-paragraph text-lg text-muted mb-8">
@@ -15,7 +15,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/classes"
-          className="font-paragraph text-base text-primary hover:underline mt-4 inline-block"
+          className="font-paragraph text-base text-charcoal hover:underline mt-4 inline-block"
         >
           Back to Classes
         </Link>

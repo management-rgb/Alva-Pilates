@@ -13,12 +13,19 @@ export default function TermsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      <main className="surface-ivory border-b border-border pt-40 pb-24 lg:pb-32 px-6 lg:px-10">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="border-b border-border pb-8 font-heading text-4xl lg:text-5xl font-medium tracking-tight text-foreground mb-8">
+      <section className="surface-stone border-b border-[var(--border)] px-6 pb-12 pt-40 text-charcoal lg:px-10 lg:pb-16 lg:pt-48">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-taupe">
+            Policies
+          </p>
+          <h1 className="mt-6 font-heading text-4xl font-medium tracking-tight text-charcoal lg:text-5xl">
             Terms &amp; Conditions
           </h1>
+        </div>
+      </section>
 
+      <main className="surface-paper border-b border-border px-6 pb-24 pt-12 lg:px-10 lg:pb-32">
+        <div className="max-w-3xl mx-auto">
           <p className="font-paragraph text-base lg:text-lg text-muted leading-relaxed border-l-2 border-primary/40 pl-6 mb-14">
             By creating an account, booking a class, or making a purchase with
             Alva Pilates, clients agree to comply with the following Terms &amp;
@@ -96,7 +103,7 @@ export default function TermsPage() {
                 <p>
                   <span className="font-medium text-foreground">3.1</span>{" "}
                   Membership tiers require a minimum commitment from your start
-                  date: Essential and Core memberships require 3 months; Elite and
+                  date: Essential and Core memberships require 3 months; Studio and
                   Unlimited memberships require 6 months.
                 </p>
                 <p>

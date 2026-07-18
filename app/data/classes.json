@@ -2,12 +2,13 @@
   {
     "_id": "class-4",
     "className": "Alva Sculpt",
-    "description": "Experience the signature Alva workout. This dynamic, full body reformer class blends athletic movement with the precision of Pilates. Expect continuous, flowing sequences, seamless transitions, and controlled resistance that elevate your heart rate while building lean muscle, endurance, balance, and deep core strength — all while remaining gentle on your joints.\n\nThis invigorating workout will leave you feeling stronger, energized, and beautifully sculpted.",
+    "description": "Experience the signature Alva workout. This dynamic, full body reformer class blends athletic movement with the precision of Pilates. Expect continuous, flowing sequences, seamless transitions, and controlled resistance that elevate your heart rate while building lean muscle, endurance, balance, and deep core strength all while remaining gentle on your joints.\n\nThis invigorating workout will leave you feeling stronger, energized, and beautifully sculpted.",
     "classType": "Group Class",
     "durationMinutes": 50,
     "difficultyLevel": "Signature Class • All Levels",
     "classImage": "/class-alva-sculpt.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Full body · Strength & endurance"
   },
   {
     "_id": "class-2",
@@ -17,7 +18,8 @@
     "durationMinutes": 50,
     "difficultyLevel": "Beginner • Level 1",
     "classImage": "/class-alva-foundation.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Fundamentals · Core & alignment"
   },
   {
     "_id": "class-1",
@@ -27,17 +29,19 @@
     "durationMinutes": 50,
     "difficultyLevel": "Intermediate • Level 1.5+",
     "classImage": "/about-philosophy.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Full body · Control & precision"
   },
   {
     "_id": "class-5",
     "className": "Alva Cardio Jump  ",
-    "description": "Take your Pilates practice to new heights with Cardio Jump, Alva's most athletic reformer experience. Using the jumpboard, this dynamic, low-impact class combines explosive movement with Pilates precision to deliver an exhilarating full-body workout that challenges both your strength and cardiovascular endurance. Improve lower-body power, core stability, coordination, agility, and balance through athletic intervals designed to keep your heart rate elevated while remaining gentle on your joints. Perfect for members looking to increase intensity, build endurance, and experience a fun, energizing twist on traditional reformer Pilates.",
+    "description": "Take your Pilates practice to new heights with Cardio Jump, Alva's most athletic reformer experience. Using the jump board, this dynamic, low-impact class combines explosive movement with Pilates precision to deliver an exhilarating full-body workout that challenges both your strength and cardiovascular endurance. Improve lower-body power, core stability, coordination, agility, and balance through athletic intervals designed to keep your heart rate elevated while remaining gentle on your joints. Perfect for members looking to increase intensity, build endurance, and experience a fun, energizing twist on traditional reformer Pilates.",
     "classType": "Group Class",
     "durationMinutes": 50,
     "difficultyLevel": "Advanced • Level 2",
     "classImage": "/class-cardio-jump.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Cardio · Power & agility"
   },
   {
     "_id": "class-6",
@@ -47,7 +51,8 @@
     "durationMinutes": 50,
     "difficultyLevel": "All Levels",
     "classImage": "/intentional-movement.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Restorative · Mobility & recovery"
   },
   {
     "_id": "class-7",
@@ -57,6 +62,7 @@
     "durationMinutes": 50,
     "difficultyLevel": "All Levels • Glutes & Lower Body",
     "classImage": "/our-story-studio.jpg",
-    "bookingUrl": "/book"
+    "bookingUrl": "/book",
+    "bodyFocus": "Glutes & Core"
   }
 ]

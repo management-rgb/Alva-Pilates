@@ -16,7 +16,7 @@ export default function SummerResetTermsSection() {
 
   return (
     <section
-      className="surface-secondary border-t border-taupe/25 px-6 py-16 lg:px-12 lg:py-20"
+      className="surface-paper border-t border-border px-6 py-16 lg:px-12 lg:py-20"
       aria-labelledby="summer-terms-heading"
     >
       <div className="mx-auto max-w-3xl">
@@ -25,7 +25,7 @@ export default function SummerResetTermsSection() {
             <AccordionItem value="summer-terms" className="border-none">
               <AccordionTrigger
                 id="summer-terms-heading"
-                className="py-4 text-xl text-foreground hover:text-primary sm:text-2xl hover:no-underline [&[data-state=open]]:text-primary"
+                className="py-4 text-xl text-foreground hover:text-charcoal sm:text-2xl hover:no-underline [&[data-state=open]]:text-charcoal"
               >
                 {copy.heading}
               </AccordionTrigger>

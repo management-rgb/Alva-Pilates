@@ -19,15 +19,15 @@ export const summerResetOfferAnchors = {
 
 export const summerResetCopy = {
   announcement: {
-    line: "Summer Reset • New Client Intro Offers • 20% Off Class Packs • Ends August 15",
+    line: "Summer Reset · New Client Intro Offers · 20% Off Class Packs · Ends August 15",
     cta: "View Offers",
   },
   hero: {
-    eyebrow: "Limited-Time Summer Event",
-    headline: "Your Summer Reset Starts at Alva",
-    body: "Experience luxury reformer Pilates with exclusive introductory offers and limited-time savings on class packs.",
-    primaryCta: "Claim Your Offer",
-    secondaryCta: "View Schedule",
+    eyebrow: "Summer Reset",
+    headline: "Movement, elevated.",
+    body: "A considered reformer Pilates experience built around strength, precision, and lasting confidence.",
+    primaryCta: "Book a Class",
+    secondaryCta: "Explore Classes",
   },
   offers: {
     heading: "Summer Reset Offers",

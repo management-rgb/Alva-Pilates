@@ -15,19 +15,17 @@ export default function InstructorsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      <section className="surface-ivory px-6 pb-12 pt-40 lg:px-14 lg:pb-16 lg:pt-48">
+      <section className="surface-stone px-6 pb-12 pt-40 text-charcoal lg:px-14 lg:pb-16 lg:pt-48">
         <div className="mx-auto max-w-[100rem]">
           <Reveal>
             <div className="mx-auto max-w-2xl space-y-6 text-center">
-              <div className="flex items-center justify-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.2em]">
-                <span className="text-muted">01</span>
-                <span className="h-px w-10 bg-border" aria-hidden />
-                <p className="text-primary">The team</p>
-              </div>
-              <h1 className="font-heading text-5xl font-medium tracking-tight text-foreground lg:text-6xl">
+              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-taupe">
+                The team
+              </p>
+              <h1 className="font-display text-5xl font-normal tracking-[-0.02em] text-balance text-charcoal lg:text-6xl">
                 Meet our instructors
               </h1>
-              <p className="text-base leading-relaxed text-muted lg:text-lg">
+              <p className="text-base leading-relaxed text-taupe lg:text-lg">
                 Certified coaches who bring expertise, care, and personalized
                 attention to every class.
               </p>
@@ -36,16 +34,16 @@ export default function InstructorsPage() {
         </div>
       </section>
 
-      <section className="surface-ivory border-b border-border px-6 pb-28 lg:px-14 lg:pb-40">
+      <section className="surface-paper px-6 pb-28 lg:px-14 lg:pb-40">
         <div className="mx-auto max-w-[100rem]">
           <div className="grid grid-cols-1 gap-x-14 gap-y-16 border-t border-border pt-12 md:grid-cols-2 lg:grid-cols-3 lg:pt-16">
             {instructors.map((instructor, index) => (
               <Reveal key={instructor._id} delay={index * 0.08}>
                 <Link
                   href={`/instructors/${instructor._id}`}
-                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal"
                 >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-secondary">
+                  <div className="img-editorial relative aspect-[3/4] overflow-hidden bg-secondary">
                     <Image
                       src={instructor.profilePicture}
                       alt={instructor.fullName}
@@ -66,7 +64,7 @@ export default function InstructorsPage() {
                   <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
                     {instructor.shortBio}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors group-hover:text-primary">
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors group-hover:text-charcoal">
                     View profile
                     <ArrowUpRight size={14} aria-hidden />
                   </span>

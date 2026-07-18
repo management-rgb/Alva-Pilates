@@ -29,4 +29,22 @@ export const studioImagery = {
   cardReformer: u("photo-1518611012118-696072aa579a", 1200),
   cardDetail: u("photo-1599058945522-28d584b6f0ff", 800),
   cardStretch: u("photo-1552196563-55cd4e45efb3", 800),
+
+  /* ---- Luxury journey placements (local Alva assets) ---- */
+  /** Hero full-bleed */
+  heroPrimary: "/hero-home.png",
+  /** Cropped lifestyle bleed — hero → story */
+  bleedMovement: "/intentional-movement.jpg",
+  /** Split-image: Why Alva / story */
+  storySplit: "/hero-reformer.jpg",
+  /** Full-bleed immersive moment between classes and offers */
+  immersive: "/welcome-alva-bottles.jpg",
+  /** Cropped lifestyle bleed — memberships → founding */
+  bleedCommunity: "/our-story-studio.jpg",
+  /** Private training editorial image */
+  privateTraining: "/about-philosophy.jpg",
+  /** Pricing intro feature card image */
+  introFeature: "/class-alva-sculpt.jpg",
+  /** Pricing hero backdrop */
+  pricingHero: "/our-story-arches.jpg",
 } as const;

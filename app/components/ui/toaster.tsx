@@ -13,7 +13,7 @@ export function Toaster() {
         <div
           key={toast.id}
           className={cn(
-            "relative flex items-start gap-3 rounded-2xl border border-taupe/25 bg-card-dark p-4 text-on-dark shadow-glass transition-all",
+            "relative flex items-start gap-3 rounded-2xl border border-taupe/25 bg-card-dark p-4 text-charcoal shadow-glass transition-all",
             "animate-fade-up",
             toast.variant === "destructive"
               ? "border-destructive bg-destructive text-destructive-foreground"

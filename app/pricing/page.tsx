@@ -5,15 +5,16 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import FoundingMemberPricingStrip from "../components/FoundingMemberPricingStrip";
 import IntroOfferCreditNote from "../components/IntroOfferCreditNote";
 import FallbackPurchaseLink from "../components/summer-reset/FallbackPurchaseLink";
-import { renderHealcodePricingLink } from "../lib/mindbodyHealcodeWidgets";
 import { Reveal } from "../components/sections/Reveal";
 import { useMindbodyHealcodeScript } from "../hooks/useMindbodyHealcodeScript";
 import { scheduleScrollToSection } from "../lib/scrollToSection";
 import {
-  getIntroOffersForPricing,
+  foundingMemberCopy,
+  foundingMemberOfferCards,
+} from "../lib/foundingMemberCopy";
+import {
   getPackOffersForPricing,
   standardGroupClassOptions,
   type GroupClassOption,
@@ -25,6 +26,11 @@ import {
   summerResetPurchaseFallbacks,
   summerResetSectionId,
 } from "../lib/summerResetCopy";
+
+/* ---------------------------------------------------------------------------
+   Mindbody Healcode — unchanged integration. Service IDs, widget markup, and
+   the full-card purchase overlay pattern are preserved exactly.
+--------------------------------------------------------------------------- */
 
 function renderHealcodeWidget(
   type: "contract-link" | "pricing-link",
@@ -42,6 +48,32 @@ function renderHealcodeWidget(
       suppressHydrationWarning
       dangerouslySetInnerHTML={{ __html: widgetHtml }}
     />
+  );
+}
+
+/** Full-card purchase overlay: Mindbody widget, or a fallback route link. */
+function BuyOverlay({
+  type = "pricing-link",
+  serviceId,
+  fallbackHref,
+  fallbackLabel,
+}: {
+  type?: "contract-link" | "pricing-link";
+  serviceId?: string;
+  fallbackHref?: string;
+  fallbackLabel?: string;
+}) {
+  return (
+    <div className="pricing-card-full-buy-overlay">
+      {serviceId ? (
+        renderHealcodeWidget(type, serviceId)
+      ) : fallbackHref ? (
+        <FallbackPurchaseLink
+          href={fallbackHref}
+          label={fallbackLabel ?? "Purchase"}
+        />
+      ) : null}
+    </div>
   );
 }
 
@@ -64,123 +96,62 @@ function getGroupClassServiceId(title: string): string | undefined {
 const membershipWidgetServiceIds: Record<string, string> = {
   Essential: "111",
   Core: "112",
-  Elite: "109",
-  Unlimited: "110",
 };
 
-const memberships = [
+type MembershipOption = {
+  title: string;
+  price: string;
+  listPrice?: string;
+  classes: string;
+  contract: string;
+  tagline: string;
+  benefits: string;
+  summerBenefits?: string;
+  featured?: boolean;
+  founding?: boolean;
+  serviceId?: string;
+};
+
+const memberships: MembershipOption[] = [
   {
     title: "Essential",
-    price: "$119/mo",
+    price: "$119",
     classes: "4 classes / month",
     contract: "3-month contract",
+    tagline: "A gentle, steady rhythm.",
     benefits: "5% off additional packs & retail.",
     summerBenefits:
       "5% off additional packs & retail + 1 guest pass / month during Summer Reset.",
   },
   {
     title: "Core",
-    price: "$219/mo",
+    price: "$219",
     classes: "8 classes / month",
     contract: "3-month contract",
+    tagline: "For a consistent weekly practice.",
     benefits: "10% off privates & priority booking.",
     summerBenefits:
       "10% off privates & priority booking + 1 guest pass / month during Summer Reset.",
   },
-  {
-    title: "Elite",
-    price: "$289/mo",
-    classes: "12 classes / month",
-    contract: "6-month contract",
-    benefits: "15% off privates + 1 guest pass / month.",
-    summerBenefits:
-      "15% off privates + 2 guest passes / month during Summer Reset.",
-  },
-  {
-    title: "Unlimited",
-    price: "$399/mo",
-    classes: "Unlimited classes",
-    contract: "6-month contract",
-    benefits:
-      "20% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
-    summerBenefits:
-      "20% off privates + 2 guest passes / month during Summer Reset + early booking access + priority on the waitlist.",
-    featured: true,
-  },
+  ...foundingMemberOfferCards.map((offer) => ({
+    title: offer.title,
+    price: offer.price.replace(/\/mo$/, ""),
+    listPrice: offer.listPrice.replace(/\/mo$/, ""),
+    classes: offer.classes,
+    contract: offer.contract,
+    tagline: "Founding member rate — limited availability.",
+    benefits: offer.benefits,
+    summerBenefits: offer.summerBenefits,
+    featured: offer.featured,
+    founding: true,
+    serviceId: offer.serviceId,
+  })),
 ];
 
-function getMembershipDisplayBenefits(m: (typeof memberships)[number]) {
+function getMembershipDisplayBenefits(m: MembershipOption) {
   if (summerResetEnabled && m.summerBenefits) return m.summerBenefits;
   return m.benefits;
 }
-
-const privateSessionWidgetServiceIds: Record<string, string> = {
-  "Single Private": "100014",
-};
-
-const privatesNonMember = [
-  {
-    title: "Single Private",
-    price: "$120",
-    perSession: "60-minute session",
-    validity: null as string | null,
-    note: "One personalized 1:1 reformer session.",
-    featured: false,
-  },
-  {
-    title: "5-Pack Private",
-    listPrice: "$575",
-    price: "$500",
-    perSession: "$100 / session",
-    validity: "Valid 3 months",
-    note: "Personalized sessions at a limited-time pack rate.",
-    featured: true,
-  },
-  {
-    title: "10-Pack Private",
-    listPrice: "$1,100",
-    price: "$950",
-    perSession: "$95 / session",
-    validity: "Valid 4 months",
-    note: "Personalized sessions at a limited-time pack rate.",
-    featured: false,
-  },
-];
-
-const privateEvents = [
-  {
-    title: "Private Group Class (up to 10 people)",
-    price: "$350 / session",
-    detail:
-      "50-minute custom reformer class with instructor & exclusive studio use.",
-  },
-  {
-    title: "Extended Private Event (90 min)",
-    price: "$500 / session",
-    detail: "Includes class + guided stretch or wellness experience.",
-  },
-  {
-    title: "Corporate / Wellness Series",
-    price: "From $1,200",
-    detail: "Multi-session customized program for companies or retreats.",
-  },
-];
-
-const section = "px-6 py-32 lg:px-14 lg:py-44";
-const sectionInner = "mx-auto max-w-[72rem] xl:max-w-[80rem]";
-const sectionHead = "max-w-xl space-y-5";
-const eyebrow =
-  "text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-primary";
-const sectionTitle =
-  "font-heading text-[2.5rem] font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl";
-const sectionBody = "text-[0.9375rem] leading-[1.85] text-muted sm:text-base";
-const cardGrid = "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-7";
-const cardTitle =
-  "font-heading text-[1.375rem] font-medium leading-snug tracking-tight text-foreground";
-const cardPrice =
-  "font-heading text-[1.75rem] font-medium leading-none tabular-nums tracking-tight text-foreground";
-const cardMeta = "text-[0.8125rem] leading-relaxed text-muted";
-const cardCopy = "text-[0.8125rem] leading-[1.7] text-muted";
 
 function benefitBullets(text: string): string[] {
   return text
@@ -190,574 +161,561 @@ function benefitBullets(text: string): string[] {
     .slice(0, 4);
 }
 
-function SectionHeader({
+const privateSessionWidgetServiceIds: Record<string, string> = {
+  "Single Private": "100014",
+};
+
+type PrivateOption = {
+  title: string;
+  price: string;
+  listPrice?: string;
+  perSession: string;
+  validity: string | null;
+  note: string;
+  featured: boolean;
+};
+
+const privatesNonMember: PrivateOption[] = [
+  {
+    title: "Single Private",
+    price: "$120",
+    perSession: "$120 / session",
+    validity: "60-minute session",
+    note: "One personalized 1:1 reformer session.",
+    featured: false,
+  },
+  {
+    title: "3-Pack Private",
+    listPrice: "$360",
+    price: "$320",
+    perSession: "$106.67 / session",
+    validity: "Valid 2 months",
+    note: "Personalized 1:1 sessions at a limited-time pack rate.",
+    featured: false,
+  },
+  {
+    title: "5-Pack Private",
+    listPrice: "$575",
+    price: "$500",
+    perSession: "$100 / session",
+    validity: "Valid 3 months",
+    note: "Personalized 1:1 sessions at a limited-time pack rate.",
+    featured: true,
+  },
+  {
+    title: "10-Pack Private",
+    listPrice: "$1,100",
+    price: "$950",
+    perSession: "$95 / session",
+    validity: "Valid 4 months",
+    note: "Personalized 1:1 sessions at a limited-time pack rate.",
+    featured: false,
+  },
+];
+
+const privateEvents = [
+  {
+    title: "Private Group Class",
+    subtitle: "Up to 10 guests",
+    price: "$350",
+    unit: "/ session",
+    detail:
+      "50-minute custom reformer class with an instructor and exclusive studio use.",
+  },
+  {
+    title: "Extended Private Event",
+    subtitle: "90 minutes",
+    price: "$500",
+    unit: "/ session",
+    detail: "Includes class plus a guided stretch or wellness experience.",
+  },
+  {
+    title: "Corporate / Wellness Series",
+    subtitle: "Multi-session",
+    price: "From $1,200",
+    unit: "",
+    detail: "A customized program for companies, teams, or retreats.",
+  },
+];
+
+function extractPerClass(note: string): string | null {
+  const match = note.match(/(\$[\d.]+)\s+per class/i);
+  return match ? `${match[1]} / class` : null;
+}
+
+/* ---------------------------------------------------------------------------
+   Presentational building blocks
+--------------------------------------------------------------------------- */
+
+function SectionHead({
   label,
   title,
   children,
   id,
+  center = false,
   as = "h2",
 }: {
   label?: string;
   title: string;
   children?: ReactNode;
   id?: string;
+  center?: boolean;
   as?: "h1" | "h2" | "h3";
 }) {
   const Heading = as;
   return (
-    <div className={sectionHead}>
-      {label ? <p className={eyebrow}>{label}</p> : null}
-      <Heading id={id} className={sectionTitle}>
+    <div className={`lp-head ${center ? "lp-head--center" : ""}`}>
+      {label ? <p className="lp-eyebrow">{label}</p> : null}
+      <Heading
+        id={id}
+        className={`lp-title ${id ? "scroll-mt-40" : ""}`}
+      >
         {title}
       </Heading>
-      {children ? <p className={sectionBody}>{children}</p> : null}
+      {children ? <p className="lp-lead">{children}</p> : null}
     </div>
   );
 }
 
-function CardAction({ children }: { children: ReactNode }) {
-  return (
-    <p className="mt-auto pt-10 text-[0.8125rem] font-medium tracking-[0.02em] text-muted transition-colors duration-300 group-hover:text-foreground">
-      {children}
-      <span
-        aria-hidden
-        className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
-      >
-        →
-      </span>
-    </p>
-  );
-}
+/* ---------------------------------------------------------------------------
+   1. YOUR FIRST VISIT
+--------------------------------------------------------------------------- */
 
-function GroupClassOptionPrice({ item }: { item: GroupClassOption }) {
-  if (item.listPrice) {
-    return (
-      <div className="flex items-baseline gap-2.5">
-        <p className={cardPrice}>{item.price}</p>
-        <p className="text-sm text-muted line-through">{item.listPrice}</p>
-      </div>
-    );
-  }
-  return <p className={cardPrice}>{item.price}</p>;
-}
-
-function PackCard({
-  item,
-  delay = 0,
-  action = "Purchase",
-  featured = false,
-}: {
-  item: GroupClassOption;
-  delay?: number;
-  action?: string;
-  featured?: boolean;
-}) {
-  const serviceId = getGroupClassServiceId(item.title);
-  return (
-    <Reveal delay={delay}>
-      <div
-        className={`pricing-offer group ${
-          serviceId ? "pricing-card-full-buy cursor-pointer" : ""
-        } ${featured ? "pricing-offer-featured" : ""}`}
-      >
-        <div
-          className={`relative z-0 flex h-full min-h-0 flex-col ${
-            serviceId ? "pointer-events-none select-none" : ""
-          }`}
-        >
-          <h3 className={cardTitle}>{item.title}</h3>
-          <div className="mt-6">
-            <GroupClassOptionPrice item={item} />
-          </div>
-          <p className={`mt-3 ${cardMeta}`}>
-            {item.validity !== "—" ? `Valid ${item.validity}` : "Single class"}
-          </p>
-          <p className={`mt-6 ${cardCopy}`}>{item.note}</p>
-          {serviceId ? <CardAction>{action}</CardAction> : null}
-        </div>
-        {serviceId ? (
-          <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-            {renderHealcodeWidget("pricing-link", serviceId)}
-          </div>
-        ) : null}
-      </div>
-    </Reveal>
-  );
-}
-
-function PrivateCard({
-  item,
-  delay = 0,
-}: {
-  item: (typeof privatesNonMember)[number];
-  delay?: number;
-}) {
-  const serviceId = privateSessionWidgetServiceIds[item.title];
-  const isPromo = Boolean(item.listPrice);
-  return (
-    <Reveal delay={delay}>
-      <div
-        className={`pricing-offer group ${
-          serviceId ? "pricing-card-full-buy cursor-pointer" : ""
-        } ${item.featured ? "pricing-offer-featured" : ""}`}
-      >
-        <div
-          className={`relative z-0 flex h-full min-h-0 flex-col ${
-            serviceId ? "pointer-events-none select-none" : ""
-          }`}
-        >
-          <h3 className={cardTitle}>{item.title}</h3>
-          <div className="mt-6 flex items-baseline gap-2.5">
-            <p className={cardPrice}>{item.price}</p>
-            {isPromo ? (
-              <p className="text-sm text-muted line-through">{item.listPrice}</p>
-            ) : null}
-          </div>
-          <p className={`mt-3 ${cardMeta}`}>
-            {item.perSession}
-            {item.validity ? (
-              <>
-                <span className="text-border"> · </span>
-                {item.validity}
-              </>
-            ) : null}
-          </p>
-          <p className={`mt-6 ${cardCopy}`}>{item.note}</p>
-          <CardAction>
-            {serviceId ? "Book Private Training" : "Inquire to book"}
-          </CardAction>
-        </div>
-        {serviceId ? (
-          <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-            {renderHealcodeWidget("pricing-link", serviceId)}
-          </div>
-        ) : null}
-      </div>
-    </Reveal>
-  );
-}
-
-const standardPackOffers = standardGroupClassOptions.filter((item) =>
-  item.title.includes("Pack")
-);
-
-export default function PricingPage() {
-  useMindbodyHealcodeScript();
-
-  useEffect(() => {
-    const hash = window.location.hash.replace(/^#/, "");
-    if (!hash) return;
-    scheduleScrollToSection(hash, 80);
-    scheduleScrollToSection(hash, 300);
-  }, []);
-
-  const introOffers = getIntroOffersForPricing();
-  const packOffers = getPackOffersForPricing();
-  const dropInOffer = introOffers.find((o) => o.title === "Single Class");
-
-  const summerUnlimited = summerResetOfferCards.unlimitedIntro;
-  const summerThreeClass = summerResetOfferCards.threeClassIntro;
+function FirstVisit() {
+  const unlimited = summerResetOfferCards.unlimitedIntro;
+  const threeClass = summerResetOfferCards.threeClassIntro;
   const unlimitedServiceId =
     summerResetMindbodyServiceIds.fifteenDayUnlimitedIntro;
   const threeClassServiceId = summerResetMindbodyServiceIds.threeClassIntro;
 
+  // Non-promo fallbacks — first-time intro from standard catalog.
+  const standardIntro = standardGroupClassOptions.find(
+    (o) => o.title === "New Client Intro Offer"
+  );
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
+    <section
+      id="get-started"
+      className="lp-section lp-bg-sand scroll-mt-40 pt-36 lg:pt-44"
+    >
+      <div className="lp-inner lp-stack">
+        <Reveal>
+          <SectionHead label="Your First Visit" title="Experience Alva" center>
+            Choose the perfect way to begin your Pilates journey.
+          </SectionHead>
+        </Reveal>
 
-      {/* Summer Reset */}
-      {summerResetEnabled ? (
-        <section
-          id={summerResetSectionId}
-          className={`surface-secondary scroll-mt-40 ${section} pt-40 lg:pt-48`}
-        >
-          <div className={`${sectionInner} space-y-24`}>
-            <Reveal>
-              <SectionHeader
-                label="Limited time · Ends August 15"
-                title="Summer Reset"
-                id="get-started"
-                as="h1"
-              >
-                New-client intro offers, 20% off class packs, and private
-                training promotions.
-              </SectionHeader>
-            </Reveal>
+        <Reveal stagger>
+          <div className="lp-grid-3">
+            {/* Featured — 15-Day Unlimited */}
+            <div
+              id="summer-offer-unlimited"
+              className="lp-card lp-card--feature pricing-card-full-buy scroll-mt-40"
+            >
+              <div className="lp-card__top">
+                <p className="lp-card__eyebrow">Featured</p>
+                <span className="lp-badge">Best Value</span>
+              </div>
+              <h3 className="lp-name">
+                {summerResetEnabled ? unlimited.title : "15-Day Unlimited Intro"}
+              </h3>
+              <div className="lp-price-row">
+                <span className="lp-price lp-price--sm">
+                  {summerResetEnabled ? unlimited.price : "$99"}
+                </span>
+                <span className="lp-was">$149</span>
+              </div>
+              <div className="lp-divider" />
+              <ul className="lp-list">
+                <li>One class per day · 15 days</li>
+                <li>First-time clients only</li>
+              </ul>
+              <div style={{ marginTop: "0.75rem" }}>
+                <IntroOfferCreditNote className="lp-note" />
+              </div>
+              <div className="lp-foot">
+                <span className="lp-cta">Start Your Intro</span>
+              </div>
+              <BuyOverlay
+                serviceId={unlimitedServiceId}
+                fallbackHref={
+                  summerResetPurchaseFallbacks.fifteenDayUnlimitedIntro
+                }
+                fallbackLabel="Start Your Intro — 15-Day Unlimited Intro"
+              />
+            </div>
 
-            <div className="space-y-10">
-              <Reveal>
-                <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-                  New client intro offers
-                </h3>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-3`}>
-                <Reveal>
-                  <div className="pricing-offer pricing-offer-featured pricing-card-full-buy group cursor-pointer">
-                    <div className="relative z-0 flex h-full min-h-0 flex-col pointer-events-none select-none">
-                      <h3 className={cardTitle}>{summerUnlimited.title}</h3>
-                      <p className={`mt-6 ${cardPrice}`}>
-                        {summerUnlimited.price}
-                      </p>
-                      <p className={`mt-3 ${cardMeta}`}>
-                        1 class per day · 15 days · first-time clients
-                      </p>
-                      <p className={`mt-6 ${cardCopy}`}>
-                        {summerUnlimited.description}
-                      </p>
-                      <div className="mt-5">
-                        <IntroOfferCreditNote />
-                      </div>
-                      <CardAction>Start Your Intro</CardAction>
-                    </div>
-                    <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-                      {unlimitedServiceId ? (
-                        renderHealcodePricingLink(
-                          unlimitedServiceId,
-                          "Start Your Intro"
-                        )
-                      ) : (
-                        <FallbackPurchaseLink
-                          href={
-                            summerResetPurchaseFallbacks.fifteenDayUnlimitedIntro
-                          }
-                          label={`Start Your Intro — ${summerUnlimited.title}`}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-
-                <Reveal delay={0.05}>
-                  <div className="pricing-offer pricing-card-full-buy group cursor-pointer">
-                    <div className="relative z-0 flex h-full min-h-0 flex-col pointer-events-none select-none">
-                      <h3 className={cardTitle}>{summerThreeClass.title}</h3>
-                      <div className="mt-6 flex items-baseline gap-2.5">
-                        <p className={cardPrice}>{summerThreeClass.price}</p>
-                        <p className="text-sm text-muted line-through">$89</p>
-                      </div>
-                      <p className={`mt-3 ${cardMeta}`}>
-                        3 classes · 30 days · first-time clients
-                      </p>
-                      <p className={`mt-6 ${cardCopy}`}>
-                        {summerThreeClass.description}
-                      </p>
-                      <div className="mt-5">
-                        <IntroOfferCreditNote />
-                      </div>
-                      <CardAction>Start Your Intro</CardAction>
-                    </div>
-                    <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-                      {threeClassServiceId ? (
-                        renderHealcodePricingLink(
-                          threeClassServiceId,
-                          "Start Your Intro"
-                        )
-                      ) : (
-                        <FallbackPurchaseLink
-                          href={summerResetPurchaseFallbacks.threeClassIntro}
-                          label={`Start Your Intro — ${summerThreeClass.title}`}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </Reveal>
-
-                {dropInOffer ? (
-                  <PackCard
-                    item={dropInOffer}
-                    delay={0.1}
-                    action="Book a Class"
-                  />
+            {/* Secondary — 3-Class Intro */}
+            <div
+              id="summer-offer-intro"
+              className="lp-card lp-card--tint pricing-card-full-buy scroll-mt-40"
+            >
+              <div className="lp-card__top">
+                <p className="lp-card__eyebrow">Intro pack</p>
+              </div>
+              <h3 className="lp-name">
+                {summerResetEnabled
+                  ? threeClass.title
+                  : standardIntro?.title ?? "3-Class Intro"}
+              </h3>
+              <div className="lp-price-row">
+                <span className="lp-price lp-price--sm">
+                  {summerResetEnabled ? threeClass.price : "$89"}
+                </span>
+                {summerResetEnabled ? (
+                  <span className="lp-was">$89</span>
                 ) : null}
               </div>
+              <div className="lp-divider" />
+              <ul className="lp-list">
+                <li>3 classes · valid 30 days</li>
+                <li>First-time clients only</li>
+              </ul>
+              <div style={{ marginTop: "0.75rem" }}>
+                <IntroOfferCreditNote className="lp-note" />
+              </div>
+              <div className="lp-foot">
+                <span className="lp-cta lp-cta--ghost">Start Your Intro</span>
+              </div>
+              <BuyOverlay
+                serviceId={threeClassServiceId}
+                fallbackHref={summerResetPurchaseFallbacks.threeClassIntro}
+                fallbackLabel="Start Your Intro — 3-Class Intro"
+              />
             </div>
 
-            <div id="group-packages" className="scroll-mt-40 space-y-10">
-              <Reveal>
-                <div className="max-w-xl space-y-3">
-                  <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-                    Summer class pack sale
-                  </h3>
-                  <p className={sectionBody}>
-                    20% off 5, 10, and 20-class packs through August 15.
-                  </p>
-                </div>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-3`}>
-                {packOffers.map((item, idx) => (
-                  <PackCard key={item.title} item={item} delay={idx * 0.04} />
-                ))}
+            {/* Drop-in — Single Class */}
+            <div className="lp-card pricing-card-full-buy">
+              <div className="lp-card__top">
+                <p className="lp-card__eyebrow">Drop in</p>
               </div>
-            </div>
-
-            <div className="space-y-10">
-              <Reveal>
-                <div className="max-w-xl space-y-3">
-                  <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-                    Private training promotion
-                  </h3>
-                  <p className={sectionBody}>
-                    Limited-time private pack rates. Mon–Fri 11 AM–4 PM ·
-                    weekends by appointment.
-                  </p>
-                </div>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-3`}>
-                {privatesNonMember.map((item, idx) => (
-                  <PrivateCard key={item.title} item={item} delay={idx * 0.04} />
-                ))}
+              <h3 className="lp-name">Single Class</h3>
+              <div className="lp-price-row">
+                <span className="lp-price lp-price--sm">$39</span>
               </div>
+              <div className="lp-divider" />
+              <ul className="lp-list">
+                <li>Any reformer class</li>
+                <li>All levels welcome</li>
+              </ul>
+              <div className="lp-foot">
+                <span className="lp-cta">Book a Class</span>
+              </div>
+              <BuyOverlay serviceId={getGroupClassServiceId("Single Class")} />
             </div>
           </div>
-        </section>
-      ) : (
-        <>
-          <section className={`${section} pt-40 lg:pt-48`}>
-            <div className={`${sectionInner} text-center`}>
-              <Reveal>
-                <SectionHeader
-                  label="Pricing"
-                  title="Pricing & Memberships"
-                  as="h1"
-                >
-                  Choose the option that fits your practice — packs,
-                  memberships, privates, and events.
-                </SectionHeader>
-              </Reveal>
-            </div>
-          </section>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
-          <FoundingMemberPricingStrip />
+/* ---------------------------------------------------------------------------
+   3. MEMBERSHIPS — premium pricing cards
+--------------------------------------------------------------------------- */
 
-          <section
-            id="get-started"
-            className={`surface-secondary scroll-mt-40 ${section}`}
-          >
-            <div className={`${sectionInner} space-y-12`}>
-              <Reveal>
-                <SectionHeader label="Get started" title="New client intro">
-                  Start with a single class or our introductory pack.
-                </SectionHeader>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-2`}>
-                {introOffers.map((item, idx) => (
-                  <PackCard
-                    key={item.title}
-                    item={item}
-                    delay={idx * 0.04}
-                    action={
-                      item.title === "New Client Intro Offer"
-                        ? "Start Your Intro"
-                        : "Book a Class"
-                    }
-                    featured={item.title === "New Client Intro Offer"}
-                  />
-                ))}
-              </div>
-            </div>
-          </section>
+function MembershipCard({ m }: { m: MembershipOption }) {
+  const contractId = m.serviceId ?? membershipWidgetServiceIds[m.title];
+  const featured = Boolean(m.featured);
+  const tint = Boolean(m.founding && !featured);
+  const benefits = benefitBullets(getMembershipDisplayBenefits(m));
 
-          <section
-            id="group-packages"
-            className={`scroll-mt-40 ${section}`}
-          >
-            <div className={`${sectionInner} space-y-12`}>
-              <Reveal>
-                <SectionHeader
-                  label="Class packs"
-                  title="Non-member packages"
-                >
-                  Flexible packs for drop-in frequency or regular practice.
-                </SectionHeader>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-2 xl:grid-cols-3`}>
-                {packOffers.map((item, idx) => (
-                  <PackCard key={item.title} item={item} delay={idx * 0.04} />
-                ))}
-              </div>
-            </div>
-          </section>
-        </>
-      )}
-
-      {/* Founding memberships */}
-      {summerResetEnabled ? (
-        <FoundingMemberPricingStrip />
+  return (
+    <div
+      className={`lp-card ${
+        featured ? "lp-card--feature" : tint ? "lp-card--tint" : ""
+      } ${contractId ? "pricing-card-full-buy" : ""}`}
+    >
+      <div className="lp-card__top">
+        <p className="lp-card__eyebrow">
+          {m.founding ? "Founding" : "Membership"}
+        </p>
+        {featured ? <span className="lp-badge">Best Value</span> : null}
+      </div>
+      <h3 className="lp-name">{m.title}</h3>
+      <div className="lp-price-row">
+        <span className="lp-price lp-price--sm">{m.price}</span>
+        <span className="lp-unit">/mo</span>
+        {m.listPrice ? <span className="lp-was">{m.listPrice}</span> : null}
+      </div>
+      <p className="lp-desc">{m.tagline}</p>
+      <div className="lp-divider" />
+      <ul className="lp-list">
+        <li>{m.classes}</li>
+        <li>{m.contract}</li>
+        {benefits.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+      <div className="lp-foot">
+        <span className={`lp-cta ${featured ? "" : "lp-cta--ghost"}`}>
+          Join {m.title}
+        </span>
+      </div>
+      {contractId ? (
+        <BuyOverlay type="contract-link" serviceId={contractId} />
       ) : null}
+    </div>
+  );
+}
 
-      {/* Standard memberships */}
-      <section
-        id="memberships"
-        className={`surface-ivory scroll-mt-40 ${section}`}
-      >
-        <div className={`${sectionInner} space-y-12`}>
-          <Reveal>
-            <SectionHeader
-              label="Year-round"
-              title={
-                summerResetEnabled
-                  ? "Continue with a membership"
-                  : "Memberships"
-              }
-            >
-              {summerResetEnabled
-                ? "Auto-renews monthly. Apply your intro credit when you join within 15 days after your intro expires."
-                : "Auto-renews monthly. Pause or cancel with 14-day notice."}
-            </SectionHeader>
-          </Reveal>
+function Memberships() {
+  return (
+    <section id="memberships" className="lp-section lp-bg-ivory scroll-mt-40">
+      <span id="founding-pricing" className="block scroll-mt-40" aria-hidden />
+      <div className="lp-inner lp-inner--wide lp-stack">
+        <Reveal>
+          <SectionHead
+            label={foundingMemberCopy.badge}
+            title="Memberships"
+            id="founding-pricing-heading"
+          >
+            {foundingMemberCopy.pricingStripBody} Auto-renews monthly.
+            {summerResetEnabled
+              ? " Apply your intro credit when you join within 15 days after your intro expires."
+              : " Pause or cancel with 14-day notice."}
+          </SectionHead>
+        </Reveal>
 
-          <div className={`${cardGrid} lg:grid-cols-4`}>
-            {memberships.map((m, idx) => {
-              const contractId = membershipWidgetServiceIds[m.title];
-              const bullets = benefitBullets(getMembershipDisplayBenefits(m));
-              return (
-                <Reveal key={m.title} delay={idx * 0.04}>
-                  <div
-                    className={`pricing-offer group ${
-                      contractId ? "pricing-card-full-buy cursor-pointer" : ""
-                    } ${m.featured ? "pricing-offer-featured" : ""}`}
-                  >
-                    <div
-                      className={`relative z-0 flex h-full min-h-0 flex-col ${
-                        contractId ? "pointer-events-none select-none" : ""
-                      }`}
-                    >
-                      <h3 className={cardTitle}>{m.title}</h3>
-                      <p className={`mt-6 ${cardPrice}`}>{m.price}</p>
-                      <p className={`mt-3 ${cardMeta}`}>
-                        {m.classes}
-                        <span className="text-border"> · </span>
-                        {m.contract}
-                      </p>
-                      <ul className="mt-6 space-y-2">
-                        {bullets.map((bullet) => (
-                          <li key={bullet} className={cardCopy}>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                      {contractId ? (
-                        <CardAction>Join Membership</CardAction>
-                      ) : (
-                        <p className={`mt-auto pt-10 ${cardMeta}`}>
-                          Monthly auto-renew
-                        </p>
-                      )}
-                    </div>
-                    {contractId ? (
-                      <div className="absolute inset-0 z-10 pricing-card-full-buy-overlay">
-                        {renderHealcodeWidget("contract-link", contractId)}
-                      </div>
-                    ) : null}
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Standard year-round pricing */}
-      {summerResetEnabled ? (
-        <section
-          id="standard-pricing"
-          className={`surface-secondary scroll-mt-40 ${section}`}
-        >
-          <div className={`${sectionInner} space-y-16`}>
-            <Reveal>
-              <SectionHeader title="Standard pricing">
-                Year-round rates for class packs, drop-in, and private training.
-              </SectionHeader>
-            </Reveal>
-
-            <div className="space-y-8">
-              <Reveal>
-                <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-                  Class packs & drop-in
-                </h3>
-              </Reveal>
-              <div className={`${cardGrid} lg:grid-cols-2 xl:grid-cols-4`}>
-                {standardPackOffers.map((item, idx) => (
-                  <PackCard key={item.title} item={item} delay={idx * 0.04} />
-                ))}
-                {dropInOffer ? (
-                  <PackCard
-                    item={dropInOffer}
-                    delay={0.12}
-                    action="Book a Class"
-                  />
-                ) : null}
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <Reveal>
-                <h3 className="font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
-                  Private training
-                </h3>
-              </Reveal>
-              <div className={`${cardGrid} max-w-sm lg:grid-cols-1`}>
-                <PrivateCard item={privatesNonMember[0]} />
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : (
-        <section className={`surface-secondary ${section}`}>
-          <div className={`${sectionInner} space-y-12`}>
-            <Reveal>
-              <SectionHeader
-                label="Private training"
-                title="Personalized coaching"
-              >
-                Privates available Mon–Fri 11 AM–4 PM · weekends by appointment.
-              </SectionHeader>
-            </Reveal>
-            <div className={`${cardGrid} lg:grid-cols-3`}>
-              {privatesNonMember.map((item, idx) => (
-                <PrivateCard key={item.title} item={item} delay={idx * 0.04} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Private events */}
-      <section className={section}>
-        <div className={`${sectionInner} space-y-12`}>
-          <Reveal>
-            <SectionHeader
-              label="Studio rentals"
-              title="Private events & wellness experiences"
-            >
-              Host your next gathering in our elevated Valencia studio.
-            </SectionHeader>
-          </Reveal>
-          <div className={`${cardGrid} lg:grid-cols-3`}>
-            {privateEvents.map((item, idx) => (
-              <Reveal key={item.title} delay={idx * 0.04}>
-                <div className="pricing-offer group">
-                  <h3 className={cardTitle}>{item.title}</h3>
-                  <p className={`mt-6 ${cardPrice}`}>{item.price}</p>
-                  <p className={`mt-6 ${cardCopy}`}>{item.detail}</p>
-                  <CardAction>Inquire to book</CardAction>
-                </div>
-              </Reveal>
+        <Reveal stagger>
+          <div className="lp-grid-4">
+            {memberships.map((m) => (
+              <MembershipCard key={m.title} m={m} />
             ))}
           </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   5. CLASS PACKS — staggered premium cards
+--------------------------------------------------------------------------- */
+
+function PackCard({
+  item,
+  featured = false,
+}: {
+  item: GroupClassOption;
+  featured?: boolean;
+}) {
+  const serviceId = getGroupClassServiceId(item.title);
+  const perClass = extractPerClass(item.note);
+
+  return (
+    <div
+      className={`lp-card ${featured ? "lp-card--feature" : ""} ${
+        serviceId ? "pricing-card-full-buy" : ""
+      }`}
+    >
+      <div className="lp-card__top">
+        <p className="lp-card__eyebrow">Class pack</p>
+        {featured ? <span className="lp-badge">Best Value</span> : null}
+      </div>
+      <h3 className="lp-name">{item.title}</h3>
+      <div className="lp-price-row">
+        <span className="lp-price lp-price--sm">{item.price}</span>
+        {item.listPrice ? <span className="lp-was">{item.listPrice}</span> : null}
+      </div>
+      <div className="lp-divider" />
+      <ul className="lp-list">
+        <li>{perClass ?? "Flexible per-class rate"}</li>
+        <li>Valid {item.validity}</li>
+        <li>Non-member rate</li>
+      </ul>
+      <div className="lp-foot">
+        {serviceId ? (
+          <span className="lp-cta">Purchase Pack</span>
+        ) : (
+          <a href="/contact" className="lp-cta lp-cta--ghost">
+            Inquire
+          </a>
+        )}
+      </div>
+      {serviceId ? <BuyOverlay serviceId={serviceId} /> : null}
+    </div>
+  );
+}
+
+function ClassPacks() {
+  const packOffers = getPackOffersForPricing();
+
+  return (
+    <section
+      id="group-packages"
+      className="lp-section lp-bg-sand scroll-mt-40"
+    >
+      <div className="lp-inner lp-stack">
+        <Reveal>
+          <SectionHead
+            label={summerResetEnabled ? "Summer class pack sale" : "Class packs"}
+            title={
+              summerResetEnabled ? "Flexibility, elevated" : "Class packs"
+            }
+            id="summer-offer-packs"
+          >
+            {summerResetEnabled
+              ? "20% off 5, 10, and 20-class packs through August 15 — buy in advance and move on your own schedule."
+              : "Flexible packs for drop-in frequency or a regular, unhurried practice."}
+          </SectionHead>
+        </Reveal>
+
+        <Reveal stagger>
+          <div className="lp-grid-3 lp-stagger">
+            {packOffers.map((item) => (
+              <PackCard
+                key={item.title}
+                item={item}
+                featured={item.title === "20-Class Pack"}
+              />
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   6. PRIVATE TRAINING — editorial split, luxury service cards
+--------------------------------------------------------------------------- */
+
+function PrivateCard({ item }: { item: PrivateOption }) {
+  const serviceId = privateSessionWidgetServiceIds[item.title];
+
+  return (
+    <div
+      className={`lp-card lp-card--glass ${
+        serviceId ? "pricing-card-full-buy" : ""
+      }`}
+    >
+      <div className="lp-card__top">
+        <p className="lp-card__eyebrow">Private training</p>
+        {item.featured ? <span className="lp-badge">Best Value</span> : null}
+      </div>
+      <h3 className="lp-name">{item.title}</h3>
+      <div className="lp-price-row">
+        <span className="lp-price lp-price--sm">{item.price}</span>
+        {item.listPrice ? <span className="lp-was">{item.listPrice}</span> : null}
+      </div>
+      <div className="lp-divider" />
+      <ul className="lp-list">
+        <li>{item.perSession}</li>
+        {item.validity ? <li>{item.validity}</li> : null}
+        <li>Personalized 1:1 programming</li>
+      </ul>
+      <div className="lp-foot">
+        {serviceId ? (
+          <span className="lp-cta">Book Private Training</span>
+        ) : (
+          <a href="/contact" className="lp-cta">
+            Inquire
+          </a>
+        )}
+      </div>
+      {serviceId ? <BuyOverlay serviceId={serviceId} /> : null}
+    </div>
+  );
+}
+
+function PrivateTraining() {
+  return (
+    <>
+      <div className="lp-fade-to-char" aria-hidden />
+      <section
+        id="private-training"
+        className="lp-section lp-bg-char scroll-mt-40"
+      >
+        <div className="lp-inner lp-inner--wide lp-stack">
+          <Reveal>
+            <SectionHead label="Private training" title="One-on-one, by design">
+              Focused, personalized coaching on the reformer. Mon–Fri
+              11 AM–4 PM, weekends by appointment.
+            </SectionHead>
+          </Reveal>
+
+          <Reveal stagger>
+            <div className="lp-grid-4">
+              {privatesNonMember.map((item) => (
+                <PrivateCard key={item.title} item={item} />
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
+      <div className="lp-fade-from-char" aria-hidden />
+    </>
+  );
+}
 
-      {/* CTA */}
-      <section className="surface-espresso px-6 py-32 lg:px-14 lg:py-44">
-        <div className="mx-auto max-w-xl text-center">
+/* ---------------------------------------------------------------------------
+   Private events — studio rentals
+--------------------------------------------------------------------------- */
+
+function PrivateEvents() {
+  return (
+    <section className="lp-section lp-bg-stone">
+      <div className="lp-inner lp-stack">
+        <Reveal>
+          <SectionHead
+            label="Studio rentals"
+            title="Private events & experiences"
+            center
+          >
+            Host your next gathering in our Valencia studio.
+          </SectionHead>
+        </Reveal>
+
+        <Reveal stagger>
+          <div className="lp-grid-3">
+            {privateEvents.map((item) => (
+              <div key={item.title} className="lp-card">
+                <div className="lp-card__top">
+                  <p className="lp-card__eyebrow">{item.subtitle}</p>
+                </div>
+                <h3 className="lp-name">{item.title}</h3>
+                <div className="lp-price-row">
+                  <span className="lp-price lp-price--sm">{item.price}</span>
+                  {item.unit ? <span className="lp-unit">{item.unit}</span> : null}
+                </div>
+                <div className="lp-divider" />
+                <p className="lp-desc">{item.detail}</p>
+                <div className="lp-foot">
+                  <a href="/contact" className="lp-cta lp-cta--ghost">
+                    Inquire to book
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Final CTA
+--------------------------------------------------------------------------- */
+
+function FinalCta() {
+  return (
+    <>
+      <div className="lp-fade-to-char" aria-hidden />
+      <section className="lp-section lp-bg-char text-center">
+        <div className="mx-auto max-w-xl">
           <Reveal>
-            <h2 className="font-heading text-[2.5rem] font-medium leading-[1.05] tracking-tight text-on-dark sm:text-5xl">
+            <p className="lp-eyebrow">Begin</p>
+            <h2 className="lp-title" style={{ marginTop: "1rem" }}>
               Book your first class
             </h2>
-            <p className="mx-auto mt-5 max-w-md text-[0.9375rem] leading-[1.8] text-muted-dark sm:text-base">
-              Reserve your spot and experience intentional movement in a calm,
-              elevated studio.
+            <p
+              className="lp-lead"
+              style={{ margin: "1.25rem auto 0", textAlign: "center" }}
+            >
+              Reserve your spot and experience intentional movement in a
+              considered Valencia studio.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <a href="/book" className="btn-primary min-w-[11rem]">
@@ -770,6 +728,43 @@ export default function PricingPage() {
           </Reveal>
         </div>
       </section>
+    </>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   PAGE
+--------------------------------------------------------------------------- */
+
+export default function PricingPage() {
+  useMindbodyHealcodeScript();
+
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, "");
+    if (!hash) return;
+    scheduleScrollToSection(hash, 80);
+    scheduleScrollToSection(hash, 300);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[var(--lp-ivory)] text-foreground">
+      <Header />
+
+      <span
+        id={summerResetSectionId}
+        aria-hidden
+        className="block scroll-mt-40"
+      />
+      {/* Anchor for the homepage hero "View Summer Offers" CTA */}
+      <span id="summer-reset" aria-hidden className="block scroll-mt-40" />
+      <FirstVisit />
+      <Memberships />
+      {/* Anchor for the homepage hero "20% off class packs" row */}
+      <span id="class-packs" aria-hidden className="block scroll-mt-40" />
+      <ClassPacks />
+      <PrivateTraining />
+      <PrivateEvents />
+      <FinalCta />
 
       <Footer />
     </div>

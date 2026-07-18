@@ -10,20 +10,38 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
 
-      <section className="surface-secondary border-b border-border px-6 pb-20 pt-36 lg:px-14 lg:pb-28 lg:pt-44">
+      <section className="surface-charcoal-soft px-6 pb-4 pt-24 text-paper lg:px-14 lg:pb-5 lg:pt-28">
+        <div className="mx-auto max-w-[100rem]">
+          <Reveal>
+            <p className="text-[0.625rem] font-medium uppercase tracking-[0.2em] text-[rgba(247,247,243,0.55)]">
+              Connect
+            </p>
+            <h1 className="mt-2 font-display text-xl font-normal leading-tight tracking-[-0.02em] text-paper sm:text-2xl">
+              Get in touch
+            </h1>
+            <p className="mt-1.5 max-w-md text-xs leading-relaxed text-[rgba(247,247,243,0.68)] sm:text-sm">
+              Questions about classes, memberships, or visiting the studio —
+              we&apos;re here to help.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+      <div
+        className="flow-out-of-dark !h-10 lg:!h-12"
+        aria-hidden
+      />
+
+      <section className="surface-paper px-6 pb-20 pt-6 lg:px-14 lg:pb-28 lg:pt-8">
         <div className="mx-auto max-w-[100rem]">
           <div className="grid grid-cols-1 items-start gap-12 border-t border-border pt-10 lg:grid-cols-12 lg:gap-0 lg:pt-14">
-            {/* Form first — primary action */}
             <Reveal className="order-1 lg:order-2 lg:col-span-7 lg:border-l lg:border-border lg:pl-16 xl:pl-20">
               <div className="border border-border bg-card px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
-                <div className="mb-8 flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
-                  <span className="text-muted">01</span>
-                  <span className="h-px w-10 bg-border" aria-hidden />
-                  <p className="text-primary">Contact</p>
-                </div>
-                <h1 className="font-heading text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+                <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-taupe">
+                  Contact
+                </p>
+                <h2 className="mt-4 font-heading text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
                   Send a message
-                </h1>
+                </h2>
                 <p className="mt-4 max-w-md text-sm leading-[1.8] text-muted sm:text-base">
                   Reach out with questions about classes, memberships, or
                   visiting the studio.
@@ -34,18 +52,15 @@ export default function ContactPage() {
               </div>
             </Reveal>
 
-            {/* Studio details — secondary column */}
             <Reveal
               delay={0.06}
               className="order-2 lg:order-1 lg:col-span-5 lg:pr-16 xl:pr-20"
             >
               <div className="space-y-10">
                 <div>
-                  <div className="flex items-center gap-4 text-[0.6875rem] font-medium uppercase tracking-[0.18em]">
-                    <span className="text-muted">02</span>
-                    <span className="h-px w-10 bg-border" aria-hidden />
-                    <p className="text-primary">Visit</p>
-                  </div>
+                  <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-taupe">
+                    Visit
+                  </p>
                   <h2 className="mt-5 font-heading text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
                     Studio details
                   </h2>
@@ -80,7 +95,7 @@ export default function ContactPage() {
                     </p>
                     <a
                       href="mailto:info@formaluxecollective.com"
-                      className="mt-3 inline-block text-base text-foreground transition-colors hover:text-primary"
+                      className="mt-3 inline-block text-base text-foreground transition-colors duration-300 hover:text-charcoal"
                     >
                       info@formaluxecollective.com
                     </a>
@@ -91,7 +106,7 @@ export default function ContactPage() {
                     </p>
                     <a
                       href="tel:+16619777898"
-                      className="mt-3 inline-block text-base text-foreground transition-colors hover:text-primary"
+                      className="mt-3 inline-block text-base text-foreground transition-colors duration-300 hover:text-charcoal"
                     >
                       (661) 977-7898
                     </a>
@@ -107,7 +122,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="surface-ivory border-b border-border px-0 pb-0 pt-0">
+      <section className="surface-stone border-b border-[var(--border)] px-0 pb-0 pt-0 text-charcoal">
         <div className="h-[420px] w-full overflow-hidden lg:h-[560px]">
           <iframe
             src="https://www.google.com/maps?q=23840+Copper+Hill+Drive,+Valencia,+CA+91354&output=embed"
@@ -125,7 +140,7 @@ export default function ContactPage() {
             href="https://www.google.com/maps/search/?api=1&query=23840+Copper+Hill+Drive,+Valencia,+CA+91354"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium tracking-wide text-foreground transition-colors hover:text-primary"
+            className="text-sm font-medium tracking-wide text-charcoal transition-colors duration-300 hover:text-charcoal"
           >
             Open in Google Maps
           </a>

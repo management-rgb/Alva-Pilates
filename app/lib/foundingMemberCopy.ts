@@ -1,29 +1,29 @@
 export const foundingMemberCopy = {
   /** Sitewide header strip — small caps label above promo line */
-  headerFoundingEyebrow: "Founding membership",
-  barLine: "Founding member rates — limited spots.",
+  headerFoundingEyebrow: "Member rates",
+  barLine: "Studio membership rates — limited spots.",
   barCta: "Learn more",
-  eyebrow: "Founding member pricing — limited time",
-  badge: "Exclusive",
+  eyebrow: "Member rates — limited time",
+  badge: "Member rates",
   headlineLead: "Become a",
-  headlineAccent: "Founding Member",
+  headlineAccent: "Studio Member",
   description:
-    "Join us as a founding member and secure exclusive pricing for life. Experience premium Pilates instruction at an exceptional value before our grand opening rates expire.",
-  ctaClaim: "Claim Founding Rate",
+    "Join Alva and lock in membership pricing while limited spots remain. Experience focused reformer instruction at a rate reserved for early members.",
+  ctaClaim: "View Memberships",
   /** Home hero secondary CTA (pricing page) */
   viewAllMemberships: "View All memberships",
-  pricingStripTitle: "Exclusive Founding Membership",
+  pricingStripTitle: "Studio Membership",
   pricingStripBody:
-    "Lock in our best pricing and become one of Alva's founding members while limited memberships remain available.",
+    "Lock in membership pricing and practice with us while limited memberships remain available.",
 } as const;
 
-/** Mindbody contract-link service IDs — same products as standard Elite / Unlimited; update if you add separate founding contracts. */
+/** Mindbody contract-link service IDs — same products as standard Studio / Unlimited; update if you add separate contracts. */
 export const foundingMemberOfferCards = [
   {
-    title: "Founding Member — Elite",
+    title: "Elite",
     /** Standard membership list price (shown struck through) */
     listPrice: "$289/mo",
-    /** Founding member rate */
+    /** Member rate */
     price: "$269/mo",
     classes: "12 classes / month",
     contract: "6-month contract",
@@ -35,7 +35,7 @@ export const foundingMemberOfferCards = [
     featured: false,
   },
   {
-    title: "Founding Member — Unlimited",
+    title: "Unlimited",
     listPrice: "$399/mo",
     price: "$349/mo",
     classes: "Unlimited — as many classes per day as you like",

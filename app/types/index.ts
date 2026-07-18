@@ -11,6 +11,8 @@ export interface Classes {
   difficultyLevel: "Beginner" | "Intermediate" | "Advanced";
   classImage: string;
   bookingUrl?: string;
+  /** Short, scannable focus of the class (e.g. "Full body · Strength") */
+  bodyFocus?: string;
 }
 
 export interface Instructors {
