@@ -189,7 +189,7 @@ export default function Header() {
         <div
           id={menuId}
           ref={menuRef}
-          className="fixed inset-0 top-[4.25rem] z-40 flex flex-col bg-[var(--background)] lg:hidden"
+          className="fixed inset-0 top-[4.25rem] z-40 flex flex-col bg-[rgba(248,245,240,0.98)] backdrop-blur-md supports-[backdrop-filter]:bg-[rgba(248,245,240,0.9)] lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Navigation menu"
