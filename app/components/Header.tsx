@@ -69,13 +69,19 @@ export default function Header() {
 
   const overHero = !scrolled && !isMenuOpen && pathname !== "/pricing";
 
+  // When the menu is open we deliberately avoid backdrop-blur: a backdrop-filter
+  // turns the header into a containing block for its fixed children, which would
+  // clamp the fixed mobile menu to the (short) header box instead of the
+  // viewport. A solid opaque background keeps the overlay full-height.
+  const headerSurface = isMenuOpen
+    ? "header-scrolled border-b border-[var(--border)] bg-[var(--background)] text-foreground shadow-[0_1px_0_0_rgba(32,31,28,0.04),0_10px_30px_-24px_rgba(32,31,28,0.5)]"
+    : scrolled
+      ? "header-scrolled border-b border-[var(--border)] bg-[var(--background)]/85 text-foreground shadow-[0_1px_0_0_rgba(32,31,28,0.04),0_10px_30px_-24px_rgba(32,31,28,0.5)] backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--background)]/78"
+      : "border-b border-transparent bg-gradient-to-b from-[rgba(34,25,17,0.6)] to-transparent text-paper";
+
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 ${
-        scrolled || isMenuOpen
-          ? "header-scrolled border-b border-[var(--border)] bg-[var(--background)]/85 text-foreground shadow-[0_1px_0_0_rgba(32,31,28,0.04),0_10px_30px_-24px_rgba(32,31,28,0.5)] backdrop-blur-xl supports-[backdrop-filter]:bg-[var(--background)]/78"
-          : "border-b border-transparent bg-gradient-to-b from-[rgba(34,25,17,0.6)] to-transparent text-paper"
-      }`}
+      className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 ${headerSurface}`}
     >
       <div className="mx-auto max-w-[120rem] px-5 lg:px-10">
         <div
