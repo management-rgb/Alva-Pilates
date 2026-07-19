@@ -163,6 +163,9 @@ function benefitBullets(text: string): string[] {
 
 const privateSessionWidgetServiceIds: Record<string, string> = {
   "Single Private": "100014",
+  "3-Pack Private": "100040",
+  "5-Pack Private": "100015",
+  "10-Pack Private": "100016",
 };
 
 type PrivateOption = {
@@ -323,7 +326,6 @@ function FirstVisit() {
                 <span className="lp-price lp-price--sm">
                   {summerResetEnabled ? unlimited.price : "$99"}
                 </span>
-                <span className="lp-was">$149</span>
               </div>
               <div className="lp-divider" />
               <ul className="lp-list">
