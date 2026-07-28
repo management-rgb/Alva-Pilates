@@ -120,6 +120,28 @@ export default function OffersPage() {
               </li>
             </ul>
 
+            <div className="mt-10 border border-[rgba(74,64,50,0.14)] bg-[rgba(248,244,238,0.85)] px-6 py-7 sm:px-8">
+              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-[#C6AA83]">
+                {summerResetCopy.introCredit.eyebrow}
+              </p>
+              <h3 className="mt-2.5 font-heading text-xl font-medium tracking-tight text-[#201F1C] sm:text-2xl">
+                {summerResetCopy.introCredit.heading}
+              </h3>
+              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-[#6D6C68]">
+                {summerResetCopy.introCredit.body}
+              </p>
+              <p className="mt-4 text-[0.75rem] leading-relaxed text-[#8a8880]">
+                {summerResetCopy.introCredit.disclaimer}
+              </p>
+              <Link
+                href="/pricing#memberships"
+                className="mt-5 inline-flex items-center gap-2 text-[0.8125rem] font-medium tracking-[0.02em] text-[#201F1C] underline decoration-[rgba(32,31,28,0.28)] underline-offset-4 transition-colors hover:decoration-[#201F1C]"
+              >
+                {summerResetCopy.introCredit.cta}
+                <ArrowRight size={14} aria-hidden />
+              </Link>
+            </div>
+
             <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/pricing#summer-reset"
