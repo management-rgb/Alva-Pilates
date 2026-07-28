@@ -260,12 +260,12 @@ async function main() {
       deviceScaleFactor: 2,
     });
     await page.setContent(html, { waitUntil: "networkidle" });
-    await page.evaluate(() =>
-      // Wait for webfonts when available
-      "fonts" in document
-        ? (document as Document & { fonts: FontFaceSet }).fonts.ready
-        : Promise.resolve()
-    );
+    await page.evaluate(async () => {
+      const doc = document as Document & { fonts?: FontFaceSet };
+      if (doc.fonts?.ready) {
+        await doc.fonts.ready;
+      }
+    });
 
     const el = page.locator("#capture");
     const png = await el.screenshot({ type: "png" });
