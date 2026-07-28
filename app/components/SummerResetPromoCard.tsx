@@ -7,8 +7,7 @@ import {
   summerResetOfferCards,
 } from "../lib/summerResetCopy";
 
-export const SUMMER_RESET_LANDING_URL =
-  "https://www.alvapilates.com/pricing/summer-reset";
+export const SUMMER_RESET_LANDING_URL = "https://www.alvapilates.com/offers";
 
 type Props = {
   /** Primary CTA destination */
@@ -25,7 +24,7 @@ type Props = {
 
 /**
  * Homepage Summer Reset promotion card — shared by the hero, the
- * `/pricing/summer-reset` landing page, and the MMS image generator.
+ * `/offers` landing page, and the MMS image generator.
  *
  * Visual / copy changes here must stay aligned with:
  *   scripts/generate-summer-reset-mms.ts
@@ -136,7 +135,7 @@ export default function SummerResetPromoCard({
               Scan to book
             </p>
             <p className="mt-1.5 truncate text-[0.6875rem] leading-snug text-[#6d6c68]">
-              alvapilates.com/pricing/summer-reset
+              alvapilates.com/offers
             </p>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}

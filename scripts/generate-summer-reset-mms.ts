@@ -24,7 +24,7 @@ const ROOT = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(ROOT, "public", "marketing");
 const OUT_FILE = path.join(OUT_DIR, "summer-reset-2026.webp");
 
-const LANDING_URL = "https://www.alvapilates.com/pricing/summer-reset";
+const LANDING_URL = "https://www.alvapilates.com/offers";
 const TARGET_WIDTH = 1200;
 const MAX_BYTES = 400 * 1024;
 
@@ -215,7 +215,7 @@ async function buildHtml(qrDataUrl: string): Promise<string> {
       <div class="qr-row">
         <div>
           <p class="qr-label">Scan to book</p>
-          <p class="qr-url">alvapilates.com/pricing/summer-reset</p>
+          <p class="qr-url">alvapilates.com/offers</p>
         </div>
         <div class="qr"><img src="${qrDataUrl}" alt="QR code" width="64" height="64" /></div>
       </div>

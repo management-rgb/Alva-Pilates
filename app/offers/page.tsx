@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import SummerResetPromoCard from "../../components/SummerResetPromoCard";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import SummerResetPromoCard from "../components/SummerResetPromoCard";
 import {
   summerResetCopy,
   summerResetDeadlineLabel,
   summerResetEnabled,
   summerResetOfferCards,
   summerResetSeo,
-} from "../../lib/summerResetCopy";
+} from "../lib/summerResetCopy";
 
 export const metadata: Metadata = {
   title: summerResetEnabled
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   robots: summerResetEnabled ? { index: true, follow: true } : { index: false },
 };
 
-export default function SummerResetLandingPage() {
+export default function OffersPage() {
   const unlimited = summerResetOfferCards.unlimitedIntro;
   const threeClass = summerResetOfferCards.threeClassIntro;
   const packs = summerResetOfferCards.classPackSale;
