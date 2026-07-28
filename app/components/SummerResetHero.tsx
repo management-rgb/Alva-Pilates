@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "./sections/Reveal";
 import { RevealText } from "./sections/RevealText";
@@ -11,9 +9,9 @@ import {
   summerResetCopy,
   summerResetDeadlineLabel,
   summerResetEnabled,
-  summerResetOfferCards,
 } from "../lib/summerResetCopy";
 import { studioImagery } from "../lib/studioImagery";
+import SummerResetPromoCard from "./SummerResetPromoCard";
 
 const CARD_EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -22,8 +20,6 @@ export default function SummerResetHero() {
   const reduceMotion = useReducedMotion();
 
   if (!summerResetEnabled) return null;
-
-  const unlimited = summerResetOfferCards.unlimitedIntro;
 
   return (
     <section
@@ -122,59 +118,8 @@ export default function SummerResetHero() {
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -12% 0px" }}
             transition={{ duration: 0.8, ease: CARD_EASE, delay: 1.05 }}
-            className="w-full max-w-md rounded-[8px] border border-[rgba(74,64,50,0.16)] bg-[rgba(248,244,238,0.97)] p-8 shadow-[0_18px_48px_-34px_rgba(30,22,14,0.28)] backdrop-blur-[2px] sm:p-9"
           >
-            <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.24em] text-[#201f1c]">
-              {summerResetCopy.hero.eyebrow}
-            </p>
-            <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-[#6d6c68]">
-              Limited through August 15
-            </p>
-
-            <div className="mt-9 border-t border-[rgba(74,64,50,0.14)] pt-9">
-              <p className="text-[0.75rem] font-medium uppercase tracking-[0.18em] text-[#6d6c68]">
-                15 Days Unlimited
-              </p>
-              <p className="mt-3 font-heading text-[4.75rem] font-semibold leading-[0.82] tracking-[-0.045em] text-[#201f1c]">
-                {unlimited.price}
-              </p>
-              <p className="mt-4 text-[0.8125rem] leading-[1.7] text-[#6d6c68]">
-                One class per day
-                <br />
-                15 consecutive days
-              </p>
-            </div>
-
-            <Link
-              href="/pricing#class-packs"
-              className="group mt-9 block border-t border-[rgba(74,64,50,0.14)] pt-6 transition-[border-color] duration-300 ease-out hover:border-[rgba(74,64,50,0.38)]"
-            >
-              <span className="block text-[0.625rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
-                Also available
-              </span>
-              <span className="mt-2.5 flex items-center justify-between gap-4">
-                <span className="text-[0.9375rem] font-medium tracking-[-0.01em] text-[#4a4945] transition-colors duration-300 group-hover:text-[#201f1c]">
-                  20% Off Class Packs
-                </span>
-                <ArrowRight
-                  size={14}
-                  className="shrink-0 text-[#6d6c68] transition-[transform,color] duration-300 ease-out group-hover:translate-x-1 group-hover:text-[#201f1c]"
-                  aria-hidden
-                />
-              </span>
-            </Link>
-
-            <Link
-              href="/pricing#summer-reset"
-              className="group mt-9 inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-[10px] bg-[var(--dark)] px-8 text-[0.8125rem] font-medium tracking-[0.02em] text-paper transition-[background-color] duration-300 ease-out hover:bg-[#4a453f] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--dark)] focus-visible:ring-offset-2"
-            >
-              View Summer Offers
-              <ArrowRight
-                size={14}
-                className="transition-transform duration-300 ease-out group-hover:translate-x-1"
-                aria-hidden
-              />
-            </Link>
+            <SummerResetPromoCard />
           </motion.div>
         </div>
       </div>
