@@ -6,9 +6,9 @@ import MindbodyBrandedWidget from "../components/MindbodyBrandedWidget";
 
 export default function BookPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#ECE9E3] text-foreground">
       <Header />
-      <section className="surface-stone border-b border-[var(--border)] px-6 pb-6 pt-32 text-charcoal lg:px-14 lg:pb-8 lg:pt-40">
+      <section className="bg-[#ECE9E3] px-6 pb-4 pt-32 text-charcoal lg:px-10 lg:pb-5 lg:pt-40">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-[#C6AA83]">
             Book a Class
@@ -21,25 +21,13 @@ export default function BookPage() {
           </p>
         </div>
       </section>
-      <main className="surface-paper border-b border-border px-6 pb-24 pt-0 lg:px-14">
-        <div className="mx-auto max-w-[84.5rem]">
-          <div className="border border-border bg-card p-4 lg:p-6">
+      <main className="bg-[#ECE9E3] px-4 pb-24 pt-2 lg:px-6 lg:pb-28 lg:pt-2">
+        <div className="mx-auto max-w-[91rem]">
+          <div className="overflow-hidden rounded-2xl">
             <MindbodyBrandedWidget
               widgetType="Schedules"
               widgetId="7041376e71a"
             />
-          </div>
-
-          <div className="mt-12 text-center">
-            <p className="mb-4 text-sm text-muted">
-              Looking for a private session?
-            </p>
-            <a
-              href="/appointments"
-              className="inline-flex items-center gap-2 text-base text-foreground transition-colors duration-300 hover:text-charcoal"
-            >
-              Book a private session
-            </a>
           </div>
         </div>
       </main>
