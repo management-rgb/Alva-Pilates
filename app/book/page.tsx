@@ -10,10 +10,7 @@ export default function BookPage() {
       <Header />
       <section className="bg-[#ECE9E3] px-6 pb-4 pt-32 text-charcoal lg:px-10 lg:pb-5 lg:pt-40">
         <div className="mx-auto max-w-6xl text-center">
-          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-[#C6AA83]">
-            Book a Class
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-normal tracking-[-0.02em] text-[#201F1C] lg:mt-3.5 lg:text-5xl">
+          <h1 className="font-display text-4xl font-normal tracking-[-0.02em] text-[#201F1C] lg:text-5xl">
             Book a Class
           </h1>
           <p className="mx-auto mt-2.5 max-w-[600px] text-base leading-[1.6] text-[#6D6C68] lg:mt-3 lg:text-lg">
