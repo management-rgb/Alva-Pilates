@@ -4,7 +4,7 @@ import pricingData from "@/app/data/pricing.json";
 import faqData from "@/app/data/faq.json";
 import type {
   Classes,
-  Instructors,
+  Instructor,
   PricingMemberships,
   FrequentlyAskedQuestions,
 } from "@/app/types";
@@ -25,13 +25,13 @@ export function getClassById(id: string): Classes | null {
 }
 
 // Instructors
-export function getAllInstructors(): Instructors[] {
-  return instructorsData as Instructors[];
+export function getAllInstructors(): Instructor[] {
+  return instructorsData as Instructor[];
 }
 
-export function getInstructorById(id: string): Instructors | null {
+export function getInstructorBySlug(slug: string): Instructor | null {
   const instructors = getAllInstructors();
-  return instructors.find((i) => i._id === id) || null;
+  return instructors.find((i) => i.slug === slug) || null;
 }
 
 // Pricing

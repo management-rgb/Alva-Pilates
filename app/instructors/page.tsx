@@ -1,77 +1,71 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
+import InstructorCard from "../components/instructors/InstructorCard";
 import { getAllInstructors } from "../lib/data";
 
 export default function InstructorsPage() {
   const instructors = getAllInstructors();
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-[#F7F5F2] text-foreground">
       <Header />
 
-      <section className="surface-stone px-6 pb-12 pt-40 text-charcoal lg:px-14 lg:pb-16 lg:pt-48">
-        <div className="mx-auto max-w-[100rem]">
+      <section className="bg-[#ECE9E3] px-6 pb-10 pt-40 text-charcoal lg:px-10 lg:pb-12 lg:pt-44">
+        <div className="mx-auto max-w-[1220px]">
           <Reveal>
-            <div className="mx-auto max-w-2xl space-y-6 text-center">
-              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-taupe">
-                The team
+            <div className="mx-auto max-w-2xl space-y-4 text-center">
+              <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-[#6D6C68]">
+                Our Instructors
               </p>
-              <h1 className="font-display text-5xl font-normal tracking-[-0.02em] text-balance text-charcoal lg:text-6xl">
-                Meet our instructors
+              <h1 className="font-display text-[2.5rem] font-normal tracking-[-0.02em] text-balance text-[#201F1C] sm:text-[2.75rem] lg:text-[3.25rem]">
+                Meet the team behind every class.
               </h1>
-              <p className="text-base leading-relaxed text-taupe lg:text-lg">
-                Certified coaches who bring expertise, care, and personalized
-                attention to every class.
+              <p className="mx-auto max-w-xl text-[0.9375rem] leading-[1.7] text-[#6D6C68] lg:text-base">
+                Each instructor brings a distinct teaching style while sharing
+                the same commitment to thoughtful movement, precision, and
+                personal attention.
               </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="surface-paper px-6 pb-28 lg:px-14 lg:pb-40">
-        <div className="mx-auto max-w-[100rem]">
-          <div className="grid grid-cols-1 gap-x-14 gap-y-16 border-t border-border pt-12 md:grid-cols-2 lg:grid-cols-3 lg:pt-16">
+      <section className="bg-[#F7F5F2] px-6 pb-20 pt-11 lg:px-10 lg:pb-24 lg:pt-12">
+        <div className="mx-auto max-w-[1220px]">
+          <div className="grid auto-rows-fr grid-cols-1 gap-x-16 gap-y-8 border-t border-[rgba(32,31,28,0.12)] pt-11 md:grid-cols-2 md:gap-x-[4.25rem] md:gap-y-9 lg:gap-x-20 lg:gap-y-10 lg:pt-12">
             {instructors.map((instructor, index) => (
-              <Reveal key={instructor._id} delay={index * 0.08}>
-                <Link
-                  href={`/instructors/${instructor._id}`}
-                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal"
-                >
-                  <div className="img-editorial relative aspect-[3/4] overflow-hidden bg-secondary">
-                    <Image
-                      src={instructor.profilePicture}
-                      alt={instructor.fullName}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="mt-6 flex items-center gap-4 border-t border-border pt-6">
-                    <span className="text-[0.625rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</span>
-                  <h2 className="font-heading text-2xl font-medium text-foreground">
-                    {instructor.fullName}
-                  </h2>
-                  </div>
-                  <p className="mt-2 text-sm text-muted">
-                    {instructor.specialties}
-                  </p>
-                  <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
-                    {instructor.shortBio}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors group-hover:text-charcoal">
-                    View profile
-                    <ArrowUpRight size={14} aria-hidden />
-                  </span>
-                </Link>
+              <Reveal
+                key={instructor.slug}
+                className="h-full"
+                delay={Math.min(index * 0.04, 0.16)}
+              >
+                <InstructorCard instructor={instructor} />
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-[#ECE9E3] px-6 py-16 text-charcoal lg:px-10 lg:py-20">
+        <div className="mx-auto max-w-[1220px]">
+          <Reveal>
+            <div className="mx-auto max-w-xl text-center">
+              <h2 className="font-display text-[2rem] font-normal tracking-[-0.02em] text-balance text-[#201F1C] sm:text-4xl lg:text-[2.75rem]">
+                Find the Instructor Who Moves You
+              </h2>
+              <p className="mx-auto mt-4 max-w-md text-[0.9375rem] leading-[1.7] text-[#6D6C68] lg:text-base">
+                Explore the schedule and choose the class, energy, and teaching
+                style that feel right for you.
+              </p>
+              <Link href="/book" className="btn-primary mx-auto mt-8">
+                View Class Schedule
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

@@ -15,15 +15,30 @@ export interface Classes {
   bodyFocus?: string;
 }
 
-export interface Instructors {
-  _id: string;
-  fullName: string;
-  profilePicture: string;
-  shortBio: string;
-  fullBio: string;
-  specialties: string;
-  instagramUrl?: string;
+export interface InstructorScheduleEntry {
+  day: string;
+  classes: string;
 }
+
+export interface Instructor {
+  name: string;
+  slug: string;
+  role: string;
+  image: string;
+  shortBio: string;
+  /** Optional quiet editorial line under the short bio (listing cards) */
+  signatureLine?: string;
+  /** Class names shown on listing cards under "Teaches" */
+  teaches?: string[];
+  fullBio: string;
+  teachingStyle: string;
+  certifications: string[];
+  specialties: string[];
+  schedule: InstructorScheduleEntry[];
+}
+
+/** @deprecated Use Instructor */
+export type Instructors = Instructor;
 
 export interface PricingMemberships {
   _id: string;
@@ -45,4 +60,3 @@ export interface FrequentlyAskedQuestions {
   isFeatured?: boolean;
   displayOrder?: number;
 }
-

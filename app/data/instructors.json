@@ -1,30 +1,311 @@
 [
   {
-    "_id": "instructor-1",
-    "fullName": "Sarah Mitchell",
-    "profilePicture": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80&auto=format&fit=crop",
-    "shortBio": "Studio founder with 15+ years of experience in classical and contemporary Pilates methods.",
-    "fullBio": "Sarah discovered Pilates during her career as a professional dancer and has never looked back. After training with master instructors in New York and Los Angeles, she founded Alva Pilates with a vision to create a space where movement meets mindfulness.\n\nHer teaching philosophy emphasizes proper alignment, breath work, and the mind-body connection. Sarah holds certifications from BASI Pilates and Polestar, and continues her education annually to bring the latest techniques to her clients.\n\nWhen she's not at the studio, Sarah enjoys hiking in the Santa Clarita mountains and spending time with her two rescue dogs.",
-    "specialties": "Classical Pilates, Rehabilitation, Pre/Post Natal",
-    "instagramUrl": "https://www.instagram.com/alvapilates?igsh=NTc4MTIwNjQ2YQ=="
+    "name": "Helen",
+    "slug": "helen",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Supportive, precise instruction designed to build strength, confidence, and body awareness.",
+    "fullBio": "Helen brings a calm, attentive presence to every reformer session. She believes great teaching starts with listening—to the body, to breath, and to the unique goals each client carries into the studio.\n\nHer classes balance thoughtful cueing with space to feel the work. Whether you are new to the reformer or deepening a long-standing practice, Helen helps you move with clarity and care.\n\nOutside the studio, she finds stillness in morning walks and time spent in nature.",
+    "teachingStyle": "Precise and supportive—focused on alignment, controlled progression, and building lasting body awareness without rushing the process.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Mat Pilates Certification",
+      "Pre/Postnatal Pilates Training"
+    ],
+    "specialties": [
+      "Foundational form",
+      "Strength building",
+      "Body awareness"
+    ],
+    "schedule": [
+      {
+        "day": "Monday",
+        "classes": "Alva Foundation · 9:00 AM, Alva Progress · 5:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "classes": "Alva Foundation · 9:00 AM, Alva Sculpt · 6:00 PM"
+      },
+      {
+        "day": "Friday",
+        "classes": "Alva Progress · 8:00 AM"
+      }
+    ],
+    "signatureLine": "Movement should feel intentional.",
+    "teaches": [
+      "Foundation",
+      "Progress",
+      "Sculpt"
+    ]
   },
   {
-    "_id": "instructor-2",
-    "fullName": "Michael Chen",
-    "profilePicture": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80&auto=format&fit=crop",
-    "shortBio": "Former physical therapist bringing a rehabilitative approach to every session.",
-    "fullBio": "Michael's journey to Pilates began in the physical therapy clinic, where he witnessed the transformative power of movement-based rehabilitation. After 8 years as a licensed PT, he transitioned to full-time Pilates instruction to help clients prevent injuries before they happen.\n\nHis classes focus on functional movement patterns and postural correction, making them ideal for clients with desk jobs, athletes, and anyone looking to move better in daily life.\n\nMichael is certified through Balanced Body and holds additional certifications in sports conditioning and corrective exercise.",
-    "specialties": "Injury Prevention, Sports Conditioning, Postural Correction",
-    "instagramUrl": "https://www.instagram.com/alvapilates?igsh=NTc4MTIwNjQ2YQ=="
+    "name": "Stephanie",
+    "slug": "stephanie",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a3?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Energetic, thoughtful cueing that challenges you while keeping every movement intentional.",
+    "fullBio": "Stephanie teaches with warmth and momentum—creating classes that feel invigorating without sacrificing form. She loves helping clients discover what their bodies are capable of when movement is both strong and smart.\n\nHer sessions weave clear progressions with encouraging feedback, so you leave feeling accomplished and connected.\n\nWhen she is not teaching, Stephanie is usually exploring a new playlist or hiking nearby trails.",
+    "teachingStyle": "Dynamic and encouraging—clear progressions, uplifting energy, and careful attention to form as intensity builds.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Jumpboard & Cardio Reformer Training",
+      "Anatomy for Movement Educators"
+    ],
+    "specialties": [
+      "Full-body strength",
+      "Cardio reformer",
+      "Athletic conditioning"
+    ],
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "classes": "Alva Sculpt · 7:00 AM, Cardio Jump · 6:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "classes": "Alva Progress · 9:00 AM, Alva Sculpt · 5:30 PM"
+      },
+      {
+        "day": "Saturday",
+        "classes": "Cardio Jump · 9:00 AM"
+      }
+    ],
+    "signatureLine": "Strength begins with control.",
+    "teaches": [
+      "Progress",
+      "Sculpt",
+      "Cardio Jump"
+    ]
   },
   {
-    "_id": "instructor-3",
-    "fullName": "Elena Rodriguez",
-    "profilePicture": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a3?w=800&q=80&auto=format&fit=crop",
-    "shortBio": "Dynamic instructor known for creative sequences and infectious energy.",
-    "fullBio": "Elena brings joy and creativity to every class she teaches. With a background in dance and yoga, she creates flowing sequences that challenge the body while calming the mind.\n\nHer students appreciate her attention to detail and ability to offer modifications that make every exercise accessible. Elena believes that Pilates should be enjoyable, and her classes often feature carefully curated playlists and unexpected movement combinations.\n\nShe completed her comprehensive Pilates training through Club Pilates and continues to study with master teachers around the world.",
-    "specialties": "Flow-Based Classes, Flexibility, Mind-Body Connection",
-    "instagramUrl": "https://www.instagram.com/alvapilates?igsh=NTc4MTIwNjQ2YQ=="
+    "name": "Maya",
+    "slug": "maya",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Quietly rigorous teaching that prioritizes breath, control, and sustainable strength.",
+    "fullBio": "Maya approaches Pilates as a practice of presence. Her classes invite you to slow down, refine each movement, and build strength that supports how you move through everyday life.\n\nClients often describe her teaching as grounding—challenging enough to create change, gentle enough to feel restorative.\n\nAway from the studio, Maya practices yoga and enjoys quiet mornings with coffee and a good book.",
+    "teachingStyle": "Grounded and intentional—breath-led cueing, refined control, and strength that feels sustainable.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Breathwork for Movement Instructors",
+      "Mobility & Flexibility Training"
+    ],
+    "specialties": [
+      "Mind-body connection",
+      "Mobility",
+      "Controlled strength"
+    ],
+    "schedule": [
+      {
+        "day": "Monday",
+        "classes": "Alva Foundation · 11:00 AM"
+      },
+      {
+        "day": "Wednesday",
+        "classes": "Alva Progress · 10:00 AM, Alva Foundation · 5:30 PM"
+      },
+      {
+        "day": "Sunday",
+        "classes": "Alva Foundation · 10:00 AM"
+      }
+    ],
+    "signatureLine": "Presence is the practice.",
+    "teaches": [
+      "Foundation",
+      "Progress"
+    ]
+  },
+  {
+    "name": "Jordan",
+    "slug": "jordan",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Clear, athletic cueing for clients who want strength, posture, and performance.",
+    "fullBio": "Jordan came to Pilates through sport and discovered how precise movement transforms the way the body performs. His teaching blends athletic drive with meticulous attention to alignment.\n\nWhether you are recovering from an imbalance or training for your next goal, Jordan helps you move stronger and more efficiently.\n\nOutside class, he stays active outdoors and continues studying functional movement.",
+    "teachingStyle": "Athletic and clear—performance-minded progressions with a sharp focus on posture and functional strength.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Sports Conditioning for Pilates",
+      "Corrective Exercise Specialist"
+    ],
+    "specialties": [
+      "Athletic conditioning",
+      "Postural strength",
+      "Performance training"
+    ],
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "classes": "Alva Progress · 6:00 AM, Alva Sculpt · 12:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "classes": "Alva Progress · 6:00 AM, Cardio Jump · 5:30 PM"
+      },
+      {
+        "day": "Saturday",
+        "classes": "Alva Sculpt · 8:00 AM"
+      }
+    ],
+    "signatureLine": "Move stronger, move smarter.",
+    "teaches": [
+      "Progress",
+      "Sculpt",
+      "Cardio Jump"
+    ]
+  },
+  {
+    "name": "Priya",
+    "slug": "priya",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Warm, detail-oriented guidance that makes every exercise feel accessible and empowering.",
+    "fullBio": "Priya teaches with patience and precision. She is known for offering thoughtful modifications and progressions so every client—regardless of experience—feels supported and challenged in equal measure.\n\nHer classes emphasize quality over quantity, helping you build confidence on the reformer one intentional repetition at a time.\n\nWhen she is not teaching, Priya loves cooking for friends and exploring Valencia’s local cafés.",
+    "teachingStyle": "Warm and detail-oriented—inclusive cueing, thoughtful modifications, and empowerment through clear form.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Inclusive Movement Teaching",
+      "Beginner Progressive Programming"
+    ],
+    "specialties": [
+      "Beginner-friendly classes",
+      "Form refinement",
+      "Confidence building"
+    ],
+    "schedule": [
+      {
+        "day": "Monday",
+        "classes": "Alva Foundation · 6:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "classes": "Alva Foundation · 8:00 AM, Alva Progress · 12:00 PM"
+      },
+      {
+        "day": "Friday",
+        "classes": "Alva Foundation · 9:00 AM, Alva Sculpt · 5:30 PM"
+      }
+    ],
+    "signatureLine": "Helping you move with confidence.",
+    "teaches": [
+      "Foundation",
+      "Progress",
+      "Sculpt"
+    ]
+  },
+  {
+    "name": "Camila",
+    "slug": "camila",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Flowing sequences and refined transitions for a practice that feels strong and graceful.",
+    "fullBio": "Camila brings an artistic sensibility to the reformer. With a background in dance, she crafts sequences that feel fluid while building deep core strength and control.\n\nHer classes balance elegance with intensity—leaving you feeling lengthened, centered, and strong.\n\nOff the reformer, Camila finds inspiration in music, design, and long evenings with friends.",
+    "teachingStyle": "Fluid and expressive—graceful transitions, refined pacing, and strength that moves with intention.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Dance Conditioning for Pilates",
+      "Advanced Reformer Flow Training"
+    ],
+    "specialties": [
+      "Flow-based reformer",
+      "Core control",
+      "Graceful strength"
+    ],
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "classes": "Alva Sculpt · 9:00 AM, Alva Progress · 5:30 PM"
+      },
+      {
+        "day": "Thursday",
+        "classes": "Alva Sculpt · 10:00 AM"
+      },
+      {
+        "day": "Saturday",
+        "classes": "Alva Progress · 10:00 AM"
+      }
+    ],
+    "signatureLine": "Strength that moves with grace.",
+    "teaches": [
+      "Sculpt",
+      "Progress"
+    ]
+  },
+  {
+    "name": "Alex",
+    "slug": "alex",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Steady, rehabilitative-minded teaching for clients rebuilding strength and trust in movement.",
+    "fullBio": "Alex teaches with a restorative lens—helping clients return to movement with confidence after injury, imbalance, or long periods of inactivity. Every cue is chosen to create safety without sacrificing progress.\n\nClients appreciate the calm clarity of Alex’s classes and the sense that each session is tailored to how they arrive that day.\n\nOutside the studio, Alex enjoys slow mornings, journaling, and time with family.",
+    "teachingStyle": "Calm and restorative—safety-first cueing, thoughtful pacing, and strength rebuilt with trust.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Pilates for Rehabilitation",
+      "Postural Assessment & Correction"
+    ],
+    "specialties": [
+      "Injury-conscious movement",
+      "Postural support",
+      "Return-to-movement"
+    ],
+    "schedule": [
+      {
+        "day": "Monday",
+        "classes": "Alva Foundation · 8:00 AM, Alva Progress · 12:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "classes": "Alva Foundation · 11:00 AM"
+      },
+      {
+        "day": "Friday",
+        "classes": "Alva Progress · 10:00 AM"
+      }
+    ],
+    "signatureLine": "Rebuild trust through movement.",
+    "teaches": [
+      "Foundation",
+      "Progress"
+    ]
+  },
+  {
+    "name": "Nina",
+    "slug": "nina",
+    "role": "Reformer Pilates Instructor",
+    "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&q=80&auto=format&fit=crop",
+    "shortBio": "Bright, motivating classes that leave you stronger, taller, and ready for whatever comes next.",
+    "fullBio": "Nina brings brightness and focus to the reformer room. Her teaching style is motivating without being overwhelming—pushing you to your edge while celebrating every win along the way.\n\nShe loves helping clients feel the difference strong, intentional movement makes in posture, energy, and daily life.\n\nWhen she is not teaching, Nina is usually planning her next trip or trying a new recipe.",
+    "teachingStyle": "Bright and motivating—uplifting energy, clear goals, and strength that carries into everyday life.",
+    "certifications": [
+      "Comprehensive Reformer Certification",
+      "Group Reformer Instruction",
+      "Core & Postural Conditioning"
+    ],
+    "specialties": [
+      "Motivational group classes",
+      "Posture & energy",
+      "Full-body sculpt"
+    ],
+    "schedule": [
+      {
+        "day": "Tuesday",
+        "classes": "Alva Sculpt · 5:30 PM"
+      },
+      {
+        "day": "Wednesday",
+        "classes": "Cardio Jump · 7:00 AM, Alva Sculpt · 12:00 PM"
+      },
+      {
+        "day": "Saturday",
+        "classes": "Alva Foundation · 11:00 AM, Alva Sculpt · 4:00 PM"
+      }
+    ],
+    "signatureLine": "Leave stronger than you arrived.",
+    "teaches": [
+      "Sculpt",
+      "Foundation",
+      "Cardio Jump"
+    ]
   }
 ]
-
