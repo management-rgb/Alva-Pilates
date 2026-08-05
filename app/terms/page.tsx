@@ -27,11 +27,11 @@ export default function TermsPage() {
       <main className="surface-paper border-b border-border px-6 pb-24 pt-12 lg:px-10 lg:pb-32">
         <div className="max-w-3xl mx-auto">
           <p className="font-paragraph text-base lg:text-lg text-muted leading-relaxed border-l-2 border-primary/40 pl-6 mb-14">
-            By creating an account, booking a class, or making a purchase with
-            Alva Pilates, clients agree to comply with the following Terms &amp;
-            Conditions, as well as all studio policies including our
-            Cancellation Policy, Purchase Policy, Return/Refund Policy, Privacy
-            Policy, and Liability Waiver.
+            By creating an account, booking a class, making a purchase, or using
+            the Alva Pilates website or studio, clients agree to comply with
+            these Terms &amp; Conditions, as well as all studio policies,
+            including our Cancellation Policy, Purchase Policy, Return/Refund
+            Policy, Privacy Policy, and Liability Waiver.
           </p>
 
           <div className="space-y-14 font-paragraph text-muted leading-relaxed">
@@ -55,8 +55,8 @@ export default function TermsPage() {
                 </p>
                 <p>
                   <span className="font-medium text-foreground">1.4</span> Alva
-                  Pilates may adjust schedules, substitute instructors, or
-                  modify classes at any time.
+                  Pilates may adjust schedules, substitute instructors, modify
+                  classes, or cancel classes at any time.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">1.5</span> Class
@@ -77,7 +77,7 @@ export default function TermsPage() {
                   for:
                 </p>
                 <ul className="list-disc pl-6 space-y-1 text-muted">
-                  <li>Classes, memberships, packages</li>
+                  <li>Classes, memberships, and packages</li>
                   <li>Late Cancel fees</li>
                   <li>No-Show fees</li>
                   <li>Retail purchases</li>
@@ -85,12 +85,18 @@ export default function TermsPage() {
                 </ul>
                 <p>
                   <span className="font-medium text-foreground">2.2</span>{" "}
-                  Declined payments must be resolved immediately to retain
-                  booking privileges.
+                  Declined payments must be resolved promptly to retain booking
+                  privileges.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">2.3</span> A
                   valid payment method must remain on file at all times.
+                </p>
+                <p>
+                  <span className="font-medium text-foreground">2.4</span> Alva
+                  Pilates reserves the right to suspend booking privileges,
+                  memberships, or access to services until all outstanding
+                  balances have been paid in full.
                 </p>
               </div>
             </section>
@@ -102,41 +108,34 @@ export default function TermsPage() {
               <div className="space-y-3 text-base">
                 <p>
                   <span className="font-medium text-foreground">3.1</span>{" "}
-                  Membership tiers require a minimum commitment from your start
-                  date: Essential and Core memberships require 3 months; Studio and
-                  Unlimited memberships require 6 months.
+                  Memberships automatically renew on the selected billing cycle
+                  until canceled in accordance with the Membership Cancellation
+                  Policy.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">3.2</span>{" "}
-                  Memberships auto-renew on a recurring monthly billing cycle
-                  until canceled in accordance with these terms.
+                  Clients must submit a written cancellation request at least 30
+                  days before the next billing date.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">3.3</span>{" "}
-                  Clients must submit a written cancellation request at least 14
-                  days before the requested cancellation date.
+                  Cancellation requests submitted after payment has been
+                  processed will apply to the next billing cycle. Refunds are
+                  not provided for unused time.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">3.4</span>{" "}
-                  Cancellation before the end of the commitment period requires
-                  payment of the remaining balance of the contract.
-                </p>
-                <p>
-                  <span className="font-medium text-foreground">3.5</span>{" "}
                   Memberships may not be shared or transferred.
                 </p>
                 <p>
-                  <span className="font-medium text-foreground">3.6</span> Any
-                  outstanding balances or fees must be resolved prior to
-                  cancellation taking effect.
+                  <span className="font-medium text-foreground">3.5</span> Any
+                  outstanding balances or fees must be resolved before
+                  cancellation takes effect.
                 </p>
                 <p>
-                  <span className="font-medium text-foreground">3.7</span>{" "}
-                  Membership freezes or holds must be requested in writing with
-                  at least 14 days&apos; notice and may be approved at the
-                  studio&apos;s discretion. Approved pause time is added to the
-                  end of the membership term; monthly payments are not prorated
-                  during a pause.
+                  <span className="font-medium text-foreground">3.6</span>{" "}
+                  Membership freezes or holds must be requested in writing and
+                  may be approved at the studio&apos;s discretion.
                 </p>
               </div>
             </section>
@@ -148,8 +147,8 @@ export default function TermsPage() {
               <div className="space-y-3 text-base">
                 <p>
                   <span className="font-medium text-foreground">4.1</span>{" "}
-                  Clients must arrive on time; arriving 10+ minutes late may
-                  result in a No-Show.
+                  Clients must arrive on time. Arriving 10 or more minutes late
+                  may result in a No-Show and forfeiture of the reservation.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">4.2</span> Grip
@@ -162,8 +161,9 @@ export default function TermsPage() {
                 </p>
                 <p>
                   <span className="font-medium text-foreground">4.4</span>{" "}
-                  Disrespectful, unsafe, or disruptive behavior may result in loss
-                  of service privileges.
+                  Disrespectful, unsafe, abusive, or disruptive behavior may
+                  result in suspension or termination of booking privileges or
+                  studio access.
                 </p>
               </div>
             </section>
@@ -175,17 +175,18 @@ export default function TermsPage() {
               <div className="space-y-3 text-base">
                 <p>
                   <span className="font-medium text-foreground">5.1</span>{" "}
-                  Clients must inform instructors of injuries, medical
-                  considerations, or limitations prior to class.
+                  Clients must inform instructors of any injuries, medical
+                  considerations, or physical limitations before class.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">5.2</span>{" "}
-                  Clients agree not to attend class when unwell or posing a
-                  health risk.
+                  Clients agree not to attend class if experiencing symptoms of
+                  a contagious illness or any condition that could pose a health
+                  or safety risk to others.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">5.3</span> Alva
-                  Pilates may update safety protocols as needed.
+                  Pilates may update health and safety protocols as needed.
                 </p>
               </div>
             </section>
@@ -196,89 +197,110 @@ export default function TermsPage() {
               </h2>
               <p className="text-base">
                 Clients understand and agree that Alva Pilates is not responsible
-                for any personal property that is lost, stolen, or damaged while
-                on or around the studio premises.
+                for personal property that is lost, stolen, or damaged while on
+                or around the studio premises. Personal belongings are brought
+                onto the premises at the client&apos;s own risk.
               </p>
             </section>
 
             <section className="border-t border-border pt-10">
               <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
-                7. Policy Modifications
+                7. Service Refusal
               </h2>
               <div className="space-y-3 text-base">
                 <p>
                   <span className="font-medium text-foreground">7.1</span> Alva
-                  Pilates may update policies, pricing, membership terms, or
-                  offerings at any time.
+                  Pilates reserves the right to deny, suspend, or terminate
+                  access to classes, memberships, or studio services for
+                  violations of studio policies or for unsafe, disruptive,
+                  abusive, or inappropriate behavior.
                 </p>
                 <p>
                   <span className="font-medium text-foreground">7.2</span>{" "}
-                  Clients will be notified of any material changes through the
-                  contact information provided.
-                </p>
-                <p>
-                  <span className="font-medium text-foreground">7.3</span>{" "}
-                  Continued use of the studio, website, or booking platform
-                  confirms acceptance of updated Terms &amp; Conditions.
-                </p>
-              </div>
-            </section>
-
-            <section className="border-t border-border pt-10">
-              <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
-                8. Service Refusal
-              </h2>
-              <div className="space-y-3 text-base">
-                <p>
-                  <span className="font-medium text-foreground">8.1</span> Alva
-                  Pilates may deny access or service to any client who violates
-                  studio policies or engages in unsafe, disruptive, or
-                  inappropriate behavior.
-                </p>
-                <p>
-                  <span className="font-medium text-foreground">8.2</span>{" "}
                   Service may also be suspended if a valid payment method is not
-                  maintained.
+                  maintained or outstanding balances remain unpaid.
                 </p>
               </div>
             </section>
 
             <section className="border-t border-border pt-10">
               <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
-                9. Use of Studio &amp; Digital Platforms
+                8. Use of Studio &amp; Digital Platforms
               </h2>
               <p className="text-base">
-                By using our studio, website, or booking system, clients agree to
-                all Terms &amp; Conditions and related policies.
+                By using our studio, website, mobile app, or booking system,
+                clients agree to these Terms &amp; Conditions and all related
+                studio policies.
               </p>
             </section>
 
             <section className="border-t border-border pt-10">
               <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
-                10. Changes to Terms &amp; Conditions
+                9. Changes to Terms &amp; Conditions
               </h2>
               <div className="space-y-3 text-base">
                 <p>
-                  <span className="font-medium text-foreground">10.1</span> Alva
+                  <span className="font-medium text-foreground">9.1</span> Alva
                   Pilates reserves the right to update or revise these Terms
-                  &amp; Conditions at any time.
+                  &amp; Conditions, pricing, memberships, policies, services, or
+                  studio offerings at any time.
                 </p>
                 <p>
-                  <span className="font-medium text-foreground">10.2</span>{" "}
-                  Clients will be notified of changes using the contact
-                  information provided.
+                  <span className="font-medium text-foreground">9.2</span>{" "}
+                  Clients will be notified of any material changes using the
+                  contact information provided.
+                </p>
+                <p>
+                  <span className="font-medium text-foreground">9.3</span>{" "}
+                  Continued use of the studio, website, mobile app, or booking
+                  platform constitutes acceptance of the updated Terms &amp;
+                  Conditions.
                 </p>
               </div>
             </section>
 
             <section className="border-t border-border pt-10">
               <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
-                11. Governing Law
+                10. Governing Law
               </h2>
               <p className="text-base">
-                <span className="font-medium text-foreground">11.1</span> These
+                <span className="font-medium text-foreground">10.1</span> These
                 Terms &amp; Conditions are governed by the laws of the State of
                 California.
+              </p>
+            </section>
+
+            <section className="border-t border-border pt-10">
+              <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
+                11. Intellectual Property
+              </h2>
+              <p className="text-base">
+                All content on the Alva Pilates website, including logos,
+                branding, photographs, graphics, videos, written materials, and
+                other content, is the property of Alva Pilates unless otherwise
+                noted and may not be copied, reproduced, distributed, or used
+                without prior written permission.
+              </p>
+            </section>
+
+            <section className="border-t border-border pt-10">
+              <h2 className="font-heading text-2xl font-medium tracking-tight text-foreground mb-4">
+                12. Website Information
+              </h2>
+              <p className="text-base">
+                Information provided on the Alva Pilates website, social media
+                channels, and marketing materials is for general informational
+                purposes only and is not intended as medical or healthcare
+                advice.
+              </p>
+            </section>
+
+            <section className="border-t border-border pt-10">
+              <p className="text-base">
+                By creating an account, booking a class, purchasing services, or
+                using the Alva Pilates website or facilities, clients acknowledge
+                that they have read, understood, and agree to be bound by these
+                Terms &amp; Conditions and all referenced studio policies.
               </p>
             </section>
           </div>

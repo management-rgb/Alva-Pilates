@@ -61,7 +61,7 @@ export default function ClassDetailPage({
           </Link>
           <Reveal>
             <div className="max-w-3xl">
-              <p className="text-[0.6875rem] font-medium tracking-[0.1em] text-taupe">
+              <p className="text-[0.6875rem] font-medium tracking-[0.1em] text-paper">
                 {classItem.difficultyLevel}
                 <span className="mx-2" aria-hidden>
                   ·
