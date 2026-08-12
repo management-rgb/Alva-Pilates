@@ -5,8 +5,8 @@
 export const summerResetEnabled = true;
 
 export const summerResetStartDate = "2026-07-15";
-export const summerResetEndDate = "2026-08-15";
-export const summerResetDeadlineLabel = "Ends August 15";
+export const summerResetEndDate = "2026-08-31";
+export const summerResetDeadlineLabel = "Ends August 31";
 
 export const summerResetSectionId = "summer-offers";
 
@@ -19,7 +19,7 @@ export const summerResetOfferAnchors = {
 
 export const summerResetCopy = {
   announcement: {
-    line: "Summer Reset · New Client Intro Offers · 20% Off Class Packs · Ends August 15",
+    line: "Summer Reset · New Client Intro Offers · 20% Off Class Packs · Ends August 31",
     cta: "View Offers",
   },
   hero: {
@@ -63,7 +63,7 @@ export const summerResetCopy = {
   terms: {
     heading: "Summer Offer Terms",
     items: [
-      "Offers valid July 15 through August 15.",
+      "Offers valid July 15 through August 31.",
       "Intro offers are available to first-time Alva Pilates clients only.",
       "Intro offers are limited to one per client.",
       "15-Day Unlimited Intro permits a maximum of one class per day.",

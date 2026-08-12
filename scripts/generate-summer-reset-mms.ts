@@ -198,7 +198,7 @@ async function buildHtml(qrDataUrl: string): Promise<string> {
     <div class="brand">Alva Pilates · Valencia</div>
     <div class="card" data-summer-reset-promo-card>
       <p class="eyebrow">${eyebrow}</p>
-      <p class="deadline">Limited through August 15</p>
+      <p class="deadline">Limited through August 31</p>
       <div class="divider">
         <p class="offer-label">15 Days Unlimited</p>
         <p class="price">${price}</p>

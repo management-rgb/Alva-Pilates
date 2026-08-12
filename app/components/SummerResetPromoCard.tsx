@@ -53,7 +53,7 @@ export default function SummerResetPromoCard({
         {summerResetCopy.hero.eyebrow}
       </p>
       <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-[#6d6c68]">
-        Limited through August 15
+        Limited through August 31
       </p>
 
       <div className="mt-9 border-t border-[rgba(74,64,50,0.14)] pt-9">

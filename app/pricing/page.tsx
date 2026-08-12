@@ -558,7 +558,7 @@ function ClassPacks() {
             id="summer-offer-packs"
           >
             {summerResetEnabled
-              ? "20% off 5, 10, and 20-class packs through August 15 — buy in advance and move on your own schedule."
+              ? "20% off 5, 10, and 20-class packs through August 31 — buy in advance and move on your own schedule."
               : "Flexible packs for drop-in frequency or a regular, unhurried practice."}
           </SectionHead>
         </Reveal>
