@@ -13,6 +13,12 @@ export interface Classes {
   bookingUrl?: string;
   /** Short, scannable focus of the class (e.g. "Full body · Strength") */
   bodyFocus?: string;
+  /** Level line shown above the class description (e.g. "All Levels · Glutes & Core Focus") */
+  levelText?: string;
+  /** Duration line shown above the class description (e.g. "50 minutes · Reformer Class") */
+  durationText?: string;
+  /** Optional intensity line shown above the class description (e.g. "High") */
+  intensityText?: string;
 }
 
 export interface InstructorScheduleEntry {

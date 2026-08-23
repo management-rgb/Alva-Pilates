@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Classes } from "../types";
 import { cn } from "../lib/utils";
+import { renderBoldText } from "../lib/richText";
 
 type ClassCardProps = {
   classItem: Classes;
@@ -74,7 +75,7 @@ export function ClassCard({
             </p>
           ) : null}
           <p className="mt-5 max-w-md text-sm leading-[1.75] text-muted sm:text-base">
-            {classItem.description.split("\n")[0]}
+            {renderBoldText(classItem.description.split("\n")[0])}
           </p>
           <span className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
             <span className="underline-grow">Explore this class</span>
@@ -129,7 +130,7 @@ export function ClassCard({
           </p>
         ) : null}
         <p className="mt-3 line-clamp-2 text-sm leading-[1.65] text-muted">
-          {classItem.description.split("\n")[0]}
+          {renderBoldText(classItem.description.split("\n")[0])}
         </p>
         <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium text-foreground">
           <span className="underline-grow">Learn more</span>

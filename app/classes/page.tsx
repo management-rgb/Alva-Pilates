@@ -9,6 +9,7 @@ import { Reveal } from "../components/sections/Reveal";
 import { getAllClasses } from "../lib/data";
 import { studioImagery } from "../lib/studioImagery";
 import { cn } from "../lib/utils";
+import { renderBoldText } from "../lib/richText";
 import type { Classes } from "../types";
 
 function level(c: Classes) {
@@ -118,7 +119,7 @@ function ClassSplit({
             {c.className.trim()}
           </h2>
           <p className="mt-5 max-w-xl text-[0.9375rem] leading-[1.8] text-muted sm:text-base">
-            {firstParagraph(c)}
+            {renderBoldText(firstParagraph(c))}
           </p>
           <ClassActions c={c} />
         </div>
@@ -146,7 +147,7 @@ function ClassCardTwoUp({ c }: { c: Classes }) {
           {c.className.trim()}
         </h3>
         <p className="mt-4 line-clamp-3 text-sm leading-[1.75] text-muted">
-          {firstParagraph(c)}
+          {renderBoldText(firstParagraph(c))}
         </p>
         <div className="mt-auto flex flex-wrap items-center gap-4 pt-7">
           <a href="/book" className="btn-primary">
@@ -185,7 +186,7 @@ function ClassCalmBand({ c }: { c: Classes }) {
             {c.className.trim()}
           </h2>
           <p className="mt-5 max-w-xl text-[0.9375rem] leading-[1.8] text-paper/80 sm:text-base">
-            {firstParagraph(c)}
+            {renderBoldText(firstParagraph(c))}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a href="/book" className="btn-primary">

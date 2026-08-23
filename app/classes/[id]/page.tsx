@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { Reveal } from "../../components/sections/Reveal";
 import { getClassById } from "../../lib/data";
+import { renderBoldText } from "../../lib/richText";
 import NotFound from "./not-found";
 
 export default function ClassDetailPage({
@@ -84,8 +85,26 @@ export default function ClassDetailPage({
         <div className="mx-auto max-w-[100rem]">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-7">
-              <p className="whitespace-pre-line text-lg leading-[1.85] text-muted">
-                {classItem.description}
+              {classItem.levelText ? (
+                <p className="text-sm font-semibold text-foreground">
+                  Level: {classItem.levelText}
+                </p>
+              ) : null}
+              {classItem.intensityText ? (
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  Intensity: {classItem.intensityText}
+                </p>
+              ) : null}
+              {classItem.durationText ? (
+                <p className="mt-1 text-sm text-muted">
+                  <span className="font-semibold text-foreground">
+                    Duration:
+                  </span>{" "}
+                  {classItem.durationText}
+                </p>
+              ) : null}
+              <p className="mt-4 whitespace-pre-line text-lg leading-[1.85] text-muted">
+                {renderBoldText(classItem.description)}
               </p>
               <a href="/book" className="btn-primary group mt-10">
                 Book this class
