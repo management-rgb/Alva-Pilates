@@ -1,8 +1,4 @@
 export const foundingMemberCopy = {
-  /** Sitewide header strip — small caps label above promo line */
-  headerFoundingEyebrow: "Member rates",
-  barLine: "Studio membership rates — limited spots.",
-  barCta: "Learn more",
   eyebrow: "Member rates — limited time",
   badge: "Member rates",
   headlineLead: "Become a",
@@ -29,8 +25,6 @@ export const foundingMemberOfferCards = [
     contract: "6-month contract",
     benefits:
       "15% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
-    summerBenefits:
-      "15% off privates + 2 guest passes / month during Summer Reset + early booking access + priority on the waitlist.",
     serviceId: "108",
     featured: false,
   },
@@ -42,8 +36,6 @@ export const foundingMemberOfferCards = [
     contract: "6-month contract",
     benefits:
       "20% off privates + 1 guest pass / month + early booking access + priority on the waitlist.",
-    summerBenefits:
-      "20% off privates + 2 guest passes / month during Summer Reset + early booking access + priority on the waitlist.",
     serviceId: "106",
     featured: true,
   },

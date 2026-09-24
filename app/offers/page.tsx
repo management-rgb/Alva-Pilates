@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -16,12 +17,17 @@ export const metadata: Metadata = {
   title: summerResetEnabled
     ? "Summer Reset Offers | Alva Pilates"
     : summerResetSeo.title,
-  description:
-    "Limited-time Summer Reset reformer Pilates offers at Alva Pilates in Valencia — 15-Day Unlimited Intro, 3-Class Intro, and 20% off class packs.",
+  description: summerResetEnabled
+    ? "Limited-time Summer Reset reformer Pilates offers at Alva Pilates in Valencia — 15-Day Unlimited Intro, 3-Class Intro, and 20% off class packs."
+    : "Explore intro offers and membership pricing at Alva Pilates in Valencia.",
   robots: summerResetEnabled ? { index: true, follow: true } : { index: false },
 };
 
 export default function OffersPage() {
+  if (!summerResetEnabled) {
+    redirect("/pricing");
+  }
+
   const unlimited = summerResetOfferCards.unlimitedIntro;
   const threeClass = summerResetOfferCards.threeClassIntro;
   const packs = summerResetOfferCards.classPackSale;
@@ -88,9 +94,6 @@ export default function OffersPage() {
                 </h3>
                 <p className="mt-1 font-heading text-3xl font-semibold tracking-tight text-[#201F1C]">
                   {threeClass.price}
-                  <span className="ml-3 text-base font-normal text-[#6D6C68] line-through">
-                    {threeClass.listPrice?.replace("Regularly ", "")}
-                  </span>
                 </p>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-[#6D6C68]">
                   {threeClass.description}

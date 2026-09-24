@@ -55,6 +55,9 @@ export default function SmoothScroll() {
     };
 
     const onClick = (event: MouseEvent) => {
+      // A component already handled this click (e.g. pricing section nav,
+      // which needs a larger offset for its sticky bar).
+      if (event.defaultPrevented) return;
       const target = event.target as HTMLElement | null;
       const anchor = target?.closest<HTMLAnchorElement>("a[href]");
       if (!anchor) return;

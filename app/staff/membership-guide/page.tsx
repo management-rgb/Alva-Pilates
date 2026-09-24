@@ -40,7 +40,7 @@ const memberships: MembershipTier[] = [
       {
         label: "Standard",
         price: "$119",
-        commitment: "3-Month Commitment",
+        commitment: "6-Month Commitment",
       },
     ],
   },
@@ -62,13 +62,6 @@ const memberships: MembershipTier[] = [
         commitment: "6-Month Commitment",
         savingsAmount: "$60",
         savingsLabel: "total savings",
-      },
-      {
-        label: "Existing Members Only",
-        price: "$219",
-        commitment: "3-Month Commitment",
-        existingOnly: true,
-        rateLabel: "Standard short-term rate",
       },
     ],
   },
@@ -115,10 +108,9 @@ const memberships: MembershipTier[] = [
 ];
 
 const guidelines = [
-  "Essential is only available with a 3-month commitment.",
+  "Essential is only available with a 6-month commitment.",
   "For Core, Elite, and Unlimited, present the 12-month option first.",
   "Offer the 6-month option when a client wants more flexibility.",
-  "Core 3-month at $219 is only for existing members already enrolled in that plan.",
   "Founding members keep their existing founding pricing.",
   "Do not change an existing member’s commitment without their approval.",
   "Confirm the selected commitment before completing the sale in Mindbody.",

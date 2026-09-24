@@ -34,7 +34,7 @@ export default function HomeOfferBridge() {
               <p className="editorial-body mt-6">
                 {summerResetEnabled
                   ? `15-Day Unlimited Intro and 3-Class Intro — first-time clients only. ${summerResetDeadlineLabel}.`
-                  : "Try a single class or our introductory pack — then find the membership that fits your practice."}
+                  : "15-Day Unlimited Intro for $99, a 3-class intro, or a single class — then find the membership that fits your practice."}
               </p>
             </Reveal>
           </div>
@@ -48,7 +48,7 @@ export default function HomeOfferBridge() {
                 }
                 className="btn-primary"
               >
-                View Offers
+                {summerResetEnabled ? "View Offers" : "View Pricing"}
               </Link>
             </Reveal>
           </div>

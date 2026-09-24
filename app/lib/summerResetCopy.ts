@@ -2,7 +2,7 @@
  * Summer Reset campaign — set `summerResetEnabled` to false after the promotion ends.
  * Review Mindbody service IDs and purchase links before publishing.
  */
-export const summerResetEnabled = true;
+export const summerResetEnabled = false;
 
 export const summerResetStartDate = "2026-07-15";
 export const summerResetEndDate = "2026-08-31";
@@ -36,7 +36,7 @@ export const summerResetCopy = {
   },
   introCredit: {
     eyebrow: "Love Your Intro?",
-    heading: "Become a Member and Get Your Intro Purchase Credited Back",
+    heading: "Become a member and get your intro purchase credited back",
     body: "When you become an Alva member, we'll apply 100% of the amount you paid for your qualifying New Client Intro Offer toward your first membership payment.",
     disclaimer:
       "Valid for clients who purchase the 3-Class Intro or 15-Day Unlimited Intro and enroll in an eligible recurring membership within 15 days after their Intro Offer expires. Intro credit cannot exceed the first membership payment, has no cash value, and cannot be combined with another membership promotion.",
@@ -98,7 +98,6 @@ export const summerResetOfferCards = {
   threeClassIntro: {
     title: "3-Class Intro",
     price: "$69",
-    listPrice: "Regularly $89",
     description: "A flexible introduction to the Alva Pilates experience.",
     details: [
       "First-time clients only",
@@ -108,12 +107,12 @@ export const summerResetOfferCards = {
     cta: "Purchase Intro",
   },
   classPackSale: {
-    title: "Summer Class Pack Sale",
-    mainOffer: "20% OFF",
+    title: "Class Packs",
+    mainOffer: "Standard rates",
     packs: [
-      { label: "5-Class Pack", listPrice: "$179", salePrice: "$143" },
-      { label: "10-Class Pack", listPrice: "$339", salePrice: "$271" },
-      { label: "20-Class Pack", listPrice: "$629", salePrice: "$503" },
+      { label: "5-Class Pack", listPrice: "$179", salePrice: "$179" },
+      { label: "10-Class Pack", listPrice: "$339", salePrice: "$339" },
+      { label: "20-Class Pack", listPrice: "$629", salePrice: "$629" },
     ],
     cta: "Shop Class Packs",
   },

@@ -1,28 +1,38 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { KeyboardEvent, MouseEvent, ReactNode } from "react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Check, ChevronDown } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import IntroOfferCreditNote from "../components/IntroOfferCreditNote";
 import FallbackPurchaseLink from "../components/summer-reset/FallbackPurchaseLink";
 import { Reveal } from "../components/sections/Reveal";
 import { useMindbodyHealcodeScript } from "../hooks/useMindbodyHealcodeScript";
-import { scheduleScrollToSection } from "../lib/scrollToSection";
 import {
-  foundingMemberCopy,
-  foundingMemberOfferCards,
-} from "../lib/foundingMemberCopy";
+  scheduleScrollToSection,
+  scrollToSection,
+} from "../lib/scrollToSection";
+import { foundingMemberCopy } from "../lib/foundingMemberCopy";
 import {
   getPackOffersForPricing,
-  standardGroupClassOptions,
   type GroupClassOption,
 } from "../lib/groupClassPricing";
 import {
-  summerResetEnabled,
+  formatCommitmentTerm,
+  formatMonthlyPrice,
+  formatPerClassPrice,
+  getDefaultCommitment,
+  getPerClassPrice,
+  getTierBenefits,
+  membershipTiers,
+  type MembershipCommitment,
+  type MembershipTier,
+} from "../lib/membershipPricing";
+import {
   summerResetMindbodyServiceIds,
-  summerResetOfferCards,
   summerResetPurchaseFallbacks,
   summerResetSectionId,
 } from "../lib/summerResetCopy";
@@ -91,74 +101,6 @@ function getGroupClassServiceId(title: string): string | undefined {
     return summerResetMindbodyServiceIds.fifteenDayUnlimitedIntro ?? undefined;
   }
   return groupClassWidgetServiceIds[title];
-}
-
-const membershipWidgetServiceIds: Record<string, string> = {
-  Essential: "111",
-  Core: "112",
-};
-
-type MembershipOption = {
-  title: string;
-  price: string;
-  listPrice?: string;
-  classes: string;
-  contract: string;
-  tagline: string;
-  benefits: string;
-  summerBenefits?: string;
-  featured?: boolean;
-  founding?: boolean;
-  serviceId?: string;
-};
-
-const memberships: MembershipOption[] = [
-  {
-    title: "Essential",
-    price: "$119",
-    classes: "4 classes / month",
-    contract: "3-month contract",
-    tagline: "A gentle, steady rhythm.",
-    benefits: "5% off additional packs & retail.",
-    summerBenefits:
-      "5% off additional packs & retail + 1 guest pass / month during Summer Reset.",
-  },
-  {
-    title: "Core",
-    price: "$219",
-    classes: "8 classes / month",
-    contract: "3-month contract",
-    tagline: "For a consistent weekly practice.",
-    benefits: "10% off privates & priority booking.",
-    summerBenefits:
-      "10% off privates & priority booking + 1 guest pass / month during Summer Reset.",
-  },
-  ...foundingMemberOfferCards.map((offer) => ({
-    title: offer.title,
-    price: offer.price.replace(/\/mo$/, ""),
-    listPrice: offer.listPrice.replace(/\/mo$/, ""),
-    classes: offer.classes,
-    contract: offer.contract,
-    tagline: "Founding member rate — limited availability.",
-    benefits: offer.benefits,
-    summerBenefits: offer.summerBenefits,
-    featured: offer.featured,
-    founding: true,
-    serviceId: offer.serviceId,
-  })),
-];
-
-function getMembershipDisplayBenefits(m: MembershipOption) {
-  if (summerResetEnabled && m.summerBenefits) return m.summerBenefits;
-  return m.benefits;
-}
-
-function benefitBullets(text: string): string[] {
-  return text
-    .split(/\s*\+\s*/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-    .slice(0, 4);
 }
 
 const privateSessionWidgetServiceIds: Record<string, string> = {
@@ -243,7 +185,44 @@ const privateEvents = [
 
 function extractPerClass(note: string): string | null {
   const match = note.match(/(\$[\d.]+)\s+per class/i);
-  return match ? `${match[1]} / class` : null;
+  return match ? `${match[1]} per class` : null;
+}
+
+/** Unlimited has no per-class figure: the rate assumes a class every day. */
+function perClassLabel(tier: MembershipTier, option: MembershipCommitment) {
+  if (tier.classesPerMonth === null) return null;
+  return `${formatPerClassPrice(getPerClassPrice(tier, option))} per class`;
+}
+
+/** Lowest per-class rate across memberships, excluding Unlimited. */
+function lowestMembershipPerClass(): number {
+  return Math.min(
+    ...membershipTiers
+      .filter((tier) => tier.classesPerMonth !== null)
+      .flatMap((tier) =>
+        tier.commitments.map((option) => getPerClassPrice(tier, option))
+      )
+  );
+}
+
+/** Sticky section nav targets, in page order. */
+const pricingSections = [
+  { id: "get-started", label: "New clients" },
+  { id: "memberships", label: "Memberships" },
+  { id: "group-packages", label: "Class packs" },
+  { id: "private-training", label: "Private training" },
+  { id: "private-events", label: "Events" },
+];
+
+/** Sections below the nav's last item — not in the nav. */
+const pricingSectionsAfterNav = ["compare-memberships", "pricing-faq"];
+
+/** In-page jump that accounts for the fixed header + sticky section nav. */
+function jumpToSection(event: MouseEvent<HTMLAnchorElement>, id: string) {
+  // preventDefault also tells the global Lenis hash handler (fixed 8rem
+  // offset) to skip this click.
+  event.preventDefault();
+  scrollToSection(id);
 }
 
 /* ---------------------------------------------------------------------------
@@ -281,31 +260,195 @@ function SectionHead({
 }
 
 /* ---------------------------------------------------------------------------
+   INTRO — "Where do you fit?" chooser
+--------------------------------------------------------------------------- */
+
+function PricingIntro() {
+  return (
+    <section className="lp-section lp-section--intro lp-bg-ivory">
+      <div className="lp-inner">
+        <Reveal>
+          <SectionHead
+            as="h1"
+            title="Find the right way to practice"
+            center
+          >
+            Start with an intro, commit with a membership, or keep it flexible
+            with a class pack.
+          </SectionHead>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   STICKY SECTION NAV
+--------------------------------------------------------------------------- */
+
+function PricingSubnav() {
+  const navRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
+  const reduceMotion = useReducedMotion();
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [stuck, setStuck] = useState(false);
+  const [fade, setFade] = useState({ start: false, end: false });
+
+  // Stick directly under the fixed header, whose height changes on scroll.
+  useEffect(() => {
+    const nav = navRef.current;
+    const header = document.querySelector("header");
+    if (!nav || !header) return;
+
+    const sync = () =>
+      nav.style.setProperty(
+        "--lp-subnav-top",
+        `${header.getBoundingClientRect().height}px`
+      );
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
+
+  // Track the section under the nav, and whether the nav is stuck.
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const nav = navRef.current;
+      const header = document.querySelector("header");
+      if (!nav) return;
+      const navRect = nav.getBoundingClientRect();
+      const headerBottom = header?.getBoundingClientRect().bottom ?? 0;
+      setStuck(window.scrollY > 0 && navRect.top <= headerBottom + 1);
+
+      // Generous line so a section counts as active right after a jump lands.
+      const line = navRect.bottom + 64;
+      let current: string | null = null;
+      // Sections after the nav's last item clear the highlight.
+      for (const id of [
+        ...pricingSections.map((section) => section.id),
+        ...pricingSectionsAfterNav,
+      ]) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      setActiveId(
+        pricingSectionsAfterNav.includes(current ?? "") ? null : current
+      );
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // Edge fades hint that the track scrolls sideways (small screens).
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const sync = () =>
+      setFade({
+        start: list.scrollLeft > 1,
+        end: list.scrollLeft + list.clientWidth < list.scrollWidth - 1,
+      });
+    sync();
+    list.addEventListener("scroll", sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(list);
+    return () => {
+      list.removeEventListener("scroll", sync);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Keep the active label visible on narrow screens (horizontal scroll only).
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list || !activeId) return;
+    const link = list.querySelector<HTMLElement>(`[data-section="${activeId}"]`);
+    if (!link) return;
+    list.scrollTo({
+      left: link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2,
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+  }, [activeId, reduceMotion]);
+
+  return (
+    <nav
+      ref={navRef}
+      className={`lp-subnav ${stuck ? "lp-subnav--stuck" : ""}`}
+      aria-label="Pricing sections"
+      data-sticky-subnav
+    >
+      <div className="lp-subnav__track">
+        <ul
+          ref={listRef}
+          className={`lp-subnav__list ${
+            fade.start ? "lp-subnav__list--fade-start" : ""
+          } ${fade.end ? "lp-subnav__list--fade-end" : ""}`}
+        >
+          {pricingSections.map(({ id, label }) => {
+            const active = activeId === id;
+            return (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  data-section={id}
+                  className={`lp-subnav__link ${
+                    active ? "lp-subnav__link--active" : ""
+                  }`}
+                  aria-current={active ? "true" : undefined}
+                  onClick={(event) => jumpToSection(event, id)}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId="lp-subnav-underline"
+                      className="lp-subnav__underline"
+                      aria-hidden
+                      transition={
+                        reduceMotion
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 420, damping: 38 }
+                      }
+                    />
+                  ) : null}
+                  <span className="lp-subnav__label">{label}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+/* ---------------------------------------------------------------------------
    1. YOUR FIRST VISIT
 --------------------------------------------------------------------------- */
 
 function FirstVisit() {
-  const unlimited = summerResetOfferCards.unlimitedIntro;
-  const threeClass = summerResetOfferCards.threeClassIntro;
   const unlimitedServiceId =
     summerResetMindbodyServiceIds.fifteenDayUnlimitedIntro;
   const threeClassServiceId = summerResetMindbodyServiceIds.threeClassIntro;
 
-  // Non-promo fallbacks — first-time intro from standard catalog.
-  const standardIntro = standardGroupClassOptions.find(
-    (o) => o.title === "New Client Intro Offer"
-  );
-
   return (
     <section
       id="get-started"
-      className="lp-section lp-bg-sand scroll-mt-40 pt-36 lg:pt-44"
+      className="lp-section lp-section--after-subnav lp-bg-sand scroll-mt-40"
     >
       <div className="lp-inner lp-stack">
         <Reveal>
-          <SectionHead label="Your First Visit" title="Experience Alva" center>
-            Choose the perfect way to begin your Pilates journey.
-          </SectionHead>
+          <SectionHead label="Your first visit" title="Experience Alva" center />
         </Reveal>
 
         <Reveal stagger>
@@ -313,20 +456,17 @@ function FirstVisit() {
             {/* Featured — 15-Day Unlimited */}
             <div
               id="summer-offer-unlimited"
-              className="lp-card lp-card--feature pricing-card-full-buy scroll-mt-40"
+              className="lp-card lp-card--tint pricing-card-full-buy scroll-mt-40"
             >
               <div className="lp-card__top">
                 <p className="lp-card__eyebrow">Featured</p>
                 <span className="lp-badge">Best Value</span>
               </div>
-              <h3 className="lp-name">
-                {summerResetEnabled ? unlimited.title : "15-Day Unlimited Intro"}
-              </h3>
+              <h3 className="lp-name">15-Day Unlimited Intro</h3>
               <div className="lp-price-row">
-                <span className="lp-price lp-price--sm">
-                  {summerResetEnabled ? unlimited.price : "$99"}
-                </span>
+                <span className="lp-price lp-price--sm">$99</span>
               </div>
+              <p className="lp-per-class">As low as $6.60 per class</p>
               <div className="lp-divider" />
               <ul className="lp-list">
                 <li>One class per day · 15 days</li>
@@ -350,24 +490,16 @@ function FirstVisit() {
             {/* Secondary — 3-Class Intro */}
             <div
               id="summer-offer-intro"
-              className="lp-card lp-card--tint pricing-card-full-buy scroll-mt-40"
+              className="lp-card pricing-card-full-buy scroll-mt-40"
             >
               <div className="lp-card__top">
                 <p className="lp-card__eyebrow">Intro pack</p>
               </div>
-              <h3 className="lp-name">
-                {summerResetEnabled
-                  ? threeClass.title
-                  : standardIntro?.title ?? "3-Class Intro"}
-              </h3>
+              <h3 className="lp-name">3-Class Intro</h3>
               <div className="lp-price-row">
-                <span className="lp-price lp-price--sm">
-                  {summerResetEnabled ? threeClass.price : "$89"}
-                </span>
-                {summerResetEnabled ? (
-                  <span className="lp-was">$89</span>
-                ) : null}
+                <span className="lp-price lp-price--sm">$69</span>
               </div>
+              <p className="lp-per-class">$23 per class</p>
               <div className="lp-divider" />
               <ul className="lp-list">
                 <li>3 classes · valid 30 days</li>
@@ -377,7 +509,7 @@ function FirstVisit() {
                 <IntroOfferCreditNote className="lp-note" />
               </div>
               <div className="lp-foot">
-                <span className="lp-cta lp-cta--ghost">Start Your Intro</span>
+                <span className="lp-cta">Start Your Intro</span>
               </div>
               <BuyOverlay
                 serviceId={threeClassServiceId}
@@ -413,50 +545,185 @@ function FirstVisit() {
 }
 
 /* ---------------------------------------------------------------------------
-   3. MEMBERSHIPS — premium pricing cards
+   3. MEMBERSHIPS — editorial cards; 12-month default with term selection
 --------------------------------------------------------------------------- */
 
-function MembershipCard({ m }: { m: MembershipOption }) {
-  const contractId = m.serviceId ?? membershipWidgetServiceIds[m.title];
-  const featured = Boolean(m.featured);
-  const tint = Boolean(m.founding && !featured);
-  const benefits = benefitBullets(getMembershipDisplayBenefits(m));
+function MembershipBuyControl({
+  ctaLabel,
+  option,
+}: {
+  ctaLabel: string;
+  option: MembershipCommitment;
+}) {
+  const hasPurchase = Boolean(option.serviceId || option.purchaseUrl);
 
   return (
     <div
-      className={`lp-card ${
-        featured ? "lp-card--feature" : tint ? "lp-card--tint" : ""
-      } ${contractId ? "pricing-card-full-buy" : ""}`}
+      className={`lp-foot lp-foot--buy ${
+        hasPurchase ? "pricing-card-cta-buy" : ""
+      }`}
+    >
+      {hasPurchase ? (
+        <span className="lp-cta">{ctaLabel}</span>
+      ) : (
+        <a href="/contact" className="lp-cta">
+          {ctaLabel}
+        </a>
+      )}
+      {option.serviceId ? (
+        <div className="pricing-card-cta-buy-overlay" key={option.id}>
+          {renderHealcodeWidget("contract-link", option.serviceId)}
+        </div>
+      ) : option.purchaseUrl ? (
+        <div className="pricing-card-cta-buy-overlay" key={option.id}>
+          <FallbackPurchaseLink
+            href={option.purchaseUrl}
+            label={`${ctaLabel} — ${option.months}-month`}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function CommitmentToggle({
+  tier,
+  selectedId,
+  onSelect,
+}: {
+  tier: MembershipTier;
+  selectedId: string;
+  onSelect: (id: string) => void;
+}) {
+  const options = tier.commitments;
+
+  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const currentIndex = options.findIndex((o) => o.id === selectedId);
+    if (currentIndex < 0) return;
+
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      nextIndex = (currentIndex + 1) % options.length;
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      nextIndex = (currentIndex - 1 + options.length) % options.length;
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      event.preventDefault();
+      nextIndex = options.length - 1;
+    } else {
+      return;
+    }
+
+    const nextId = options[nextIndex].id;
+    onSelect(nextId);
+    event.currentTarget
+      .querySelector<HTMLButtonElement>(`[data-commit-id="${nextId}"]`)
+      ?.focus();
+  }
+
+  return (
+    <div
+      className="lp-commit-toggle"
+      role="radiogroup"
+      aria-label={`${tier.name} commitment length`}
+      onKeyDown={handleKeyDown}
+    >
+      {options.map((option) => {
+        const isSelected = option.id === selectedId;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            role="radio"
+            data-commit-id={option.id}
+            aria-checked={isSelected}
+            tabIndex={isSelected ? 0 : -1}
+            className={`lp-commit-option ${
+              isSelected ? "lp-commit-option--selected" : ""
+            }`}
+            onClick={() => onSelect(option.id)}
+          >
+            <span className="lp-commit-option__term">
+              {formatCommitmentTerm(option.months)}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function MembershipCard({ tier }: { tier: MembershipTier }) {
+  const hasChoices = tier.commitments.length > 1;
+  const defaultOption = getDefaultCommitment(tier);
+  const [selectedId, setSelectedId] = useState(defaultOption.id);
+  const [priceKey, setPriceKey] = useState(0);
+
+  const selected =
+    tier.commitments.find((c) => c.id === selectedId) ?? defaultOption;
+  const perClass = perClassLabel(tier, selected);
+
+  function selectCommitment(id: string) {
+    if (id === selectedId) return;
+    setSelectedId(id);
+    setPriceKey((k) => k + 1);
+  }
+
+  return (
+    <div
+      className={`lp-card lp-card--membership ${
+        tier.tint ? "lp-card--tint" : ""
+      }`}
     >
       <div className="lp-card__top">
-        <p className="lp-card__eyebrow">
-          {m.founding ? "Founding" : "Membership"}
-        </p>
-        {featured ? <span className="lp-badge">Best Value</span> : null}
+        <p className="lp-card__eyebrow">Membership</p>
+        {tier.badge ? <span className="lp-badge">{tier.badge}</span> : null}
       </div>
-      <h3 className="lp-name">{m.title}</h3>
+      <h3 className="lp-name">{tier.name}</h3>
+      <p className="lp-membership-classes">{tier.frequency}</p>
+      {hasChoices ? (
+        <CommitmentToggle
+          tier={tier}
+          selectedId={selected.id}
+          onSelect={selectCommitment}
+        />
+      ) : null}
       <div className="lp-price-row">
-        <span className="lp-price lp-price--sm">{m.price}</span>
-        <span className="lp-unit">/mo</span>
-        {m.listPrice ? <span className="lp-was">{m.listPrice}</span> : null}
+        <span key={priceKey} className="lp-price lp-price--sm lp-price--fade">
+          {formatMonthlyPrice(selected.monthlyPrice)}
+        </span>
+        {tier.regularPrice ? (
+          <span className="lp-was">
+            <span className="sr-only">Regular price </span>
+            {formatMonthlyPrice(tier.regularPrice)}
+          </span>
+        ) : null}
+        <span className="lp-unit">/month</span>
       </div>
-      <p className="lp-desc">{m.tagline}</p>
+      <p className="lp-commit-line" aria-live="polite">
+        {/* The term tab already states the commitment; keep it for screen
+            readers so toggling still announces the selected contract. */}
+        <span className={hasChoices ? "sr-only" : undefined}>
+          {selected.commitmentLabel}
+        </span>
+        {perClass ? (
+          <span className="lp-per-class lp-per-class--inline">{perClass}</span>
+        ) : null}
+      </p>
+      <p className="lp-desc">{tier.description}</p>
       <div className="lp-divider" />
+
       <ul className="lp-list">
-        <li>{m.classes}</li>
-        <li>{m.contract}</li>
-        {benefits.map((bullet) => (
+        {getTierBenefits(tier).map((bullet) => (
           <li key={bullet}>{bullet}</li>
         ))}
       </ul>
-      <div className="lp-foot">
-        <span className={`lp-cta ${featured ? "" : "lp-cta--ghost"}`}>
-          Join {m.title}
-        </span>
-      </div>
-      {contractId ? (
-        <BuyOverlay type="contract-link" serviceId={contractId} />
-      ) : null}
+
+      <MembershipBuyControl ctaLabel={tier.ctaLabel} option={selected} />
     </div>
   );
 }
@@ -467,23 +734,171 @@ function Memberships() {
       <span id="founding-pricing" className="block scroll-mt-40" aria-hidden />
       <div className="lp-inner lp-inner--wide lp-stack">
         <Reveal>
-          <SectionHead
-            label={foundingMemberCopy.badge}
-            title="Memberships"
-            id="founding-pricing-heading"
-          >
-            {foundingMemberCopy.pricingStripBody} Auto-renews monthly.
-            {summerResetEnabled
-              ? " Apply your intro credit when you join within 15 days after your intro expires."
-              : " Pause or cancel with 14-day notice."}
+          <SectionHead title="Memberships" id="founding-pricing-heading">
+            {foundingMemberCopy.pricingStripBody} Auto-renews monthly. Pause or
+            cancel with 14-day notice.
           </SectionHead>
         </Reveal>
 
         <Reveal stagger>
-          <div className="lp-grid-4">
-            {memberships.map((m) => (
-              <MembershipCard key={m.title} m={m} />
+          <div className="lp-grid-4 lp-grid-4--memberships">
+            {membershipTiers.map((tier) => (
+              <MembershipCard key={tier.id} tier={tier} />
             ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function NotIncluded() {
+  return (
+    <span className="lp-compare__none">
+      <span aria-hidden>—</span>
+      <span className="sr-only">Not included</span>
+    </span>
+  );
+}
+
+function fromPrice(values: number[], format: (n: number) => string) {
+  const low = Math.min(...values);
+  return values.length > 1 ? `From ${format(low)}` : format(low);
+}
+
+const compareRows: {
+  label: string;
+  cell: (tier: MembershipTier) => ReactNode;
+}[] = [
+  {
+    label: "Classes per month",
+    cell: (tier) => tier.classesPerMonth ?? "Unlimited",
+  },
+  {
+    label: "Monthly price",
+    cell: (tier) =>
+      fromPrice(
+        tier.commitments.map((c) => c.monthlyPrice),
+        formatMonthlyPrice
+      ),
+  },
+  {
+    label: "Price per class",
+    cell: (tier) => {
+      const price = fromPrice(
+        tier.commitments.map((c) => getPerClassPrice(tier, c)),
+        formatPerClassPrice
+      );
+      return tier.classesPerMonth === null
+        ? `${price.replace("From", "As low as")} at 1 a day`
+        : price;
+    },
+  },
+  {
+    label: "Commitment",
+    cell: (tier) =>
+      `${[...tier.commitments]
+        .map((c) => c.months)
+        .sort((a, b) => a - b)
+        .join(" or ")} months`,
+  },
+  {
+    label: "Off private training",
+    cell: (tier) =>
+      tier.perks.privatesDiscount ? (
+        `${tier.perks.privatesDiscount}%`
+      ) : (
+        <NotIncluded />
+      ),
+  },
+  {
+    label: "Off extra packs & retail",
+    cell: (tier) =>
+      tier.perks.packsRetailDiscount ? (
+        `${tier.perks.packsRetailDiscount}%`
+      ) : (
+        <NotIncluded />
+      ),
+  },
+  {
+    label: "Guest passes",
+    cell: (tier) =>
+      tier.perks.guestPassesPerMonth ? (
+        `${tier.perks.guestPassesPerMonth} / month`
+      ) : (
+        <NotIncluded />
+      ),
+  },
+  {
+    label: "Booking",
+    cell: (tier) =>
+      tier.perks.booking === "early" ? (
+        "Early access"
+      ) : tier.perks.booking === "priority" ? (
+        "Priority"
+      ) : (
+        <NotIncluded />
+      ),
+  },
+  {
+    label: "Waitlist priority",
+    cell: (tier) =>
+      tier.perks.waitlistPriority ? (
+        <span className="lp-compare__yes">
+          <Check className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+          <span className="sr-only">Included</span>
+        </span>
+      ) : (
+        <NotIncluded />
+      ),
+  },
+];
+
+function MembershipCompare() {
+  return (
+    <section
+      id="compare-memberships"
+      className="lp-section lp-bg-ivory scroll-mt-40"
+    >
+      <div className="lp-inner lp-inner--wide lp-stack">
+        <Reveal>
+          <SectionHead title="Compare all memberships" center>
+            Every membership side by side.
+          </SectionHead>
+        </Reveal>
+
+        <Reveal>
+          <div className="lp-compare">
+            <div className="lp-compare__scroll">
+              <table className="lp-compare__table">
+                <caption className="sr-only">Membership comparison</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <span className="sr-only">Feature</span>
+                    </th>
+                    {membershipTiers.map((tier) => (
+                      <th key={tier.id} scope="col">
+                        <span className="lp-compare__tier">{tier.name}</span>
+                        {tier.badge ? (
+                          <span className="lp-compare__badge">{tier.badge}</span>
+                        ) : null}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareRows.map((row) => (
+                    <tr key={row.label}>
+                      <th scope="row">{row.label}</th>
+                      {membershipTiers.map((tier) => (
+                        <td key={tier.id}>{row.cell(tier)}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -507,7 +922,7 @@ function PackCard({
 
   return (
     <div
-      className={`lp-card ${featured ? "lp-card--feature" : ""} ${
+      className={`lp-card ${featured ? "lp-card--tint" : ""} ${
         serviceId ? "pricing-card-full-buy" : ""
       }`}
     >
@@ -520,17 +935,18 @@ function PackCard({
         <span className="lp-price lp-price--sm">{item.price}</span>
         {item.listPrice ? <span className="lp-was">{item.listPrice}</span> : null}
       </div>
+      {perClass ? <p className="lp-per-class">{perClass}</p> : null}
       <div className="lp-divider" />
       <ul className="lp-list">
-        <li>{perClass ?? "Flexible per-class rate"}</li>
-        <li>Valid {item.validity}</li>
+        <li>Valid {item.validity} from first class</li>
+        <li>No commitment</li>
         <li>Non-member rate</li>
       </ul>
       <div className="lp-foot">
         {serviceId ? (
           <span className="lp-cta">Purchase Pack</span>
         ) : (
-          <a href="/contact" className="lp-cta lp-cta--ghost">
+          <a href="/contact" className="lp-cta">
             Inquire
           </a>
         )}
@@ -551,15 +967,12 @@ function ClassPacks() {
       <div className="lp-inner lp-stack">
         <Reveal>
           <SectionHead
-            label={summerResetEnabled ? "Summer class pack sale" : "Class packs"}
-            title={
-              summerResetEnabled ? "Flexibility, elevated" : "Class packs"
-            }
+            label="Class packs"
+            title="Class packs"
             id="summer-offer-packs"
           >
-            {summerResetEnabled
-              ? "20% off 5, 10, and 20-class packs through August 31 — buy in advance and move on your own schedule."
-              : "Flexible packs for drop-in frequency or a regular, unhurried practice."}
+            Flexible packs for drop-in frequency or a regular, unhurried
+            practice.
           </SectionHead>
         </Reveal>
 
@@ -601,9 +1014,13 @@ function PrivateCard({ item }: { item: PrivateOption }) {
         <span className="lp-price lp-price--sm">{item.price}</span>
         {item.listPrice ? <span className="lp-was">{item.listPrice}</span> : null}
       </div>
+      {item.title !== "Single Private" ? (
+        <p className="lp-per-class">
+          {item.perSession.replace(" / ", " per ")}
+        </p>
+      ) : null}
       <div className="lp-divider" />
       <ul className="lp-list">
-        <li>{item.perSession}</li>
         {item.validity ? <li>{item.validity}</li> : null}
         <li>Personalized 1:1 programming</li>
       </ul>
@@ -632,8 +1049,8 @@ function PrivateTraining() {
         <div className="lp-inner lp-inner--wide lp-stack">
           <Reveal>
             <SectionHead label="Private training" title="One-on-one, by design">
-              Focused, personalized coaching on the reformer. Mon–Fri
-              11 AM–4 PM, weekends by appointment.
+              Focused, personalized coaching on the reformer. Mon–Fri 11 AM–4
+              PM, weekends by appointment.
             </SectionHead>
           </Reveal>
 
@@ -657,7 +1074,10 @@ function PrivateTraining() {
 
 function PrivateEvents() {
   return (
-    <section className="lp-section lp-bg-stone">
+    <section
+      id="private-events"
+      className="lp-section lp-bg-stone scroll-mt-40"
+    >
       <div className="lp-inner lp-stack">
         <Reveal>
           <SectionHead
@@ -684,7 +1104,7 @@ function PrivateEvents() {
                 <div className="lp-divider" />
                 <p className="lp-desc">{item.detail}</p>
                 <div className="lp-foot">
-                  <a href="/contact" className="lp-cta lp-cta--ghost">
+                  <a href="/contact" className="lp-cta">
                     Inquire to book
                   </a>
                 </div>
@@ -692,6 +1112,84 @@ function PrivateEvents() {
             ))}
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Pricing FAQ — answers mirror the studio policies in app/data/faq.json
+--------------------------------------------------------------------------- */
+
+function PricingFaq() {
+  const packOffers = getPackOffersForPricing();
+  const packValidity = packOffers
+    .map((item) => `${item.validity} (${item.title.replace(" Pack", "")})`)
+    .join(", ");
+
+  const faqs: { q: string; a: ReactNode }[] = [
+    {
+      q: "Which intro offer should I choose?",
+      a: "Both are for first-time clients. The 15-Day Unlimited Intro ($99) gives you one class a day for 15 days — best if you can come often. The 3-Class Intro ($69) gives you three classes over 30 days — a lighter way to try the studio.",
+    },
+    {
+      q: "Membership or class pack — which is better for me?",
+      a: `If you'll come at least once a week, a membership gives you the lowest price per class — as low as ${formatPerClassPrice(
+        lowestMembershipPerClass()
+      )}. Class packs suit a changing schedule: no commitment, and you use them at your own pace before they expire.`,
+    },
+    {
+      q: "Is there a commitment on memberships?",
+      a: "Yes. Essential has a 6-month commitment; Core, Elite and Unlimited are available with a 6- or 12-month commitment, and 12 months gives you the lower monthly rate. Memberships are billed automatically each month.",
+    },
+    {
+      q: "Can I pause my membership?",
+      a: "Yes — for up to 30 days per commitment period, with at least 14 days' written notice. Monthly payments continue during a pause, and the paused time is added to the end of your commitment so you don't lose any.",
+    },
+    {
+      q: "How do I cancel my membership?",
+      a: "Give at least 14 days' written notice. Cancelling before your commitment period ends requires paying the remaining balance of your membership agreement.",
+    },
+    {
+      q: "Do class packs expire?",
+      a: `Packs activate on your first class and are valid for ${packValidity}.`,
+    },
+    {
+      q: "What if I need to cancel a class?",
+      a: "Cancel at least 12 hours before class at no charge. Late cancellations are $15 (pack credits are returned). A no-show is $25 on a membership; on a class pack the credit is forfeited.",
+    },
+    {
+      q: "Are purchases refundable?",
+      a: "All purchases are final. Class packs, memberships and private sessions are non-refundable and non-transferable.",
+    },
+  ];
+
+  return (
+    <section id="pricing-faq" className="lp-section lp-bg-stone scroll-mt-40">
+      <div className="lp-inner lp-stack">
+        <Reveal>
+          <SectionHead label="Good to know" title="Pricing questions" center />
+        </Reveal>
+
+        <div className="lp-faq">
+          {faqs.map(({ q, a }) => (
+            <details key={q} className="lp-faq__item">
+              <summary className="lp-faq__q">
+                <span>{q}</span>
+                <ChevronDown
+                  className="lp-faq__chevron h-4 w-4"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+              </summary>
+              <p className="lp-faq__a">{a}</p>
+            </details>
+          ))}
+          <p className="lp-faq__more">
+            Full details in our{" "}
+            <Link href="/faq#policies">studio policies</Link>.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -757,15 +1255,17 @@ export default function PricingPage() {
         aria-hidden
         className="block scroll-mt-40"
       />
-      {/* Anchor for the homepage hero "View Summer Offers" CTA */}
       <span id="summer-reset" aria-hidden className="block scroll-mt-40" />
+      <PricingIntro />
+      <PricingSubnav />
       <FirstVisit />
       <Memberships />
-      {/* Anchor for the homepage hero "20% off class packs" row */}
       <span id="class-packs" aria-hidden className="block scroll-mt-40" />
       <ClassPacks />
       <PrivateTraining />
       <PrivateEvents />
+      <MembershipCompare />
+      <PricingFaq />
       <FinalCta />
 
       <Footer />

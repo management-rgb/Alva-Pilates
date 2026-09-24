@@ -1,5 +1,6 @@
 /**
- * Smooth-scroll to an element by id, accounting for the fixed header + announcement bar.
+ * Smooth-scroll to an element by id, accounting for the fixed header + announcement bar
+ * and any sticky section nav marked with `data-sticky-subnav`.
  */
 export function scrollToSection(id: string, behavior: ScrollBehavior = "smooth") {
   if (typeof window === "undefined") return;
@@ -9,9 +10,16 @@ export function scrollToSection(id: string, behavior: ScrollBehavior = "smooth")
 
   const header = document.querySelector("header");
   const headerHeight = header?.getBoundingClientRect().height ?? 140;
+  // Page-level sticky section nav (e.g. pricing) sits under the header.
+  const subnav = document.querySelector("[data-sticky-subnav]");
+  const subnavHeight = subnav?.getBoundingClientRect().height ?? 0;
   const gap = 12;
   const top =
-    el.getBoundingClientRect().top + window.scrollY - headerHeight - gap;
+    el.getBoundingClientRect().top +
+    window.scrollY -
+    headerHeight -
+    subnavHeight -
+    gap;
 
   window.scrollTo({ top: Math.max(0, top), behavior });
 

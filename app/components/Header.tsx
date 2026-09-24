@@ -12,7 +12,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
-import FoundingMemberAnnouncementBar from "./FoundingMemberAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
@@ -241,11 +240,7 @@ export default function Header() {
         </div>
       </div>
 
-      {isMenuOpen ? null : summerResetEnabled ? (
-        <SummerResetAnnouncementBar />
-      ) : (
-        <FoundingMemberAnnouncementBar />
-      )}
+      {!isMenuOpen && summerResetEnabled ? <SummerResetAnnouncementBar /> : null}
 
       <AnimatePresence>
         {isMenuOpen ? (
