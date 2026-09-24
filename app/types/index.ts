@@ -46,18 +46,6 @@ export interface Instructor {
 /** @deprecated Use Instructor */
 export type Instructors = Instructor;
 
-export interface PricingMemberships {
-  _id: string;
-  tierName: string;
-  price: number;
-  billingCycle: string;
-  keyBenefits: string;
-  isFoundingOffer: boolean;
-  foundingOfferDescription?: string;
-  callToActionText: string;
-  callToActionLink: string;
-}
-
 export interface FrequentlyAskedQuestions {
   _id: string;
   question: string;

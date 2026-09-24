@@ -1,11 +1,9 @@
 import classesData from "@/app/data/classes.json";
 import instructorsData from "@/app/data/instructors.json";
-import pricingData from "@/app/data/pricing.json";
 import faqData from "@/app/data/faq.json";
 import type {
   Classes,
   Instructor,
-  PricingMemberships,
   FrequentlyAskedQuestions,
 } from "@/app/types";
 
@@ -32,11 +30,6 @@ export function getAllInstructors(): Instructor[] {
 export function getInstructorBySlug(slug: string): Instructor | null {
   const instructors = getAllInstructors();
   return instructors.find((i) => i.slug === slug) || null;
-}
-
-// Pricing
-export function getAllPricing(): PricingMemberships[] {
-  return pricingData as PricingMemberships[];
 }
 
 // FAQ

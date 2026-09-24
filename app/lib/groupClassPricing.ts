@@ -42,19 +42,6 @@ export const standardGroupClassOptions: GroupClassOption[] = [
   },
 ];
 
-/** @deprecated use getGroupClassOptions() */
-export const groupClassOptions = standardGroupClassOptions;
-
-export function getGroupClassOptions(): GroupClassOption[] {
-  return standardGroupClassOptions;
-}
-
-export function getIntroOffersForPricing(): GroupClassOption[] {
-  return standardGroupClassOptions.filter((item) =>
-    ["Single Class", "3-Class Intro"].includes(item.title)
-  );
-}
-
 export function getPackOffersForPricing(): GroupClassOption[] {
   return standardGroupClassOptions.filter((item) =>
     item.title.includes("Pack")

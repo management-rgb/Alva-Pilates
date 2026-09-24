@@ -10,13 +10,6 @@ export const summerResetDeadlineLabel = "Ends August 31";
 
 export const summerResetSectionId = "summer-offers";
 
-/** Anchor IDs for hero pricing tiles → offer cards */
-export const summerResetOfferAnchors = {
-  unlimitedIntro: "summer-offer-unlimited",
-  threeClassIntro: "summer-offer-intro",
-  classPackSale: "summer-offer-packs",
-} as const;
-
 export const summerResetCopy = {
   announcement: {
     line: "Summer Reset · New Client Intro Offers · 20% Off Class Packs · Ends August 31",
