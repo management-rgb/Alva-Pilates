@@ -87,6 +87,7 @@ export const membershipTiers: MembershipTier[] = [
         months: 6,
         monthlyPrice: 209,
         commitmentLabel: "6-month commitment",
+        serviceId: "115",
         purchaseUrl: "",
       },
     ],
