@@ -11,7 +11,8 @@ import type { Classes } from "../../types";
 type FeaturedClass = {
   id: string;
   name: string;
-  subtitle: string;
+  /** One-line answer to "is this class for me?" */
+  positioning: string;
   description: string;
 };
 
@@ -20,25 +21,35 @@ const FEATURED: FeaturedClass[] = [
   {
     id: "class-4",
     name: "Alva Sculpt",
-    subtitle: "Signature Class · Full Body Strength · 50 Min",
+    positioning: "Our signature full-body practice.",
     description:
       "Our signature reformer experience — strength, endurance, balance, and precision woven into one dynamic full-body flow.",
   },
   {
     id: "class-2",
     name: "Alva Foundation",
-    subtitle: "Beginner · Full Body Fundamentals · 50 Min",
+    positioning: "New to reformer? Start here.",
     description:
       "The essential principles of reformer Pilates — alignment, control, and breath — taught with care and confidence.",
   },
   {
     id: "class-1",
     name: "Alva Progress",
-    subtitle: "Level 1.5+ · Progressive Strength · 50 Min",
+    positioning: "Ready for more challenge?",
     description:
       "Layered sequencing that builds strength, stability, coordination, and control through more advanced movement.",
   },
 ];
+
+/**
+ * Level and duration are read from classes.json rather than restated here, so
+ * the homepage can never disagree with the real class requirements.
+ */
+function metaLine(data: Classes) {
+  return [data.levelText, `${data.durationMinutes} min`]
+    .filter(Boolean)
+    .join(" · ");
+}
 
 const TITLE_SCALE = [
   "text-[clamp(2.5rem,5vw,4rem)]",
@@ -70,7 +81,7 @@ export default function HomeClassesPreview() {
         {/* Masthead — the narrative continues from "Why Alva" */}
         <Reveal>
           <div className="flex items-baseline justify-between border-b border-[var(--border)] pb-5">
-            <p className="eyebrow">How you&rsquo;ll experience Alva</p>
+            <p className="eyebrow">Find your practice</p>
             <p className="hidden font-heading text-sm tabular-nums tracking-[0.08em] text-muted sm:block">
               Three signature practices
             </p>
@@ -105,12 +116,14 @@ export default function HomeClassesPreview() {
             const isActive = index === activeIndex;
             return (
               <Reveal key={feature.id} className={GRID_POS[index]}>
+                {/* Dimming is desktop-only: hover never fires on touch, so on
+                    mobile every class stays fully legible. */}
                 <Link
                   href={`/classes/${data._id}`}
                   onMouseEnter={() => setActiveIndex(index)}
                   onFocus={() => setActiveIndex(index)}
                   className={`group relative block outline-none transition-opacity duration-700 ${
-                    isActive ? "opacity-100" : "opacity-30 hover:opacity-100"
+                    isActive ? "opacity-100" : "lg:opacity-30 lg:hover:opacity-100"
                   }`}
                 >
                   {/* Oversized faded section number — texture, not graphic */}
@@ -141,8 +154,11 @@ export default function HomeClassesPreview() {
                     {feature.name}
                   </h3>
 
-                  <p className="relative mt-4 text-[0.625rem] uppercase tracking-[0.16em] text-muted">
-                    {feature.subtitle}
+                  <p className="relative mt-4 font-heading text-base font-medium tracking-[-0.01em] text-foreground sm:text-lg">
+                    {feature.positioning}
+                  </p>
+                  <p className="relative mt-3 text-[0.625rem] uppercase tracking-[0.16em] text-muted">
+                    {metaLine(data)}
                   </p>
                   <p className="relative mt-3 max-w-sm text-sm leading-[1.7] text-muted">
                     {feature.description}
@@ -162,7 +178,7 @@ export default function HomeClassesPreview() {
                 className="h-px w-10 bg-foreground/40 transition-all duration-500 group-hover:w-16 group-hover:bg-foreground"
                 aria-hidden
               />
-              <span className="underline-grow">View All Classes</span>
+              <span className="underline-grow">Explore All Classes</span>
               <ArrowRight
                 size={14}
                 className="transition-transform duration-300 group-hover:translate-x-1.5"

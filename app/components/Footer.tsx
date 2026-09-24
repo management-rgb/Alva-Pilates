@@ -34,8 +34,8 @@ export default function Footer() {
                 Valencia, CA 91354
               </p>
               <div className="space-y-1.5 text-[rgba(245,245,242,0.55)]">
-                <p>Mon – Sat · 7:00 AM – 7:00 PM</p>
-                <p>Sun · 9:00 AM – 12:00 PM</p>
+                <p>Mon – Fri · 8:00 AM – 7:00 PM</p>
+                <p>Sat – Sun · 9:00 AM – 12:00 PM</p>
               </div>
             </div>
           </div>

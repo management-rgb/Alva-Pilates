@@ -1,11 +1,10 @@
 export const foundingMemberCopy = {
-  eyebrow: "Member rates — limited time",
-  badge: "Member rates",
-  headlineLead: "Become a",
-  headlineAccent: "Studio Member",
+  badge: "Membership",
+  headlineLead: "Continue your",
+  headlineAccent: "practice.",
   description:
-    "Join Alva and lock in membership pricing while limited spots remain. Experience focused reformer instruction at a rate reserved for early members.",
-  ctaClaim: "View Memberships",
+    "Choose a rhythm that fits your week, from four classes a month through unlimited access. Memberships from $119 per month.",
+  ctaClaim: "Explore Memberships",
   /** Home hero secondary CTA (pricing page) */
   viewAllMemberships: "View All memberships",
   pricingStripTitle: "Studio Membership",

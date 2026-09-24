@@ -27,18 +27,33 @@ export default function HomeOfferBridge() {
               text={
                 summerResetEnabled
                   ? "Start with a Summer Reset intro."
-                  : "Begin with an intro offer."
+                  : "Your first 15 days at Alva."
               }
             />
             <Reveal>
-              <p className="editorial-body mt-6">
+              <p className="editorial-body mt-6 max-w-xl">
                 {summerResetEnabled
                   ? `15-Day Unlimited Intro and 3-Class Intro — first-time clients only. ${summerResetDeadlineLabel}.`
-                  : "15-Day Unlimited Intro for $99, a 3-class intro, or a single class — then find the membership that fits your practice."}
+                  : "Experience the studio, meet our instructors, and find the practice that fits you."}
               </p>
             </Reveal>
+            {summerResetEnabled ? null : (
+              <Reveal>
+                <p className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="font-heading text-[3.25rem] font-semibold leading-[0.85] tracking-[-0.045em] text-foreground sm:text-[4rem]">
+                    $99
+                  </span>
+                  <span className="text-base text-muted">
+                    15-Day Unlimited Intro
+                  </span>
+                </p>
+                <p className="mt-4 text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
+                  One class per day · 15 consecutive days · First-time clients
+                </p>
+              </Reveal>
+            )}
           </div>
-          <div className="lg:col-span-5 lg:flex lg:justify-end">
+          <div className="lg:col-span-5 lg:flex lg:flex-col lg:items-end lg:justify-end">
             <Reveal>
               <Link
                 href={
@@ -48,9 +63,21 @@ export default function HomeOfferBridge() {
                 }
                 className="btn-primary"
               >
-                {summerResetEnabled ? "View Offers" : "View Pricing"}
+                {summerResetEnabled ? "View Offers" : "Start Your Intro"}
               </Link>
             </Reveal>
+            {summerResetEnabled ? null : (
+              <Reveal>
+                {/* Quiet alternative — the other intro options stay available
+                    without competing with the $99 offer. */}
+                <p className="mt-5 text-sm leading-[1.7] text-muted lg:text-right">
+                  Prefer another way to begin?{" "}
+                  <Link href="/pricing#get-started" className="text-link">
+                    Explore the 3-Class Intro or Single Class
+                  </Link>
+                </p>
+              </Reveal>
+            )}
           </div>
         </div>
       </div>

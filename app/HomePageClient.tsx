@@ -26,25 +26,26 @@ export default function HomePageClient() {
 
       {summerResetEnabled ? <SummerResetHero /> : <HomeBrandHero />}
 
-      <FoundingMemberSection />
       {/* Charcoal → light gradient bridge */}
       <div className="flow-out-of-dark" aria-hidden />
 
+      {/* Why Alva → Find your practice */}
       <HomeStudioStory />
-
-      {/* Why Alva → How you'll experience Alva */}
       <HomeClassesPreview />
 
-      <HomeEditorialQuote />
+      {/* Full-bleed photography breather between discovery and philosophy */}
       <HomeStudioEnvironment />
-      <HomeOfferBridge />
+      <HomeEditorialQuote />
 
-      {/* Light → charcoal gradient bridge */}
+      {/* Light → charcoal gradient bridge. Membership and private training sit
+          together as one dark "ways to continue" chapter. */}
       <div className="flow-into-dark" aria-hidden />
+      <FoundingMemberSection />
       <HomePrivateTeaser />
       {/* Charcoal → light gradient bridge */}
       <div className="flow-out-of-dark" aria-hidden />
 
+      <HomeOfferBridge />
       <HomeVisitCommunity />
 
       {summerResetEnabled ? (
@@ -56,26 +57,33 @@ export default function HomePageClient() {
               <RevealText
                 as="h2"
                 className="editorial-h1 text-balance text-foreground"
-                text="Ready to begin?"
+                text="Your practice starts here."
               />
               <Reveal>
                 <p className="mx-auto mt-6 max-w-lg text-base leading-[1.75] text-muted">
-                  Experience intentional movement, expert instruction, and a
-                  studio designed to help you progress.
+                  15 days unlimited for $99 — one class per day for 15
+                  consecutive days. First-time clients only.
                 </p>
               </Reveal>
               <Reveal>
                 <Link
-                  href="/pricing"
+                  href="/pricing#get-started"
                   className="btn-primary group mt-10 inline-flex"
                 >
-                  View pricing
+                  Start Your Intro
                   <ArrowRight
                     size={14}
                     className="transition-transform duration-300 group-hover:translate-x-0.5"
                     aria-hidden
                   />
                 </Link>
+              </Reveal>
+              <Reveal>
+                <p className="mt-6">
+                  <Link href="/pricing" className="text-link">
+                    View all pricing
+                  </Link>
+                </p>
               </Reveal>
             </div>
           </div>

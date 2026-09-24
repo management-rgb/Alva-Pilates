@@ -54,7 +54,7 @@ export default function HomeVisitCommunity() {
                     <p className="text-foreground">8am – 7pm</p>
                   </div>
                   <div className="flex justify-between gap-4 border-b border-[var(--border)] py-4">
-                    <p className="text-muted">Sunday & Sundday</p>
+                    <p className="text-muted">Saturday &amp; Sunday</p>
                     <p className="text-foreground">9am – 12pm</p>
                   </div>
                 </div>

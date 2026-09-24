@@ -5,7 +5,7 @@ import { Reveal } from "../sections/Reveal";
 /** Editorial pull-quote — the one place a serif accent is allowed */
 export default function HomeEditorialQuote() {
   return (
-    <section className="surface-stone-deep px-5 py-24 lg:px-10 lg:py-36">
+    <section className="surface-stone-deep px-5 py-16 lg:px-10 lg:py-24">
       <div className="mx-auto max-w-[68rem]">
         <Reveal>
           <p className="eyebrow">The Alva philosophy</p>

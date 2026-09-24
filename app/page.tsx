@@ -4,7 +4,7 @@ import SummerResetStructuredData from "./components/SummerResetStructuredData";
 import { summerResetEnabled, summerResetSeo } from "./lib/summerResetCopy";
 
 const defaultMetadata: Metadata = {
-  title: "Alva Pilates | Movement & Wellness Studio",
+  title: "Alva Pilates | Reformer Pilates Studio in Valencia, CA",
   description:
     "Discover mindful movement at Alva Pilates in Valencia, Santa Clarita. Expert-led reformer classes, personalized sessions, and a welcoming community dedicated to your wellness journey.",
 };

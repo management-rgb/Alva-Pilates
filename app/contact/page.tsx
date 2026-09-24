@@ -85,8 +85,8 @@ export default function ContactPage() {
                       Hours
                     </p>
                     <div className="mt-3 space-y-1 text-base text-foreground">
-                      <p>Monday – Saturday · 7:00 AM – 7:00 PM</p>
-                      <p>Sunday · 9:00 AM – 12:00 PM</p>
+                      <p>Monday – Friday · 8:00 AM – 7:00 PM</p>
+                      <p>Saturday – Sunday · 9:00 AM – 12:00 PM</p>
                     </div>
                   </div>
                   <div className="border-b border-border py-5">

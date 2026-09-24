@@ -51,15 +51,9 @@ export default function HomeBrandHero() {
             </p>
           </Reveal>
           <Reveal delay={0.2}>
+            {/* Sole hero-body action. The primary new-client CTA lives in the
+                intro card, and Book a Class stays in the global header. */}
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-              <a href="/book" className="btn-primary group">
-                Book a Class
-                <ArrowRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5"
-                  aria-hidden
-                />
-              </a>
               <Link
                 href="/classes"
                 className="group inline-flex min-h-[3rem] items-center gap-2 self-start text-[0.8125rem] font-medium uppercase tracking-[0.06em] text-paper/85 transition-colors duration-300 hover:text-paper focus:outline-none focus-visible:ring-2 focus-visible:ring-paper/70"
@@ -84,7 +78,7 @@ export default function HomeBrandHero() {
                 New clients
               </p>
               <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-[#6d6c68]">
-                New to Alva
+                Try every class before you commit.
               </p>
 
               <div className="mt-8 border-t border-[rgba(74,64,50,0.14)] pt-8 sm:mt-9 sm:pt-9">

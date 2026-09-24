@@ -53,7 +53,7 @@ export default function HomeStudioStory() {
             <RevealText
               as="h2"
               className="editorial-h2 text-balance text-foreground"
-              text="Built for serious practice."
+              text="A considered approach to reformer Pilates."
             />
           </div>
 

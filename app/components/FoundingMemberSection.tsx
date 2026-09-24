@@ -34,7 +34,7 @@ export default function FoundingMemberSection() {
             </Reveal>
             <Reveal delay={0.2}>
               <Link
-                href="/pricing#founding-pricing"
+                href="/pricing#memberships"
                 className="btn-primary group mt-10 self-start"
               >
                 {foundingMemberCopy.ctaClaim}
