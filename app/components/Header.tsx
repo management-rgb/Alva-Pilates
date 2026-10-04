@@ -36,6 +36,7 @@ export default function Header() {
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "/faq" },
+    { name: "Join the Team", path: "/join-the-team" },
   ];
 
   const drawerVariants: Variants = {
@@ -173,7 +174,7 @@ export default function Header() {
                   key={link.path}
                   href={link.path}
                   onClick={link.path === "/" ? handleHomeClick : undefined}
-                  className={`px-3 py-2 font-paragraph text-[0.75rem] tracking-[0.1em] uppercase transition-opacity duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal xl:px-4 ${
+                  className={`whitespace-nowrap px-2 py-2 font-paragraph text-[0.75rem] tracking-[0.1em] uppercase transition-opacity duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal xl:px-4 ${
                     active
                       ? overHero
                         ? "font-medium text-paper"
