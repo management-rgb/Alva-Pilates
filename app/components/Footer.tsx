@@ -50,6 +50,7 @@ export default function Footer() {
                 { href: "/classes", label: "Classes" },
                 { href: "/pricing", label: "Pricing" },
                 { href: "/contact", label: "Contact" },
+                { href: "/join-the-team", label: "Join the Team" },
                 { href: "/faq", label: "FAQ" },
                 { href: "/terms", label: "Terms" },
               ].map((link) => (
