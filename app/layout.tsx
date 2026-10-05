@@ -12,6 +12,7 @@ import "./globals.css";
 import ErrorSuppressor from "./components/ErrorSuppressor";
 import SmoothScroll from "./components/SmoothScroll";
 import StudioStructuredData from "./components/StudioStructuredData";
+import MobileBookBar from "./components/MobileBookBar";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const instrumentSans = Instrument_Sans({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <SmoothScroll />
         <StudioStructuredData />
         {children}
+        <MobileBookBar />
         <Analytics />
       </body>
     </html>
