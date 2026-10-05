@@ -42,14 +42,17 @@ import {
    the full-card purchase overlay pattern are preserved exactly.
 --------------------------------------------------------------------------- */
 
+const healcodeLinkClass = {
+  "contract-link": "healcode-contract-text-link",
+  "pricing-link": "healcode-pricing-option-text-link",
+  "gift-card-link": "healcode-gift-card-text-link",
+} as const;
+
 function renderHealcodeWidget(
-  type: "contract-link" | "pricing-link",
+  type: keyof typeof healcodeLinkClass,
   serviceId: string
 ) {
-  const linkClass =
-    type === "contract-link"
-      ? "healcode-contract-text-link"
-      : "healcode-pricing-option-text-link";
+  const linkClass = healcodeLinkClass[type];
 
   const widgetHtml = `<healcode-widget data-version="0.2" data-link-class="${linkClass}" data-site-id="129106" data-mb-site-id="5747916" data-service-id="${serviceId}" data-bw-identity-site="true" data-type="${type}" data-inner-html="Buy Now"></healcode-widget>`;
 
@@ -212,6 +215,7 @@ const pricingSections = [
   { id: "group-packages", label: "Class packs" },
   { id: "private-training", label: "Private training" },
   { id: "private-events", label: "Events" },
+  { id: "gift-cards", label: "Gift cards" },
 ];
 
 /** Sections below the nav's last item — not in the nav. */
@@ -1132,6 +1136,32 @@ function PrivateEvents() {
   );
 }
 
+/** Mindbody gift card service ($50–$200 options in checkout). */
+const GIFT_CARD_SERVICE_ID = "100055";
+
+function GiftCards() {
+  return (
+    <section id="gift-cards" className="lp-section lp-bg-sand scroll-mt-40">
+      <div className="lp-inner lp-stack">
+        <Reveal>
+          <SectionHead label="Gift cards" title="Give the gift of Pilates" center>
+            Gift cards from $50 to $200 — perfect for birthdays, holidays, or a
+            friend who has been meaning to try reformer.
+          </SectionHead>
+        </Reveal>
+        <Reveal>
+          <div className="pricing-card-cta-buy mx-auto w-full max-w-xs">
+            <span className="lp-cta">Buy a gift card</span>
+            <div className="pricing-card-cta-buy-overlay">
+              {renderHealcodeWidget("gift-card-link", GIFT_CARD_SERVICE_ID)}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------------------------------------------------------------------
    Pricing FAQ — answers mirror the studio policies in app/data/faq.json
 --------------------------------------------------------------------------- */
@@ -1279,6 +1309,7 @@ export default function PricingPage() {
       <ClassPacks />
       <PrivateTraining />
       <PrivateEvents />
+      <GiftCards />
       <MembershipCompare />
       <PricingFaq />
       <FinalCta />

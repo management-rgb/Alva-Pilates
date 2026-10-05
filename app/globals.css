@@ -1013,6 +1013,7 @@ body {
 
 .pricing-card-full-buy-overlay a.healcode-pricing-option-text-link,
 .pricing-card-full-buy-overlay a.healcode-contract-text-link,
+.pricing-card-full-buy-overlay a.healcode-gift-card-text-link,
 .pricing-card-full-buy-overlay a.summer-purchase-fallback-link {
   position: absolute;
   inset: 0;
@@ -1029,6 +1030,7 @@ body {
       :is(
         a.healcode-pricing-option-text-link,
         a.healcode-contract-text-link,
+        a.healcode-gift-card-text-link,
         a.summer-purchase-fallback-link
       ):focus-visible
   ) {
@@ -1540,6 +1542,7 @@ header a.healcode-login-register-text-link:focus-visible {
 }
 .pricing-card-cta-buy-overlay a.healcode-pricing-option-text-link,
 .pricing-card-cta-buy-overlay a.healcode-contract-text-link,
+.pricing-card-cta-buy-overlay a.healcode-gift-card-text-link,
 .pricing-card-cta-buy-overlay a.summer-purchase-fallback-link {
   position: absolute;
   inset: 0;
@@ -1556,6 +1559,7 @@ header a.healcode-login-register-text-link:focus-visible {
       :is(
         a.healcode-pricing-option-text-link,
         a.healcode-contract-text-link,
+        a.healcode-gift-card-text-link,
         a.summer-purchase-fallback-link
       ):focus-visible
   ) {
