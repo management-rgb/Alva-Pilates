@@ -33,7 +33,7 @@ export function getInstructorBySlug(slug: string): Instructor | null {
 }
 
 // FAQ
-export function getAllFAQs(): FrequentlyAskedQuestions[] {
+function getAllFAQs(): FrequentlyAskedQuestions[] {
   const faqs = faqData as FrequentlyAskedQuestions[];
   // Sort by displayOrder, then by featured status
   return faqs.sort((a, b) => {

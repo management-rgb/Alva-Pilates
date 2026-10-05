@@ -6,10 +6,5 @@
 - **Live URL:** `https://www.alvapilates.com/marketing/summer-reset-2026.webp`
 - **Landing page:** `/offers` → `https://www.alvapilates.com/offers`
 
-Regenerate after changing `SummerResetPromoCard` or `summerResetCopy`:
-
-```bash
-npm run generate:mms-card
-```
-
-This also runs automatically via `prebuild` before local `next build` (skipped on Vercel).
+The image is a static file. The script that generated it has been removed, so if the
+campaign copy changes, replace the image by hand (or ask Claude to rebuild a generator).

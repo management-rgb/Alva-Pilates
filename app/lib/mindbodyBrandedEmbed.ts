@@ -5,7 +5,7 @@
  * /appointments need an explicit reset before injecting the script again.
  */
 
-export const MINDBODY_BRANDED_EMBED_SRC =
+const MINDBODY_BRANDED_EMBED_SRC =
   "https://brandedweb.mindbodyonline.com/embed/widget.js";
 
 const SCRIPT_ID = "mindbody-branded-embed-script";

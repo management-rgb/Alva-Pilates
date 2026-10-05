@@ -43,9 +43,6 @@ export interface Instructor {
   schedule: InstructorScheduleEntry[];
 }
 
-/** @deprecated Use Instructor */
-export type Instructors = Instructor;
-
 export interface FrequentlyAskedQuestions {
   _id: string;
   question: string;

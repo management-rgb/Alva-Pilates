@@ -184,7 +184,7 @@ export function formatCommitmentTerm(months: number): string {
 }
 
 /** Unlimited allows 1 class per day — its lowest possible per-class rate uses a 30-day month. */
-export const UNLIMITED_MAX_CLASSES_PER_MONTH = 30;
+const UNLIMITED_MAX_CLASSES_PER_MONTH = 30;
 
 export function formatPerClassPrice(amount: number): string {
   const rounded = Math.round(amount * 100) / 100;

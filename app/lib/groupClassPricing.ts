@@ -9,7 +9,7 @@ export type GroupClassOption = {
   badge?: string;
 };
 
-export const standardGroupClassOptions: GroupClassOption[] = [
+const standardGroupClassOptions: GroupClassOption[] = [
   {
     title: "Single Class",
     price: "$39",
