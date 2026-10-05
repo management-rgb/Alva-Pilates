@@ -15,8 +15,8 @@ import {
 
 export const metadata: Metadata = {
   title: summerResetEnabled
-    ? "Summer Reset Offers | Alva Pilates"
-    : summerResetSeo.title,
+    ? "Summer Reset Offers"
+    : { absolute: summerResetSeo.title },
   description: summerResetEnabled
     ? "Limited-time Summer Reset reformer Pilates offers at Alva Pilates in Valencia — 15-Day Unlimited Intro, 3-Class Intro, and 20% off class packs."
     : "Explore intro offers and membership pricing at Alva Pilates in Valencia.",

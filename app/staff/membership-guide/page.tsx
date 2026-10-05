@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 export const metadata: Metadata = {
-  title: "Staff Membership Guide | Alva Pilates",
+  title: "Staff Membership Guide",
   description:
     "Internal membership pricing and enrollment reference for the Alva Pilates reception team.",
   robots: { index: false, follow: false },

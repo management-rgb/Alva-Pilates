@@ -7,9 +7,12 @@ import {
 } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ErrorSuppressor from "./components/ErrorSuppressor";
 import SmoothScroll from "./components/SmoothScroll";
+import StudioStructuredData from "./components/StudioStructuredData";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
@@ -43,9 +46,19 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Alva Pilates | Movement & Wellness Studio",
-  description:
-    "Discover mindful movement at Alva Pilates in Valencia, Santa Clarita. Expert-led reformer classes, personalized sessions, and a welcoming community dedicated to your wellness journey.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Alva Pilates | Reformer Pilates Studio in Valencia, CA",
+    template: "%s | Alva Pilates",
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image" },
+  verification: { google: "32Y3_TyIe5MXqIF8YBEcxRT-OGEC-3amjSxOcj35FeI" },
   keywords: [
     "Pilates",
     "Valencia",
@@ -76,7 +89,9 @@ export default function RootLayout({
         />
         <ErrorSuppressor />
         <SmoothScroll />
+        <StudioStructuredData />
         {children}
+        <Analytics />
       </body>
     </html>
   );

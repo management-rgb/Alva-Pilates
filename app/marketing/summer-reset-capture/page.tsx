@@ -4,7 +4,7 @@ import SummerResetPromoCard, {
 } from "../../components/SummerResetPromoCard";
 
 export const metadata: Metadata = {
-  title: "Summer Reset MMS Capture | Alva Pilates",
+  title: "Summer Reset MMS Capture",
   robots: { index: false, follow: false },
 };
 
