@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import faqData from "../data/faq.json";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -7,6 +8,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
 };
 
+/** Real questions only — the long policy documents aren't Q&A and are left out. */
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqData
+    .filter((item) => item.question.trim().endsWith("?"))
+    .map((item) => ({
+      "@type": "Question",
+      name: item.question.trim(),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer.replace(/\*\*/g, "").trim(),
+      },
+    })),
+};
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
+      {children}
+    </>
+  );
 }

@@ -10,6 +10,7 @@ const pages: { path: string; priority: number }[] = [
   { path: "/book", priority: 0.8 },
   { path: "/about", priority: 0.7 },
   { path: "/contact", priority: 0.7 },
+  { path: "/pilates-santa-clarita", priority: 0.7 },
   { path: "/appointments", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
   { path: "/join-the-team", priority: 0.5 },
