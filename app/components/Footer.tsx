@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { STUDIO_SMS_HREF } from "../lib/site";
 import { Instagram } from "lucide-react";
 import { STUDIO_INSTAGRAM_URL } from "../lib/socialLinks";
 
@@ -43,6 +44,12 @@ export default function Footer() {
                   <span className="whitespace-nowrap">9:00 AM – 12:00 PM</span>
                 </p>
               </div>
+              <a
+                href={STUDIO_SMS_HREF}
+                className="inline-flex min-h-11 items-center text-paper/80 underline underline-offset-4 transition-opacity hover:opacity-100"
+              >
+                Text us · (661) 977-7898
+              </a>
             </div>
           </div>
 

@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MindbodyProspectsWidget from "../components/MindbodyProspectsWidget";
 import { Reveal } from "../components/sections/Reveal";
+import { STUDIO_SMS_HREF } from "../lib/site";
 
 export default function ContactPage() {
   return (
@@ -104,12 +105,17 @@ export default function ContactPage() {
                     <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-muted">
                       Phone
                     </p>
-                    <a
-                      href="tel:+16619777898"
-                      className="mt-3 inline-block text-base text-foreground transition-colors duration-300 hover:text-charcoal"
-                    >
-                      (661) 977-7898
-                    </a>
+                    <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2">
+                      <a
+                        href="tel:+16619777898"
+                        className="inline-block text-base text-foreground transition-colors duration-300 hover:text-charcoal"
+                      >
+                        (661) 977-7898
+                      </a>
+                      <a href={STUDIO_SMS_HREF} className="text-link">
+                        Text us
+                      </a>
+                    </div>
                   </div>
                 </div>
 

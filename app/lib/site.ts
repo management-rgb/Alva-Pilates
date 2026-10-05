@@ -28,3 +28,6 @@ export const studio = {
     { days: ["Saturday", "Sunday"], opens: "09:00", closes: "12:00" },
   ],
 } as const;
+
+/** Studio phone accepts texts; sms: opens the visitor's messaging app. */
+export const STUDIO_SMS_HREF = "sms:+16619777898";

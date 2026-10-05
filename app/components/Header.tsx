@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
 import AwarenessRibbon from "./AwarenessRibbon";
+import { STUDIO_SMS_HREF } from "../lib/site";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
 const MENU_EASE = [0.22, 1, 0.36, 1] as const;
@@ -391,6 +392,14 @@ export default function Header() {
                     className="transition-transform duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5"
                     aria-hidden
                   />
+                </a>
+                <a
+                  href={STUDIO_SMS_HREF}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 font-paragraph text-[0.8125rem] tracking-[0.04em] text-[#F2ECE4]/80 transition-colors hover:text-[#F2ECE4]"
+                >
+                  <MessageCircle size={16} strokeWidth={1.75} aria-hidden />
+                  Questions? Text us
                 </a>
               </motion.div>
             </motion.div>
