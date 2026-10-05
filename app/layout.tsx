@@ -8,12 +8,13 @@ import {
 import { GeistSans } from "geist/font/sans";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import ErrorSuppressor from "./components/ErrorSuppressor";
 import SmoothScroll from "./components/SmoothScroll";
 import StudioStructuredData from "./components/StudioStructuredData";
 import MobileBookBar from "./components/MobileBookBar";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
+import { GA_MEASUREMENT_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
@@ -95,6 +96,7 @@ export default function RootLayout({
         <MobileBookBar />
         <Analytics />
       </body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

@@ -31,3 +31,10 @@ export const studio = {
 
 /** Studio phone accepts texts; sms: opens the visitor's messaging app. */
 export const STUDIO_SMS_HREF = "sms:+16619777898";
+
+/**
+ * Google Analytics 4 measurement ID (public, not a secret). The Mindbody booking
+ * widget reuses the page's gtag/dataLayer, so its ecommerce events reach this
+ * property too unless Mindbody scopes them with `send_to`.
+ */
+export const GA_MEASUREMENT_ID = "G-FR15M2BQQM";
