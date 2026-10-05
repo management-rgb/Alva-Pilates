@@ -13,7 +13,9 @@ export default function HomeBrandHero() {
   const unlimited = summerResetOfferCards.unlimitedIntro;
 
   return (
-    <section className="relative flex min-h-[min(100svh,1080px)] w-full flex-col justify-end overflow-hidden bg-[var(--dark)] pb-16 pt-28 sm:pb-20 sm:pt-32 lg:justify-center lg:pb-24 lg:pt-32">
+    <section
+      data-hides-book-bar
+      className="relative flex min-h-[min(100svh,1080px)] w-full flex-col justify-end overflow-hidden bg-[var(--dark)] pb-16 pt-28 sm:pb-20 sm:pt-32 lg:justify-center lg:pb-24 lg:pt-32">
       <div
         ref={ref}
         className="absolute inset-0 -top-[8%] -bottom-[8%] will-change-transform"
