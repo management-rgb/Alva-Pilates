@@ -6,8 +6,12 @@ import { GA_MEASUREMENT_ID } from "../lib/site";
 /** Origin of the Mindbody booking iframe on /book. */
 const MINDBODY_ORIGIN = "https://go.mindbodyonline.com";
 
-/** Ecommerce events worth mirroring into our GA4 property. */
-const FORWARDED_EVENTS = new Set(["view_item", "add_to_cart", "begin_checkout", "purchase"]);
+/**
+ * Only purchase is mirrored: Mindbody's own events already reach our property,
+ * so forwarding the others duplicates them. Purchases dedupe by transaction_id,
+ * which makes this a safe backup for the conversion that matters.
+ */
+const FORWARDED_EVENTS = new Set(["purchase"]);
 
 type Gtag = (command: "event", name: string, params: Record<string, unknown>) => void;
 
@@ -24,9 +28,8 @@ function parseMessage(data: unknown): { type?: unknown; payload?: unknown } | nu
 }
 
 /**
- * Mirrors the Mindbody widget's GA4 ecommerce events (sent to the page via
- * postMessage) into our own GA4 property. Mindbody's events only reach its own
- * property, so without this our purchases are invisible to Google Ads.
+ * Mirrors the Mindbody widget's purchase event (sent to the page via
+ * postMessage) into our own GA4 property as a backup for Google Ads conversions.
  * Used on /book and /appointments.
  */
 export default function MindbodyGaBridge() {
