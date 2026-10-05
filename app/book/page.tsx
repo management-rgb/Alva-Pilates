@@ -3,11 +3,13 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MindbodyBrandedWidget from "../components/MindbodyBrandedWidget";
+import MindbodyGaBridge from "../components/MindbodyGaBridge";
 
 export default function BookPage() {
   return (
     <div className="min-h-screen bg-[#ECE9E3] text-foreground">
       <Header />
+      <MindbodyGaBridge />
       <section className="bg-[#ECE9E3] px-6 pb-4 pt-32 text-charcoal lg:px-10 lg:pb-5 lg:pt-40">
         <div className="mx-auto max-w-6xl text-center">
           <h1 className="font-display text-4xl font-normal tracking-[-0.02em] text-[#201F1C] lg:text-5xl">
