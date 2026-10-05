@@ -17,14 +17,14 @@ export default function Footer() {
             <h3 className="font-heading text-2xl font-medium tracking-[-0.03em] text-paper lg:text-3xl">
               Alva Pilates
             </h3>
-            <p className="mt-5 max-w-sm font-paragraph text-sm leading-[1.75] text-[rgba(245,245,242,0.55)] lg:text-[0.9375rem]">
+            <p className="mt-5 max-w-sm font-paragraph text-sm leading-[1.75] text-[rgba(245,245,242,0.68)] lg:text-[0.9375rem]">
               A boutique reformer studio in Valencia — intentional movement,
               expert instruction, and a considered space to progress.
             </p>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="mb-6 font-paragraph text-[0.625rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.45)]">
+            <h4 className="mb-6 font-paragraph text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.6)]">
               Visit
             </h4>
             <div className="space-y-5 font-paragraph text-sm leading-relaxed text-paper">
@@ -33,18 +33,24 @@ export default function Footer() {
                 <br />
                 Valencia, CA 91354
               </p>
-              <div className="space-y-1.5 text-[rgba(245,245,242,0.55)]">
-                <p>Mon – Fri · 8:00 AM – 7:00 PM</p>
-                <p>Sat – Sun · 9:00 AM – 12:00 PM</p>
+              <div className="space-y-1.5 text-[rgba(245,245,242,0.68)]">
+                <p>
+                  Mon – Fri{" "}
+                  <span className="whitespace-nowrap">8:00 AM – 7:00 PM</span>
+                </p>
+                <p>
+                  Sat – Sun{" "}
+                  <span className="whitespace-nowrap">9:00 AM – 12:00 PM</span>
+                </p>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="mb-6 font-paragraph text-[0.625rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.45)]">
+            <h4 className="mb-6 font-paragraph text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.6)]">
               Explore
             </h4>
-            <nav className="flex flex-col gap-3">
+            <nav className="-my-2.5 flex flex-col">
               {[
                 { href: "/about", label: "About" },
                 { href: "/classes", label: "Classes" },
@@ -57,7 +63,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-paragraph text-sm tracking-[0.02em] text-paper/80 transition-opacity duration-200 hover:opacity-100"
+                  className="self-start py-2.5 font-paragraph text-sm tracking-[0.02em] text-paper/80 transition-opacity duration-200 hover:opacity-100"
                 >
                   {link.label}
                 </Link>
@@ -66,7 +72,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <h4 className="mb-6 font-paragraph text-[0.625rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.45)]">
+            <h4 className="mb-6 font-paragraph text-[0.6875rem] font-medium uppercase tracking-[0.14em] text-[rgba(245,245,242,0.6)]">
               Download the App
             </h4>
             <div className="flex flex-row flex-wrap items-center gap-4">
@@ -95,7 +101,7 @@ export default function Footer() {
                 />
               </a>
             </div>
-            <p className="mt-5 max-w-xs font-paragraph text-xs leading-relaxed text-[rgba(245,245,242,0.45)]">
+            <p className="mt-5 max-w-xs font-paragraph text-xs leading-relaxed text-[rgba(245,245,242,0.6)]">
               Book classes, manage memberships, and stay connected — wherever
               you are.
             </p>
@@ -103,19 +109,19 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-[rgba(245,245,242,0.12)] pt-8 md:flex-row">
-          <div className="flex flex-col gap-3 text-center sm:flex-row sm:items-center sm:gap-8 md:text-left">
-            <p className="font-paragraph text-xs tracking-[0.04em] text-[rgba(245,245,242,0.4)]">
+          <div className="flex flex-col items-center gap-1 text-center sm:flex-row sm:gap-8 md:text-left">
+            <p className="font-paragraph text-xs tracking-[0.04em] text-[rgba(245,245,242,0.6)]">
               © {new Date().getFullYear()} Alva Pilates. All rights reserved.
             </p>
             <Link
               href="/faq#policies"
-              className="font-paragraph text-xs tracking-[0.04em] text-paper/70 transition-opacity hover:opacity-100"
+              className="inline-flex min-h-11 items-center font-paragraph text-xs tracking-[0.04em] text-paper/70 transition-opacity hover:opacity-100"
             >
               Policies
             </Link>
             <Link
               href="/terms"
-              className="font-paragraph text-xs tracking-[0.04em] text-paper/70 transition-opacity hover:opacity-100"
+              className="inline-flex min-h-11 items-center font-paragraph text-xs tracking-[0.04em] text-paper/70 transition-opacity hover:opacity-100"
             >
               Terms &amp; Conditions
             </Link>
@@ -124,7 +130,7 @@ export default function Footer() {
             href={STUDIO_INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[rgba(245,245,242,0.5)] transition-opacity duration-200 hover:opacity-100"
+            className="-m-3 p-3 text-[rgba(245,245,242,0.68)] transition-opacity duration-200 hover:opacity-100"
             aria-label="Alva Pilates on Instagram"
           >
             <Instagram size={18} />

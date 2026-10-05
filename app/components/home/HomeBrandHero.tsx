@@ -35,7 +35,7 @@ export default function HomeBrandHero() {
       <div className="relative z-10 mx-auto grid w-full max-w-[112rem] items-end gap-y-10 px-5 lg:grid-cols-12 lg:items-center lg:gap-x-12 lg:px-10">
         <div className="max-w-3xl lg:col-span-7 xl:col-span-6">
           <Reveal>
-            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-paper/55">
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-paper/70">
               Valencia, California
             </p>
           </Reveal>

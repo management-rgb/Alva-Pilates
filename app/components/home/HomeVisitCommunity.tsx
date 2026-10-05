@@ -8,7 +8,7 @@ import { STUDIO_INSTAGRAM_URL } from "../../lib/socialLinks";
 
 export default function HomeVisitCommunity() {
   return (
-    <section className="surface-paper px-5 py-24 text-foreground lg:px-10 lg:py-36">
+    <section className="surface-paper px-5 py-16 text-foreground lg:px-10 lg:py-36">
       <div className="mx-auto max-w-[100rem]">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-0">
           <Reveal className="lg:col-span-7 lg:pr-14 xl:pr-20">

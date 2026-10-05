@@ -19,7 +19,7 @@ export default function HomePrivateTeaser() {
     >
       <div className="space-y-6">
         <Reveal>
-          <p className="eyebrow text-[rgba(245,245,242,0.5)]">
+          <p className="eyebrow text-[rgba(245,245,242,0.68)]">
             Private training
           </p>
         </Reveal>

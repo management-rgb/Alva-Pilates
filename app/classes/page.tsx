@@ -103,7 +103,7 @@ function ClassSplit({
       <Reveal className={cn(imageSide === "right" ? "lg:order-1" : "")}>
         <div>
           {featured ? (
-            <p className="mb-4 inline-flex items-center bg-[var(--dark)] px-3 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.16em] text-paper">
+            <p className="mb-4 inline-flex items-center bg-[var(--dark)] px-3 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-paper">
               Signature class
             </p>
           ) : null}

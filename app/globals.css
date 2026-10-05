@@ -369,6 +369,18 @@ body {
   border-bottom-color: var(--dark);
 }
 
+/* Invisible padding so small text links stay comfortable to tap (~44px)
+   without changing their visual size or spacing. */
+.text-link {
+  position: relative;
+}
+
+.text-link::before {
+  content: "";
+  position: absolute;
+  inset: -0.75rem -0.25rem;
+}
+
 .surface-charcoal .btn-ghost-on-dark,
 .surface-dark .btn-ghost-on-dark,
 .surface-ink .btn-ghost-on-dark,
@@ -695,7 +707,7 @@ body {
 .flow-into-dark,
 .flow-out-of-dark {
   width: 100%;
-  height: clamp(130px, 15vw, 240px);
+  height: clamp(72px, 15vw, 240px);
   pointer-events: none;
 }
 .flow-into-dark {
@@ -1698,9 +1710,26 @@ header a.healcode-login-register-text-link:focus-visible {
 }
 /* Plain words, no chrome — matches the membership term tabs */
 .lp-subnav__track {
+  position: relative;
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+}
+/* Arrow shown while more tabs are hidden off the right edge (small screens). */
+.lp-subnav__more {
+  position: absolute;
+  top: 50%;
+  right: -0.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  transform: translateY(-50%);
+  color: var(--text-primary);
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 .lp-subnav__list {
   --fade-start: 0px;
@@ -1734,7 +1763,7 @@ header a.healcode-login-register-text-link:focus-visible {
   --fade-start: 1.75rem;
 }
 .lp-subnav__list--fade-end {
-  --fade-end: 2.25rem;
+  --fade-end: 3rem;
 }
 .lp-subnav__list::-webkit-scrollbar {
   display: none;

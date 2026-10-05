@@ -62,7 +62,7 @@ export default function InstructorCard({ instructor }: InstructorCardProps) {
         )}
 
         <div className="mt-4">
-          <p className="text-[0.625rem] font-medium uppercase tracking-[0.16em] text-[#6D6C68]">
+          <p className="text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-[#6D6C68]">
             Teaches
           </p>
           <p className="mt-1.5 min-h-[1.25rem] text-[0.875rem] font-medium leading-snug tracking-[0.01em] text-[#201F1C]">

@@ -76,7 +76,7 @@ export default function HomeClassesPreview() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="surface-paper overflow-hidden px-6 pb-20 pt-24 lg:px-16 lg:pb-28 lg:pt-40">
+    <section className="surface-paper overflow-hidden px-6 pb-14 pt-16 lg:px-16 lg:pb-28 lg:pt-40">
       <div className="mx-auto max-w-[88rem]">
         {/* Masthead — the narrative continues from "Why Alva" */}
         <Reveal>
@@ -157,7 +157,7 @@ export default function HomeClassesPreview() {
                   <p className="relative mt-4 font-heading text-base font-medium tracking-[-0.01em] text-foreground sm:text-lg">
                     {feature.positioning}
                   </p>
-                  <p className="relative mt-3 text-[0.625rem] uppercase tracking-[0.16em] text-muted">
+                  <p className="relative mt-3 text-[0.6875rem] uppercase tracking-[0.16em] text-muted">
                     {metaLine(data)}
                   </p>
                   <p className="relative mt-3 max-w-sm text-sm leading-[1.7] text-muted">
@@ -172,7 +172,7 @@ export default function HomeClassesPreview() {
           <Reveal className="mt-6 lg:col-start-4 lg:col-span-5 lg:row-start-4 lg:mt-2 lg:self-start">
             <Link
               href="/classes"
-              className="group inline-flex items-center gap-3 text-[0.75rem] font-medium uppercase tracking-[0.14em] text-foreground"
+              className="group inline-flex min-h-11 items-center gap-3 text-[0.75rem] font-medium uppercase tracking-[0.14em] text-foreground"
             >
               <span
                 className="h-px w-10 bg-foreground/40 transition-all duration-500 group-hover:w-16 group-hover:bg-foreground"

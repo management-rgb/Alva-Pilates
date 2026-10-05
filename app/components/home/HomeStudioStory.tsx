@@ -97,19 +97,14 @@ export default function HomeStudioStory() {
           </Reveal>
 
           <Reveal>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link href="/about" className="btn-primary group">
-              Discover our studio
-              <ArrowRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-0.5"
-                aria-hidden
-              />
-            </Link>
-            <Link href="/book" className="text-link underline-grow">
-              Book a Class
-            </Link>
-          </div>
+          <Link href="/about" className="btn-primary group">
+            Discover our studio
+            <ArrowRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+              aria-hidden
+            />
+          </Link>
           </Reveal>
         </div>
       </SplitImage>

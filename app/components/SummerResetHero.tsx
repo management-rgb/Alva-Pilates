@@ -82,7 +82,7 @@ export default function SummerResetHero() {
                 aria-hidden
               />
               {summerResetCopy.hero.eyebrow}
-              <span className="font-normal tracking-[0.04em] text-paper/55">
+              <span className="font-normal tracking-[0.04em] text-paper/70">
                 · {summerResetDeadlineLabel}
               </span>
             </p>

@@ -60,7 +60,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[100rem]">
           <Reveal>
             <div className="mx-auto grid max-w-4xl gap-8 border-t border-border pt-10 text-lg leading-[1.85] text-muted sm:grid-cols-[3rem_1fr] sm:gap-10">
-              <span className="text-[0.625rem] tracking-[0.1em] text-muted">01</span>
+              <span className="text-[0.6875rem] tracking-[0.1em] text-muted">01</span>
               <div className="space-y-7">
               <p>
                 Alva Pilates began with our desire to create more than just a
@@ -144,7 +144,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <Reveal key={value.title} delay={index * 0.08}>
                 <div className={`h-full py-8 md:px-10 ${index > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}>
-                  <p className="mb-8 text-[0.625rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</p>
+                  <p className="mb-8 text-[0.6875rem] tracking-[0.1em] text-muted">{String(index + 1).padStart(2, "0")}</p>
                   <h3 className="font-heading text-2xl font-medium text-foreground">
                     {value.title}
                   </h3>

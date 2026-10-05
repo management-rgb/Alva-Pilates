@@ -51,7 +51,7 @@ export default function HomePageClient() {
       {summerResetEnabled ? (
         <SummerResetFinalCtaSection />
       ) : (
-        <section className="surface-stone lighting-top px-5 py-28 text-center text-foreground lg:px-10 lg:py-40">
+        <section className="surface-stone lighting-top px-5 py-20 text-center text-foreground lg:px-10 lg:py-40">
           <div className="mx-auto max-w-[100rem]">
             <div className="mx-auto max-w-2xl">
               <RevealText

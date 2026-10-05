@@ -72,7 +72,7 @@ export default function SummerResetPromoCard({
 
       {staticMode ? (
         <div className="mt-9 block border-t border-[rgba(74,64,50,0.14)] pt-6">
-          <span className="block text-[0.625rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
+          <span className="block text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
             Also available
           </span>
           <span className="mt-2.5 flex items-center justify-between gap-4">
@@ -93,7 +93,7 @@ export default function SummerResetPromoCard({
             hover ? "hover:border-[rgba(74,64,50,0.38)]" : ""
           }`}
         >
-          <span className="block text-[0.625rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
+          <span className="block text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
             Also available
           </span>
           <span className="mt-2.5 flex items-center justify-between gap-4">
@@ -131,7 +131,7 @@ export default function SummerResetPromoCard({
       {qrCodeSrc ? (
         <div className="mt-8 flex items-end justify-between gap-4 border-t border-[rgba(74,64,50,0.14)] pt-6">
           <div className="min-w-0">
-            <p className="text-[0.625rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-[#8a8880]">
               Scan to book
             </p>
             <p className="mt-1.5 truncate text-[0.6875rem] leading-snug text-[#6d6c68]">

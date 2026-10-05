@@ -4,7 +4,7 @@ import type { KeyboardEvent, MouseEvent, ReactNode } from "react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, ChevronRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import IntroOfferCreditNote from "../components/IntroOfferCreditNote";
@@ -427,6 +427,21 @@ function PricingSubnav() {
             );
           })}
         </ul>
+        {fade.end ? (
+          <button
+            type="button"
+            className="lp-subnav__more"
+            aria-label="Show more pricing sections"
+            onClick={() =>
+              listRef.current?.scrollBy({
+                left: listRef.current.clientWidth * 0.6,
+                behavior: reduceMotion ? "auto" : "smooth",
+              })
+            }
+          >
+            <ChevronRight size={16} aria-hidden />
+          </button>
+        ) : null}
       </div>
     </nav>
   );

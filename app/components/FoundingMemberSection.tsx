@@ -11,7 +11,7 @@ export default function FoundingMemberSection() {
   return (
     <section
       id="founding"
-      className="surface-charcoal-soft relative scroll-mt-40 overflow-hidden px-5 py-24 text-paper lg:px-10 lg:py-36"
+      className="surface-charcoal-soft relative scroll-mt-40 overflow-hidden px-5 py-16 text-paper lg:px-10 lg:py-36"
     >
       <div className="relative z-10 mx-auto max-w-[100rem]">
         <div className="grid items-stretch gap-12 lg:grid-cols-12 lg:gap-16">

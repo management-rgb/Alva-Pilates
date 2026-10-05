@@ -129,7 +129,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-[120rem] px-5 lg:px-10">
         <div
-          className={`flex items-center justify-between transition-[min-height] duration-500 ease-out lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center ${
+          className={`flex items-center justify-between transition-[min-height] duration-500 ease-out xl:grid xl:grid-cols-[1fr_auto_1fr] xl:items-center ${
             scrolled
               ? "min-h-[3.5rem] lg:min-h-[3.9rem]"
               : "min-h-[4.25rem] lg:min-h-[4.75rem]"
@@ -164,7 +164,7 @@ export default function Header() {
           </Link>
 
           <nav
-            className="hidden items-center gap-1 lg:flex xl:gap-2"
+            className="hidden items-center gap-1 xl:flex 2xl:gap-2"
             aria-label="Primary"
           >
             {navLinks.map((link) => {
@@ -174,7 +174,7 @@ export default function Header() {
                   key={link.path}
                   href={link.path}
                   onClick={link.path === "/" ? handleHomeClick : undefined}
-                  className={`whitespace-nowrap px-2 py-2 font-paragraph text-[0.75rem] tracking-[0.1em] uppercase transition-opacity duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal xl:px-4 ${
+                  className={`whitespace-nowrap px-2 py-2 font-paragraph text-[0.75rem] tracking-[0.1em] uppercase transition-opacity duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal 2xl:px-4 ${
                     active
                       ? overHero
                         ? "font-medium text-paper"
@@ -200,11 +200,11 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="hidden shrink-0 items-center justify-self-end gap-3 lg:flex">
+          <div className="hidden shrink-0 items-center justify-self-end gap-3 xl:flex">
             <MindbodyAccountLink className="inline-flex items-center" />
             <a
               href="/book"
-              className={`inline-flex h-[2.75rem] items-center justify-center rounded-[var(--radius-sm)] px-6 font-paragraph text-[0.75rem] font-medium uppercase tracking-[0.08em] transition-[transform,box-shadow,filter,background-color,color] duration-200 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_12px_26px_-16px_rgba(20,19,17,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal ${
+              className={`inline-flex h-[2.75rem] items-center justify-center whitespace-nowrap rounded-[var(--radius-sm)] px-6 font-paragraph text-[0.75rem] font-medium uppercase tracking-[0.08em] transition-[transform,box-shadow,filter,background-color,color] duration-200 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_12px_26px_-16px_rgba(20,19,17,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal ${
                 scrolled
                   ? "bg-[var(--dark)] text-paper"
                   : "bg-paper text-[var(--dark)]"
@@ -217,7 +217,7 @@ export default function Header() {
           <button
             ref={toggleRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`group rounded-[var(--radius-sm)] p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal lg:hidden ${
+            className={`group -mr-2 rounded-[var(--radius-sm)] p-[11px] focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal xl:hidden ${
               isMenuOpen
                 ? "text-paper"
                 : scrolled
@@ -245,7 +245,7 @@ export default function Header() {
 
       <AnimatePresence>
         {isMenuOpen ? (
-          <div className="lg:hidden" key="mobile-menu">
+          <div className="xl:hidden" key="mobile-menu">
             <motion.div
               className="fixed inset-0 z-40 bg-[rgba(28,21,16,0.5)] backdrop-blur-[2px]"
               initial={{ opacity: 0 }}
@@ -305,7 +305,7 @@ export default function Header() {
               >
                 <motion.p
                   variants={itemVariants}
-                  className="mb-7 font-paragraph text-[11px] font-medium uppercase tracking-[0.28em] text-[rgba(242,236,228,0.55)]"
+                  className="mb-7 font-paragraph text-[11px] font-medium uppercase tracking-[0.28em] text-[rgba(242,236,228,0.68)]"
                 >
                   Navigation
                 </motion.p>

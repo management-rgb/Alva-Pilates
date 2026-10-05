@@ -50,7 +50,7 @@ export function SplitImage({
 
   return (
     <section
-      className={cn(surface, "px-5 py-20 lg:px-10 lg:py-28", className)}
+      className={cn(surface, "px-5 py-14 lg:px-10 lg:py-28", className)}
     >
       <div className="mx-auto max-w-[100rem]">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-20">

@@ -12,7 +12,7 @@ import {
 /** Typographic offer bridge — no pricing cards */
 export default function HomeOfferBridge() {
   return (
-    <section className="surface-stone px-5 py-24 lg:px-10 lg:py-32">
+    <section className="surface-stone px-5 py-16 lg:px-10 lg:py-32">
       <div className="mx-auto max-w-[100rem]">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">

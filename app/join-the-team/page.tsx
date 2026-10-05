@@ -88,7 +88,7 @@ export default function JoinTheTeamPage() {
       <section className="surface-charcoal-soft px-6 pb-4 pt-24 text-paper lg:px-14 lg:pb-5 lg:pt-28">
         <div className="mx-auto max-w-[100rem]">
           <Reveal>
-            <p className="text-[0.625rem] font-medium uppercase tracking-[0.2em] text-[rgba(247,247,243,0.55)]">
+            <p className="text-[0.6875rem] font-medium uppercase tracking-[0.2em] text-[rgba(247,247,243,0.68)]">
               Careers
             </p>
             <h1 className="mt-2 font-display text-xl font-normal leading-tight tracking-[-0.02em] text-paper sm:text-2xl">

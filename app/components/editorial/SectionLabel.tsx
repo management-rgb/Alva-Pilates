@@ -16,7 +16,7 @@ export function SectionLabel({
     <p
       className={cn(
         "eyebrow",
-        onDark && "text-[rgba(245,245,242,0.55)]",
+        onDark && "text-[rgba(245,245,242,0.68)]",
         className
       )}
     >
