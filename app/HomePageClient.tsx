@@ -9,6 +9,7 @@ import SummerResetHero from "./components/SummerResetHero";
 import SummerResetFinalCtaSection from "./components/SummerResetFinalCtaSection";
 import HomeBrandHero from "./components/home/HomeBrandHero";
 import HomeClassesPreview from "./components/home/HomeClassesPreview";
+import GoogleReviews from "./components/GoogleReviews";
 import HomeStudioStory from "./components/home/HomeStudioStory";
 import HomeStudioEnvironment from "./components/home/HomeStudioEnvironment";
 import HomeEditorialQuote from "./components/home/HomeEditorialQuote";
@@ -45,6 +46,8 @@ export default function HomePageClient() {
       {/* Charcoal → light gradient bridge */}
       <div className="flow-out-of-dark" aria-hidden />
 
+      {/* Social proof right before the new-client offer */}
+      <GoogleReviews />
       <HomeOfferBridge />
       <HomeVisitCommunity />
 
