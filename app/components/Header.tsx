@@ -13,6 +13,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
+import AwarenessRibbon from "./AwarenessRibbon";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
 const MENU_EASE = [0.22, 1, 0.36, 1] as const;
@@ -161,6 +162,7 @@ export default function Header() {
                     : "brightness-0 invert"
               }`}
             />
+            <AwarenessRibbon className="ml-3" />
           </Link>
 
           <nav
