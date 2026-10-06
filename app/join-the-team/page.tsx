@@ -95,8 +95,9 @@ export default function JoinTheTeamPage() {
               Join the team
             </h1>
             <p className="mt-1.5 max-w-md text-xs leading-relaxed text-[rgba(247,247,243,0.68)] sm:text-sm">
-              We&apos;re looking for passionate instructors and studio staff who
-              believe in intentional movement and genuine hospitality.
+              We&apos;re looking for passionate Pilates instructors who believe in
+              intentional movement and genuine hospitality. We&apos;re not
+              hiring for front desk or other studio roles at this time.
             </p>
           </Reveal>
         </div>
@@ -119,8 +120,8 @@ export default function JoinTheTeamPage() {
                   Ready to move with us?
                 </h2>
                 <p className="text-base leading-[1.85] text-taupe lg:text-lg">
-                  Don&apos;t see the perfect role? Apply anyway — we&apos;re
-                  always happy to meet great people.
+                  This page is for Pilates instructor applications only. We&apos;re
+                  always happy to meet great instructors.
                 </p>
               </div>
               <ol className="mt-10">
@@ -160,8 +161,8 @@ export default function JoinTheTeamPage() {
                   Tell us about you
                 </h2>
                 <p className="mt-4 max-w-md text-sm leading-[1.8] text-muted sm:text-base">
-                  Share your details and resume — we&apos;ll be in touch if
-                  there&apos;s a fit.
+                  Share your details, resume, and certifications — we&apos;ll be in
+                  touch if there&apos;s a fit as a Pilates instructor.
                 </p>
 
                 {status === "success" ? (
@@ -260,7 +261,7 @@ export default function JoinTheTeamPage() {
 
                     <label className="block">
                       <span className={labelClass}>
-                        Certifications (optional)
+                        Pilates certifications
                       </span>
                       <textarea
                         name="certifications"
