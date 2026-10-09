@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Check, ChevronDown, ChevronRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import MindbodyCheckoutLink from "../components/MindbodyCheckoutLink";
 import IntroOfferCreditNote from "../components/IntroOfferCreditNote";
 import FallbackPurchaseLink from "../components/summer-reset/FallbackPurchaseLink";
 import { Reveal } from "../components/sections/Reveal";
@@ -52,14 +53,13 @@ function renderHealcodeWidget(
   type: keyof typeof healcodeLinkClass,
   serviceId: string
 ) {
-  const linkClass = healcodeLinkClass[type];
-
-  const widgetHtml = `<healcode-widget data-version="0.2" data-link-class="${linkClass}" data-site-id="129106" data-mb-site-id="5747916" data-service-id="${serviceId}" data-bw-identity-site="true" data-type="${type}" data-inner-html="Buy Now"></healcode-widget>`;
-
+  // Same class names Healcode used, so the overlay styling is unchanged. Opens the
+  // standalone cart instead of Healcode's iframe modal (see lib/mindbodyCart.ts).
   return (
-    <span
-      suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: widgetHtml }}
+    <MindbodyCheckoutLink
+      type={type}
+      itemId={serviceId}
+      className={`healcode-link ${healcodeLinkClass[type]}`}
     />
   );
 }
