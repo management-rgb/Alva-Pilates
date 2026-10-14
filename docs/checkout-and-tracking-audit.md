@@ -89,6 +89,10 @@ entered there and confirm the report date range.
   `config`/`set` are replayed unchanged; other message types are untouched. `?ga_debug=1` adds
   `debug_mode` for GA4 DebugView.
 - Standalone checkout for every pricing button (section 1).
+- Safeguard (`MindbodyGaBridge.tsx`): if Mindbody's widget announces `G-FR15M2BQQM`, the page logs a
+  console warning and sends one `mindbody_ga_id_detected` event per session (no value, not a
+  conversion). Incident, 2026-10-14: the ID had been entered in Branded Web Manager (Site Settings,
+  "GA4 Measurement ID"). It was cleared and the widget stopped announcing it within about two minutes.
 - Limit: the iframe also sends its own hits to any GA ID configured *inside Mindbody*. Today that is
   only Mindbody's `G-DQG857GLED`. If `G-FR15M2BQQM` is ever entered in Mindbody's analytics settings,
   the iframe would send `purchase` to our property directly and the bridge cannot stop it.

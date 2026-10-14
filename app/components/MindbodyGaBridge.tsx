@@ -39,6 +39,7 @@ const BW_GA_EVENT = "BW_GA_EVENT";
 const MINDBODY_PURCHASE = "purchase";
 const BOOKING_EVENT = "class_booking";
 const SEEN_STORAGE_KEY = "alva-mbo-class-bookings";
+const ID_WARNED_STORAGE_KEY = "alva-mbo-ga-id-warned";
 const SEEN_LIMIT = 100;
 
 type Gtag = (...args: unknown[]) => void;
@@ -91,6 +92,35 @@ function isFirstBooking(transactionId: unknown): boolean {
   return true;
 }
 
+/**
+ * Safeguard: if Mindbody's widget announces OUR measurement ID, someone entered it
+ * in Branded Web Manager (Site Settings, "GA4 Measurement ID"). The widget then
+ * sends its events, including class-booking purchases, to our property from inside
+ * its own frame, bypassing this bridge. Warn in the console and send one
+ * diagnostic event per browser session (never a purchase, no value).
+ */
+function warnIfOurIdIsConfiguredInMindbody(payload: unknown[]) {
+  if (payload[0] !== "config" || payload[1] !== GA_MEASUREMENT_ID) return;
+
+  console.warn(
+    `[Alva] Mindbody Branded Web has ${GA_MEASUREMENT_ID} configured. Clear "GA4 Measurement ID" in Branded Web Manager > Site Settings: it lets the widget send class bookings to GA4 as purchases and bypass MindbodyGaBridge.`
+  );
+
+  try {
+    if (window.sessionStorage.getItem(ID_WARNED_STORAGE_KEY)) return;
+    window.sessionStorage.setItem(ID_WARNED_STORAGE_KEY, "1");
+  } catch {
+    /* storage unavailable: the warning above is still logged */
+  }
+  const gtag = (window as unknown as { gtag?: Gtag }).gtag;
+  if (typeof gtag === "function") {
+    gtag("event", "mindbody_ga_id_detected", {
+      page_path: window.location.pathname,
+      send_to: GA_MEASUREMENT_ID,
+    });
+  }
+}
+
 /** Adds `debug_mode` when the page was opened with ?ga_debug=1 (GA4 DebugView). */
 function debugParams(): Record<string, unknown> {
   return new URLSearchParams(window.location.search).get("ga_debug") === "1"
@@ -130,6 +160,8 @@ function onMessage(event: MessageEvent) {
 
   const message = parseMessage(event.data);
   if (message?.type !== BW_GA_EVENT || !Array.isArray(message.payload)) return;
+
+  warnIfOurIdIsConfiguredInMindbody(message.payload as unknown[]);
 
   // Keep widget.js's own listeners from replaying the original call.
   event.stopImmediatePropagation();
