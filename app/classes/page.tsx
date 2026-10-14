@@ -362,7 +362,11 @@ export default function ClassesPage() {
             </h2>
             <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-muted lg:text-lg">
               Book your first class and experience intentional movement in a
-              calm, elevated studio.
+              calm, elevated studio in Valencia,{" "}
+              <Link href="/pilates-santa-clarita" className="text-link">
+                serving the Santa Clarita Valley
+              </Link>
+              .
             </p>
             <a href="/book" className="btn-primary mx-auto mt-10">
               View Schedule

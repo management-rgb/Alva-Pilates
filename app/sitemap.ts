@@ -19,16 +19,13 @@ const pages: { path: string; priority: number }[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   return [
     ...pages.map(({ path, priority }) => ({
       url: `${SITE_URL}${path}`,
-      lastModified,
       priority,
     })),
     ...getAllClasses().map((c) => ({
       url: `${SITE_URL}/classes/${c._id}`,
-      lastModified,
       priority: 0.7,
     })),
   ];

@@ -58,7 +58,13 @@ export default function HomeVisitCommunity() {
                     <p className="text-foreground">9am – 12pm</p>
                   </div>
                 </div>
-                <Link href="/classes" className="text-link mt-8">
+                <p className="mt-6 text-sm leading-relaxed text-muted">
+                  Welcoming clients from across the Santa Clarita Valley.{" "}
+                  <Link href="/pilates-santa-clarita" className="text-link">
+                    See what to expect on your first visit
+                  </Link>
+                </p>
+                <Link href="/classes" className="text-link mt-6">
                   View classes
                 </Link>
               </div>

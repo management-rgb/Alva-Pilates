@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MindbodyProspectsWidget from "../components/MindbodyProspectsWidget";
@@ -79,6 +80,12 @@ export default function ContactPage() {
                     </p>
                     <p className="mt-2 text-sm text-muted">
                       Ample parking available
+                    </p>
+                    <p className="mt-3 text-sm text-muted">
+                      Coming from elsewhere in the Santa Clarita Valley?{" "}
+                      <Link href="/pilates-santa-clarita" className="text-link">
+                        Plan your first visit
+                      </Link>
                     </p>
                   </div>
                   <div className="border-b border-border py-5">

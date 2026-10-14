@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -10,11 +11,33 @@ import { GOOGLE_RATING, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEWS_URL } from "../data/
 export const metadata: Metadata = {
   title: "Reformer Pilates in Santa Clarita, CA",
   description:
-    "Boutique reformer Pilates in Valencia, Santa Clarita. Small-group classes for every level, rated 5.0 on Google. Easy to reach from Saugus, Newhall, Canyon Country, Stevenson Ranch, and Castaic.",
+    "Boutique reformer Pilates studio in Valencia, serving Santa Clarita. Small-group classes for every level and a 15-day unlimited intro for new clients.",
   alternates: { canonical: "/pilates-santa-clarita" },
 };
 
-const nearby = ["Valencia", "Saugus", "Newhall", "Canyon Country", "Stevenson Ranch", "Castaic"];
+/** First-visit facts come from the existing FAQ (Getting Started) and the booking page. */
+const firstVisit = [
+  {
+    title: "Arrive 10–15 minutes early",
+    description:
+      "For your first class, arrive 10–15 minutes early to complete paperwork and get oriented to the studio.",
+  },
+  {
+    title: "Wear grip socks",
+    description:
+      "Grip socks are required for all classes and are available for purchase at the studio.",
+  },
+  {
+    title: "No experience needed",
+    description:
+      "Beginners are welcome. New to the reformer? Start with Alva Foundation, or ask us which class suits you best.",
+  },
+  {
+    title: "Book online",
+    description:
+      "Choose a class on the schedule and reserve your spot. Questions first? Get in touch and we’ll help.",
+  },
+];
 
 const reasons = [
   {
@@ -43,6 +66,7 @@ const labelClass = "text-[0.6875rem] font-medium uppercase tracking-[0.18em] tex
 export default function SantaClaritaPage() {
   const classes = getAllClasses();
   const intro = summerResetOfferCards.unlimitedIntro;
+  const foundation = classes.find((c) => c.className.trim() === "Alva Foundation");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -68,8 +92,8 @@ export default function SantaClaritaPage() {
 
       {/* Intro */}
       <section className="surface-paper px-6 pb-16 pt-6 lg:px-14 lg:pb-24 lg:pt-8">
-        <div className="mx-auto max-w-3xl border-t border-border pt-10 lg:pt-14">
-          <Reveal>
+        <div className="mx-auto grid max-w-[100rem] grid-cols-1 items-center gap-10 border-t border-border pt-10 lg:grid-cols-12 lg:gap-16 lg:pt-14">
+          <Reveal className="lg:col-span-6 lg:pr-6">
             <h2 className="font-display text-4xl font-normal tracking-[-0.02em] text-balance text-foreground lg:text-5xl">
               Your Santa Clarita reformer studio
             </h2>
@@ -86,17 +110,18 @@ export default function SantaClaritaPage() {
                 class for you.
               </p>
             </div>
-            <p className={`mt-8 ${labelClass}`}>Clients join us from</p>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {nearby.map((area) => (
-                <li
-                  key={area}
-                  className="border border-border px-3 py-1.5 text-sm text-foreground"
-                >
-                  {area}
-                </li>
-              ))}
-            </ul>
+          </Reveal>
+          <Reveal delay={0.08} className="lg:col-span-6">
+            <div className="img-editorial relative min-h-[320px] sm:min-h-[420px] lg:min-h-[480px]">
+              <Image
+                src="/hero-reformer.jpg"
+                alt="Client holding a side plank on a reformer in the Alva Pilates studio"
+                fill
+                quality={90}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="img-desaturate object-cover"
+              />
+            </div>
           </Reveal>
         </div>
       </section>
@@ -162,6 +187,48 @@ export default function SantaClaritaPage() {
               </li>
             ))}
           </ul>
+          <p className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-base text-muted">
+            <Link href="/classes" className="text-link">
+              Compare all classes
+            </Link>
+            <Link href="/book" className="text-link">
+              Open the class schedule
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* First visit */}
+      <section className="surface-stone px-6 py-16 text-charcoal lg:px-14 lg:py-24">
+        <div className="mx-auto max-w-[100rem]">
+          <Reveal>
+            <p className={labelClass}>First visit</p>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl font-normal tracking-[-0.02em] text-balance lg:text-5xl">
+              What to expect at your first class
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 border-t border-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
+            {firstVisit.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.06}>
+                <div className="h-full border-b border-[var(--border)] py-8 sm:px-6 lg:border-b-0 lg:border-l lg:first:border-l-0">
+                  <h3 className="font-heading text-xl font-medium">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-taupe">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-base">
+            {foundation ? (
+              <Link href={`/classes/${foundation._id}`} className="text-link">
+                About Alva Foundation
+              </Link>
+            ) : null}
+            <Link href="/faq" className="text-link">
+              More first-class questions
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -191,6 +258,12 @@ export default function SantaClaritaPage() {
             >
               Get directions
             </a>
+            <p className="mt-4 text-sm text-taupe">
+              Questions before you visit?{" "}
+              <Link href="/contact" className="text-link">
+                Contact the studio
+              </Link>
+            </p>
           </Reveal>
           <Reveal delay={0.08}>
             <div className="border border-border bg-card px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
@@ -198,7 +271,10 @@ export default function SantaClaritaPage() {
               <p className="mt-4 font-heading text-6xl font-semibold tracking-[-0.04em] text-foreground">
                 {intro.price}
               </p>
-              <p className="mt-2 text-base text-muted">15 days of unlimited reformer classes</p>
+              <p className="mt-2 text-base text-foreground">{intro.title}</p>
+              <p className="mt-3 text-base leading-relaxed text-muted">
+                One class per day for 15 consecutive days. First-time clients only.
+              </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/pricing#get-started" className="btn-primary">
                   Start your intro
@@ -207,6 +283,11 @@ export default function SantaClaritaPage() {
                   View the schedule
                 </Link>
               </div>
+              <p className="mt-5 text-sm text-muted">
+                <Link href="/pricing" className="text-link">
+                  See all pricing and intro options
+                </Link>
+              </p>
             </div>
           </Reveal>
         </div>
