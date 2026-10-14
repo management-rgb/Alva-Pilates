@@ -241,6 +241,10 @@ export default function SantaClaritaPage() {
               Find us in Valencia
             </h2>
             <p className="mt-6 text-base leading-relaxed text-charcoal">
+              Find us in Tesoro Village, on the corner of the plaza at 23840
+              Copper Hill Drive.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-charcoal">
               23840 Copper Hill Drive
               <br />
               Valencia, CA 91354
