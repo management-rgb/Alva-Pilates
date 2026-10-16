@@ -23,10 +23,21 @@ export const studio = {
     {
       days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:00",
+      closes: "13:00",
+    },
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "16:30",
       closes: "19:00",
     },
     { days: ["Saturday", "Sunday"], opens: "09:00", closes: "12:00" },
   ],
+} as const;
+
+/** Customer-facing hours copy. Keep in sync with `studio.openingHours` above. */
+export const STUDIO_HOURS_DISPLAY = {
+  weekdays: ["8:00 AM – 1:00 PM", "4:30 PM – 7:00 PM"],
+  weekends: "Classes at 9, 10 & 11 AM",
 } as const;
 
 /** Studio phone accepts texts; sms: opens the visitor's messaging app. */

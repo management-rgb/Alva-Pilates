@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MindbodyProspectsWidget from "../components/MindbodyProspectsWidget";
 import { Reveal } from "../components/sections/Reveal";
-import { STUDIO_SMS_HREF } from "../lib/site";
+import { STUDIO_HOURS_DISPLAY, STUDIO_SMS_HREF } from "../lib/site";
 
 export default function ContactPage() {
   return (
@@ -93,8 +93,10 @@ export default function ContactPage() {
                       Hours
                     </p>
                     <div className="mt-3 space-y-1 text-base text-foreground">
-                      <p>Monday – Friday · 8:00 AM – 7:00 PM</p>
-                      <p>Saturday – Sunday · 9:00 AM – 12:00 PM</p>
+                      <p>
+                        Monday – Friday · {STUDIO_HOURS_DISPLAY.weekdays.join(" & ")}
+                      </p>
+                      <p>Saturday – Sunday · {STUDIO_HOURS_DISPLAY.weekends}</p>
                     </div>
                   </div>
                   <div className="border-b border-border py-5">

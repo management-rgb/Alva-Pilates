@@ -38,18 +38,19 @@ export default function HomeBrandHero() {
         <div className="max-w-3xl lg:col-span-7 xl:col-span-6">
           <Reveal>
             <p className="text-[0.6875rem] font-medium uppercase tracking-[0.18em] text-paper/70">
-              Valencia, California
+              Movement, elevated.
             </p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] font-normal leading-[0.9] tracking-[-0.02em] text-balance text-paper">
-              Movement, elevated.
+            <h1 className="mt-6 font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.98] tracking-[-0.02em] text-balance text-paper">
+              Reformer Pilates in Valencia &amp; Santa Clarita
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className="mt-8 max-w-lg text-base leading-[1.75] text-paper/75 sm:text-lg">
-              A considered reformer Pilates experience built around strength,
-              precision, and lasting confidence.
+              A small-group reformer studio and welcoming community, built
+              around strength, precision, and lasting confidence, for
+              beginners through advanced.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

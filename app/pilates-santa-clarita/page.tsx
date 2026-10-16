@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { Reveal } from "../components/sections/Reveal";
 import { getAllClasses } from "../lib/data";
 import { summerResetOfferCards } from "../lib/summerResetCopy";
+import { STUDIO_HOURS_DISPLAY } from "../lib/site";
 import { GOOGLE_RATING, GOOGLE_REVIEW_COUNT, GOOGLE_REVIEWS_URL } from "../data/reviews";
 
 export const metadata: Metadata = {
@@ -33,6 +34,16 @@ const firstVisit = [
       "Beginners are welcome. New to the reformer? Start with Alva Foundation, or ask us which class suits you best.",
   },
   {
+    title: "Settle in",
+    description:
+      "Your instructor will help you set up your reformer and explain the springs and straps before class begins.",
+  },
+  {
+    title: "Move at your level",
+    description:
+      "Classes run 50 minutes. Your instructor guides each exercise and offers modifications, so you can work at your own pace.",
+  },
+  {
     title: "Book online",
     description:
       "Choose a class on the schedule and reserve your spot. Questions first? Get in touch and we’ll help.",
@@ -58,6 +69,43 @@ const reasons = [
     title: "Easy to get to",
     description:
       "Off Copper Hill Drive in Valencia with ample parking, so you can arrive relaxed and on time.",
+  },
+];
+
+const beginnerOptions = [
+  {
+    title: "Alva Foundation",
+    description:
+      "Our Level 1 class and the best place to start. It teaches alignment, breath, and core control on the reformer, with no prior experience required.",
+  },
+  {
+    title: "Alva Sculpt",
+    description:
+      "An all-levels, full-body class. Your instructor offers modifications and progressions throughout, so beginners can join once they feel ready.",
+  },
+  {
+    title: "Private sessions",
+    description:
+      "Prefer one-on-one guidance first, or working around an injury? A private session lets your instructor tailor the work to you.",
+  },
+];
+
+const pricingHighlights = [
+  { title: "Single class", price: "$39", note: "Any reformer class, all levels." },
+  {
+    title: "3-Class Intro",
+    price: "$69",
+    note: "First-time clients, valid 30 days.",
+  },
+  {
+    title: "5-Class Pack",
+    price: "$179",
+    note: "$35.80 per class, valid 2 months.",
+  },
+  {
+    title: "10-Class Pack",
+    price: "$339",
+    note: "$33.90 per class, valid 3 months.",
   },
 ];
 
@@ -158,6 +206,78 @@ export default function SantaClaritaPage() {
         </div>
       </section>
 
+      {/* Beginner options */}
+      <section className="surface-paper px-6 py-16 lg:px-14 lg:py-24">
+        <div className="mx-auto max-w-[100rem]">
+          <Reveal>
+            <p className={labelClass}>Beginners</p>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl font-normal tracking-[-0.02em] text-balance text-foreground lg:text-5xl">
+              Where to start if you&apos;re new to reformer Pilates
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 border-t border-border md:grid-cols-3">
+            {beginnerOptions.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.06}>
+                <div className="h-full border-b border-border py-8 md:border-b-0 md:border-l md:px-6 md:first:border-l-0 md:first:pl-0">
+                  <h3 className="font-heading text-xl font-medium">{item.title}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-muted">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-8 text-base text-muted">
+            Not sure which fits you?{" "}
+            <Link href="/contact" className="text-link">
+              Ask the front desk
+            </Link>{" "}
+            and we&apos;ll point you to the right first class.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+            Our team is experienced, certified in comprehensive reformer
+            instruction, and trained to guide every level with care.{" "}
+            <Link href="/instructors" className="text-link">
+              Meet the instructors
+            </Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="surface-paper px-6 py-16 lg:px-14 lg:py-24">
+        <div className="mx-auto max-w-[100rem]">
+          <Reveal>
+            <p className={labelClass}>Pricing</p>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl font-normal tracking-[-0.02em] text-balance text-foreground lg:text-5xl">
+              Simple class pricing
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
+              New clients can start with the {intro.title} for {intro.price}.
+              Memberships bring the per-class rate down further.
+            </p>
+          </Reveal>
+          <div className="mt-10 grid grid-cols-1 border-t border-border sm:grid-cols-2 lg:grid-cols-4">
+            {pricingHighlights.map((item, index) => (
+              <Reveal key={item.title} delay={index * 0.06}>
+                <div className="h-full border-b border-border py-8 sm:px-6 lg:border-b-0 lg:border-l lg:first:border-l-0 lg:first:pl-0">
+                  <h3 className="font-heading text-xl font-medium">{item.title}</h3>
+                  <p className="mt-2 font-heading text-4xl font-semibold tracking-[-0.03em]">
+                    {item.price}
+                  </p>
+                  <p className="mt-2 text-sm text-muted">{item.note}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-8 text-base">
+            <Link href="/pricing" className="text-link">
+              See memberships and all pricing
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Classes */}
       <section className="surface-paper px-6 py-16 lg:px-14 lg:py-24">
         <div className="mx-auto max-w-[100rem]">
@@ -207,7 +327,7 @@ export default function SantaClaritaPage() {
               What to expect at your first class
             </h2>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 border-t border-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 border-t border-[var(--border)] sm:grid-cols-2 lg:grid-cols-3">
             {firstVisit.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.06}>
                 <div className="h-full border-b border-[var(--border)] py-8 sm:px-6 lg:border-b-0 lg:border-l lg:first:border-l-0">
@@ -249,11 +369,24 @@ export default function SantaClaritaPage() {
               <br />
               Valencia, CA 91354
             </p>
-            <p className="mt-2 text-sm text-taupe">Ample parking available</p>
-            <div className="mt-6 space-y-1 text-base text-charcoal">
-              <p>Monday – Friday · 8:00 AM – 7:00 PM</p>
-              <p>Saturday – Sunday · 9:00 AM – 12:00 PM</p>
+            <h3 className="mt-8 font-heading text-xl font-medium">Parking</h3>
+            <p className="mt-2 text-base leading-relaxed text-charcoal">
+              Ample parking is available at Tesoro Village, steps from the
+              studio entrance, so you can arrive relaxed and on time.
+            </p>
+            <h3 className="mt-8 font-heading text-xl font-medium">Hours</h3>
+            <div className="mt-2 space-y-1 text-base text-charcoal">
+              <p>
+                Monday – Friday · {STUDIO_HOURS_DISPLAY.weekdays.join(" & ")}
+              </p>
+              <p>Saturday – Sunday · {STUDIO_HOURS_DISPLAY.weekends}</p>
             </div>
+            <h3 className="mt-8 font-heading text-xl font-medium">Directions</h3>
+            <p className="mt-2 text-base leading-relaxed text-charcoal">
+              We&apos;re on Copper Hill Drive in Valencia, in the Tesoro Village
+              plaza. Open the map for turn-by-turn directions from wherever you
+              are in the Santa Clarita Valley.
+            </p>
             <a
               href="https://www.google.com/maps/search/?api=1&query=23840+Copper+Hill+Drive,+Valencia,+CA+91354"
               target="_blank"

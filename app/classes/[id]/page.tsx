@@ -134,6 +134,14 @@ export default function ClassDetailPage({
                   </li>
                 ))}
               </ol>
+              <p className="mt-8 border-t border-border pt-6 text-sm leading-relaxed text-muted">
+                New to the studio? See{" "}
+                <Link href="/pilates-santa-clarita" className="text-link">
+                  reformer Pilates in Santa Clarita
+                </Link>{" "}
+                for parking, directions, pricing, and what to expect at your
+                first class.
+              </p>
             </Reveal>
           </div>
         </div>

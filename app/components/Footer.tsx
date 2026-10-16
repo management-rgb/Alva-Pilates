@@ -37,11 +37,13 @@ export default function Footer() {
               <div className="space-y-1.5 text-[rgba(245,245,242,0.68)]">
                 <p>
                   Mon – Fri{" "}
-                  <span className="whitespace-nowrap">8:00 AM – 7:00 PM</span>
+                  <span className="whitespace-nowrap">8 AM – 1 PM</span>
+                  {" & "}
+                  <span className="whitespace-nowrap">4:30 – 7 PM</span>
                 </p>
                 <p>
                   Sat – Sun{" "}
-                  <span className="whitespace-nowrap">9:00 AM – 12:00 PM</span>
+                  <span className="whitespace-nowrap">9, 10 &amp; 11 AM</span>
                 </p>
               </div>
               <a
