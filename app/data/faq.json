@@ -65,25 +65,31 @@
     "displayOrder": 9
   },
   {
+    "_id": "faq-intro-credit",
+    "question": "Do I get my intro offer credited if I become a member?",
+    "answer": "Yes. If you purchase the 3-Class Intro or 15-Day Unlimited Intro and join a Core, Elite, or Unlimited membership within 15 days after your intro expires, we'll apply 100% of your intro purchase toward your first membership payment.\n\nThe credit cannot exceed your first membership payment, has no cash value, and cannot be combined with another membership promotion.",
+    "category": "Memberships",
+    "displayOrder": 10
+  },
+  {
     "_id": "faq-6",
     "question": "Is Pilates safe during pregnancy?",
     "answer": "Pilates can be excellent during pregnancy when practiced with proper modifications. We recommend private sessions for pregnant clients so we can tailor the exercises to your specific needs and trimester. Always consult with your healthcare provider before starting any new exercise program during pregnancy.",
     "category": "Health & Safety",
-    "displayOrder": 10
+    "displayOrder": 11
   },
   {
     "_id": "faq-7",
     "question": "I have a back injury. Can I still do Pilates?",
     "answer": "Pilates is often recommended for back pain and rehabilitation, but it's essential to work with an instructor who understands your specific condition. We recommend starting with private sessions so we can design a program that supports your recovery. Please bring any relevant medical information to your first session.",
     "category": "Health & Safety",
-    "displayOrder": 11
+    "displayOrder": 12
   },
   {
     "_id": "faq-8",
     "question": "Do you offer corporate or group rates?",
     "answer": "Yes! We offer special rates for corporate wellness programs, bridal parties, and private group events. Contact us for more information about bringing Pilates to your team or celebrating a special occasion at our studio.",
     "category": "Pricing",
-    "displayOrder": 12
+    "displayOrder": 13
   }
 ]
-
