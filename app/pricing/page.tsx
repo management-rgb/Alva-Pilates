@@ -765,6 +765,11 @@ function Memberships() {
               <MembershipCard key={tier.id} tier={tier} />
             ))}
           </div>
+          <p className="lp-note mt-6 text-center">
+            Started with an intro offer? Join Core or higher within 15 days of
+            your intro expiring and we&apos;ll credit your intro purchase toward
+            your first membership payment.
+          </p>
         </Reveal>
       </div>
     </section>

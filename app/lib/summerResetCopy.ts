@@ -29,10 +29,10 @@ export const summerResetCopy = {
   },
   introCredit: {
     eyebrow: "Love Your Intro?",
-    heading: "Become a member and get your intro purchase credited back",
-    body: "When you become an Alva member, we'll apply 100% of the amount you paid for your qualifying New Client Intro Offer toward your first membership payment.",
+    heading: "Join Core or higher and get your intro purchase credited back",
+    body: "When you join a Core, Elite, or Unlimited membership, we'll apply 100% of the amount you paid for your qualifying New Client Intro Offer toward your first membership payment.",
     disclaimer:
-      "Valid for clients who purchase the 3-Class Intro or 15-Day Unlimited Intro and enroll in an eligible recurring membership within 15 days after their Intro Offer expires. Intro credit cannot exceed the first membership payment, has no cash value, and cannot be combined with another membership promotion.",
+      "Valid for clients who purchase the 3-Class Intro or 15-Day Unlimited Intro and enroll in a Core, Elite, or Unlimited membership within 15 days after their Intro Offer expires. Intro credit cannot exceed the first membership payment, has no cash value, and cannot be combined with another membership promotion.",
     cta: "Explore Memberships",
   },
   memberPerks: {
@@ -64,7 +64,7 @@ export const summerResetCopy = {
       "Standard cancellation and no-show policies apply.",
       "Class packs are non-transferable.",
       "Class pack expiration periods remain unchanged unless otherwise stated.",
-      "Intro purchase credit applies only toward an eligible recurring membership.",
+      "Intro purchase credit applies only toward a Core, Elite, or Unlimited membership.",
       "Membership must be purchased within 15 days after the Intro Offer expires.",
       "Promotional purchases are final sale unless otherwise required by law.",
       "Offers cannot be combined with other discounts.",
