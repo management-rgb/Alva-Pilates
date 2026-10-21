@@ -14,6 +14,7 @@ import ErrorSuppressor from "./components/ErrorSuppressor";
 import SmoothScroll from "./components/SmoothScroll";
 import StudioStructuredData from "./components/StudioStructuredData";
 import MobileBookBar from "./components/MobileBookBar";
+import MetaPixel from "./components/MetaPixel";
 import { GA_MEASUREMENT_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const instrumentSans = Instrument_Sans({
@@ -95,6 +96,7 @@ export default function RootLayout({
         {children}
         <MobileBookBar />
         <Analytics />
+        <MetaPixel />
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>

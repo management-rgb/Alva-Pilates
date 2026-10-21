@@ -3,6 +3,8 @@
 import type { MindbodyCartLinkType } from "../lib/mindbodyCart";
 import { mindbodyCartUrl } from "../lib/mindbodyCart";
 
+import { trackMetaCheckoutClick } from "../lib/metaPixel";
+
 type Gtag = (command: "event", name: string, params: Record<string, unknown>) => void;
 
 /**
@@ -25,6 +27,7 @@ export default function MindbodyCheckoutLink({
   children?: string;
 }) {
   const onClick = () => {
+    trackMetaCheckoutClick(itemId, type);
     const gtag = (window as unknown as { gtag?: Gtag }).gtag;
     if (typeof gtag !== "function") return;
     gtag("event", "checkout_click", {
