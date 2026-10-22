@@ -13,6 +13,7 @@ import GoogleReviews from "./components/GoogleReviews";
 import HomeStudioStory from "./components/home/HomeStudioStory";
 import HomeStudioEnvironment from "./components/home/HomeStudioEnvironment";
 import HomeEditorialQuote from "./components/home/HomeEditorialQuote";
+import HomeFirstClass from "./components/home/HomeFirstClass";
 import HomeOfferBridge from "./components/home/HomeOfferBridge";
 import HomePrivateTeaser from "./components/home/HomePrivateTeaser";
 import HomeVisitCommunity from "./components/home/HomeVisitCommunity";
@@ -30,9 +31,10 @@ export default function HomePageClient() {
       {/* Charcoal → light gradient bridge */}
       <div className="flow-out-of-dark" aria-hidden />
 
-      {/* Why Alva → Find your practice */}
+      {/* Why Alva → Find your practice → What to expect */}
       <HomeStudioStory />
       <HomeClassesPreview />
+      <HomeFirstClass />
 
       {/* Full-bleed photography breather between discovery and philosophy */}
       <HomeStudioEnvironment />
