@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllClasses } from "./lib/data";
 import { SITE_URL } from "./lib/site";
+import { localAreas } from "./lib/localAreas";
 
 /** Public pages only — staff, marketing, and redirected routes are excluded. */
 const pages: { path: string; priority: number }[] = [
@@ -11,6 +12,7 @@ const pages: { path: string; priority: number }[] = [
   { path: "/about", priority: 0.7 },
   { path: "/contact", priority: 0.7 },
   { path: "/pilates-santa-clarita", priority: 0.7 },
+  ...localAreas.map((a) => ({ path: `/${a.slug}`, priority: 0.6 })),
   { path: "/appointments", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
   { path: "/join-the-team", priority: 0.5 },

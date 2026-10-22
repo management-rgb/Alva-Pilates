@@ -16,7 +16,14 @@ export default function StudioStructuredData() {
     email: studio.email,
     priceRange: "$$",
     address: { "@type": "PostalAddress", ...studio.address },
-    areaServed: ["Valencia, CA", "Santa Clarita, CA"],
+    areaServed: [
+      "Valencia, CA",
+      "Santa Clarita, CA",
+      "Stevenson Ranch, CA",
+      "Newhall, CA",
+      "Saugus, CA",
+      "Castaic, CA",
+    ],
     openingHoursSpecification: studio.openingHours.map((slot) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: slot.days,

@@ -66,6 +66,7 @@ export default function Footer() {
                 { href: "/pricing", label: "Pricing" },
                 { href: "/contact", label: "Contact" },
                 { href: "/pilates-santa-clarita", label: "Santa Clarita" },
+                { href: "/pilates-valencia", label: "Valencia" },
                 { href: "/join-the-team", label: "Join the Team" },
                 { href: "/pricing#gift-cards", label: "Gift Cards" },
                 { href: "/faq", label: "FAQ" },
