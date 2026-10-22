@@ -43,7 +43,7 @@ export default function HomeBrandHero() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="mt-6 font-display text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[0.98] tracking-[-0.02em] text-balance text-paper">
-              Reformer Pilates in Valencia &amp; Santa Clarita
+              Reformer Pilates in Valencia, Santa Clarita
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
