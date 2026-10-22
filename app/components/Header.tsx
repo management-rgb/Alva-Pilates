@@ -218,6 +218,16 @@ export default function Header() {
             >
               Book a Class
             </a>
+            {pathname !== "/" && pathname !== "/pricing" && (
+              <Link
+                href="/pricing#get-started"
+                className={`whitespace-nowrap font-paragraph text-[0.8125rem] font-medium underline decoration-1 underline-offset-4 transition-opacity duration-200 hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal ${
+                  overHero ? "text-paper" : "text-foreground"
+                }`}
+              >
+                New? $99 intro
+              </Link>
+            )}
           </div>
 
           <button
@@ -393,6 +403,13 @@ export default function Header() {
                     aria-hidden
                   />
                 </a>
+                <Link
+                  href="/pricing#get-started"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mt-4 block text-center font-paragraph text-[0.8125rem] text-paper/80 underline underline-offset-4"
+                >
+                  New? $99 intro
+                </Link>
                 <a
                   href={STUDIO_SMS_HREF}
                   onClick={() => setIsMenuOpen(false)}
