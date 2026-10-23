@@ -10,11 +10,12 @@ import { studioImagery } from "../../lib/studioImagery";
 export default function HomeStudioEnvironment() {
   return (
     <FullBleedImage
-      src={studioImagery.heroStudio}
-      alt="Inside the Alva Pilates studio — natural light, premium reformers, and warm neutral tones"
+      src={studioImagery.studioBand}
+      alt="Two clients practicing on reformers in the Alva Pilates studio, with the lit Alva sign and arched mirrors behind them"
       height="lg"
       scrim="bottom"
       align="end"
+      objectPosition="center 40%"
     >
       <div>
         <Reveal>

@@ -90,7 +90,7 @@ export default function AboutPage() {
               <div className="img-editorial relative h-[420px] overflow-hidden lg:h-[560px]">
                 <Image
                   src={studioImagery.philosophy}
-                  alt="Instructor guiding a client on the reformer in the Alva Pilates studio"
+                  alt="The Alva Pilates instructors together in the studio"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

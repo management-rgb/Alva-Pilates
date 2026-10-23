@@ -39,7 +39,7 @@ export default function HomeStudioStory() {
       {/* Why Alva — large split image */}
       <SplitImage
         src={studioImagery.storySplit}
-        alt="Reformer detail in the Alva Pilates studio"
+        alt="A client adjusting the springs on a reformer at Alva Pilates"
         imageSide="left"
         surface="surface-paper"
         objectPosition="center"

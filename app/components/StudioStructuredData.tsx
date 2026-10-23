@@ -11,7 +11,7 @@ export default function StudioStructuredData() {
     description: SITE_DESCRIPTION,
     url: `${SITE_URL}/`,
     logo: `${SITE_URL}/alva_logo_web.png`,
-    image: `${SITE_URL}/hero-home.png`,
+    image: `${SITE_URL}/hero-home.jpg`,
     telephone: studio.telephone,
     email: studio.email,
     priceRange: "$$",

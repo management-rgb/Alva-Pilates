@@ -31,8 +31,8 @@ export default function HomeBrandHero() {
           className="img-desaturate object-cover object-[center_40%]"
         />
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.2)_0%,rgba(17,17,17,0.1)_40%,rgba(17,17,17,0.7)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,17,17,0.44)_0%,rgba(17,17,17,0.12)_55%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,17,17,0.35)_0%,rgba(17,17,17,0.12)_30%,rgba(17,17,17,0.2)_55%,rgba(17,17,17,0.55)_80%,rgba(17,17,17,0.88)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(17,17,17,0.8)_0%,rgba(17,17,17,0.62)_20%,rgba(17,17,17,0.34)_42%,rgba(17,17,17,0.12)_65%,transparent_85%)]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-[112rem] items-end gap-y-10 px-5 lg:grid-cols-12 lg:items-center lg:gap-x-12 lg:px-10">
         <div className="max-w-3xl lg:col-span-7 xl:col-span-6">

@@ -163,7 +163,7 @@ export default function SantaClaritaPage() {
             <div className="img-editorial relative min-h-[320px] sm:min-h-[420px] lg:min-h-[480px]">
               <Image
                 src="/hero-reformer.jpg"
-                alt="Client holding a side plank on a reformer in the Alva Pilates studio"
+                alt="Clients getting ready on reformers in the Alva Pilates studio"
                 fill
                 quality={90}
                 sizes="(max-width: 1024px) 100vw, 50vw"

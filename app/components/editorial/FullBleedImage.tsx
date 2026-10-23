@@ -12,8 +12,8 @@ type FullBleedImageProps = {
   /** Vertical emphasis of the band */
   height?: "sm" | "md" | "lg" | "screen";
   /** Scrim direction for text legibility */
-  scrim?: "bottom" | "left" | "center" | "none";
-  align?: "end" | "center";
+  scrim?: "bottom" | "top" | "left" | "center" | "none";
+  align?: "start" | "end" | "center";
   parallax?: boolean;
   priority?: boolean;
   className?: string;
@@ -30,6 +30,7 @@ const heightClass = {
 const scrimClass = {
   bottom:
     "bg-[linear-gradient(180deg,rgba(17,17,17,0.15)_0%,rgba(17,17,17,0)_35%,rgba(17,17,17,0.68)_100%)]",
+  top: "bg-[linear-gradient(180deg,rgba(17,17,17,0.72)_0%,rgba(17,17,17,0.45)_40%,rgba(17,17,17,0.05)_100%)]",
   left: "bg-[linear-gradient(90deg,rgba(17,17,17,0.6)_0%,rgba(17,17,17,0.2)_55%,transparent_100%)]",
   center: "bg-[rgba(17,17,17,0.4)]",
   none: "",
@@ -89,7 +90,11 @@ export function FullBleedImage({
           className={cn(
             "relative z-10 mx-auto flex w-full max-w-[100rem] px-5 lg:px-10",
             heightClass[height],
-            align === "end" ? "items-end pb-14 lg:pb-20" : "items-center",
+            align === "end"
+              ? "items-end pb-14 lg:pb-20"
+              : align === "start"
+                ? "items-start pb-14 lg:pb-20"
+                : "items-center",
             "pt-28"
           )}
         >
