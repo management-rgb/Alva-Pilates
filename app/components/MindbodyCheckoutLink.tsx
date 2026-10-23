@@ -4,6 +4,7 @@ import type { MindbodyCartLinkType } from "../lib/mindbodyCart";
 import { mindbodyCartUrl } from "../lib/mindbodyCart";
 
 import { trackMetaCheckoutClick } from "../lib/metaPixel";
+import { GOOGLE_ADS_CHECKOUT_CLICK } from "../lib/site";
 
 type Gtag = (command: "event", name: string, params: Record<string, unknown>) => void;
 
@@ -13,7 +14,7 @@ type Gtag = (command: "event", name: string, params: Record<string, unknown>) =>
  * `healcode-*-text-link` class Healcode used, so the existing overlay CSS applies.
  *
  * The click is logged as `checkout_click`: an intent signal with no value that is
- * never a purchase.
+ * never a purchase. It also feeds the Google Ads "Checkout click" conversion.
  */
 export default function MindbodyCheckoutLink({
   type,
@@ -35,6 +36,8 @@ export default function MindbodyCheckoutLink({
       link_type: type,
       page_path: window.location.pathname,
     });
+    // Google Ads conversion: no value or transaction_id, since nothing is paid yet.
+    gtag("event", "conversion", { send_to: GOOGLE_ADS_CHECKOUT_CLICK });
   };
 
   return (

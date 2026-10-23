@@ -15,7 +15,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import StudioStructuredData from "./components/StudioStructuredData";
 import MobileBookBar from "./components/MobileBookBar";
 import MetaPixel from "./components/MetaPixel";
-import { GA_MEASUREMENT_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
+import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "./lib/site";
 
 const instrumentSans = Instrument_Sans({
   variable: "--font-sans",
@@ -97,6 +97,9 @@ export default function RootLayout({
         <MobileBookBar />
         <Analytics />
         <MetaPixel />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments)};gtag('config','${GOOGLE_ADS_ID}');`}
+        </Script>
       </body>
       <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>

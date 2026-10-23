@@ -49,3 +49,8 @@ export const STUDIO_SMS_HREF = "sms:+16619777898";
  * Its class-booking `purchase` is renamed `class_booking` by MindbodyGaBridge.
  */
 export const GA_MEASUREMENT_ID = "G-FR15M2BQQM";
+
+/** Google Ads account tag (public). Configured on the same gtag.js that GA4 loads. */
+export const GOOGLE_ADS_ID = "AW-18401723190";
+/** Google Ads "Buy Now" click conversion (secondary action; a click is intent, not a sale). */
+export const GOOGLE_ADS_CHECKOUT_CLICK = `${GOOGLE_ADS_ID}/2GXMCOyxk6cdELaG0MZE`;
