@@ -2097,8 +2097,9 @@ header a.healcode-login-register-text-link:focus-visible {
   animation: halloween-glow 2.6s ease-in-out infinite;
 }
 .halloween .halloween-cta::before {
-  content: "🎃 ";
-  margin-right: 0.35em;
+  content: "🎃";
+  font-size: 1.15rem;
+  line-height: 1;
 }
 @keyframes halloween-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(232, 119, 46, 0); }

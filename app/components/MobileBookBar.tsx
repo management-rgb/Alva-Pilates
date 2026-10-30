@@ -61,7 +61,7 @@ function FloatingBookButton() {
         <Link
           href="/book"
           tabIndex={blocked ? -1 : undefined}
-          className={`mx-auto flex h-12 w-full max-w-md items-center justify-center rounded-[var(--radius-sm)] bg-[rgba(52,51,48,0.72)] backdrop-blur-md text-[0.8125rem] font-medium uppercase tracking-[0.1em] text-paper ring-1 ring-[rgba(245,245,242,0.22)] shadow-[0_12px_32px_-12px_rgba(20,14,9,0.55)] transition-opacity hover:opacity-90 ${
+          className={`halloween-cta mx-auto flex h-12 w-full max-w-md items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[rgba(52,51,48,0.72)] backdrop-blur-md text-[0.8125rem] font-medium uppercase tracking-[0.1em] text-paper ring-1 ring-[rgba(245,245,242,0.22)] shadow-[0_12px_32px_-12px_rgba(20,14,9,0.55)] transition-opacity hover:opacity-90 ${
             blocked ? "" : "pointer-events-auto"
           }`}
         >

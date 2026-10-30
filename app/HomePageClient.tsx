@@ -73,7 +73,7 @@ export default function HomePageClient() {
               <Reveal>
                 <Link
                   href="/pricing#get-started"
-                  className="btn-primary halloween-cta group mt-10 inline-flex"
+                  className="btn-primary group mt-10 inline-flex"
                 >
                   Start Your Intro
                   <ArrowRight

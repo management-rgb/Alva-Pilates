@@ -208,7 +208,7 @@ export default function Header() {
             <MindbodyAccountLink className="inline-flex items-center" />
             <a
               href="/book"
-              className={`inline-flex h-[2.75rem] items-center justify-center whitespace-nowrap rounded-[var(--radius-sm)] px-6 font-paragraph text-[0.75rem] font-medium uppercase tracking-[0.08em] transition-[transform,box-shadow,filter,background-color,color] duration-200 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_12px_26px_-16px_rgba(20,19,17,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal ${
+              className={`halloween-cta inline-flex h-[2.75rem] items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius-sm)] px-6 font-paragraph text-[0.75rem] font-medium uppercase tracking-[0.08em] transition-[transform,box-shadow,filter,background-color,color] duration-200 ease-out hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_12px_26px_-16px_rgba(20,19,17,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-charcoal ${
                 scrolled
                   ? "bg-[var(--dark)] text-paper"
                   : "bg-paper text-[var(--dark)]"
@@ -391,7 +391,7 @@ export default function Header() {
                 <a
                   href="/book"
                   onClick={() => setIsMenuOpen(false)}
-                  className="group mt-4 inline-flex h-[3.25rem] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[#F5F1EC] px-6 font-paragraph text-[0.8125rem] font-medium uppercase tracking-[0.1em] text-[#312923] shadow-[0_10px_28px_-18px_rgba(20,14,9,0.6)] transition-[filter] duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D1B187]"
+                  className="halloween-cta group mt-4 inline-flex h-[3.25rem] w-full items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[#F5F1EC] px-6 font-paragraph text-[0.8125rem] font-medium uppercase tracking-[0.1em] text-[#312923] shadow-[0_10px_28px_-18px_rgba(20,14,9,0.6)] transition-[filter] duration-[240ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:brightness-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D1B187]"
                 >
                   Book a Class
                   <ArrowUpRight
