@@ -37,11 +37,8 @@ export default function Header() {
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "/faq" },
-    { name: "Join the Team", path: "/join-the-team" },
+    { name: "Gift Cards", path: "/pricing#gift-cards" },
   ];
-
-  // Extra links shown only in the phone menu, where there is room for them.
-  const mobileOnlyLinks = [{ name: "Gift Cards", path: "/pricing#gift-cards" }];
 
   const drawerVariants: Variants = {
     hidden: { x: reduceMotion ? 0 : "100%", opacity: reduceMotion ? 0 : 1 },
@@ -325,7 +322,7 @@ export default function Header() {
                 </motion.p>
 
                 <ul className="flex flex-col gap-1.5 [@media(max-height:720px)]:gap-0.5">
-                  {[...navLinks, ...mobileOnlyLinks].map((link) => {
+                  {navLinks.map((link) => {
                     const active = isActive(link.path);
                     return (
                       <motion.li key={link.path} variants={itemVariants}>
