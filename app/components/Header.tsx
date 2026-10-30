@@ -13,7 +13,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
-import AwarenessRibbon from "./AwarenessRibbon";
 import { STUDIO_SMS_HREF } from "../lib/site";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
@@ -166,7 +165,6 @@ export default function Header() {
                     : "brightness-0 invert"
               }`}
             />
-            <AwarenessRibbon className="ml-3" />
           </Link>
 
           <nav

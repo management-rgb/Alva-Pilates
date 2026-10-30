@@ -2069,3 +2069,64 @@ header a.healcode-login-register-text-link:focus-visible {
     transition: none;
   }
 }
+
+/* Halloween — see HalloweenEffects.tsx (active Oct 24 – Nov 1) */
+.halloween-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  pointer-events: none;
+}
+.halloween-fall {
+  position: absolute;
+  top: -40px;
+  opacity: 0.95;
+  animation-name: halloween-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes halloween-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25% { transform: translate3d(30px, 28vh, 0) rotate(90deg); }
+  50% { transform: translate3d(-20px, 55vh, 0) rotate(190deg); }
+  75% { transform: translate3d(26px, 80vh, 0) rotate(270deg); }
+  100% { transform: translate3d(0, 112vh, 0) rotate(360deg); }
+}
+.halloween .halloween-cta {
+  animation: halloween-glow 2.6s ease-in-out infinite;
+}
+.halloween .halloween-cta::before {
+  content: "🎃 ";
+  margin-right: 0.35em;
+}
+@keyframes halloween-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 119, 46, 0); }
+  50% { box-shadow: 0 0 22px 4px rgba(232, 119, 46, 0.45); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .halloween-layer { display: none; }
+  .halloween .halloween-cta { animation: none; }
+}
+
+.halloween-thread {
+  transform-box: view-box;
+  transform-origin: 72px 0;
+  animation: halloween-thread 5s ease-in-out infinite;
+}
+.halloween-spider {
+  animation: halloween-spider 5s ease-in-out infinite;
+}
+/* Thread is 40 long; the spider moves by 40 * (scale - 1) so it stays on the end. */
+@keyframes halloween-thread {
+  0%, 100% { transform: scaleY(0.6); }
+  50% { transform: scaleY(1.9); }
+}
+@keyframes halloween-spider {
+  0%, 100% { transform: translateY(-16px); }
+  50% { transform: translateY(36px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .halloween-spider,
+  .halloween-thread { animation: none; }
+}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "../sections/Reveal";
+import { HalloweenSpider } from "../HalloweenEffects";
 import { useParallax } from "../../hooks/useParallax";
 import { studioImagery } from "../../lib/studioImagery";
 import { summerResetOfferCards } from "../../lib/summerResetCopy";
@@ -76,7 +77,8 @@ export default function HomeBrandHero() {
 
         <div className="lg:col-span-5 lg:col-start-8 lg:justify-self-end">
           <Reveal delay={0.24}>
-            <div className="w-full max-w-md rounded-[8px] border border-[rgba(74,64,50,0.16)] bg-[rgba(248,244,238,0.97)] p-7 shadow-[0_18px_48px_-34px_rgba(30,22,14,0.28)] backdrop-blur-[2px] sm:p-9">
+            <div className="relative w-full max-w-md rounded-[8px] border border-[rgba(74,64,50,0.16)] bg-[rgba(248,244,238,0.97)] p-7 shadow-[0_18px_48px_-34px_rgba(30,22,14,0.28)] backdrop-blur-[2px] sm:p-9">
+              <HalloweenSpider />
               <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.24em] text-[#201f1c]">
                 New clients
               </p>
