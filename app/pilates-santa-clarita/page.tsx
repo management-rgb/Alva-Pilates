@@ -76,12 +76,12 @@ const beginnerOptions = [
   {
     title: "Alva Foundation",
     description:
-      "Our Level 1 class and the best place to start. It teaches alignment, breath, and core control on the reformer, with no prior experience required.",
+      "Start here if you're new to the reformer. Alva Foundation is a guided, full-body class that teaches how the equipment works, including the springs and straps, along with alignment, breath, and core engagement. Your instructor explains each movement clearly and offers options along the way, so the pace feels clear and supported. It's the ideal place to learn the fundamentals, and a valued class for anyone who wants to refine their technique.",
   },
   {
     title: "Alva Sculpt",
     description:
-      "An all-levels, full-body class. Your instructor offers modifications and progressions throughout, so beginners can join once they feel ready.",
+      "Experience the signature Alva workout. Alva Sculpt is a dynamic, full-body reformer class that blends athletic movement with the precision of Pilates. Expect flowing sequences and controlled resistance designed to build strength and muscular endurance, with options from your instructor to adjust the challenge as you go. New to the reformer? We recommend starting with Alva Foundation to learn the equipment and fundamentals.",
   },
   {
     title: "Private sessions",

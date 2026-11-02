@@ -126,7 +126,7 @@ export const localAreas: LocalArea[] = [
       {
         title: "No experience needed",
         description:
-          "New to the reformer? Start with Alva Foundation, our Level 1 class.",
+          "New to the reformer? Start with Alva Foundation.",
       },
       {
         title: "Try before you commit",
