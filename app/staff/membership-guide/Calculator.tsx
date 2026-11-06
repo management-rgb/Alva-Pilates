@@ -22,8 +22,8 @@ export default function Calculator({ plans, presets, whyUpgrade }: Props) {
   const options = useMemo(() => planOptions(plans), [plans]);
   const byKey = (k: string) => options.find((o) => o.key === k)!;
 
-  const [aKey, setAKey] = useState(presets[1]?.from ?? options[0].key);
-  const [bKey, setBKey] = useState(presets[1]?.to ?? options[1].key);
+  const [aKey, setAKey] = useState(presets[0]?.from ?? options[0].key);
+  const [bKey, setBKey] = useState(presets[0]?.to ?? options[1].key);
   const [attended, setAttended] = useState<number | null>(null);
 
   const a = byKey(aKey);

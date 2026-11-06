@@ -63,11 +63,11 @@ export default async function MembershipGuidePage() {
   const whyUpgrade = Object.fromEntries(Object.entries(tierContent).map(([k, v]) => [k, v.whyUpgrade]));
 
   const presets = [
-    { label: "Essential → Core", from: "essential-3", to: "core-3" },
     { label: "Core → Elite (6-mo)", from: "core-6", to: "elite-6" },
     { label: "Elite → Unlimited (6-mo)", from: "elite-6", to: "unlimited-6" },
     { label: "Core → Elite (12-mo)", from: "core-12", to: "elite-12" },
     { label: "Elite → Unlimited (12-mo)", from: "elite-12", to: "unlimited-12" },
+    { label: "Essential → Core", from: "essential-3", to: "core-3" },
   ];
 
   const perkRows: { label: string; cell: (p: Plan) => string }[] = [
@@ -165,8 +165,7 @@ export default async function MembershipGuidePage() {
                 })}
               </div>
               <p className="text-sm text-[var(--sg-muted)]">
-                Once a week? Start the conversation with Essential ({money(planById("essential").prices[3]!)}/mo, 4 classes) and show how Core builds consistency.
-                Unlimited per-class pricing assumes 1 class per day.
+                Client only mentions once a week? Show how a second class builds consistency with Core. Unlimited per-class pricing assumes 1 class per day.
               </p>
             </Section>
 

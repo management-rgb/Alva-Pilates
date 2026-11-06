@@ -225,7 +225,7 @@ export const frequencyLevels = [
     sessionsLabel: "≈ 4 / month",
     gap: "~7 days between sessions",
     summary: "A good starting point for building a habit and learning Pilates fundamentals.",
-    plan: "Essential",
+    plan: "Build toward Core",
   },
   {
     id: "twice",
@@ -272,12 +272,12 @@ export const recommendations: Record<
 > = {
   once: {
     label: "Once weekly",
-    planId: "essential",
-    alsoPlanId: "core",
+    planId: "core",
+    alsoPlanId: "essential",
     reason:
-      "Once a week is a great way to learn the fundamentals. It's also the frequency where progress tends to feel slowest, so it's worth showing how Core builds consistency.",
+      "Once a week is a great way to learn the fundamentals, but it gives the fewest chances to reinforce technique. Lead with Core and the benefit of a second class; keep Essential only as a fallback if twice a week truly isn't realistic yet.",
     script:
-      "Once a week is a wonderful way to start — Essential gives you four classes a month. Many clients find that when they add a second class, things start to click because the last session is still fresh. If you think you can make twice a week work, Core is eight classes and brings your cost per class down. Which feels more realistic for your schedule?",
+      "Once a week is a wonderful start. Many clients find that when they add a second class, things start to click because the last session is still fresh. Core gives you eight classes a month — about twice a week — and brings your cost per class down. Could you picture two days that would work in your schedule?",
   },
   twice: {
     label: "Twice weekly",
@@ -431,7 +431,7 @@ export type FaqItem = {
 export const faqs: FaqItem[] = [
   {
     q: "Is once a week enough?",
-    a: "It's a great start. Once a week builds the habit and teaches the fundamentals. Many clients find things start to click at twice a week because there are more chances to reinforce technique before it fades. If you can only come once a week right now, that's absolutely fine — we can start with Essential and build up from there.",
+    a: "It's a great start. Once a week builds the habit and teaches the fundamentals. Many clients find things start to click at twice a week because there are more chances to reinforce technique before it fades. If you can only come once a week right now, that's absolutely fine — we can build up from there. Core's eight classes a month fit the twice-weekly rhythm.",
   },
   {
     q: "Why should I come twice a week?",
@@ -447,7 +447,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "What if I don't use all my classes?",
-    a: "I'd rather you pick a plan that you will use. If you're not sure you'll reach eight classes, Essential or Core may be a better fit. Choose the number you can realistically attend most months.",
+    a: "I'd rather you pick a plan that you will use. If you're not sure you'll reach eight classes a month, let's choose the number you can realistically attend. Choose the number you can realistically attend most months.",
     verify: "Confirm whether unused classes roll over or expire before describing what happens to them. Don't promise rollover.",
   },
   {

@@ -108,8 +108,8 @@ export default function Recommender({ plans, recommendations, considerations, be
               className="mt-1 text-3xl text-[var(--sg-ink)]"
               style={{ fontFamily: "var(--font-cormorant), Georgia, serif" }}
             >
-              {rec.planId === "essential"
-                ? "Essential — or build toward Core"
+              {freq === "once"
+                ? "Core — build toward twice a week"
                 : `${plan.name} — ${plan.classesPerMonth ?? "up to 1 class/day"}${
                     plan.classesPerMonth ? " classes/month" : ""
                   }`}
@@ -121,12 +121,6 @@ export default function Recommender({ plans, recommendations, considerations, be
 
             <h4 className="mt-5 text-sm font-semibold text-[var(--sg-ink)]">Monthly price options</h4>
             <PriceOptions plan={plan} />
-            {rec.planId === "essential" && also ? (
-              <>
-                <p className="mt-4 text-sm font-semibold text-[var(--sg-ink)]">Building toward Core</p>
-                <PriceOptions plan={also} />
-              </>
-            ) : null}
             <p className="mt-2 text-xs text-[var(--sg-muted)]">
               All memberships are billed monthly, not as a single upfront payment.
             </p>
@@ -155,10 +149,21 @@ export default function Recommender({ plans, recommendations, considerations, be
               </p>
             </div>
 
-            {also && rec.planId !== "essential" ? (
+            {also ? (
               <p className="mt-4 text-sm text-[var(--sg-muted)]">
-                <span className="font-semibold text-[var(--sg-ink)]">Also consider:</span> {also.name} if the
-                client&apos;s realistic attendance is {also.id === "elite" ? "closer to three times a week" : "four or more times a week"}.
+                {also.id === "essential" ? (
+                  <>
+                    <span className="font-semibold text-[var(--sg-ink)]">Fallback only:</span> Essential (
+                    {money(also.prices[3]!)}/mo, {also.classesPerMonth} classes) if twice a week isn&apos;t realistic yet.
+                    Plan to revisit Core.
+                  </>
+                ) : (
+                  <>
+                    <span className="font-semibold text-[var(--sg-ink)]">Also consider:</span> {also.name} if the
+                    client&apos;s realistic attendance is{" "}
+                    {also.id === "elite" ? "closer to three times a week" : "four or more times a week"}.
+                  </>
+                )}
               </p>
             ) : null}
 
