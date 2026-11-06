@@ -63,6 +63,7 @@ export default function Recommender({ plans, recommendations, considerations, be
         </div>
       </fieldset>
 
+      {considerations.length > 0 ? (
       <div className="mt-6 border-t border-[var(--sg-line)] pt-5">
         <p className="text-sm font-semibold text-[var(--sg-ink)]">
           Optional: factor in the client&apos;s situation
@@ -93,6 +94,7 @@ export default function Recommender({ plans, recommendations, considerations, be
           ))}
         </div>
       </div>
+      ) : null}
 
       <div aria-live="polite" className="mt-6">
         {!rec || !plan ? (
