@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SummerResetPromoCard, {
   SUMMER_RESET_LANDING_URL,
-} from "../../components/SummerResetPromoCard";
+} from "../../../components/SummerResetPromoCard";
 
 export const metadata: Metadata = {
   title: "Summer Reset MMS Capture",

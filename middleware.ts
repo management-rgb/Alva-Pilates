@@ -1,9 +1,30 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { summerResetEnabled } from "./app/lib/summerResetCopy";
+import { STAFF_COOKIE, STAFF_LOGIN, verifySessionToken } from "./app/lib/staffAuth";
 
-export function middleware(request: NextRequest) {
+/** Staff area: require a valid session cookie; never index or cache. */
+async function staffGate(request: NextRequest) {
+  const { pathname, search } = request.nextUrl;
+  const isLogin = pathname === STAFF_LOGIN || pathname === `${STAFF_LOGIN}/`;
+  let response = NextResponse.next();
+
+  if (!isLogin && !(await verifySessionToken(request.cookies.get(STAFF_COOKIE)?.value))) {
+    const url = new URL(STAFF_LOGIN, request.url);
+    if (pathname !== "/staff" && pathname !== "/staff/") url.searchParams.set("next", pathname + search);
+    response = NextResponse.redirect(url);
+  }
+  response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet");
+  response.headers.set("Cache-Control", "private, no-store, max-age=0");
+  return response;
+}
+
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (pathname === "/staff" || pathname.startsWith("/staff/")) {
+    return staffGate(request);
+  }
 
   // Instructors section hidden until ready — direct URLs redirect home.
   if (pathname.startsWith("/instructors")) {
@@ -32,6 +53,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/staff",
+    "/staff/:path*",
     "/instructors",
     "/instructors/:path*",
     "/offers",

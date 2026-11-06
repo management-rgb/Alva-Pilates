@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import StaffBar from "../StaffBar";
 
 export const metadata: Metadata = {
   title: "Front Desk Playbook",
@@ -459,11 +458,11 @@ const scoreboard = [
 export default function FrontDeskPage() {
   return (
     <div className="staff-guide min-h-screen bg-[var(--lp-ivory)] text-foreground">
-      <Header />
+      <StaffBar current="/staff/front-desk" />
 
       <main>
         {/* Hero */}
-        <section className="px-6 pb-12 pt-36 lg:px-10 lg:pb-16 lg:pt-44">
+        <section className="px-6 pb-12 pt-12 lg:px-10 lg:pb-16 lg:pt-16">
           <div className="mx-auto max-w-[64rem]">
             <div className="flex flex-wrap items-center gap-3">
               <Pill>Internal use only</Pill>
@@ -483,7 +482,7 @@ export default function FrontDeskPage() {
         {/* Sticky section nav */}
         <nav
           aria-label="Playbook sections"
-          className="sticky top-[var(--header-height)] z-30 border-y border-[var(--lp-line)] bg-[var(--lp-ivory)]/95 backdrop-blur"
+          className="sticky top-14 z-30 border-y border-[var(--lp-line)] bg-[var(--lp-ivory)]/95 backdrop-blur"
         >
           <div className="mx-auto max-w-[64rem] overflow-x-auto px-6 py-3 lg:px-10">
             <ul className="flex w-max gap-2">
@@ -1607,7 +1606,6 @@ export default function FrontDeskPage() {
 
       </main>
 
-      <Footer />
     </div>
   );
 }
