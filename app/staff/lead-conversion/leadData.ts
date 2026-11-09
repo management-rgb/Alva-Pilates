@@ -197,7 +197,7 @@ export const scripts: LeadScript[] = [
   { id: "commitment", title: "9. Concerned about commitment", text: "I understand. Let me explain exactly how it works: [Plan] is $[price] a month, billed monthly, with a [X]-month minimum. You can pause for up to 30 days with 14 days' notice. Does that feel clearer?" },
   { id: "not-ready", title: "10. Interested but not ready", text: "Of course! Is there anything specific you'd like to know before deciding? ... Thank you for telling me. Can I check in with you on [day]? And let's make sure your next class is booked so you keep your momentum." },
   { id: "ready", title: "11. Ready to enroll", text: "Wonderful, welcome to the Alva membership! We can take care of everything right here, and then let's reserve your next few classes before you go." },
-  { id: "intro-expiring", title: "12. Intro expiring soon", text: "Your intro ends on [date]. If you join a membership within 15 days after it expires, you may qualify to have your intro credited toward your first payment. Let me check your eligibility, and if you'd like we can get it started today." },
+  { id: "intro-expiring", title: "12. Intro expiring soon", text: "Your intro ends on [date]. If you join a membership within 14 days after it expires, you may qualify to have your intro credited toward your first payment. Let me check your eligibility, and if you'd like we can get it started today." },
 ];
 
 export type Objection = {
@@ -324,7 +324,7 @@ export const scenarios = [
     title: "E. Expiring intro, may qualify for credit",
     situation: "A client's intro is about to end and they're interested in membership.",
     action: "Check their purchase history and eligibility first, then explain the credit and offer to get started.",
-    example: "“Let me check your eligibility. If you join within 15 days after your intro expires, your intro may be credited toward your first payment.”",
+    example: "“Let me check your eligibility. If you join within 14 days after your intro expires, your intro may be credited toward your first payment.”",
     outcome: "Membership started with the correct credit, or a clear next step.",
     mistakes: "Promising the credit before verifying. Implying everyone qualifies.",
   },

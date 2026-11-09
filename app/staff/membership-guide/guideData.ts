@@ -81,7 +81,7 @@ export const introOffers = {
   unlimited15: { name: "15-Day Unlimited Intro", price: 99, detail: "1 class a day for 15 days" },
   creditWindowDays: 15,
   creditNote:
-    "Join Core, Elite or Unlimited within 15 days after the intro expires and 100% of the intro purchase is credited toward the first membership payment (credit can't exceed the first payment, has no cash value and can't be combined with another membership promotion).",
+    "Join Core, Elite or Unlimited within 14 days after the intro expires and 100% of the intro purchase is credited toward the first membership payment (credit can't exceed the first payment, has no cash value and can't be combined with another membership promotion).",
 };
 
 export const tierContent: Record<
@@ -377,7 +377,7 @@ export const scripts: SalesScript[] = [
     id: "intro",
     title: "Client currently on an intro offer",
     when: "Mid-way through or toward the end of their intro.",
-    text: "How are you finding your intro so far? You're making great progress. Since you're enjoying it, I want to make sure you don't lose momentum when your intro ends. If you join Core, Elite or Unlimited within 15 days after your intro expires, we'll credit what you paid for your intro toward your first membership payment. Which of those fits how often you've been coming?",
+    text: "How are you finding your intro so far? You're making great progress. Since you're enjoying it, I want to make sure you don't lose momentum when your intro ends. If you join Core, Elite or Unlimited within 14 days after your intro expires, we'll credit what you paid for your intro toward your first membership payment. Which of those fits how often you've been coming?",
   },
   {
     id: "essential-core",

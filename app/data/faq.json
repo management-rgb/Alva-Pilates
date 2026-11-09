@@ -67,7 +67,7 @@
   {
     "_id": "faq-intro-credit",
     "question": "Do I get my intro offer credited if I become a member?",
-    "answer": "Yes. If you purchase the 3-Class Intro or 15-Day Unlimited Intro and join a Core, Elite, or Unlimited membership within 15 days after your intro expires, we'll apply 100% of your intro purchase toward your first membership payment.\n\nThe credit cannot exceed your first membership payment, has no cash value, and cannot be combined with another membership promotion.",
+    "answer": "Yes. If you purchase the 3-Class Intro or 15-Day Unlimited Intro and join a Core, Elite, or Unlimited membership within 14 days after your intro expires, we'll apply 100% of your intro purchase toward your first membership payment.\n\nThe credit cannot exceed your first membership payment, has no cash value, and cannot be combined with another membership promotion.",
     "category": "Memberships",
     "displayOrder": 10
   },

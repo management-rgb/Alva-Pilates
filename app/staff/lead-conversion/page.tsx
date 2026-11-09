@@ -201,7 +201,7 @@ export default async function LeadConversionPage() {
                 {stage.id === "second" ? (
                   <p className="text-sm text-[var(--sg-muted)]">
                     Intro credit: an eligible intro purchase may be credited toward the first month of a qualifying
-                    Core or higher membership if they join within 15 days after the intro expires.{" "}
+                    Core or higher membership if they join within 14 days after the intro expires.{" "}
                     <VerifyBadge>Verify eligibility first</VerifyBadge>
                   </p>
                 ) : null}
