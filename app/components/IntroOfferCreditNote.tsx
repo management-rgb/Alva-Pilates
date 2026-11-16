@@ -14,7 +14,7 @@ export default function IntroOfferCreditNote({
         className="text-xs font-semibold leading-relaxed"
         style={{ color: "#c0392b" }}
       >
-        Credit is valid for 14 days after your intro expires
+        Credit is valid for 7 days after your intro expires
       </p>
     </div>
   );
