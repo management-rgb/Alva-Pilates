@@ -7,7 +7,7 @@ import {
 } from "../lib/mindbodyBrandedEmbed";
 
 type Props = {
-  widgetType: "Schedules" | "Appointments";
+  widgetType: "Schedules" | "Appointments" | "Prospect" | "Pricing";
   widgetId: string;
   className?: string;
 };
@@ -20,7 +20,7 @@ type Props = {
 export default function MindbodyBrandedWidget({
   widgetType,
   widgetId,
-  className = "",
+  className = "min-h-[700px]",
 }: Props) {
   useEffect(() => {
     void reloadMindbodyBrandedEmbedScript();
@@ -31,7 +31,7 @@ export default function MindbodyBrandedWidget({
 
   return (
     <div
-      className={`mindbody-widget min-h-[700px] ${className}`.trim()}
+      className={`mindbody-widget ${className}`.trim()}
       data-widget-type={widgetType}
       data-widget-id={widgetId}
     />
