@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
 import BlackFridayAnnouncementBar from "./blackfriday/BlackFridayAnnouncementBar";
+import { useBlackFridayActive } from "./blackfriday/useBlackFridayActive";
 import { STUDIO_SMS_HREF } from "../lib/site";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
@@ -22,6 +23,7 @@ const MENU_EASE = [0.22, 1, 0.36, 1] as const;
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const blackFriday = useBlackFridayActive();
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
   // Stable, deterministic id (single Header per page) — avoids a useId()
@@ -260,7 +262,7 @@ export default function Header() {
         {isMenuOpen ? (
           <div className="xl:hidden" key="mobile-menu">
             <motion.div
-              className="fixed inset-0 z-40 bg-[rgba(28,21,16,0.5)] backdrop-blur-[2px]"
+              className={`fixed inset-0 z-40 backdrop-blur-[2px] ${blackFriday ? "bg-[rgba(24,9,12,0.55)]" : "bg-[rgba(28,21,16,0.5)]"}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -274,8 +276,9 @@ export default function Header() {
               ref={menuRef}
               className="fixed inset-y-0 right-0 z-40 flex w-[86%] max-w-[420px] flex-col overflow-hidden text-[#F2ECE4] shadow-[-30px_0_80px_-44px_rgba(20,14,9,0.7)]"
               style={{
-                background:
-                  "radial-gradient(circle at 70% 25%, rgba(212,186,150,0.08), transparent 45%), radial-gradient(circle at 20% 85%, rgba(198,170,131,0.06), transparent 40%), linear-gradient(180deg, #40362F 0%, #382F29 45%, #312923 100%)",
+                background: blackFriday
+                  ? "radial-gradient(circle at 70% 25%, rgba(214,191,152,0.08), transparent 45%), radial-gradient(circle at 20% 85%, rgba(214,191,152,0.05), transparent 40%), linear-gradient(180deg, #3d1b23 0%, #33171d 45%, #2a1317 100%)"
+                  : "radial-gradient(circle at 70% 25%, rgba(212,186,150,0.08), transparent 45%), radial-gradient(circle at 20% 85%, rgba(198,170,131,0.06), transparent 40%), linear-gradient(180deg, #40362F 0%, #382F29 45%, #312923 100%)",
               }}
               role="dialog"
               aria-modal="true"
@@ -376,7 +379,7 @@ export default function Header() {
 
               {/* Fixed action area — darker integrated espresso panel, last in */}
               <motion.div
-                className="mobile-menu-actions relative flex-none border-t border-[rgba(242,236,228,0.06)] bg-[rgba(38,31,26,0.6)] px-8 pb-[calc(env(safe-area-inset-bottom,0px)+2rem)] pt-9 backdrop-blur-xl [@media(max-height:720px)]:pt-6"
+                className={`mobile-menu-actions relative flex-none border-t border-[rgba(242,236,228,0.06)] ${blackFriday ? "bg-[rgba(36,15,19,0.65)]" : "bg-[rgba(38,31,26,0.6)]"} px-8 pb-[calc(env(safe-area-inset-bottom,0px)+2rem)] pt-9 backdrop-blur-xl [@media(max-height:720px)]:pt-6`}
                 initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}

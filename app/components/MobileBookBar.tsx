@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useBlackFridayActive } from "./blackfriday/useBlackFridayActive";
 
 /** Pages where the button would be redundant or out of place. */
 const HIDDEN_ON = ["/book", "/staff", "/marketing"];
@@ -45,6 +46,7 @@ export default function MobileBookBar() {
 }
 
 function FloatingBookButton() {
+  const blackFriday = useBlackFridayActive();
   // Recomputed on scroll/resize; the server render assumes nothing blocks it.
   const blocked = useSyncExternalStore(subscribe, isBlockedOnScreen, () => false);
 
@@ -61,7 +63,7 @@ function FloatingBookButton() {
         <Link
           href="/book"
           tabIndex={blocked ? -1 : undefined}
-          className={`halloween-cta mx-auto flex h-12 w-full max-w-md items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-[rgba(52,51,48,0.72)] backdrop-blur-md text-[0.8125rem] font-medium uppercase tracking-[0.1em] text-paper ring-1 ring-[rgba(245,245,242,0.22)] shadow-[0_12px_32px_-12px_rgba(20,14,9,0.55)] transition-opacity hover:opacity-90 ${
+          className={`halloween-cta mx-auto flex h-12 w-full max-w-md items-center justify-center gap-2 rounded-[var(--radius-sm)] ${blackFriday ? "bg-[rgba(58,26,34,0.82)] text-[#f4ece2] ring-[rgba(214,191,152,0.4)]" : "bg-[rgba(52,51,48,0.72)] text-paper ring-[rgba(245,245,242,0.22)]"} backdrop-blur-md text-[0.8125rem] font-medium uppercase tracking-[0.1em] ring-1 shadow-[0_12px_32px_-12px_rgba(20,14,9,0.55)] transition-opacity hover:opacity-90 ${
             blocked ? "" : "pointer-events-auto"
           }`}
         >
