@@ -5,11 +5,12 @@ import Footer from "../components/Footer";
 import MindbodyBrandedWidget from "../components/MindbodyBrandedWidget";
 import BlackFridayMemberships from "../components/blackfriday/BlackFridayMemberships";
 import BlackFridayClassPacks from "../components/blackfriday/BlackFridayClassPacks";
+import GiftCards from "../components/blackfriday/GiftCards";
 import IntroOffers from "../components/blackfriday/IntroOffers";
 import { useHashRealign } from "../components/blackfriday/useHashRealign";
 import { blackFridayIds } from "../lib/blackFridayCampaign";
 
-const BF_HASHES = ["get-started", blackFridayIds.membershipsSection, blackFridayIds.packsSection] as const;
+const BF_HASHES = ["get-started", "gift-cards", blackFridayIds.membershipsSection, blackFridayIds.packsSection] as const;
 
 export default function PricingPage() {
   useHashRealign(BF_HASHES);
@@ -24,6 +25,7 @@ export default function PricingPage() {
         <div className="mt-16">
           <BlackFridayClassPacks />
         </div>
+        <GiftCards />
       </main>
 
       <Footer />

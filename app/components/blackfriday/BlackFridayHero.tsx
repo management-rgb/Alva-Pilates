@@ -60,6 +60,7 @@ export default function BlackFridayHero() {
               </ul>
               <p className="bf-arch__tiers">{h.tiers}</p>
               <p className="bf-arch__packs">{h.packsNote}</p>
+              <p className="bf-arch__packs bf-arch__packs--merch">{h.merchNote}</p>
             </div>
           </div>
         </Reveal>
