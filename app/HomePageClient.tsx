@@ -20,13 +20,22 @@ import HomeVisitCommunity from "./components/home/HomeVisitCommunity";
 import { Reveal } from "./components/sections/Reveal";
 import { RevealText } from "./components/sections/RevealText";
 import { summerResetEnabled } from "./lib/summerResetCopy";
+import BlackFridayHero from "./components/blackfriday/BlackFridayHero";
+import { useBlackFridayActive } from "./components/blackfriday/useBlackFridayActive";
 
 export default function HomePageClient() {
+  const blackFriday = useBlackFridayActive();
   return (
     <div className="min-h-screen overflow-x-hidden bg-background font-paragraph text-foreground selection:bg-secondary">
       <Header />
 
-      {summerResetEnabled ? <SummerResetHero /> : <HomeBrandHero />}
+      {blackFriday ? (
+        <BlackFridayHero />
+      ) : summerResetEnabled ? (
+        <SummerResetHero />
+      ) : (
+        <HomeBrandHero />
+      )}
 
       {/* Charcoal → light gradient bridge */}
       <div className="flow-out-of-dark" aria-hidden />

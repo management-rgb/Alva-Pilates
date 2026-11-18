@@ -13,6 +13,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import SummerResetAnnouncementBar from "./SummerResetAnnouncementBar";
 import { summerResetEnabled } from "../lib/summerResetCopy";
+import BlackFridayAnnouncementBar from "./blackfriday/BlackFridayAnnouncementBar";
 import { STUDIO_SMS_HREF } from "../lib/site";
 import MindbodyAccountLink from "./MindbodyAccountLink";
 
@@ -252,6 +253,7 @@ export default function Header() {
         </div>
       </div>
 
+      {!isMenuOpen ? <BlackFridayAnnouncementBar /> : null}
       {!isMenuOpen && summerResetEnabled ? <SummerResetAnnouncementBar /> : null}
 
       <AnimatePresence>
