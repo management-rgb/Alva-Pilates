@@ -2302,10 +2302,10 @@ header a.healcode-login-register-text-link:focus-visible {
 }
 
 /* Sections on the pricing page */
-.bf-section { margin: 0 auto 4rem; max-width: 64rem; text-align: center; }
-.bf-section__head { max-width: 40rem; margin: 0 auto 1.75rem; }
-.bf-section__title { margin-top: 0.75rem; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.05; color: var(--bf-ink); }
-.bf-section__body { margin-top: 1rem; font-size: 1rem; line-height: 1.7; color: var(--text-secondary); }
+.bf-section { margin: 0 auto 3rem; max-width: 64rem; text-align: center; }
+.bf-section__head { max-width: 40rem; margin: 0 auto 1.25rem; }
+.bf-section__title { margin-top: 0.75rem; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.08; color: var(--bf-ink); }
+.bf-section__body { margin-top: 0.6rem; font-size: 0.9375rem; line-height: 1.6; color: var(--text-secondary); }
 .bf-section__sub { margin-top: 1.25rem; font-size: 0.8125rem; letter-spacing: 0.04em; color: var(--bf-wine); }
 
 .bf-tabs {
@@ -2330,7 +2330,7 @@ header a.healcode-login-register-text-link:focus-visible {
 .bf-tab:focus-visible { outline: 2px solid var(--bf-wine); outline-offset: 2px; }
 @media (min-width: 640px) { .bf-tab { padding: 0 1.75rem; font-size: 0.8125rem; } }
 
-.bf-grid { display: grid; gap: 1rem; margin-top: 1.5rem; text-align: left; }
+.bf-grid { display: grid; gap: 1rem; margin-top: 1.1rem; text-align: left; }
 @media (min-width: 768px) { .bf-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; } }
 .bf-grid--packs { margin-top: 0; }
 
@@ -2339,7 +2339,7 @@ header a.healcode-login-register-text-link:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding: 1.75rem 1.5rem;
+  padding: 1.25rem 1.25rem 1.35rem;
   background: #fffdfa;
   border: 1px solid rgba(74, 31, 42, 0.16);
   border-radius: var(--radius-md);
@@ -2354,11 +2354,11 @@ header a.healcode-login-register-text-link:focus-visible {
 }
 .bf-card--featured { background: #fbf4ea; border-color: var(--bf-wine-soft); }
 @media (min-width: 768px) { .bf-card--featured { padding-block: 2.25rem; margin-block: -0.5rem; } }
-.bf-card__name { font-size: 1.75rem; color: var(--bf-ink); line-height: 1.1; }
+.bf-card__name { font-size: 1.5rem; color: var(--bf-ink); line-height: 1.1; }
 .bf-card__meta { font-size: 0.8125rem; letter-spacing: 0.04em; color: var(--text-secondary); }
-.bf-card__price { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
+.bf-card__price { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.75rem; flex-wrap: wrap; }
 .bf-card__was { font-size: 1rem; color: var(--text-secondary); }
-.bf-card__now { font-size: 2.5rem; line-height: 1; letter-spacing: -0.02em; font-weight: 500; color: var(--bf-wine); }
+.bf-card__now { font-size: 2.1rem; line-height: 1; letter-spacing: -0.02em; font-weight: 500; color: var(--bf-wine); }
 .bf-card__per { margin-left: 0.3rem; font-size: 0.8125rem; letter-spacing: 0; font-weight: 400; color: var(--text-secondary); }
 .bf-card__note { margin: 0.75rem 0 1.25rem; font-size: 0.875rem; line-height: 1.6; color: var(--bf-ink); flex: 1; }
 .bf-card__term { color: var(--text-secondary); }
@@ -2387,11 +2387,11 @@ header a.healcode-login-register-text-link:focus-visible {
 
 .bf-fine { margin-top: 1.25rem; font-size: 0.8125rem; color: var(--text-secondary); }
 .bf-redeem { max-width: 36rem; margin: 0.75rem auto 0; font-size: 0.875rem; line-height: 1.6; color: var(--bf-ink); }
-.bf-help { margin-top: 1.5rem; }
+.bf-help { margin-top: 0.9rem; }
 .bf-help__text { font-size: 0.9375rem; color: var(--bf-ink); }
 .bf-help__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.75rem; }
 .bf-help__link {
-  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1.1rem;
+  display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 1rem;
   border: 1px solid rgba(74, 31, 42, 0.3); border-radius: 999px; font-size: 0.8125rem; color: var(--bf-wine);
 }
 .bf-help__link:hover { background: var(--bf-wine); color: var(--bf-ivory); }
@@ -2400,3 +2400,41 @@ header a.healcode-login-register-text-link:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .bf-btn, .bf-tab, .bf-code, .bf-bar__link { transition: none; }
 }
+.bf-card__list { display: grid; gap: 0.15rem; margin-top: 0.5rem; }
+.bf-card__credit { display: block; margin-top: 0.75rem; }
+
+.bf-notes { max-width: 40rem; margin: 1.25rem auto 0; padding-top: 1rem; border-top: 1px solid rgba(74, 31, 42, 0.14); font-size: 0.8125rem; line-height: 1.6; color: var(--bf-ink); }
+.bf-notes .bf-help__text { font-size: 0.8125rem; }
+.bf-notes .bf-terms { margin-top: 0.9rem; font-size: 0.6875rem; }
+
+/* Compact membership offer block */
+.bf-compact { max-width: 52rem; margin: 0 auto 2rem; text-align: center; }
+.bf-compact__title { font-size: clamp(1.5rem, 3.5vw, 2rem); line-height: 1.1; color: var(--bf-ink); }
+.bf-compact__sub { margin: 0.35rem 0 0.9rem; font-size: 0.8125rem; color: var(--text-secondary); }
+.bf-rows { display: grid; gap: 0.5rem; margin-top: 0.9rem; text-align: left; }
+.bf-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 0.5rem 0.6rem;
+  padding: 0.6rem 0.75rem; background: #fffdfa; border: 1px solid rgba(74, 31, 42, 0.16); border-radius: var(--radius-sm);
+}
+.bf-row__name { font-size: 1.25rem; line-height: 1.1; color: var(--bf-ink); }
+.bf-row__meta { font-size: 0.75rem; color: var(--text-secondary); }
+.bf-row__price { display: flex; flex-direction: column; align-items: flex-end; gap: 0; justify-self: end; line-height: 1.15; font-size: 0.875rem; color: var(--text-secondary); }
+.bf-row__now { font-size: 1.5rem; font-weight: 500; letter-spacing: -0.02em; color: var(--bf-wine); }
+.bf-row__per { margin-left: 0.15rem; font-size: 0.75rem; font-weight: 400; color: var(--text-secondary); }
+.bf-row .bf-code { width: auto; min-height: 2.75rem; padding: 0 0.6rem; gap: 0.4rem; }
+.bf-row .bf-code__label, .bf-row .bf-code__action span { display: none; }
+.bf-row .bf-code__value { font-size: 0.75rem; letter-spacing: 0.04em; }
+.bf-row .bf-code { flex-shrink: 0; box-sizing: border-box; max-width: 100%; overflow: hidden; }
+@media (max-width: 420px) { .bf-row__now { font-size: 1.2rem; } .bf-row__name { font-size: 1.1rem; } .bf-row { padding-inline: 0.6rem; } }
+@media (min-width: 768px) {
+  .bf-row { grid-template-columns: 1.2fr 1fr 12rem; padding: 0.75rem 1rem; gap: 0.5rem 1rem; }
+  .bf-row__price { flex-direction: row; align-items: baseline; gap: 0.5rem; }
+  .bf-row .bf-code { width: 100%; padding: 0 0.9rem; }
+  .bf-row .bf-code__label, .bf-row .bf-code__action span { display: inline; }
+  .bf-row .bf-code__value { font-size: 0.9375rem; letter-spacing: 0.12em; }
+}
+.bf-compact__help { margin-top: 0.75rem; font-size: 0.8125rem; color: var(--bf-ink); }
+.bf-compact__help a { color: var(--bf-wine); text-decoration: underline; text-underline-offset: 3px; padding: 0.5rem 0.15rem; }
+.bf-compact__terms { margin-top: 0.25rem; font-size: 0.6875rem; color: var(--text-secondary); }
+.bf-compact__terms summary { cursor: pointer; display: inline-block; padding: 0.4rem 0.5rem; }
+.bf-compact__terms p { max-width: 40rem; margin: 0.25rem auto 0; line-height: 1.6; }

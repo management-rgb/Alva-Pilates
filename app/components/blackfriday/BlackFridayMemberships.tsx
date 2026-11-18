@@ -2,7 +2,6 @@
 
 import { useRef, useState, type KeyboardEvent } from "react";
 import PromoCode from "./PromoCode";
-import HelpLinks from "./HelpLinks";
 import { useBlackFridayActive } from "./useBlackFridayActive";
 import {
   blackFridayCopy,
@@ -10,6 +9,9 @@ import {
   blackFridayMemberships,
   blackFridayTerms,
   formatUsd,
+  PHONE_DISPLAY,
+  PHONE_TEL_HREF,
+  STUDIO_SMS_HREF,
   type BlackFridayTerm,
 } from "../../lib/blackFridayCampaign";
 
@@ -22,7 +24,6 @@ export default function BlackFridayMemberships() {
   if (!active) return null;
 
   const offers = blackFridayMemberships[term];
-  const { promoPayments, code } = blackFridayTerms[term];
 
   function onKey(e: KeyboardEvent<HTMLDivElement>) {
     if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
@@ -35,15 +36,16 @@ export default function BlackFridayMemberships() {
   return (
     <section
       id={blackFridayIds.membershipsSection}
-      className="bf-section scroll-mt-32"
+      className="bf-compact scroll-mt-32"
       aria-labelledby="bf-memberships-heading"
     >
-      <div className="bf-section__head">
-        <p className="bf-eyebrow bf-eyebrow--dark">Black Friday · Memberships</p>
-        <h2 id="bf-memberships-heading" className="bf-section__title font-display">
+      <div className="bf-compact__head">
+        <h2 id="bf-memberships-heading" className="bf-compact__title font-display">
           {blackFridayCopy.memberships.heading}
         </h2>
-        <p className="bf-section__body">{blackFridayCopy.memberships.body}</p>
+        <p className="bf-compact__sub">
+          Black Friday · 20% off your first {blackFridayTerms[term].promoPayments} payments, then regular rate.
+        </p>
       </div>
 
       <div className="bf-tabs" role="tablist" aria-label="Membership commitment" onKeyDown={onKey}>
@@ -67,49 +69,37 @@ export default function BlackFridayMemberships() {
         ))}
       </div>
 
-      <p className="bf-section__sub">
-        20% off your first {promoPayments} monthly payments · code <strong>{code}</strong>
-      </p>
-
-      <div
-        role="tabpanel"
-        id={`bf-panel-${term}`}
-        aria-labelledby={`bf-tab-${term}`}
-        className="bf-grid"
-      >
+      <div role="tabpanel" id={`bf-panel-${term}`} aria-labelledby={`bf-tab-${term}`} className="bf-rows">
         {offers.map((o) => (
-          <article key={o.id} className="bf-card">
-            <h3 className="bf-card__name font-display">{o.name}</h3>
-            <p className="bf-card__meta">{o.classesLabel}</p>
-
-            <div className="bf-card__price">
-              <p className="bf-card__was">
+          <article key={o.id} className="bf-row">
+            <div className="bf-row__plan">
+              <h3 className="bf-row__name font-display">{o.name}</h3>
+              <p className="bf-row__meta">{o.classesLabel}</p>
+            </div>
+            <p className="bf-row__price">
+              <s>
                 <span className="sr-only">Regular price </span>
-                <s>{formatUsd(o.regularMonthly)}</s>
-                <span className="sr-only"> per month</span>
-              </p>
-              <p className="bf-card__now">
+                {formatUsd(o.regularMonthly)}
+              </s>
+              <span className="bf-row__now">
                 <span className="sr-only">Black Friday price </span>
                 {formatUsd(o.promoMonthly)}
-                <span className="bf-card__per">/ month</span>
-              </p>
-            </div>
-
-            <p className="bf-card__note">
-              20% off your first {o.promoPayments} payments, then {formatUsd(o.regularMonthly)}/month.
-              <span className="bf-card__term"> {o.term}-month commitment.</span>
+                <span className="bf-row__per">/mo</span>
+              </span>
             </p>
-
             <PromoCode code={o.code} />
-
           </article>
         ))}
       </div>
 
-      <p className="bf-fine">{blackFridayCopy.memberships.resume}</p>
-      <p className="bf-redeem">{blackFridayCopy.redeem}</p>
-      <HelpLinks />
-      <p className="bf-terms">{blackFridayCopy.terms}</p>
+      <p className="bf-compact__help">
+        Enter the code at checkout. Need help? <a href={STUDIO_SMS_HREF}>Text</a> or{" "}
+        <a href={PHONE_TEL_HREF}>call {PHONE_DISPLAY}</a>.
+      </p>
+      <details className="bf-compact__terms">
+        <summary>Offer terms</summary>
+        <p>{blackFridayCopy.terms}</p>
+      </details>
     </section>
   );
 }
