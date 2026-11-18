@@ -46,7 +46,7 @@ export const PHONE_TEL_HREF = `tel:${studio.telephone.replace(/[^+\d]/g, "")}`;
 export { STUDIO_SMS_HREF };
 
 export const blackFridayCopy = {
-  announcement: "BLACK FRIDAY IS HERE · 20% OFF MEMBERSHIPS & CLASS PACKS · ENDS NOV 30",
+  announcement: "BLACK FRIDAY IS HERE · 20% OFF MEMBERSHIPS, CLASS PACKS & GIFT CARDS · 30% OFF MERCH · ENDS NOV 30",
   hero: {
     eyebrow: "ALVA PILATES · BLACK FRIDAY 2026",
     headline: "Black Friday, The Alva Way.",
