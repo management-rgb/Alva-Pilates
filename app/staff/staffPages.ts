@@ -6,6 +6,11 @@ export const staffPages = [
     description: "Pricing, plan recommendations, calculator, scripts, FAQs and policies.",
   },
   {
+    href: "/staff/black-friday",
+    label: "Black Friday guide",
+    description: "Deals vs. Intro Credit: savings calculator, comparison tables and class packs.",
+  },
+  {
     href: "/staff/lead-conversion",
     label: "Lead conversion",
     description: "From first hello to membership: stages, scripts, objections and daily checklist.",
