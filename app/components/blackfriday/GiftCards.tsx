@@ -12,6 +12,7 @@ const STANDARD_GIFT_CARD_ID = "100055";
  * 20% off. A `null` serviceId shows a text-us fallback instead of a checkout link.
  */
 const BF_GIFT_CARDS = [
+  { value: 50, price: 40, serviceId: "100064" },
   { value: 100, price: 80, serviceId: "100061" },
   { value: 150, price: 120, serviceId: "100062" },
   { value: 200, price: 160, serviceId: "100063" },
@@ -35,7 +36,7 @@ export default function GiftCards() {
       </div>
 
       {active ? (
-        <div className="bf-grid bf-grid--packs">
+        <div className="bf-grid bf-grid--packs bf-grid--four">
           {BF_GIFT_CARDS.map((g) => (
             <article key={g.value} className="bf-card">
               <h3 className="bf-card__name font-display">{formatUsd(g.value)} Gift Card</h3>
